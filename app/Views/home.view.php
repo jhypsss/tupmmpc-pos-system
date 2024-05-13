@@ -65,12 +65,16 @@ $conn->close();
 		
 		<div class="col-5 bg-light p-4 pt-2">
 			
-			<div><center><h3>Cart <div class="js-item-count badge bg-primary rounded-circle">0</div></h3></center></div>
+			<div><center><h3>Cart <div class="js-item-count badge bg-primary rounded-circle">0</div></h3>
+			</center>
+			
+			</div>
 			
 			<div class="table-responsive" style="height:400px;overflow-y: scroll;">
 				<table class="table table-striped table-hover">
 					<tr>
 						<th>Image</th><th>Description</th><th>Stock</th><th>Amount</th>
+						<th><button onclick="void_button()" class="btn btn-btn btn-danger btn-sm">Void</button></th>
 					</tr>
 					
 					<tbody class="js-items">
@@ -278,7 +282,8 @@ $conn->close();
 				</td>
 				<td style="font-size:20px">
 					<b>₱${data.amount}</b>
-					<button onclick="clear_item(${index})" class="float-end btn btn-danger btn-sm"><i class="fa fa-times"></i></button>
+				</td>
+				<td><button onclick="clear_item(${index})" class="float-end btn btn-danger btn-sm remove_btn" style="display:none"><i class="fa fa-times"></i></button>
 				</td>
 			</tr>
 			<!--end item-->
@@ -351,7 +356,7 @@ $conn->close();
 
 	function clear_all()
 	{
-		var code = prompt("Are you sure you want to clear all items in the list??!!");
+		var code = prompt("Are you sure you want to clear all items in the list?!");
 
 		// Check if the code matches
 		if (code === null || code.trim() === '') {
@@ -363,11 +368,28 @@ $conn->close();
 				location.reload();
 				},100);
 		} else {
-			alert("Incorrect code. Item not removed.");
+			alert("Incorrect code. All items not remove.");
 		}
 	}
-	
-	// Function to clear item
+	// Function to Void Button
+	function void_button(){
+		var code = prompt("Please enter the code to void an item:");
+		// Check if the code matches
+		if (code === null || code.trim() === '') {
+			return; // User canceled or entered empty code
+		} else if (voidCodes.includes(code.trim())) {
+			var x = document.getElementsByClassName("remove_btn");
+			//console.log(x);
+			for (i=0; i<x.length; i++){
+				//x.style.display = "block";
+				x[i].style.display = "block";
+			}
+		} else {
+			alert("Incorrect code.");
+		}
+	}
+
+	/* OLD codesFunction to clear item
 	function clear_item(index) {
 		var code = prompt("Please enter the code to remove the item:");
 
@@ -380,6 +402,17 @@ $conn->close();
 		} else {
 			alert("Incorrect code. Item not removed.");
 		}
+	}
+	*/
+	function clear_item(index)
+	{
+
+		if(!confirm("Confirm Remove this Item?!"))
+			return;
+
+		ITEMS.splice(index,1);
+		refresh_items_display();
+
 	}
 
 	function change_qty(direction,e)
