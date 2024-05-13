@@ -98,7 +98,7 @@ if(!empty($raw_data))
 
 			}
 
-			//barcode 	recipt_no 	description 	qty 	amount 	total 	date 	user_id 
+			//barcode 	receipt_no 	description 	qty 	amount 	total 	date 	user_id 
 
 			$info['data_type'] = "checkout";
 			$info['data'] = "items saved successfully!";
