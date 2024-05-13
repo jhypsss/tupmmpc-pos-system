@@ -1,7 +1,8 @@
-<?php
 
+
+<?php
 // Check if any products were returned
-if (!empty($stocks)): ?>
+/*if (!empty($stocks)): ?>
     <button id="toggleAlerts" class="btn btn-secondary mb-3">Show Notif</button>
         <a href="../app/views/admin/supplier.php"><button class="btn btn-secondary mb-3" id="openSupplierBtn">Suppliers</button></a>
         <input type="text" class="form-control" id="searchInput" placeholder="Search..." style="width: 50%; float: right;">
@@ -18,7 +19,8 @@ if (!empty($stocks)): ?>
             <?php endif; ?>
         <?php endforeach; ?>
     </div>
-<?php endif; ?>
+<?php endif; 
+*/?>
 
 <div class="table-responsive"></div>
 
@@ -64,12 +66,12 @@ if (!empty($stocks)): ?>
                             <span style="color: red; font-weight: bold;">
                                 <?= esc($product['stock']) ?>
                             </span>
-                        <?php elseif ($product['stock'] > 5 && $product['stock'] <= 10): ?>
+                        <?php elseif ($product['stock'] >= 10 && $product['stock'] <= 20): ?>
                             <!-- Display in orange -->
                             <span style="color: orange; font-weight: bold;">
                                 <?= esc($product['stock']) ?>
                             </span>
-                        <?php elseif ($product['stock'] <= 5): ?>
+                        <?php elseif ($product['stock'] < 10): ?>
                             <!-- Display in orange -->
                             <span style="color: red; font-weight: bold;">
                                 <?= esc($product['stock']) ?>

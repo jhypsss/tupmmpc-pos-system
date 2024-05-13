@@ -23,10 +23,10 @@ issues or bugs found.
 
 
 System Functions to do
-- Product Categories✅
-- Audit Trail✅
+✅ Product Categories
+✅ Audit Trail
 - Back Buttons when clicking Forms (add, edit, delete forms)
-- Notification nav = Critical Stocks, Out of Stock
+✅ Notification nav = Critical Stocks, Out of Stock 
 - Product Stocks must not be edited... Rather just Append or Add new Stocks
 - Manage Roles (access roles)
 - Void Items
