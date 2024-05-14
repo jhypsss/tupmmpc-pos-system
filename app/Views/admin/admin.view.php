@@ -23,8 +23,8 @@
 				<a href="index.php?pg=admin&tab=sales">
 			  		<li class="list-group-item <?=$tab=='sales'?'active':''?>"><i class="fa fa-money-bill-wave"></i> Sales</li>
 				</a>
-				<a href="index.php?pg=admin&tab=void items">
-			  		<li class="list-group-item <?=$tab=='void-items'?'active':''?>"><i class="fas fa-times-circle"></i> Void Items</li>
+				<a href="index.php?pg=admin&tab=returned items">
+			  		<li class="list-group-item <?=$tab=='returned_items'?'active':''?>"><i class="fas fa-undo-alt"></i> Returned Items</li>
 				</a>
 				<a href="index.php?pg=admin&tab=audit trail">
 			  		<li class="list-group-item <?=$tab=='audit trail'?'active':''?>"><i class="fas fa-file-alt"></i> Audit Trail</li>
@@ -66,9 +66,9 @@
 						require views_path('admin/sales');
 						break;
 					
-					case 'void items':
+					case 'returned items':
 						// code...
-						require views_path('admin/void_items');
+						require views_path('admin/returned_items');
 						break;
 
 					case 'audit trail':

@@ -15,6 +15,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 
 	$_POST['barcode'] = empty($_POST['barcode']) ? $product->generate_barcode():$_POST['barcode'];
 	
+	if(!empty($_POST['addStock'])){
+		$_POST['stock'] = $row['stock'] + $_POST['addStock'];
+	}
+	
 	if(!empty($_FILES['image']['name']))
 	{
 		$_POST['image'] = $_FILES['image'];
