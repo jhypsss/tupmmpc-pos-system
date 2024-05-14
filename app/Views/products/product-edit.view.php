@@ -59,10 +59,11 @@
 					<small class="text-danger"><?=$errors['barcode']?></small>
 				<?php endif;?>
 			</div>
-
+			
+			<label for="stockControlInput1" class="form-label"><small class="text-muted">Current Stock: <?=set_value('stock',$row['stock'])?></small></label>
 			<div class="input-group mb-3">
-			  <span class="input-group-text">Stock:</span>
-			  <input name="stock" value="<?=set_value('stock',$row['stock'])?>" type="number" class="form-control <?=!empty($errors['stock']) ? 'border-danger':''?>" placeholder="Quantity" aria-label="Quantity">
+			  <span class="input-group-text">Add Stock:</span>
+			  <input name="addStock" value="" type="number" class="form-control <?=!empty($errors['stock']) ? 'border-danger':''?>" id="stockControlInput1" placeholder="Quantity" aria-label="Quantity">
 			  <span class="input-group-text">Amount:</span>
 			  <input name="amount" value="<?=set_value('amount',$row['amount'])?>" step="any" type="number" class="form-control <?=!empty($errors['amount']) ? 'border-danger':''?>" placeholder="Amount" aria-label="Amount">
 			</div>

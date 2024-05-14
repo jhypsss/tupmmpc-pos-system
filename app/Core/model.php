@@ -244,6 +244,7 @@ class Model extends Database
 				//Get the new details
 				$productBarcode = isset($data['barcode']) ? $data['barcode'] : 'Unknown Barcode';
 				$productName = isset($data['description']) ? $data['description'] : 'Unknown Product';
+				$addStock = isset($data['addStock']) ? $data['addStock'] : 'Unknown Qty';
 				$productStock = isset($data['stock']) ? $data['stock'] : 'Unknown Stock';
 				$productPrice = isset($data['amount']) ? $data['amount'] : 'Unknown Price';
 				$productImage = isset($data['image']) ? $data['image'] : 'Unknown Image';
@@ -259,7 +260,7 @@ class Model extends Database
 					$details .= "\nProduct Name: $oldproductName → $productName";
 				}
 				if (strcmp($oldstock, $productStock) !== 0){
-					$details .= "\nStock: $oldstock → $productStock";
+					$details .= "\nCurrent Stock: $oldstock + $addStock = $productStock";
 				}
 				if (strcmp($oldprice, $productPrice) !== 0){
 					$details .= "\nPrice: $oldprice → $productPrice";
