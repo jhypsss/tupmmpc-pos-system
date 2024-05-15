@@ -31,7 +31,7 @@
 				
 
 				<?php if(strcmp($row['category'], "---") !== 0): ?>
-					<option value="<?= htmlspecialchars($row['category']) ?>"><?= htmlspecialchars($row['category']) ?></option>
+					<option value="<?= esc($row['category']) ?>"><?= esc($row['category']) ?></option>
 				<?php else: ?>
 					<option value="---">Select a Category</option>
 				<?php endif; ?>

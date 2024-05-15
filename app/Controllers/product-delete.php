@@ -10,6 +10,7 @@ $row = $product->first(['id'=>$id]);
 if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 {
 	//$_POST['user_id'] = auth("id");
+	$_POST['date'] = date("Y-m-d H:i:s");
 	$_POST['source'] = "Products";
 	$_POST['action'] = "DELETE";
 

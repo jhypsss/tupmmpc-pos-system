@@ -8,6 +8,7 @@ $row = $user->first(['id'=>$id]);
 
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
+	$_POST['date'] = date("Y-m-d H:i:s");
 	$_POST['source'] = "Users";
 	$_POST['action'] = "DELETE";
 

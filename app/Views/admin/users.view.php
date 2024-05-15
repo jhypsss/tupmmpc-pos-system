@@ -1,7 +1,12 @@
 <div class="table-responsive">
 	<table class="table table-striped table-hover">
 		<tr>
-			<th>Image</th><th>Username</th><th>Gender</th><th>Email</th><th>Role</th><th>Date</th>
+			<th>Image</th>
+			<th>Username</th>
+			<th>Gender</th>
+			<th>Email</th>
+			<th>Role</th>
+			<th>Date Created</th>
 			<th>
 				<a href="index.php?pg=signup">
 					<button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add new</button>
@@ -25,9 +30,9 @@
 				</td>
 				<td><?=esc($user['gender'])?></td>
 				<td><?=esc($user['email'])?></td>
-				<td><?=esc($user['role'])?></td>
+				<td><?=ucfirst(esc($user['role']))?></td>
 				
-				<td><?=date("jS M, Y",strtotime($user['date']))?></td>
+				<td><?=date("M j, Y",strtotime($user['date']))?></td>
 				<td>
 					<a href="index.php?pg=edit-user&id=<?=$user['id']?>">
 						<button class="btn btn-success btn-sm">Edit</button>

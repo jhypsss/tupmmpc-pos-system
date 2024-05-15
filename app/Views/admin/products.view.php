@@ -43,7 +43,9 @@
             <th>Stock</th>
             <th>Price</th>
             <th>Image</th>
-            <th>Date</th><th>Encoder</th><th>Action</th>
+            <th>Date Created</th>
+            <th>Encoder</th>
+            <th>Action</th>
         </tr>
 
         <?php if (!empty($products)):?>
@@ -85,7 +87,7 @@
                     <td>
                         <img src="<?=($product['image'])?>" style="width: 100%;max-width:100px;" >
                     </td>
-                    <td><?=date("jS M, Y\nH:i",strtotime($product['date']))?></td>
+                    <td><?=date("M j, Y",strtotime($product['date']))?></td>
                     
                     <?php 
                         $cashier = get_user_by_id($product['user_id']);

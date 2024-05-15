@@ -183,6 +183,21 @@ function get_user_by_id($id)
 	return $user->first(['id'=>$id]);
 }
 
+function get_deleted_details($deleted_id, $source){
+	if ($source == "Users"){
+		$users = new User();
+		return $users->first(['id'=>$deleted_id]);
+	}
+	else if ($source == "Categories"){
+		$categories = new Category();
+		return $categories->first(['id'=>$deleted_id]);
+	} 
+	else if ($source == "Products"){
+		$products = new Product();
+		return $products->first(["id"=>$deleted_id]);
+	}
+}
+
 function generate_daily_data($records)
 {
 	$arr = [];

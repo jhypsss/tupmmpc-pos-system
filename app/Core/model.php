@@ -60,12 +60,29 @@ class Model extends Database
 	//delete query
 	public function delete($id)
 	{
+		/*/ Old delete query
 		$query = "DELETE FROM $this->table WHERE id = :id LIMIT 1";
 		$clean_array['id'] = $id;
-	
+		*/
+		//Delete Function
+		$user_id = auth("id");
+		$source = $_POST['source'];
+		$clean_array['id'] = $id;
+		
+		$query = "UPDATE $this->table SET if_deleted = 1 WHERE id = :id";
+		
 		$db = new Database;
 		$db->query($query, $clean_array);
-	
+
+		$query2 = "INSERT INTO deleted_items (deleted_id, from_table, user_id) VALUES (:deleted_id, :from_table, :user_id)";
+		$params = array(
+			'deleted_id' => $id,
+			'from_table' => $source,
+			'user_id' => $user_id,
+		);
+		$db2 = new Database;
+		$db2->query($query2, $params);
+		
 	}
 	
 
@@ -289,7 +306,7 @@ class Model extends Database
 			else if (strcmp($source, "Categories") == 0){
 				$category = new Category();
 				$row = $category->first(['id'=>$id]);
-				$categoryName = $row['category'];
+				$categoryName = $row['name'];
 				$details = "DELETED CATEGORY: $categoryName";
 			}
 			else if (strcmp($source, "Products") == 0){
