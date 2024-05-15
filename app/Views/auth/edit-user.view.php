@@ -49,24 +49,24 @@ if(!empty($_SESSION['referer'])){
 			<div class="mb-3">
 			  <label for="exampleFormControlInput1" class="form-label">Gender</label>
  				<select  name="gender" class="form-control  <?=!empty($errors['gender']) ? 'border-danger':''?>" >
-					<option><?=$row['gender']?></option>
-					<option>male</option>
-					<option>female</option>
+					<option hidden value="<?$row['gender']?>" hidden><?=$row['gender']?></option>
+					<option>Male</option>
+					<option>Female</option>
 				</select>
 				<?php if(!empty($errors['gender'])):?>
 					<small class="text-danger"><?=$errors['gender']?></small>
 				<?php endif;?>
 			</div>
 
-			<?php if(Auth::get('role') == "admin"):?>
+			<?php if(Auth::get('role') == "Admin"):?>
 			<div class="mb-3">
 			  <label for="exampleFormControlInput1" class="form-label">Role</label>
  				<select  name="role" class="form-control  <?=!empty($errors['role']) ? 'border-danger':''?>" >
-					<option><?=$row['role']?></option>
-					<option>admin</option>
-					<option>supervisor</option>
-					<option>cashier</option>
-					<option>user</option>
+					<option hidden><?=$row['role']?></option>
+					<option>Admin</option>
+					<option>Supervisor</option>
+					<option>Cashier</option>
+					<option>User</option>
 				</select>
 			
 

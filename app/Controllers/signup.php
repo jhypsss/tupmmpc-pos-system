@@ -7,7 +7,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
 	$user = new User();
 
-	$_POST['role'] = "user";
+	$_POST['role'] = "User";
 	$_POST['date'] = date("Y-m-d H:i:s");
 	$_POST['source'] = "Users";
 	$_POST['action'] = "ADD";
@@ -24,7 +24,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	}
 }
 	
-if(Auth::access('admin')){
+if(Auth::access('Admin')){
 	require views_path('auth/signup');
 }else{
 

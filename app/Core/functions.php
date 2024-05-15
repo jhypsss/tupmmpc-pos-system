@@ -24,7 +24,6 @@ function esc($str)
 
 function redirect($page)
 {
-
 	header("Location: index.php?pg=" .$page);
 	die;
 }
@@ -73,10 +72,10 @@ function crop($filename,$size = 400,$type = 'product')
 	//if file to be cropped does not exist
 	if(!file_exists($filename))
 	{
-		if($type == "male"){
+		if($type == "Male"){
 			return 'assets/images/user_male.jpg';
 		}else
-		if($type == "female"){
+		if($type == "Female"){
 			return 'assets/images/user_female.jpg';
 		}else{
 			return 'assets/images/no_image.jpg';
@@ -181,6 +180,25 @@ function get_user_by_id($id)
 {
 	$user = new User();
 	return $user->first(['id'=>$id]);
+}
+
+function get_deleted_details($deleted_id, $source){
+	if ($source == "Users"){
+		$users = new User();
+		return $users->first(['id'=>$deleted_id]);
+	}
+	else if ($source == "Categories"){
+		$categories = new Category();
+		return $categories->first(['id'=>$deleted_id]);
+	} 
+	else if ($source == "Products"){
+		$products = new Product();
+		return $products->first(["id"=>$deleted_id]);
+	}
+	else if ($source == "Suppliers"){
+		$supplier = new Supplier();
+		return $supplier->first(["id"=>$deleted_id]);
+	}
 }
 
 function generate_daily_data($records)

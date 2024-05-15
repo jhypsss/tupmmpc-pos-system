@@ -8,10 +8,11 @@ $row = $user->first(['id'=>$id]);
 
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
+	$_POST['date'] = date("Y-m-d H:i:s");
 	$_POST['source'] = "Users";
 	$_POST['action'] = "DELETE";
 
-	if(is_array($row) && Auth::access('admin') && $row['deletable'])
+	if(is_array($row) && Auth::access('Admin') && $row['deletable'])
 	{
 		$user->audit_trail($id, $_POST);
 		$user->delete($id);
@@ -20,7 +21,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
 }
 	
-if(Auth::access('admin')){
+if(Auth::access('Admin')){
 	require views_path('auth/delete-user');
 }else{
 

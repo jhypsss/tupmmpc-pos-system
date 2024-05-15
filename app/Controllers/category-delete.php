@@ -9,6 +9,7 @@ $row = $category->first(['id'=>$id]);
 
 if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 {
+	$_POST['date'] = date("Y-m-d H:i:s");
 	$_POST['source'] = "Categories";
 	$_POST['action'] = "DELETE";
 

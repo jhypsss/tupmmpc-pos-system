@@ -37,12 +37,11 @@ class Auth
 
 	public static function access($role)
 	{
-
-		$access['admin'] 		= ['admin'];
-		$access['supervisor'] 	= ['admin','supervisor'];
-		$access['cashier'] 		= ['admin','supervisor','cashier'];
-		$access['accountant'] 	= ['admin','accountant'];
-		$access['user'] 		= ['admin','supervisor','cashier','user'];
+		$access['Admin'] 		= ['Admin'];
+		$access['Supervisor'] 	= ['Admin','Supervisor'];
+		$access['Cashier'] 		= ['Admin','Supervisor','Cashier'];
+		$access['Accountant'] 	= ['Admin','Accountant'];
+		$access['User'] 		= ['Admin','Supervisor','Cashier','User'];
 
 		$myrole = self::get('role');
 		if(in_array($myrole, $access[$role]))

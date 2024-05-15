@@ -14,24 +14,26 @@ if(!empty($raw_data))
 		{
 
 			$productClass = new Product();
-			$limit = 20;
+			//$limit = 20;
 
-			if(!empty($OBJ['text']))
+			if(empty($OBJ['text']))
 			{
+				//get all
+				//$limit = 10,$offset = 0,$order = "desc",$order_column = "id"
+				$rows = $productClass->getAll(0,'desc','views');
+			}else{
 				//search
 				$barcode = $OBJ['text'];
 				$text = "%".$OBJ['text']."%";
-				$query = "select * from products where description like :find || barcode = :barcode order by views desc limit $limit";
+				$if_deleted = 0;
+				//$query = "SELECT * FROM products WHERE description LIKE :find or barcode = :barcode ORDER BY views DESC LIMIT $limit";
+				$query = "SELECT * FROM products WHERE if_deleted = 0 AND (description LIKE :find OR barcode = :barcode) ORDER BY views desc";
 				$rows = $productClass->query($query,['find'=>$text,'barcode'=>$barcode]);
-
-			}else{
-				//get all
-				//$limit = 10,$offset = 0,$order = "desc",$order_column = "id"
-				$rows = $productClass->getAll($limit,0,'desc','views');
+				//$rows = $productClass->query($query,['find'=>$text]);
+				
 			}
 			
 			if($rows){
-
 				foreach ($rows as $key => $row) {
 					
 					$rows[$key]['description'] = strtoupper($row['description']);
@@ -42,7 +44,6 @@ if(!empty($raw_data))
 				$info['data'] = $rows;
 				
 				echo json_encode($info);
-
 			}
 
 		}

@@ -19,10 +19,10 @@
 	          <a class="nav-link active" aria-current="page" href="index.php?pg=home">Point of sale</a>
 	        </li>
 	        
-	        <?php if(Auth::access('supervisor')):?>
+	        <?php if(Auth::access('Supervisor')):?>
 				<?php 
 				$role = Auth::get('role');
-				if ($role=='admin' || $role=='supervisor' ){?>
+				if ($role=='Admin' || $role=='Supervisor' ){?>
 					<li class="nav-item">
 						<a class="nav-link active" href="index.php?pg=admin">Admin Panel</a>
 				  	</li>
@@ -31,7 +31,7 @@
 		        
 		    <?php endif;?>
 
-	        <?php if(Auth::access('admin')):?>
+	        <?php if(Auth::access('Admin')):?>
 		        <li class="nav-item">
 		          <a class="nav-link" href="index.php?pg=signup">Create User</a>
 		        </li>
@@ -54,7 +54,7 @@
 
 		        <li class="nav-item dropdown">
 		          <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-		            Hi, <?=auth('username')?> (<?=Auth::get('role')?>)
+		            Hi, <?=auth('username')?> (<?=(Auth::get('role'))?>)
 		          </a>
 		          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 		            <li><a class="dropdown-item" href="index.php?pg=profile">Profile</a></li>
