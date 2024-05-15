@@ -106,10 +106,10 @@
                     </td>
                     <td>
                         <a href="index.php?pg=product-edit&id=<?=$product['id']?>">
-                            <button class="btn btn-success btn-sm">Edit</button>
+                        <button class="btn btn-success btn-sm"><i class="fa fa-cog"></i></button>
                         </a>
                         <a href="index.php?pg=product-delete&id=<?=$product['id']?>">
-                            <button class="btn btn-danger btn-sm">Delete</button>
+                        <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                         </a>
                     </td>
                 </tr>

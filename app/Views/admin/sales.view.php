@@ -51,13 +51,7 @@
 			<th>Amount</th>
 			<th>Total</th>
 			<th>Cashier</th>
-			<th>Date | Time</th>
-			
-			<th>
-				<a href="index.php?pg=home">
-					<button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add new</button>
-				</a>
-			</th>
+			<th colspan=2>Date | Time</th>			
 		</tr>
 
 		<?php if (!empty($sales)):?>
@@ -87,13 +81,10 @@
 					</a>
 				</td>
 		
-				<td><?=date("M j, Y | H:i:s",strtotime($sale['date']))?></td>
+				<td><?=date("M j, Y | h:i:s a",strtotime($sale['date']))?></td>
 				<td>
-					<a href="index.php?pg=sale-edit&id=<?=$sale['id']?>">
-						<button class="btn btn-success btn-sm">Edit</button>
-					</a>
-					<a href="index.php?pg=sale-delete&id=<?=$sale['id']?>">
-						<button class="btn btn-danger btn-sm">Delete</button>
+					<a href="index.php?pg=#&id=<?=$sale['id']?>">
+					<button class="btn btn-success btn-sm"><i class="fa fa-cog"></i></button>
 					</a>
 				</td>
 			</tr>

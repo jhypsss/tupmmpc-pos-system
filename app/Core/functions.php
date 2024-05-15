@@ -195,6 +195,10 @@ function get_deleted_details($deleted_id, $source){
 		$products = new Product();
 		return $products->first(["id"=>$deleted_id]);
 	}
+	else if ($source == "Suppliers"){
+		$supplier = new Supplier();
+		return $supplier->first(["id"=>$deleted_id]);
+	}
 }
 
 function generate_daily_data($records)

@@ -49,7 +49,7 @@ if(!empty($_SESSION['referer'])){
 			<div class="mb-3">
 			  <label for="exampleFormControlInput1" class="form-label">Gender</label>
  				<select  name="gender" class="form-control  <?=!empty($errors['gender']) ? 'border-danger':''?>" >
-					<option value="<?$row['gender']?>" default disabled><?=$row['gender']?></option>
+					<option hidden value="<?$row['gender']?>" hidden><?=$row['gender']?></option>
 					<option>Male</option>
 					<option>Female</option>
 				</select>

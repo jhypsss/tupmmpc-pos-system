@@ -32,6 +32,12 @@ else if($tab == "products")
 	$totalProducts = $productClass->query("SELECT COUNT(*) AS total FROM products WHERE if_deleted=0;");
 	$stocks = $productClass->query("SELECT * FROM products WHERE stock <= 10 OR stock = 0");
 }
+else if($tab == "suppliers")
+{
+	$supplierClass = new Supplier();
+	$suppliers = $supplierClass->query("select * from suppliers where if_deleted = 0 order by company_name");
+	$totalSuppliers = $supplierClass->query("SELECT COUNT(*) AS total FROM suppliers WHERE if_deleted=0;");
+}
 
 
 else if($tab == "sales")
@@ -160,6 +166,10 @@ else if($tab == "dashboard")
 	$mysales = $db->query($query);
 	$total_sales = $mysales[0]['total'];
 
+	//Total Suppliers
+	$query = "SELECT COUNT(id) AS total FROM Suppliers WHERE if_deleted=0;";
+	$mysuppliers = $db->query($query);
+	$total_suppliers = $mysuppliers[0]['total'];
 	
 }
 

@@ -23,9 +23,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 	{
 		unlink($row['image']);
 	}
-
-	redirect('admin&tab=products');
 	*/
+	redirect('admin&tab=products');
+	
 }
 
 

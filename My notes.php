@@ -28,27 +28,30 @@ System Functions to do
 - Back Buttons when clicking Forms (add, edit, delete forms)
 ✅ Notification nav = Critical Stocks, Out of Stock 
 ✅ Deleted Items Functionality
-- Product Stocks must not be edited... Rather just Append or Add new Stocks
+✅ Product Stocks must not be edited... Rather just Append or Add new Stocks
 - Manage Roles (access roles)
-- Void Items
-- Supplier Informations
+- Refunded Items
+✅ Supplier Informations
+- date_modified : Users, Products, 
 
 System Checking
-- Receipt = need to show who's the encoder with date and time (will fix and modify soon)
+✅ Receipt = need to show who's the encoder with date and time (will fix and modify soon)
 - Generate Sales Report = Today's, Monthly, Annual (made by third party programmer - will migrate it to dashboard panel)
 
-AUDIT TRAIL
+New Ideas:
+- Tallying Today's Sales per User/Cashier
+
+AUDIT TRAIL:
 USERS = ADD✅, UPDATE✅, DELETE✅
 CATEGORIES = ADD✅, UPDATE✅, DELETE✅
 PRODUCTS = ADD✅, UPDATE✅, DELETE✅
-SUPPLIERS INFO = ADD, UPDATE, DELETE
-SALES to VOID ITEMS
+SUPPLIERS INFO = ADD✅, UPDATE✅, DELETE✅
+SALES to REFUNDED ITEMS
 
 Llyle:
 ✅ POS : deleted items is showed and searched.
 ✅ POS : Limit by 20
 ✅ Clear All Items ("Please Enter A Code to Clear Items")
-✅ Inserting Products, Not Inserting at POS (Products not inserting at POS 20 Limit)
 ✅ UPDATE: Click VOID msg: "Please Enter a Code."
 ✅ Delete Item (Deleted at Products but not deleted at POS)
 ✅ Sales Time ("not accurate")

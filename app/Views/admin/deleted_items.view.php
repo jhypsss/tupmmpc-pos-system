@@ -4,8 +4,8 @@
         <tr>
             <th>Date Deleted</th>
             <th>From:</th>
-            <th>Deleted Element</th>
-            <th>Deleter</th>
+            <th>Deleted Info</th>
+            <th>Remover</th>
             <th>Action</th>
         </tr>
         
@@ -14,7 +14,7 @@
             
             <?php foreach ($deleted_items as $deleted_item):?>
                 <tr>
-                    <td><?=date("M j, Y \n H:i:s",strtotime($deleted_item['date_deleted'])) ?></td>
+                    <td><?=date("M j, Y - h:i a",strtotime($deleted_item['date_deleted'])) ?></td>
                     <td><?=strtoupper(esc($deleted_item['from_table']))?></td>
                     <?php
                         $deleted_details = get_deleted_details($deleted_item['deleted_id'], $deleted_item['from_table']);
@@ -28,6 +28,8 @@
                         <?php elseif($deleted_item['from_table']=='Products'):?>
                             Product: <b><?= esc($deleted_details['barcode']) ?></b><br>
                             Product Name: <b><?= esc($deleted_details['description']) ?></b>
+                        <?php elseif($deleted_item['from_table']=='Suppliers'):?>
+                            Company Name: <b><?= esc($deleted_details['company_name']) ?></b><br>
                         <?php endif?>
                     </td>
 
@@ -45,7 +47,7 @@
                     <td><a href="<?=esc($namelink)?>"><?=esc($deleter)?></a></td>
                     <td>
                         <a href="index.php?pg=#&id=<?=$deleted_item['id']?>">
-                            <button class="btn btn-secondary btn-sm">Restore</button>
+                            <button class="btn btn-success btn-sm"><i class="fas fa-trash-restore"></i></button>
                         </a>
                     </td>
                 </tr>

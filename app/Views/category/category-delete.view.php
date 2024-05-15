@@ -11,7 +11,7 @@
 			<div class="alert alert-danger text-center">Are you sure you want to delete this Category??!!</div>
 
 			<div class="mb-3">
-			  <label for="productControlInput1" class="form-label">Category Name</label>
+			  <label for="categoryControlInput1" class="form-label">Category Name</label>
 			  <input disabled value="<?=set_value('name',$row['name'])?>" name="name" type="text" class="form-control <?=!empty($errors['name']) ? 'border-danger':''?>" id="categoryControlInput1" placeholder="Category Name">
 			  <?php if(!empty($errors['name'])):?>
 					<small class="text-danger"><?=$errors['name']?></small>
@@ -19,7 +19,7 @@
 			</div>
 
 			<div class="mb-3">
-			  <label for="productControlInput1" class="form-label">Description</label>
+			  <label for="categoryControlInput2" class="form-label">Description</label>
 			  <input disabled value="<?=set_value('description',$row['description'])?>" name="description" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="categoryControlInput2" placeholder="Description">
 			  <?php if(!empty($errors['description'])):?>
 					<small class="text-danger"><?=$errors['description']?></small>
@@ -32,7 +32,7 @@
 			</a>
 		</form>
 		<?php else:?>
-			That product was not found
+			That Category was not found
 			<br><br>
 			<a href="index.php?pg=admin&tab=categories">
 				<button type="button" class="btn btn-primary">Back to products</button>

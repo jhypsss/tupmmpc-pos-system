@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2024 at 08:56 AM
+-- Generation Time: May 16, 2024 at 12:35 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -185,7 +185,70 @@ INSERT INTO `audit_trail` (`id`, `user_id`, `source`, `action`, `details`, `date
 (189, 13, 'Products', 'DELETE', 'DELETED ITEM: 2223686064536 \nProduct Name: ID Lace \nQty: 100 \nPrice: 25.00\n Category: School Supplies', '2024-05-14 19:03:20'),
 (190, 13, 'Categories', 'DELETE', 'DELETED CATEGORY: Beverages', '2024-05-14 19:04:25'),
 (191, 13, 'Products', 'ADD', 'NEW ITEM: 2223921386792\nProduct: alfadogs \nQty: 1 \nPrice: 45 \nCategory: Snacks', '2024-05-14 19:12:56'),
-(192, 13, 'Products', 'UPDATE', 'UPDATED ITEM: 2223921386792\nCurrent Stock: 1 + 1 = 2', '2024-05-14 19:29:20');
+(192, 13, 'Products', 'UPDATE', 'UPDATED ITEM: 2223921386792\nCurrent Stock: 1 + 1 = 2', '2024-05-14 19:29:20'),
+(193, 13, 'Users', 'UPDATE', 'UPDATED USER: zhara\nUsername: Zhara → zhara', '2024-05-15 09:15:59'),
+(194, 13, 'Users', 'UPDATE', 'UPDATED USER: Zhara Gonzales\nUsername: zhara → Zhara Gonzales', '2024-05-15 09:16:24'),
+(195, 13, 'Users', 'ADD', 'NEW USER: tryexample \nEmail: tryexample@email.com \nGender: Female \nRole: user', '2024-05-15 09:27:33'),
+(196, 13, 'Users', 'UPDATE', 'UPDATED USER: tryexample\nRole: user → Admin', '2024-05-15 09:28:11'),
+(197, 13, 'Users', 'UPDATE', 'UPDATED USER: Zhara Gonzales\nGender: female → Female\nRole: supervisor → Supervisor', '2024-05-15 09:29:13'),
+(198, 13, 'Users', 'UPDATE', 'UPDATED USER: Power\nRole: admin → Admin', '2024-05-15 09:29:31'),
+(199, 6, 'Users', 'UPDATE', 'UPDATED USER: Trick\nRole: admin → Admin', '2024-05-15 09:30:16'),
+(200, 1, 'Users', 'UPDATE', 'UPDATED USER: Rhayli Silongan\nGender: male → Male', '2024-05-15 09:45:30'),
+(201, 1, 'Users', 'UPDATE', 'UPDATED USER: Power\nGender: female → Female', '2024-05-15 09:45:43'),
+(202, 1, 'Users', 'UPDATE', 'UPDATED USER: Wednesday\nGender: female → Female', '2024-05-15 09:45:56'),
+(203, 6, 'Products', 'ADD', 'NEW ITEM: 2223180878842\nProduct: 2Dkun sticker \nQty: 12 \nPrice: 15 \nCategory: ---', '2024-05-15 10:38:10'),
+(204, 13, 'Products', 'DELETE', 'DELETED ITEM: 2223180878842 \nProduct Name: 2Dkun sticker \nQty: 12 \nPrice: 15.00\n Category: ---', '2024-05-15 11:54:37'),
+(205, 1, 'Users', 'UPDATE', 'UPDATED USER: Leynald Kobe', '2024-05-15 12:37:53'),
+(206, 1, 'Users', 'UPDATE', 'UPDATED USER: Leynald Kobe', '2024-05-15 12:38:04'),
+(207, 1, 'Users', 'UPDATE', 'UPDATED USER: Leynald Kobe', '2024-05-15 12:38:10'),
+(208, 1, 'Users', 'UPDATE', 'UPDATED USER: Llyle Prince', '2024-05-15 12:38:33'),
+(209, 1, 'Users', 'UPDATE', 'UPDATED USER: Leynald Kobe', '2024-05-15 12:40:47'),
+(210, 1, 'Users', 'UPDATE', 'UPDATED USER: Leynald Kobe', '2024-05-15 12:40:55'),
+(211, 13, 'Users', 'UPDATE', 'UPDATED USER: Rhayli\nUsername: Rhayli Silongan → Rhayli', '2024-05-15 12:42:02'),
+(212, 13, 'Users', 'UPDATE', 'UPDATED USER: tryexample', '2024-05-15 12:43:50'),
+(213, 13, 'Users', 'UPDATE', 'UPDATED USER: tryexample\nRole: Admin → cashier', '2024-05-15 12:45:34'),
+(214, 13, 'Users', 'UPDATE', 'UPDATED USER: tryexample\nRole: cashier → Admin', '2024-05-15 12:46:10'),
+(215, 13, 'Users', 'UPDATE', 'UPDATED USER: tryexample\nRole: Admin → Supervisor', '2024-05-15 12:46:16'),
+(216, 13, 'Users', 'UPDATE', 'UPDATED USER: Samantha Maurice\nRole: cashier → Cashier', '2024-05-15 12:46:32'),
+(217, 13, 'Users', 'UPDATE', 'UPDATED USER: Samantha Maurice\nGender: female → Female', '2024-05-15 12:47:28'),
+(218, 13, 'Users', 'UPDATE', 'UPDATED USER: Leynald Kobe\nGender: male → Male\nRole: cashier → Cashier', '2024-05-15 12:47:44'),
+(219, 13, 'Users', 'UPDATE', 'UPDATED USER: Llyle Prince\nGender: male → Male', '2024-05-15 12:48:06'),
+(220, 13, 'Users', 'UPDATE', 'UPDATED USER: Hitori Gotoh\nGender: female → Female', '2024-05-15 12:48:19'),
+(221, 13, 'Users', 'UPDATE', 'UPDATED USER: Trick\nGender: male → Male', '2024-05-15 12:48:29'),
+(222, 13, 'Products', 'DELETE', 'DELETED ITEM: 2223921386792 \nProduct Name: alfadogs \nQty: 2 \nPrice: 45.00\n Category: Snacks', '2024-05-15 13:52:44'),
+(223, 13, 'Users', 'UPDATE', 'UPDATED USER: tryexample\nGender: Female → <?$row[\'gender\']?>\nRole: Supervisor → Cashier', '2024-05-15 14:18:24'),
+(224, 13, 'Users', 'UPDATE', 'UPDATED USER: tryexample\nGender: <?$row → Male', '2024-05-15 14:19:11'),
+(225, 13, 'Users', 'UPDATE', 'UPDATED USER: tryexample\nGender: Male → <?$row[\'gender\']?>', '2024-05-15 14:19:26'),
+(226, 13, 'Users', 'UPDATE', 'UPDATED USER: tryexample\nGender: <?$row → Male', '2024-05-15 14:19:31'),
+(227, 13, 'Users', 'UPDATE', 'UPDATED USER: tryexample\nGender: Male → Female', '2024-05-15 14:19:54'),
+(228, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223636584775\nCurrent Stock: 25 + 1 = 26', '2024-05-15 14:29:22'),
+(229, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223780889232', '2024-05-15 14:31:36'),
+(230, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223780889232', '2024-05-15 14:31:41'),
+(231, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223636584775', '2024-05-15 14:31:52'),
+(232, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223780889232', '2024-05-15 14:32:09'),
+(233, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223780889232\nCurrent Stock: 55 + 1 = 56', '2024-05-15 14:32:16'),
+(234, 6, 'Users', 'UPDATE', 'UPDATED USER: Power\nGender: Female → Male\nUser Image: User Image Changed', '2024-05-15 14:56:50'),
+(235, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223780889232\nProduct Image: Modified', '2024-05-15 14:57:22'),
+(236, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223780889232\nProduct Image: Modified', '2024-05-15 14:57:50'),
+(237, 6, 'Products', 'ADD', 'NEW ITEM: 222378939232\nProduct: Alfadogs \nQty: 1 \nPrice: 55 \nCategory: Snacks', '2024-05-15 14:58:31'),
+(238, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222378939232\nProduct Image: Modified', '2024-05-15 14:59:54'),
+(239, 6, 'Products', 'DELETE', 'DELETED ITEM: 222378939232 \nProduct Name: Alfadogs \nQty: 1 \nPrice: 55.00\n Category: Snacks', '2024-05-15 15:02:52'),
+(240, 13, 'Products', 'UPDATE', 'UPDATED ITEM: 2223780889232\nCurrent Stock: 56 + 5 = 61', '2024-05-15 15:03:04'),
+(241, 6, 'Users', 'UPDATE', 'UPDATED USER: Wednesday\nPassword: Modified\nGender: Female → Male\nRole: cashier → Cashier', '2024-05-15 21:03:22'),
+(242, 6, 'Users', 'UPDATE', 'UPDATED USER: Wednesday\nGender: Male → Female', '2024-05-15 21:03:34'),
+(243, 6, 'Suppliers', 'ADD', 'NEW SUPPLIER: Sample Company Name \nCompany Address: 123 Sample Address St. Manila, Philippines', '2024-05-15 22:27:48'),
+(244, 6, 'Suppliers', 'DELETE', 'DELETED SUPPLIER: Sample Company Name', '2024-05-15 23:09:10'),
+(245, 6, 'Suppliers', 'UPDATE', 'UPDATED SUPPLIER: Sample Company Name\nBusiness Type: Producers → Importers', '2024-05-15 23:46:43'),
+(246, 6, 'Suppliers', 'UPDATE', 'UPDATED SUPPLIER: Sample Company\nCompany Name: Sample Company Name → Sample Company\nCompany Address: 123 Sample Address St. Manila, Philippines → 1234 Sample Address St. Manila, Philippines\nContact Person: Sample Person Name → Sample Name\nContact Number: 09123456798 → 09123456799\nContact Email: sample@email.com → example@email.com\nBusiness Type: Importers → Service', '2024-05-15 23:47:25'),
+(247, 6, 'Suppliers', 'ADD', 'NEW SUPPLIER: faefa \nCompany Address: feaf', '2024-05-15 23:48:20'),
+(248, 6, 'Products', 'DELETE', 'DELETED ITEM: 222378939232 \nProduct Name: Alfadogs \nQty: 1 \nPrice: 55.00\n Category: Snacks', '2024-05-16 00:07:19'),
+(249, 6, 'Products', 'DELETE', 'DELETED ITEM: 222378939232 \nProduct Name: Alfadogs \nQty: 1 \nPrice: 55.00\n Category: Snacks', '2024-05-16 00:07:24'),
+(250, 6, 'Products', 'DELETE', 'DELETED ITEM: 222378939232 \nProduct Name: Alfadogs \nQty: 1 \nPrice: 55.00\n Category: Snacks', '2024-05-16 00:07:25'),
+(251, 6, 'Products', 'DELETE', 'DELETED ITEM: 2223375580155 \nProduct Name: Lucky Me Beef Noodles \nQty: 95 \nPrice: 25.00\n Category: Pasta & Noodles', '2024-05-16 00:08:53'),
+(252, 13, 'Suppliers', 'ADD', 'NEW SUPPLIER: Try \nCompany Address: try address', '2024-05-16 00:14:55'),
+(253, 13, 'Suppliers', 'UPDATE', 'UPDATED SUPPLIER: Try change\nCompany Name: Try → Try change\nCompany Address: try address → try address edit\nContact Person: kunyare lang → kunyare lang na edit\nContact Number: 123456789 → 10123456\nContact Email: try@gmail.com → naibakunyaretry@gmail.com\nBusiness Type: Vendor → Wholesale', '2024-05-16 00:15:36'),
+(254, 13, 'Suppliers', 'UPDATE', 'UPDATED SUPPLIER: kunyare\nCompany Name: faefa → kunyare\nContact Person: feaf → ito lang nabago\nContact Number: 4154 → 456789', '2024-05-16 00:16:00'),
+(255, 13, 'Suppliers', 'DELETE', 'DELETED SUPPLIER: Try change', '2024-05-16 00:16:14');
 
 -- --------------------------------------------------------
 
@@ -241,7 +304,15 @@ INSERT INTO `deleted_items` (`id`, `deleted_id`, `from_table`, `user_id`, `date_
 (11, 5, 'Users', 13, '2024-05-14 19:00:51'),
 (12, 30, 'Products', 13, '2024-05-14 19:02:26'),
 (13, 25, 'Products', 13, '2024-05-14 19:03:20'),
-(14, 21, 'Categories', 13, '2024-05-14 19:04:25');
+(14, 21, 'Categories', 13, '2024-05-14 19:04:25'),
+(15, 71, 'Products', 13, '2024-05-15 11:54:37'),
+(16, 70, 'Products', 13, '2024-05-15 13:52:44'),
+(17, 72, 'Products', 6, '2024-05-15 15:02:52'),
+(19, 72, 'Products', 6, '2024-05-16 00:07:19'),
+(20, 72, 'Products', 6, '2024-05-16 00:07:24'),
+(21, 72, 'Products', 6, '2024-05-16 00:07:25'),
+(22, 24, 'Products', 6, '2024-05-16 00:08:53'),
+(23, 3, 'Suppliers', 13, '2024-05-16 00:16:14');
 
 -- --------------------------------------------------------
 
@@ -269,25 +340,27 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `barcode`, `description`, `stock`, `amount`, `image`, `user_id`, `date`, `views`, `category`, `if_deleted`) VALUES
 (3, '2222947895764', 'Crisps', 193, 4.95, 'uploads/a376a3a3f34dc21971ca40ac6dd6664585c197a6_4817.jpg', '1', '2022-01-09 08:46:29', 59, 'Snacks', 0),
-(4, '2222881344444', 'Burger', 200, 10.00, 'uploads/c322c54a3249e75ca46347a2c4ec9385672cb8e3_5698.jpg', '1', '2022-01-09 08:47:02', 14, 'Snacks', 0),
-(5, '1234', 'So good milk', 92, 20.00, 'uploads/e149b8702ddb43e5cda3c10803c563203b27cfc0_6896.jpg', '1', '2022-01-09 08:47:54', 22, 'Dairy Products', 0),
-(6, '2222925913231', 'OMO SOFTENER', 82, 50.00, 'uploads/e80200cc753ea342725ba080f668144fe4c763b9_7977.jpg', 'Unknown', '2022-01-16 08:35:24', 56, 'Detergent', 0),
-(8, '2222595564534', '7 UP', 46, 34.00, 'uploads/a6f424034ca00dc2c3b55761f2b1c31d689ca215_6797.jpg', '6', '2023-07-01 12:15:13', 3, 'Beverages', 0),
-(10, '2222974243584', 'Caramel Moolatte', 22, 5.00, 'uploads/7efe697d3a3cafad54574764253c1c4e5ee3de93_3723.png', '1', '2023-07-01 12:59:42', 6, 'Frozen Foods', 0),
-(11, '2222123200968', 'Monster', 200, 45.00, 'uploads/40fbc31c9795970c2b93419196a07354829db713_1986.jpg', '6', '2023-07-01 16:25:41', 3, 'Beverages', 0),
+(4, '2222881344444', 'Burger', 196, 10.00, 'uploads/c322c54a3249e75ca46347a2c4ec9385672cb8e3_5698.jpg', '1', '2022-01-09 08:47:02', 18, 'Snacks', 0),
+(5, '1234', 'So good milk', 88, 20.00, 'uploads/e149b8702ddb43e5cda3c10803c563203b27cfc0_6896.jpg', '1', '2022-01-09 08:47:54', 26, 'Dairy Products', 0),
+(6, '2222925913231', 'OMO SOFTENER', 79, 50.00, 'uploads/e80200cc753ea342725ba080f668144fe4c763b9_7977.jpg', 'Unknown', '2022-01-16 08:35:24', 59, 'Detergent', 0),
+(8, '2222595564534', '7 UP', 40, 34.00, 'uploads/a6f424034ca00dc2c3b55761f2b1c31d689ca215_6797.jpg', '6', '2023-07-01 12:15:13', 5, 'Beverages', 0),
+(10, '2222974243584', 'Caramel Moolatte', 21, 5.00, 'uploads/7efe697d3a3cafad54574764253c1c4e5ee3de93_3723.png', '1', '2023-07-01 12:59:42', 7, 'Frozen Foods', 0),
+(11, '2222123200968', 'Monster', 198, 45.00, 'uploads/40fbc31c9795970c2b93419196a07354829db713_1986.jpg', '6', '2023-07-01 16:25:41', 5, 'Beverages', 0),
 (15, '2222135063866', 'Cola Zero in can', 25, 39.00, 'uploads/a54741bf6d71e0b52ce6cd34d0d526c6dd4e94a6_4751.jpg', '6', '2023-07-03 11:07:15', 1, 'Beverages', 0),
 (16, '2222877211304', 'Mirinda', 29, 35.00, 'uploads/e5bc61c49ab567c8e2a921d735f77c19955571c1_5489.jpg', '6', '2023-07-03 11:08:04', 1, 'Beverages', 0),
 (17, '2222774991043', 'Spindrift', 100, 50.00, 'uploads/5e07651f0573ad1d5851ce6ea26eae85d59b67dc_2952.jpg', '6', '2023-07-03 11:08:40', 0, 'Beverages', 0),
 (18, '2222794658425', 'Boost Energy', 55, 50.00, 'uploads/5edd64c0e275bd3cb6e9940773da659adfb228dc_9357.jpg', '6', '2023-07-03 13:20:21', 0, 'Beverages', 0),
 (19, '2222893703661', 'Fifa', 50, 23.00, 'uploads/product/a5ff699d375e9743390192ba1674647dfc51025d_2043.jpg', '6', '2023-07-03 14:11:53', 1, 'Beverages', 0),
-(23, '2223519322434', 'CDO Luncheon Meat 350g', 100, 150.00, 'uploads/product85853e6e9d47bdb7286d1076c1aeabdb0ebe74bc_9138.jpg', '1', '2024-03-26 07:16:38', 0, 'Canned Goods', 0),
-(24, '2223375580155', 'Lucky Me Beef Noodles', 100, 25.00, 'uploads/product7eb433368ec83423b493eb98b515917409b145f7_8232.jpg', '1', '2024-03-26 07:21:19', 0, 'Pasta & Noodles', 0),
+(23, '2223519322434', 'CDO Luncheon Meat 350g', 92, 150.00, 'uploads/product85853e6e9d47bdb7286d1076c1aeabdb0ebe74bc_9138.jpg', '1', '2024-03-26 07:16:38', 3, 'Canned Goods', 0),
+(24, '2223375580155', 'Lucky Me Beef Noodles', 95, 25.00, 'uploads/product7eb433368ec83423b493eb98b515917409b145f7_8232.jpg', '1', '2024-03-26 07:21:19', 1, 'Pasta & Noodles', 1),
 (25, '2223686064536', 'ID Lace', 100, 25.00, 'uploads/product6f21ec36b38e2139a8b5a643e1fcb6b5330e45d1_6010.jfif', '1', '2024-04-02 02:33:17', 0, 'School Supplies', 1),
 (26, '2223155520988', 'Black T-Shirt', 100, 150.00, 'uploads/product5ea1733a8d127449fd3ad4ed51938de31dd3e668_2079.jpg', '1', '2024-04-02 02:33:45', 0, 'Clothing', 0),
-(27, '2223636584775', 'White T-Shirt', 25, 150.00, 'uploads/productf57de05611fffd9ab731fb1ee845793193845dc0_9018.jpg', '1', '2024-04-02 02:34:19', 0, 'Clothing', 0),
+(27, '2223636584775', 'White T-Shirt', 26, 150.00, 'uploads/productf57de05611fffd9ab731fb1ee845793193845dc0_9018.jpg', '1', '2024-04-02 02:34:19', 0, 'Clothing', 0),
 (30, '2223434399143', 'Snapback Hat', 53, 75.00, 'uploads/product3e434d486cd8acf99a8cd93bf97c966f5009d804_9935.jpg', '1', '2024-04-02 02:41:19', 0, 'Clothing', 1),
-(31, '2223780889232', 'Long Envelope', 55, 25.00, 'uploads/product/dd8fbb1526220739db2497422c95f6cf5268c389_4126.jpg', '6', '2024-04-02 02:41:48', 0, 'School Supplies', 0),
-(70, '2223921386792', 'alfadogs', 2, 45.00, 'uploads/product2e97d71d6565dd572ff5f0c9d85630eb43475ffd_7100.jpg', '13', '2024-05-14 19:12:56', 0, 'Snacks', 0);
+(31, '2223780889232', 'Long Envelope', 61, 25.00, 'uploads/product/a7dd6ef7ce24f5af8f33242b463fac7e72630816_6287.jpg', '6', '2024-04-02 02:41:48', 0, 'School Supplies', 0),
+(70, '2223921386792', 'alfadogs', 2, 45.00, 'uploads/product2e97d71d6565dd572ff5f0c9d85630eb43475ffd_7100.jpg', '13', '2024-05-14 19:12:56', 0, 'Snacks', 1),
+(71, '2223180878842', '2Dkun sticker', 12, 15.00, 'uploads/product886eb2a3918f07e75438af918699640273d1e423_5736.jpg', '6', '2024-05-15 10:38:10', 0, '---', 1),
+(72, '222378939232', 'Alfadogs', 1, 55.00, 'uploads/product/775a7935b90d0f0f9a20c772fbb18ce8d22861d0_5907.png', '6', '2024-05-15 14:58:31', 0, 'Snacks', 1);
 
 -- --------------------------------------------------------
 
@@ -325,7 +398,7 @@ CREATE TABLE `sales` (
   `qty` int(11) DEFAULT NULL,
   `amount` decimal(10,2) DEFAULT NULL,
   `total` decimal(10,2) DEFAULT NULL,
-  `date` datetime DEFAULT NULL,
+  `date` datetime DEFAULT current_timestamp(),
   `user_id` varchar(60) DEFAULT NULL,
   `payment_method` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -345,7 +418,27 @@ INSERT INTO `sales` (`id`, `barcode`, `receipt_no`, `description`, `qty`, `amoun
 (14, '1234', 10, 'So good milk', 3, 20.00, 60.00, '2023-04-17 19:57:53', '1', ''),
 (207, '1234', 8, 'So good milk', 2, 20.00, 40.00, '2024-04-01 20:00:02', '1', ''),
 (208, '1234', 9, 'So good milk', 1, 20.00, 20.00, '2024-04-01 20:00:02', '1', ''),
-(209, '1234', 10, 'So good milk', 3, 20.00, 60.00, '2024-04-02 20:00:02', '1', '');
+(209, '1234', 10, 'So good milk', 3, 20.00, 60.00, '2024-04-02 20:00:02', '1', ''),
+(210, '2222925913231', 11, 'OMO SOFTENER', 1, 50.00, 50.00, '2024-05-15 14:04:05', '13', 'CASH '),
+(211, '2222595564534', 11, '7 UP', 1, 34.00, 34.00, '2024-05-15 14:04:05', '13', 'CASH '),
+(212, '2222925913231', 12, 'OMO SOFTENER', 1, 50.00, 50.00, '2024-05-15 14:06:43', '6', 'CASH '),
+(213, '2222974243584', 12, 'Caramel Moolatte', 1, 5.00, 5.00, '2024-05-15 14:06:43', '6', 'CASH '),
+(214, '2223519322434', 12, 'CDO Luncheon Meat 350g', 2, 150.00, 300.00, '2024-05-15 14:06:43', '6', 'CASH '),
+(215, '2222925913231', 13, 'OMO SOFTENER', 1, 50.00, 50.00, '2024-05-15 15:15:31', '13', 'CASH '),
+(216, '1234', 13, 'So good milk', 1, 20.00, 20.00, '2024-05-15 15:15:31', '13', 'CASH '),
+(217, '2222881344444', 14, 'Burger', 1, 10.00, 10.00, '2024-05-15 15:16:57', '13', 'CASH '),
+(218, '1234', 14, 'So good milk', 1, 20.00, 20.00, '2024-05-15 15:16:57', '13', 'CASH '),
+(219, '2222123200968', 14, 'Monster', 1, 45.00, 45.00, '2024-05-15 15:16:57', '13', 'CASH '),
+(220, '2222881344444', 15, 'Burger', 1, 10.00, 10.00, '2024-05-15 15:17:47', '13', 'CASH '),
+(221, '1234', 16, 'So good milk', 1, 20.00, 20.00, '2024-05-15 15:18:17', '13', 'CASH '),
+(222, '2222123200968', 16, 'Monster', 1, 45.00, 45.00, '2024-05-15 15:18:17', '13', 'CASH '),
+(223, '2222881344444', 17, 'Burger', 1, 10.00, 10.00, '2024-05-15 15:18:39', '13', 'CASH '),
+(224, '1234', 18, 'So good milk', 1, 20.00, 20.00, '2024-05-15 15:22:23', '13', 'CASH '),
+(225, '2222881344444', 19, 'Burger', 1, 10.00, 10.00, '2024-05-15 15:23:29', '13', 'CASH '),
+(226, '2223375580155', 20, 'Lucky Me Beef Noodles', 5, 25.00, 125.00, '2024-05-15 22:44:20', '6', 'CASH '),
+(227, '2223519322434', 20, 'CDO Luncheon Meat 350g', 3, 150.00, 450.00, '2024-05-15 22:44:20', '6', 'CASH '),
+(228, '2223519322434', 21, 'CDO Luncheon Meat 350g', 3, 150.00, 450.00, '2024-05-15 22:46:17', '6', 'CASH '),
+(229, '2222595564534', 21, '7 UP', 5, 34.00, 170.00, '2024-05-15 22:46:17', '6', 'CASH ');
 
 -- --------------------------------------------------------
 
@@ -373,6 +466,32 @@ INSERT INTO `supplier` (`id`, `supplier_name`, `contact_person`, `contact_number
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `suppliers`
+--
+
+CREATE TABLE `suppliers` (
+  `id` int(11) NOT NULL,
+  `company_name` varchar(255) NOT NULL,
+  `company_address` varchar(255) NOT NULL,
+  `contact_person` varchar(255) NOT NULL,
+  `contact_number` varchar(255) NOT NULL,
+  `contact_email` varchar(255) NOT NULL,
+  `business_type` varchar(255) NOT NULL,
+  `if_deleted` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `suppliers`
+--
+
+INSERT INTO `suppliers` (`id`, `company_name`, `company_address`, `contact_person`, `contact_number`, `contact_email`, `business_type`, `if_deleted`) VALUES
+(1, 'Sample Company', '1234 Sample Address St. Manila, Philippines', 'Sample Name', '09123456799', 'example@email.com', 'Service', 0),
+(2, 'kunyare', 'feaf', 'ito lang nabago', '456789', 'faf@aefae.com', 'Manufacturer', 0),
+(3, 'Try change', 'try address edit', 'kunyare lang na edit', '10123456', 'naibakunyaretry@gmail.com', 'Wholesale', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -395,18 +514,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `date`, `image`, `role`, `gender`, `deletable`, `void_code`, `if_deleted`) VALUES
-(1, 'TUP Admin', 'tup@tup.com', '$2y$10$nah2kwq0IHoepQc/JDV78OgQVfz5fS3X3qZRhqnP5qc7LOYJKS.Yi', '2021-12-28 09:33:15', 'uploads/b9f374a1b62b51b3ded23d37248aa8ab5f9d34fc_3518.png', 'admin', 'male', 0, '12345', 0),
+(1, 'TUP Admin', 'tup@tup.com', '$2y$10$nah2kwq0IHoepQc/JDV78OgQVfz5fS3X3qZRhqnP5qc7LOYJKS.Yi', '2021-12-28 09:33:15', 'uploads/b9f374a1b62b51b3ded23d37248aa8ab5f9d34fc_3518.png', 'Admin', 'male', 0, '12345', 0),
 (2, 'Keqing', 'keqing@email.com', '$2y$10$nah2kwq0IHoepQc/JDV78OgQVfz5fS3X3qZRhqnP5qc7LOYJKS.Yi', '2021-12-28 10:39:58', 'uploads/user/c73cac02fb8be32cd2d07a65c6092db6c04a074e_7337.png', 'cashier', 'female', 1, '', 0),
-(5, 'some user', 'mail@mail.com', '$2y$10$nah2kwq0IHoepQc/JDV78OgQVfz5fS3X3qZRhqnP5qc7LOYJKS.Yi', '2022-02-17 19:13:49', NULL, 'user', 'male', 1, '', 1),
-(6, 'Trick', 'jhypsss@gmail.com', '$2y$10$VJanESVTpnaT0JyiTgKPGOTeP8Yps7gbF6T0vB1aoS7hEzlGcSSBS', '2023-07-01 09:30:31', 'uploads/user/07524a465c5686c33c39f99fe955173b8d2d3431_9044.jpg', 'admin', 'male', 0, '54321', 0),
-(7, 'Hitori Gotoh', 'bocchi@gmail.com', '$2y$10$MGfAr8fNoCLlPlh6dQOYDejX3oq92DJBkULiXhapGTx4Hc3Dd.LkS', '2023-07-01 09:31:07', 'uploads/71266d5faa035f21973b3dc9e234bac0cc299bab_8219.jpg', 'supervisor', 'female', 1, '', 0),
-(8, 'Llyle Prince', 'llyle@gmail.com', '$2y$10$.hmG6inoH3GJIQ.NVUqRuO4iGBHAv9ZJrgafR9L/f.vrMWV/ROPCW', '2023-07-02 19:53:31', 'uploads/user/41135b00337c48abc6723931acc19e81f0efff4b_9247.png', 'supervisor', 'male', 1, '121212', 0),
-(9, 'Leynald Kobe', 'kobe@gmail.com', '$2y$10$nxdd5sAJfIjgp5tckk7oN.TFD4w5AEbWuU3Zn8918De95xOyEZcNu', '2023-07-02 19:56:28', 'uploads/user/95b033c5a6e93b626077b1eb2f76eadde3e61862_9029.png', 'cashier', 'male', 1, '', 0),
-(10, 'Samantha Maurice', 'sam@gmail.com', '$2y$10$8Ysz5pGB0j/ngy3VS2qUWufO4kZstqgvZU8gAWQ3IRNMnruqxiRc2', '2023-07-02 19:57:29', 'uploads/user/8f2b4473247bbc703272ebc8b49362cf3c54e1b8_3280.png', 'cashier', 'female', 1, '', 0),
-(12, 'Wednesday', 'wednesday@gmail.com', '$2y$10$UtXmSXM03dnnp51mwFGYVuz5F46aeAdTQi3FnUz95iBMxlepbr3Zy', '2023-07-03 12:02:31', 'uploads/188e2135e926173ebb76e6894cce1f51e1b3b42d_2500.jpg', 'cashier', 'female', 1, '', 0),
-(13, 'Power', 'power@gmail.com', '$2y$10$UaaxmelZNHzmRUYG2EtRjuCprMsPOCmxjpClBz68rY1tDv6o8sX1W', '2023-07-03 12:09:34', 'uploads/97aa685e4581bf69b223f762454fd338c019f816_9114.jpg', 'admin', 'female', 1, '', 0),
-(14, 'Zhara', 'zharagon@gmail.com', '$2y$10$W9tl/OeBHy4GNWxxlgOLYeKbPYmpxSMSwVppgCy3UddG9M3OnAQVu', '2024-05-10 06:15:17', NULL, 'supervisor', 'female', 1, '', 0),
-(20, 'Rhayli Silongan', 'rhayli@gmail.com', '$2y$10$ONdTq41AaJ6HKdluYkK7M.AtJTrK.B34KzHW/Q5N6D8vJFScwP5Zq', '2024-05-13 03:10:16', 'uploads/user/727cfe0614525a64ae2b68f61ea2ad2810ac0ba7_1552.png', 'supervisor', 'male', 1, '111222', 0);
+(5, 'some user', 'mail@mail.com', '$2y$10$nah2kwq0IHoepQc/JDV78OgQVfz5fS3X3qZRhqnP5qc7LOYJKS.Yi', '2022-02-17 19:13:49', NULL, 'User', 'male', 1, '', 1),
+(6, 'Trick', 'jhypsss@gmail.com', '$2y$10$VJanESVTpnaT0JyiTgKPGOTeP8Yps7gbF6T0vB1aoS7hEzlGcSSBS', '2023-07-01 09:30:31', 'uploads/user/07524a465c5686c33c39f99fe955173b8d2d3431_9044.jpg', 'Admin', 'Male', 0, '54321', 0),
+(7, 'Hitori Gotoh', 'bocchi@gmail.com', '$2y$10$MGfAr8fNoCLlPlh6dQOYDejX3oq92DJBkULiXhapGTx4Hc3Dd.LkS', '2023-07-01 09:31:07', 'uploads/71266d5faa035f21973b3dc9e234bac0cc299bab_8219.jpg', 'Supervisor', 'Female', 1, '', 0),
+(8, 'Llyle Prince', 'llyle@gmail.com', '$2y$10$.hmG6inoH3GJIQ.NVUqRuO4iGBHAv9ZJrgafR9L/f.vrMWV/ROPCW', '2023-07-02 19:53:31', 'uploads/user/41135b00337c48abc6723931acc19e81f0efff4b_9247.png', 'Supervisor', 'Male', 1, '121212', 0),
+(9, 'Leynald Kobe', 'kobe@gmail.com', '$2y$10$nxdd5sAJfIjgp5tckk7oN.TFD4w5AEbWuU3Zn8918De95xOyEZcNu', '2023-07-02 19:56:28', 'uploads/user/95b033c5a6e93b626077b1eb2f76eadde3e61862_9029.png', 'Cashier', 'Male', 1, '', 0),
+(10, 'Samantha Maurice', 'sam@gmail.com', '$2y$10$8Ysz5pGB0j/ngy3VS2qUWufO4kZstqgvZU8gAWQ3IRNMnruqxiRc2', '2023-07-02 19:57:29', 'uploads/user/8f2b4473247bbc703272ebc8b49362cf3c54e1b8_3280.png', 'Cashier', 'Female', 1, '', 0),
+(12, 'Wednesday', 'wednesday@gmail.com', '$2y$10$dgJz2vbwYuVDh0TM7zn7BunzW9jpJQaS6HExB2P3EwOgo43lP098i', '2023-07-03 12:02:31', 'uploads/188e2135e926173ebb76e6894cce1f51e1b3b42d_2500.jpg', 'Cashier', 'Female', 1, '', 0),
+(13, 'Power', 'power@gmail.com', '$2y$10$UaaxmelZNHzmRUYG2EtRjuCprMsPOCmxjpClBz68rY1tDv6o8sX1W', '2023-07-03 12:09:34', 'uploads/user/c74fc9e325c707e0f7c4e5bcf94f1bde505985f1_2149.jpg', 'Admin', 'Male', 1, '', 0),
+(14, 'Zhara Gonzales', 'zharagon@gmail.com', '$2y$10$W9tl/OeBHy4GNWxxlgOLYeKbPYmpxSMSwVppgCy3UddG9M3OnAQVu', '2024-05-10 06:15:17', NULL, 'Supervisor', 'Female', 1, '', 0),
+(20, 'Rhayli', 'rhayli@gmail.com', '$2y$10$ONdTq41AaJ6HKdluYkK7M.AtJTrK.B34KzHW/Q5N6D8vJFScwP5Zq', '2024-05-13 03:10:16', 'uploads/user/727cfe0614525a64ae2b68f61ea2ad2810ac0ba7_1552.png', 'Supervisor', 'Male', 1, '111222', 0),
+(21, 'tryexample', 'tryexample@email.com', '$2y$10$J3LeBmQ8iPWBo1XYABw8.uCvF4wRfgCTjkphNk.HAihThMlIsqr.C', '2024-05-15 09:27:33', NULL, 'Cashier', 'Female', 1, '', 0);
 
 -- --------------------------------------------------------
 
@@ -487,6 +607,12 @@ ALTER TABLE `supplier`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `suppliers`
+--
+ALTER TABLE `suppliers`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -513,7 +639,7 @@ ALTER TABLE `void_items`
 -- AUTO_INCREMENT for table `audit_trail`
 --
 ALTER TABLE `audit_trail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=256;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -525,13 +651,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `deleted_items`
 --
 ALTER TABLE `deleted_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -543,7 +669,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=230;
 
 --
 -- AUTO_INCREMENT for table `supplier`
@@ -552,10 +678,16 @@ ALTER TABLE `supplier`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `suppliers`
+--
+ALTER TABLE `suppliers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `void_items`

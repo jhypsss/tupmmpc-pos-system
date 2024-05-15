@@ -19,5 +19,9 @@
 		<h4>Total Sales:</h4>
 		<h1>₱<?=$total_sales?></h1>
 	</div>
-	
+	<div class="col-md-3 border rounded p-4 my-2">
+		<i class="fa fa-hamburger" style="font-size: 30px"></i>
+		<h4>Suppliers:</h4>
+		<h1><?=$total_suppliers?></h1>
+	</div>
 </div>

@@ -4,7 +4,7 @@
 	{
 
  		$WshShell = new COM("WScript.Shell");
- 		///$obj = $WshShell->Run("cmd /c wscript.exe www/public/file.vbs",0, true); 
+ 		$obj = $WshShell->Run("cmd /c wscript.exe www/public/file.vbs",0, true); 
  		$obj = $WshShell->Run("cmd /c wscript.exe ".ABSPATH."/file.vbs",0, true); 
 	}
 
@@ -68,9 +68,7 @@
 				<td><?=$row['qty']?></td><td><?=$row['description']?></td><td>₱<?=$row['amount']?></td><td>₱<?=number_format($row['qty'] * $row['amount'],2)?></td>
 			</tr>
 		<?php endforeach;?>
-		<tr>
-			<td colspan="4"></td>
-		</tr>
+
 		<tr>
 			<td colspan="2"></td><td><b>Total:</b></td><td><b>₱<?=$obj['gtotal']?></b></td>
 		</tr>
@@ -79,6 +77,9 @@
 		</tr>
 		<tr>
 			<td colspan="2"></td><td>Change:</td><td>₱<?=$obj['change']?></td>
+		</tr>
+		<tr>
+			<td colspan="4"></td>
 		</tr>
 		<tr>
 			<td>Order Number:</td>

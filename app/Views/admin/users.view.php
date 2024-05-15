@@ -35,10 +35,10 @@
 				<td><?=date("M j, Y",strtotime($user['date']))?></td>
 				<td>
 					<a href="index.php?pg=edit-user&id=<?=$user['id']?>">
-						<button class="btn btn-success btn-sm">Edit</button>
+						<button class="btn btn-success btn-sm"><i class="fas fa-user-cog"></i></button>
 					</a>
 					<a href="index.php?pg=delete-user&id=<?=$user['id']?>">
-						<button class="btn btn-danger btn-sm">Delete</button>
+						<button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
 					</a>
 				</td>
 			</tr>

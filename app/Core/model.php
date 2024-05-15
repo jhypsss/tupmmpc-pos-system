@@ -176,6 +176,13 @@ class Model extends Database
 
 				$details = "NEW ITEM: $productBarcode\nProduct: $productName \nQty: $productStock \nPrice: $productPrice \nCategory: $productCategory";
 			}
+			else if(strcmp($source, "Suppliers") == 0){
+				// Get the details
+				$companyName = isset($data['company_name']) ? $data['company_name'] : 'Unknown Company Name';
+				$companyAddress = isset($data['company_address']) ? $data['company_address'] : 'Unknown Company Address';
+				
+				$details = "NEW SUPPLIER: $companyName \nCompany Address: $companyAddress";
+			}
 		}
 
 		else if (strcmp($action, "UPDATE") == 0){
@@ -292,6 +299,50 @@ class Model extends Database
 					}
 				}
 			}
+
+			else if(strcmp($source, "Suppliers") == 0){
+				//For Audit Trail
+				$supplier = new Supplier();
+				$row = $supplier->first(['id'=>$id]);
+
+				// Get the old details
+				$oldCompany = $row['company_name'];
+				$oldAddress = $row['company_address'];
+				$oldContactPerson = $row['contact_person'];
+				$oldContactNumber = $row['contact_number'];
+				$oldContactEmail = $row['contact_email'];
+				$oldBusinessType = $row['business_type'];
+
+				//Get the new details
+				$supplierCompany = isset($data['company_name']) ? $data['company_name'] : 'Unknown Company Name';
+				$supplierAddress = isset($data['company_address']) ? $data['company_address'] : 'Unknown Company Address';
+				$supplierContactPerson = isset($data['contact_person']) ? $data['contact_person'] : 'Unknown Contact Person';
+				$supplierContactNumber = isset($data['contact_number']) ? $data['contact_number'] : 'Unknown Contact Number';
+				$supplierContactEmail = isset($data['contact_email']) ? $data['contact_email'] : 'Unknown Contact Email';
+				$supplierBusinessType = isset($data['business_type']) ? $data['business_type'] : 'Unknown Business Type';
+				
+				// Insert into audit trail
+				//Compare changes in Details
+				$details = "UPDATED SUPPLIER: $supplierCompany";
+				if (strcmp($oldCompany, $supplierCompany) !== 0){
+					$details .= "\nCompany Name: $oldCompany → $supplierCompany";
+				}
+				if (strcmp($oldAddress, $supplierAddress) !== 0){
+					$details .= "\nCompany Address: $oldAddress → $supplierAddress";
+				}
+				if (strcmp($oldContactPerson, $supplierContactPerson) !== 0){
+					$details .= "\nContact Person: $oldContactPerson → $supplierContactPerson";
+				}
+				if (strcmp($oldContactNumber, $supplierContactNumber) !== 0){
+					$details .= "\nContact Number: $oldContactNumber → $supplierContactNumber";
+				}
+				if (strcmp($oldContactEmail, $supplierContactEmail) !== 0){
+					$details .= "\nContact Email: $oldContactEmail → $supplierContactEmail";
+				}
+				if (strcmp($oldBusinessType, $supplierBusinessType) !== 0){
+					$details .= "\nBusiness Type: $oldBusinessType → $supplierBusinessType";
+				}
+			}
 		}
 
 		else if(strcmp($action, "DELETE") == 0){
@@ -320,6 +371,12 @@ class Model extends Database
 				$productCategory = $row['category'];
 
 				$details = "DELETED ITEM: $productBarcode \nProduct Name: $productName \nQty: $productStock \nPrice: $productPrice\n Category: $productCategory";
+			}
+			else if (strcmp($source, "Suppliers") == 0){
+				$supllier = new Supplier();
+				$row = $supllier->first(['id'=>$id]);
+				$companyName = $row['company_name'];
+				$details = "DELETED SUPPLIER: $companyName";
 			}
 		}
 		// Insert to Audit Trail
