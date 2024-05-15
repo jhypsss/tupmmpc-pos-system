@@ -24,7 +24,6 @@ function esc($str)
 
 function redirect($page)
 {
-
 	header("Location: index.php?pg=" .$page);
 	die;
 }
@@ -73,10 +72,10 @@ function crop($filename,$size = 400,$type = 'product')
 	//if file to be cropped does not exist
 	if(!file_exists($filename))
 	{
-		if($type == "male"){
+		if($type == "Male"){
 			return 'assets/images/user_male.jpg';
 		}else
-		if($type == "female"){
+		if($type == "Female"){
 			return 'assets/images/user_female.jpg';
 		}else{
 			return 'assets/images/no_image.jpg';

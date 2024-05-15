@@ -28,8 +28,8 @@
 			<div class="mb-3">
 			  <label for="exampleFormControlInput1" class="form-label">Gender</label>
  				<select  name="gender" class="form-control  <?=!empty($errors['gender']) ? 'border-danger':''?>" >
-					<option>male</option>
-					<option>female</option>
+					<option>Male</option>
+					<option>Female</option>
 				</select>
 				<?php if(!empty($errors['gender'])):?>
 					<small class="text-danger"><?=$errors['gender']?></small>

@@ -27,6 +27,7 @@ System Functions to do
 ✅ Audit Trail
 - Back Buttons when clicking Forms (add, edit, delete forms)
 ✅ Notification nav = Critical Stocks, Out of Stock 
+✅ Deleted Items Functionality
 - Product Stocks must not be edited... Rather just Append or Add new Stocks
 - Manage Roles (access roles)
 - Void Items
@@ -43,7 +44,14 @@ PRODUCTS = ADD✅, UPDATE✅, DELETE✅
 SUPPLIERS INFO = ADD, UPDATE, DELETE
 SALES to VOID ITEMS
 
-
+Llyle:
+✅ POS : deleted items is showed and searched.
+✅ POS : Limit by 20
+✅ Clear All Items ("Please Enter A Code to Clear Items")
+✅ Inserting Products, Not Inserting at POS (Products not inserting at POS 20 Limit)
+✅ UPDATE: Click VOID msg: "Please Enter a Code."
+✅ Delete Item (Deleted at Products but not deleted at POS)
+✅ Sales Time ("not accurate")
 
 Categories
 	<option>School Supplies</option>

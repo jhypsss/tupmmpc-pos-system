@@ -31,7 +31,7 @@
 				
 
 				<?php if(strcmp($row['category'], "---") !== 0): ?>
-					<option value="<?= esc($row['category']) ?>"><?= esc($row['category']) ?></option>
+					<option value="<?= esc($row['category']) ?>" hidden><?= esc($row['category']) ?></option>
 				<?php else: ?>
 					<option value="---">Select a Category</option>
 				<?php endif; ?>
@@ -61,6 +61,7 @@
 			</div>
 			
 			<label for="stockControlInput1" class="form-label"><small class="text-muted">Current Stock: <?=set_value('stock',$row['stock'])?></small></label>
+			<input name="stock" value="<?=set_value('stock',$row['stock'])?>" type="number" class="form-control <?=!empty($errors['stock']) ? 'border-danger':''?>" hidden readonly>
 			<div class="input-group mb-3">
 			  <span class="input-group-text">Add Stock:</span>
 			  <input name="addStock" value="" type="number" class="form-control <?=!empty($errors['stock']) ? 'border-danger':''?>" id="stockControlInput1" placeholder="Quantity" aria-label="Quantity">

@@ -6,12 +6,6 @@
  		$WshShell = new COM("WScript.Shell");
  		///$obj = $WshShell->Run("cmd /c wscript.exe www/public/file.vbs",0, true); 
  		$obj = $WshShell->Run("cmd /c wscript.exe ".ABSPATH."/file.vbs",0, true); 
- 		
- 		$WshShell = new COM("WScript.Shell");
- 		///$obj = $WshShell->Run("cmd /c wscript.exe www/public/file.vbs",0, true); 
- 		$obj = $WshShell->Run("cmd /c wscript.exe ".ABSPATH."/file.vbs",0, true); 
-  
- 	 
 	}
 
 ?>
@@ -21,11 +15,33 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><?=esc(APP_NAME)?></title>
+	<title><?= esc(APP_NAME) ?></title>
 
 	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
+	<style>
+		@page 
+		{
+			size:  auto;   /* auto is the initial value */
+			margin: 0mm;  /* this affects the margin in the printer settings */
+		}
+
+		html
+		{
+			background-color: #FFFFFF; 
+			margin: 0px;  /* this affects the margin on the html before sending to printer */
+		}
+
+		body
+		{
+			border: solid 0px;
+			margin: 10mm 15mm 10mm 15mm; /* margin you want for the content */
+		}
+
+			}
+	</style>
 </head>
 <body>
 	<?php 
@@ -37,39 +53,56 @@
 	?>
 <?php if(is_array($obj)):?>
 
-	<p><?=esc(APP_NAME)?></p>
+	<center>
 		<h1><?=$obj['company']?></h1>
 		<h4>Receipt</h4>
-		<b><p style="margin-bottom: -2px;">Encoder: </b><?=$obj['username']?></p>
-		<b><div style="margin-bottom: 5px;">Date:</b> <i><?=date("jS F, Y H:i a")?></i></div>
-	
+	</center>
 
 	<table class="table table-striped">
 		<tr>
-			<th>Description</th><th>Total Price</th>
+			<th>Qty</th><th>Description</th><th>@</th><th>Amount</th>
 		</tr>
 
 		<?php foreach ($obj['data'] as $row):?>
 			<tr>
-				<td><?=$row['description']?> * <?=$row['qty']?> ₱<?=$row['amount']?></td>
-				<td>₱<?=number_format($row['qty'] * $row['amount'],2)?></td>
+				<td><?=$row['qty']?></td><td><?=$row['description']?></td><td>₱<?=$row['amount']?></td><td>₱<?=number_format($row['qty'] * $row['amount'],2)?></td>
 			</tr>
 		<?php endforeach;?>
-
 		<tr>
-			<td><b>Total:</b></td><td><b>₱<?=$obj['gtotal']?></b></td>
+			<td colspan="4"></td>
 		</tr>
 		<tr>
-			<td>Amount paid:</td><td>₱<?=$obj['amount']?></td>
+			<td colspan="2"></td><td><b>Total:</b></td><td><b>₱<?=$obj['gtotal']?></b></td>
 		</tr>
 		<tr>
-			<td>Change:</td><td>₱<?=$obj['change']?></td>
+			<td colspan="2"></td><td>Amount paid:</td><td>₱<?=$obj['amount']?></td>
 		</tr>
-		
-		
+		<tr>
+			<td colspan="2"></td><td>Change:</td><td>₱<?=$obj['change']?></td>
+		</tr>
+		<tr>
+			<td>Order Number:</td>
+			<td colspan="3">
+				<?=get_receipt_no()?>
+			</td>
+		</tr>
+		<tr>
+			<td>Cashier: </td> 
+			<td colspan="3"> 
+				<?=auth('username')?>
+			</td>
+		</tr>
+		<tr>
+			<td>Date and Time:</td>
+			<td colspan="3">
+				<?php date_default_timezone_set('Asia/Shanghai');?>
+				<?=date("M j, Y H:i a")?>
+			</td>
+		</tr>
 	</table>
 
-	<center><p><i>Thanks for shopping with us!</i></p></center>
+	<center>
+		<p>This serves as your Official Receipt.<br><i>Thanks for shopping with us!</i></p></center>
 <?php endif;?>
 
 <script>

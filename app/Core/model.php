@@ -106,11 +106,12 @@ class Model extends Database
 
 	}
 
-	public function getAll($limit = 10,$offset = 0,$order = "desc",$order_column = "id")
+	//public function getAll($limit = 10,$offset = 0,$order = "desc",$order_column = "id")
+	public function getAll($offset = 0,$order = "desc",$order_column = "id")
 	{
 
-		$query = "select * from $this->table order by $order_column $order limit $limit offset $offset";
-  		
+		//$query = "select * from $this->table order by $order_column $order limit $limit offset $offset";
+		$query = "select * from $this->table where if_deleted = 0 order by $order_column $order";
 		$db = new Database;
 		return $db->query($query);	
 

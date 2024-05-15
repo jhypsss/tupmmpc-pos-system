@@ -30,7 +30,7 @@
 				</td>
 				<td><?=esc($user['gender'])?></td>
 				<td><?=esc($user['email'])?></td>
-				<td><?=ucfirst(esc($user['role']))?></td>
+				<td><?=esc($user['role'])?></td>
 				
 				<td><?=date("M j, Y",strtotime($user['date']))?></td>
 				<td>

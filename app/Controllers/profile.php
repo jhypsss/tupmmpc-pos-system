@@ -35,7 +35,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
 }
 
-if(Auth::access('admin') || ($row && $row['id'] == Auth::get('id'))){
+if(Auth::access('Admin') || ($row && $row['id'] == Auth::get('id'))){
 	require views_path('auth/profile');
 }else{
 

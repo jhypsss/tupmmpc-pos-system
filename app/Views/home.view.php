@@ -100,8 +100,9 @@ $conn->close();
 		<div style="width:500px;min-height:200px;background-color:white;padding:10px;margin:auto;margin-top:100px">
 			<h4>Checkout <button role="close-button" onclick="hide_modal(event,'amount-paid')" class="btn btn-danger float-end p-0 px-2">X</button></h4>
 			<br>
+			<form>
 			<h4>Payment</h4 >
-			<input onkeyup="if(event.keyCode == 13)validate_amount_paid(event)" type="text" class="js-amount-paid-input form-control" placeholder="Enter amount paid">
+			<input onkeyup="if(event.keyCode == 13)validate_amount_paid(event)" type="text" class="js-amount-paid-input form-control" placeholder="Enter amount paid" autofocus>
 			<br>
 			<!----><h4>Payment Method</h4 >
 				<select class="js-method-paid-input form-control" name="payment_status" id="payment_status">
@@ -116,6 +117,7 @@ $conn->close();
 			<br>
 			<button role="close-button" onclick="hide_modal(event,'amount-paid')" class="btn btn-secondary">Cancel</button>
 			<button onclick="validate_amount_paid(event)" class="btn btn-primary float-end">Next</button>
+			</form>
 		</div>
 	</div>
 	<!--end enter amount modal-->
@@ -356,7 +358,7 @@ $conn->close();
 
 	function clear_all()
 	{
-		var code = prompt("Are you sure you want to clear all items in the list?!");
+		var code = prompt("Are you sure you want to clear all items in the list?!\nPlease enter a code.");
 
 		// Check if the code matches
 		if (code === null || code.trim() === '') {
@@ -368,12 +370,12 @@ $conn->close();
 				location.reload();
 				},100);
 		} else {
-			alert("Incorrect code. All items not remove.");
+			alert("Incorrect code.");
 		}
 	}
 	// Function to Void Button
 	function void_button(){
-		var code = prompt("Please enter the code to void an item:");
+		var code = prompt("Please enter a code.");
 		// Check if the code matches
 		if (code === null || code.trim() === '') {
 			return; // User canceled or entered empty code
@@ -389,7 +391,7 @@ $conn->close();
 		}
 	}
 
-	/* OLD codesFunction to clear item
+	/* OLD codes Function to clear item
 	function clear_item(index) {
 		var code = prompt("Please enter the code to remove the item:");
 
@@ -574,7 +576,7 @@ $conn->close();
 		});
 
 		print_receipt({
-			company: 'My POS',
+			company: '<?= esc(APP_NAME)?>',
 			amount: amount,
 			change: CHANGE,
 			gtotal: GTOTAL,

@@ -18,15 +18,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 	$product->audit_trail($row['id'], $_POST);
 	$product->delete($row['id']);
   	
-	//delete old image
+	/*/delete old image
 	if(file_exists($row['image']))
 	{
 		unlink($row['image']);
 	}
 
 	redirect('admin&tab=products');
- 
-
+	*/
 }
 
 

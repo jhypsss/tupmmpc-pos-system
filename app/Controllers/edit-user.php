@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	//make sure only admins can make other admins
 	if(isset($_POST['role']) && $_POST['role'] != $row['role'])
 	{
-		if(Auth::get('role') != "admin")
+		if(Auth::get('role') != "Admin")
 		{
 			$_POST['role'] = $row['role'];
 		}
@@ -71,7 +71,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
 }
 	
-if(Auth::access('admin') || ($row && $row['id'] == Auth::get('id'))){
+if(Auth::access('Admin') || ($row && $row['id'] == Auth::get('id'))){
 	require views_path('auth/edit-user');
 }else{
 
