@@ -6,18 +6,20 @@
 	    Table View
 	</a>
   </li>
-  <!-- <li class="nav-item">
+  <li class="nav-item">
     <a class="nav-link <?=($section =='graph') ? 'active':''?>" href="index.php?pg=admin&tab=sales&s=graph">
 	    Graph View
 	</a>
-  </li> -->
+  </li>
   
 </ul>
 
 <br>
 
 <?php if($section == 'table'):?>
+<!--
 <a href="../app/views/admin/sales_report.php"><button style="background-color: orange; border-radius: 5px;  color: white; border-color: white; padding: 7px;">SALES REPORTS</button></a>
+-->
 <div>
 	<form class="row float-end" >
 			<div class="col">
@@ -43,6 +45,7 @@
 <div class="table-responsive">
 	<h2>Today's Total: ₱<?=number_format($sales_total,2)?></h2>
 	<table class="table table-striped table-hover">
+		<thead class="table-light" style="position: sticky;top: 0">
 		<tr>
 			<th>Barcode</th>
 			<th>Receipt No</th>
@@ -53,7 +56,8 @@
 			<th>Cashier</th>
 			<th colspan=2>Date | Time</th>			
 		</tr>
-
+		</thead>
+		<tbody>
 		<?php if (!empty($sales)):?>
 			<?php foreach ($sales as $sale):?>
 	 		<tr>
@@ -90,20 +94,16 @@
 			</tr>
 			<?php endforeach;?>
 		<?php endif;?>
-		
+		</tbody>
 	</table>
 
 <?php
 		$pager->display($totalSales);
 ?>
-
 </div>
 
 <?php else:?>
-
-
 	<?php 
-
 		$graph = new Graph();
 
 		$data = generate_daily_data($today_records);
@@ -145,10 +145,10 @@
 
 		$data = generate_yearly_data($all_records);
 		if (empty($data)) {
-			$graph->title = "Yearly Sales: No sales data available.";
+			$graph->title = "Annual Sales: No sales data available.";
 			$graph->display([]);
 		} else {
-			$graph->title = "Yearly Sales";
+			$graph->title = "Annual Sales";
 			$graph->xtitle = "Years";
 			$graph->styles = "width:80%;margin:auto;display:block";
 			$graph->display($data);

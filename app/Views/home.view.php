@@ -495,7 +495,7 @@ $conn->close();
 
 			mydiv.querySelector(".js-amount-paid-input").value = "";
 			mydiv.querySelector(".js-amount-paid-input").focus();
-			document.getElementById('searchitem').focus();
+			//document.getElementById('searchitem').focus();
 		}else
 		if(modal == "change"){
  
@@ -504,10 +504,9 @@ $conn->close();
 
 			mydiv.querySelector(".js-change-input").innerHTML = CHANGE;
 			mydiv.querySelector(".js-btn-close-change").focus();
-			document.getElementById('searchitem').focus();
-		}
-		document.getElementById('searchitem').focus();
-
+			//document.getElementById('searchitem').focus();
+		} 
+		//document.getElementById('searchitem').focus();
 	}
 	
 	function hide_modal(e,modal)
@@ -528,7 +527,7 @@ $conn->close();
 			}			
 					
 		}
-		//document.getElementById('searchitem').focus();
+		document.getElementById('searchitem').focus();
 	}
 
 	function validate_amount_paid(e)

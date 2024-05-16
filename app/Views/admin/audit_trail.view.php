@@ -1,6 +1,7 @@
-<div class="table-responsive">
+<div class="table-responsive" style="height: 650px;overflow-y: scroll;">
     <!-- Table section -->
     <table class="table table-striped table-hover">
+        <thead class="table-light" style="position: sticky;top: 0">
         <tr>
             <th>Date | Time</th>
             <th>Initiator(User)</th>
@@ -8,7 +9,8 @@
             <th>Action</th>
             <th>Details</th>
         </tr>
-
+        </thead>
+        <tbody>
         <?php if (!empty($audit_trails)):?>
             <?php foreach ($audit_trails as $audit_trail):?>
                 <tr>
@@ -37,6 +39,6 @@
                 </tr>
             <?php endforeach;?>
         <?php endif;?>
-        
+        </tbody>
     </table>
 </div>

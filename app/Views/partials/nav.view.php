@@ -1,7 +1,7 @@
 <?php
 	$productClass = new Product();
-	$stocks = $productClass->query("SELECT * FROM products WHERE stock <= 20 OR stock = 0");
-	$stocksCount = $productClass->query("SELECT COUNT(*) AS count FROM products WHERE stock <= 20 OR stock = 0");
+	$stocks = $productClass->query("SELECT * FROM products WHERE if_deleted=0 AND (stock <= 20 OR stock = 0)");
+	$stocksCount = $productClass->query("SELECT COUNT(*) AS count FROM products WHERE if_deleted=0 AND (stock <= 20 OR stock = 0)");
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light" style="min-width:350px; background-color: #ffdddd; ">

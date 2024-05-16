@@ -1,6 +1,6 @@
 <?php require views_path('partials/header');?>
 
-	<div class="container-fluid border col-lg-4 col-md-5 mt-5 p-4 shadow-sm" >
+	<div class="container-fluid border col-lg-4 col-md-5 mt-5 p-4 shadow-sm">
 		
 		<form method="post">
 			<center>

@@ -30,7 +30,7 @@ else if($tab == "products")
 	$productClass = new Product();
 	$products = $productClass->query("select * from products where if_deleted = 0 order by id desc");
 	$totalProducts = $productClass->query("SELECT COUNT(*) AS total FROM products WHERE if_deleted=0;");
-	$stocks = $productClass->query("SELECT * FROM products WHERE stock <= 10 OR stock = 0");
+	$stocks = $productClass->query("SELECT * FROM products WHERE stock <= 10 OR stock = 0");	
 }
 else if($tab == "suppliers")
 {
