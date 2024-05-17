@@ -8,7 +8,7 @@
 			
 			<div class="mb-3">
 			  <label for="categoryControlInput1" class="form-label">Category Name</label>
-			  <input value="<?=set_value('name',$row['name'])?>" name="name" type="text" class="form-control <?=!empty($errors['name']) ? 'border-danger':''?>" id="categoryControlInput1" placeholder="Category Name">
+			  <input value="<?=set_value('name',$row['name'])?>" name="name" type="text" class="form-control <?=!empty($errors['name']) ? 'border-danger':''?>" id="categoryControlInput1" placeholder="Category Name" autocomplete="off">
 			  <?php if(!empty($errors['name'])):?>
 					<small class="text-danger"><?=$errors['name']?></small>
 				<?php endif;?>
@@ -16,7 +16,7 @@
 
 			<div class="mb-3">
 			  <label for="categoryControlInput2" class="form-label">Description</label>
-			  <input value="<?=set_value('description',$row['description'])?>" name="description" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="categoryControlInput2" placeholder="Description">
+			  <input value="<?=set_value('description',$row['description'])?>" name="description" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="categoryControlInput2" placeholder="Description" autocomplete="off">
 			  <?php if(!empty($errors['description'])):?>
 					<small class="text-danger"><?=$errors['description']?></small>
 				<?php endif;?>

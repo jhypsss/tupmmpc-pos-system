@@ -2,12 +2,9 @@
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
-
  		$WshShell = new COM("WScript.Shell");
  		$obj = $WshShell->Run("cmd /c wscript.exe www/public/file.vbs",0, true); 
- 		$obj = $WshShell->Run("cmd /c wscript.exe ".ABSPATH."/file.vbs",0, true); 
 	}
-
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +21,7 @@
 	<style>
 		@page 
 		{
-			size:  auto;   /* auto is the initial value */
+			size:  A5 portrait;   /*Paper size */
 			margin: 0mm;  /* this affects the margin in the printer settings */
 		}
 
@@ -38,9 +35,8 @@
 		{
 			border: solid 0px;
 			margin: 10mm 15mm 10mm 15mm; /* margin you want for the content */
+			font-size:12px;
 		}
-
-			}
 	</style>
 </head>
 <body>
@@ -58,17 +54,23 @@
 		<h4>Receipt</h4>
 	</center>
 
-	<table class="table table-striped">
+	<table class="table table-striped table-sm">
+		<thead class="table">
 		<tr>
 			<th>Qty</th><th>Description</th><th>@</th><th>Amount</th>
 		</tr>
-
+		</thead>
+		<tbody>
 		<?php foreach ($obj['data'] as $row):?>
 			<tr>
-				<td><?=$row['qty']?></td><td><?=$row['description']?></td><td>₱<?=$row['amount']?></td><td>₱<?=number_format($row['qty'] * $row['amount'],2)?></td>
+				<td><?=$row['qty']?></td><td><?=$row['description']?></td>
+				<td>₱<?=$row['amount']?></td>
+				<td>₱<?=number_format($row['qty'] * $row['amount'],2)?></td>
 			</tr>
 		<?php endforeach;?>
+		</tbody>
 
+		<tbody>
 		<tr>
 			<td colspan="2"></td><td><b>Total:</b></td><td><b>₱<?=$obj['gtotal']?></b></td>
 		</tr>
@@ -78,28 +80,34 @@
 		<tr>
 			<td colspan="2"></td><td>Change:</td><td>₱<?=$obj['change']?></td>
 		</tr>
+		</tbody>
+
+		<tbody>
 		<tr>
-			<td colspan="4"></td>
-		</tr>
-		<tr>
-			<td>Order Number:</td>
+			<td>Receipt No:</td>
 			<td colspan="3">
-				<?=get_receipt_no()?>
+				<?=$obj['receiptno']?>
 			</td>
 		</tr>
 		<tr>
-			<td>Cashier: </td> 
+			<td>Staff: </td> 
 			<td colspan="3"> 
-				<?=auth('username')?>
+				<?=$obj['staff']?>
 			</td>
 		</tr>
 		<tr>
-			<td>Date and Time:</td>
+			<td>Date:</td>
 			<td colspan="3">
-				<?php date_default_timezone_set('Asia/Shanghai');?>
-				<?=date("M j, Y H:i a")?>
+				<?=date("M j, Y")?>
 			</td>
 		</tr>
+		<tr>
+			<td>Time:</td>
+			<td colspan="3">
+				<?=date("h:i a")?>
+			</td>
+		</tr>
+		</tbody>
 	</table>
 
 	<center>
@@ -114,7 +122,7 @@
 
 	ajax.addEventListener('readystatechange',function(){
 
-		if(ajax.readyState == 4)
+	if(ajax.readyState == 4)
 		{
 			//console.log(ajax.responseText);
 		}

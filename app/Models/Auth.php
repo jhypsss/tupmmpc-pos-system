@@ -39,9 +39,9 @@ class Auth
 	{
 		$access['Admin'] 		= ['Admin'];
 		$access['Supervisor'] 	= ['Admin','Supervisor'];
-		$access['Cashier'] 		= ['Admin','Supervisor','Cashier'];
-		$access['Accountant'] 	= ['Admin','Accountant'];
-		$access['User'] 		= ['Admin','Supervisor','Cashier','User'];
+		$access['Manager'] 		= ['Admin','Supervisor','Manager'];
+		$access['Cashier'] 		= ['Admin','Supervisor','Manager','Cashier'];
+		$access['User'] 		= ['Admin','Supervisor','Manager','Cashier','User'];
 
 		$myrole = self::get('role');
 		if(in_array($myrole, $access[$role]))

@@ -92,8 +92,6 @@ if(!empty($raw_data))
 					//subtract quantity for this product
 					$query = "UPDATE products SET stock = stock - :qty WHERE id = :id LIMIT 1";
     				$db->query($query, ['id' => $check['id'], 'qty' => $row['qty']]);
-
-					
 				}
 
 			}

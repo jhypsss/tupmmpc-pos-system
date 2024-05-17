@@ -175,7 +175,13 @@ else if($tab == "dashboard")
 
 
 
-if(Auth::access('Supervisor')){
+if(Auth::access('Admin')){
+	require views_path('admin/admin');
+}
+else if(Auth::access('Supervisor')){
+	require views_path('admin/admin');
+}
+else if(Auth::access('Manager')){
 	require views_path('admin/admin');
 }
 else{

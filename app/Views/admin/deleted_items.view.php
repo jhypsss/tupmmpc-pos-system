@@ -7,7 +7,6 @@
             <th>From:</th>
             <th>Deleted Info</th>
             <th>Removed by:</th>
-            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -46,12 +45,10 @@
                         }
                     ?>
                     <td><a href="<?=esc($namelink)?>"><?=esc($deleter)?></a></td>
-                    <td>
                         <!--
                             <button class="btn btn-success btn-sm"><i class="fas fa-cog"></i></button>
                             <button onclick="delete_btn()" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                         -->
-                    </td>
                 </tr>
             <?php endforeach;?>
         <?php endif;?>

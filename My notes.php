@@ -9,17 +9,20 @@ Guide to create new Menu Dashboard
 
 
 Access Roles
-- admin = Admin Panel (All access), POS System
-- supervisor = Admin Panel (Account Management, Categories, Products, Sales, Void Items, Audit Trail), Points-of-sale
+✅ admin = Admin Panel (All access), POS System
+- supervisor = Admin Panel (Categories, Products, Sales, Void Items, Audit Trail), Points-of-sale
 - manager = Admin Panel (Categories, Products, Sales, Void Items), Points-of-sale
-- cashier = Points-of-sale
-- user (default) = no access in any parts of system functionalities (new user)
+✅ cashier = Points-of-sale
+✅ user (default) = no access in any parts of system functionalities (new user)
 
 
 issues or bugs found.
 - Access roles
 - Quick Search in Products/Inventory = table header is hiding when searching
+✅ Quick Search in Suppliers
 - Pagination
+✅ receipt no in print receipt. not accurate to the db
+- input tags autocomplete="off"
 
 
 System Functions to do
@@ -33,6 +36,8 @@ System Functions to do
 - Refunded Items
 ✅ Supplier Informations
 - date_modified : Users, Products, 
+✅ Receipt Preview
+✅ Not Available Items must also show in POS
 
 System Checking
 ✅ Receipt = need to show who's the encoder with date and time (will fix and modify soon)

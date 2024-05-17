@@ -6,42 +6,51 @@
 
 <nav class="navbar navbar-expand-lg navbar-light" style="min-width:350px; background-color: #ffdddd; ">
 	  <div class="container-fluid">
-	    <a class="navbar-brand" href="index.php?pg=home" style="font-family:Verdana; font-weight:bold;">
-			<img src="assets/images/logo.png" style="width:100%;max-width:50px;margin:0 10px;" >
-			<?=esc(APP_NAME)?>
-		</a>
+		
+	  	<?php 
+			$role = Auth::get('role');
+			if ($role=='Supervisor' || $role=='Manager' || $role=='Cashier' || $role=='User'):?>
+				<a class="navbar-brand" href="index.php?pg=home" style="font-family:Verdana; font-weight:bold;">
+		<?php else: ?>
+				<a class="navbar-brand" href="index.php?pg=admin" style="font-family:Verdana; font-weight:bold;">
+		<?php endif ?>
+					<img src="assets/images/logo.png" style="width:100%;max-width:50px;margin:0 10px;" >
+					<?=esc(APP_NAME)?>
+				</a>
+
 	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
 	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-	        <li class="nav-item">
-	          <a class="nav-link active" aria-current="page" href="index.php?pg=home">Point of sale</a>
-	        </li>
-	        
-	        <?php if(Auth::access('Supervisor')):?>
-				<?php 
-				$role = Auth::get('role');
-				if ($role=='Admin' || $role=='Supervisor' ){?>
-					<li class="nav-item">
-						<a class="nav-link active" href="index.php?pg=admin">Admin Panel</a>
-				  	</li>
-			<?php } 	
-				 ?>
-		        
-		    <?php endif;?>
+		  	<?php $role = Auth::get('role');
+				if ($role=='Admin'):?>
 
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="index.php?pg=admin">Admin Panel</a>
+					</l>
+
+			<?php elseif (($role=='Supervisor' || $role=='Manager')):?>
+					<li class="nav-item">
+						<a class="nav-link active" href="index.php?pg=home">Point-of-Sale</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="index.php?pg=admin">Admin Panel</a>
+					</li>
+					
+			<?php elseif ($role=='Cashier'):?>
+					<li class="nav-item">
+						<a class="nav-link active" href="index.php?pg=home">Point-of-Sale</a>
+					</li>
+			<?php endif ?>
+		        
 	        <?php if(Auth::access('Admin')):?>
 		        <li class="nav-item">
 		          <a class="nav-link" href="index.php?pg=signup">Create User</a>
 		        </li>
 		    <?php endif;?>
 
-		    <?php if(!Auth::logged_in()):?>
-		        <li class="nav-item">
-		          <a class="nav-link" href="index.php?pg=login">Log In</a>
-		        </li>
-	        <?php else:?>
+			<?php if(!Auth::access('User')):?>
 				<li class="nav-item">
 					<?php if (!empty($stocks)):?>
 						<a href="" class="nav-link" data-toggle="modal" data-target="#notifModal" style="color:#cc0000">
@@ -51,7 +60,13 @@
 						<b><i class="fas fa-bell"></i>(0)</a></b>
 					<?php endif;?>
 		        </li>
+			<?php endif;?>
 
+		    <?php if(!Auth::logged_in()):?>
+		        <li class="nav-item">
+		          <a class="nav-link" href="index.php?pg=login">Log In</a>
+		        </li>
+	        <?php else:?>
 		        <li class="nav-item dropdown">
 		          <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 		            Hi, <?=auth('username')?> (<?=(Auth::get('role'))?>)
@@ -64,8 +79,6 @@
 		          </ul>
 		        </li>
 	    	 <?php endif;?>
-
-			 	
 
 	      </ul>
 	    </div>

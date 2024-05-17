@@ -11,14 +11,19 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
  		if(password_verify($_POST['password'], $row[0]['password']))
  		{
  			authenticate($row[0]);
-			redirect('home');
+
+			if(Auth::access('Admin') || Auth::access('Supervisor')){
+				redirect('admin');
+			}else{
+				redirect('home');
+			}
  		}else
 	 	{
-	 		$errors['password'] = "wrong password";
+	 		$errors['password'] = "Invalid Credentials";
 	 	}
  	}else
  	{
- 		$errors['email'] = "wrong email";
+ 		$errors['email'] = $_POST['email']." does not exist.";
  	}
 
 
