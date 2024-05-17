@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2024 at 12:35 AM
+-- Generation Time: May 18, 2024 at 01:39 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -248,7 +248,41 @@ INSERT INTO `audit_trail` (`id`, `user_id`, `source`, `action`, `details`, `date
 (252, 13, 'Suppliers', 'ADD', 'NEW SUPPLIER: Try \nCompany Address: try address', '2024-05-16 00:14:55'),
 (253, 13, 'Suppliers', 'UPDATE', 'UPDATED SUPPLIER: Try change\nCompany Name: Try → Try change\nCompany Address: try address → try address edit\nContact Person: kunyare lang → kunyare lang na edit\nContact Number: 123456789 → 10123456\nContact Email: try@gmail.com → naibakunyaretry@gmail.com\nBusiness Type: Vendor → Wholesale', '2024-05-16 00:15:36'),
 (254, 13, 'Suppliers', 'UPDATE', 'UPDATED SUPPLIER: kunyare\nCompany Name: faefa → kunyare\nContact Person: feaf → ito lang nabago\nContact Number: 4154 → 456789', '2024-05-16 00:16:00'),
-(255, 13, 'Suppliers', 'DELETE', 'DELETED SUPPLIER: Try change', '2024-05-16 00:16:14');
+(255, 13, 'Suppliers', 'DELETE', 'DELETED SUPPLIER: Try change', '2024-05-16 00:16:14'),
+(256, 13, 'Products', 'ADD', 'NEW ITEM: 2223682510867\nProduct: sample \nQty: 1 \nPrice: 43 \nCategory: Clothing', '2024-05-16 12:39:26'),
+(257, 1, 'Products', 'UPDATE', 'UPDATED ITEM: 2223443576258\nBarcode: 2222595564534 → 2223443576258', '2024-05-16 12:57:50'),
+(258, 1, 'Products', 'UPDATE', 'UPDATED ITEM: 2223960714790\nBarcode: 2222893703661 → 2223960714790', '2024-05-16 12:58:04'),
+(259, 1, 'Products', 'UPDATE', 'UPDATED ITEM: 2223388047139\nBarcode: 2222794658425 → 2223388047139', '2024-05-16 12:58:16'),
+(260, 1, 'Products', 'UPDATE', 'UPDATED ITEM: 2223731757377\nBarcode: 2222135063866 → 2223731757377', '2024-05-16 12:58:28'),
+(261, 1, 'Products', 'UPDATE', 'UPDATED ITEM: 2223442023546\nBarcode: 2222774991043 → 2223442023546', '2024-05-16 12:59:14'),
+(262, 1, 'Products', 'UPDATE', 'UPDATED ITEM: 8998666001702\nBarcode: 2223682510867 → 8998666001702\nProduct Name: sample → Coffee Sample\nCategory: Clothing → Beverages', '2024-05-16 12:59:53'),
+(263, 13, 'Products', 'UPDATE', 'UPDATED ITEM: 8998666001702\nCurrent Stock: 0 + 25 = 25', '2024-05-16 14:12:05'),
+(264, 13, 'Suppliers', 'ADD', 'NEW SUPPLIER: isa pa  \nCompany Address: isapang company', '2024-05-16 14:50:35'),
+(265, 13, 'Suppliers', 'UPDATE', 'UPDATED SUPPLIER: isa pa \nContact Email: kunyare@email.ito → maibanamanto@email.ito', '2024-05-16 14:58:15'),
+(266, 1, 'Users', 'DELETE', 'DELETED USER: tryexample \nEmail: tryexample@email.com \nGender: Female \nRole: Cashier', '2024-05-16 15:09:17'),
+(267, 6, 'Users', 'UPDATE', 'UPDATED USER: Rhayli\nGender: Male → <?$row[\'gender\']?>', '2024-05-16 15:37:24'),
+(268, 6, 'Users', 'UPDATE', 'UPDATED USER: Rhayli\nGender: <?$row → Male', '2024-05-16 15:37:36'),
+(269, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 8998666001702\nProduct Image: Modified', '2024-05-16 16:52:07'),
+(270, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 8998666001702\nProduct Name: Coffee Sample → Kopiko 3 in One\nPrice: 43.00 → 25.00', '2024-05-16 16:52:26'),
+(271, 6, 'Products', 'DELETE', 'DELETED ITEM: 2222881344444 \nProduct Name: Burger \nQty: 196 \nPrice: 10.00\n Category: Snacks', '2024-05-16 16:52:36'),
+(272, 6, 'Suppliers', 'UPDATE', 'UPDATED SUPPLIER: sample\nCompany Name: kunyare → sample', '2024-05-16 16:54:34'),
+(273, 6, 'Suppliers', 'UPDATE', 'UPDATED SUPPLIER: sample\nCompany Address: feaf → sample address\nContact Person: ito lang nabago → Juan Dela Cruz\nContact Number: 456789 → 0965487123', '2024-05-16 16:54:55'),
+(274, 8, 'Categories', 'ADD', 'NEW CATEGORY: Sample Category \nDescription: Category Desc', '2024-05-16 17:03:50'),
+(275, 13, 'Users', 'ADD', 'NEW USER: Samantha Berin \nEmail: sam@gmail.com \nGender: Female \nRole: User', '2024-05-16 17:06:13'),
+(276, 13, 'Users', 'UPDATE', 'UPDATED USER: Samantha Berin\nGender: Female → <?$row[\'gender\']?>\nRole: User → Cashier', '2024-05-16 17:06:58'),
+(277, 13, 'Products', 'ADD', 'NEW ITEM: 2223525334763\nProduct: Tango \nQty: 50 \nPrice: 39 \nCategory: Beverages', '2024-05-16 17:08:00'),
+(278, 13, 'Products', 'DELETE', 'DELETED ITEM: 2223780889232 \nProduct Name: Long Envelope \nQty: 61 \nPrice: 25.00\n Category: School Supplies', '2024-05-16 17:08:55'),
+(279, 13, 'Users', 'UPDATE', 'UPDATED USER: Samantha Berin\nGender: <?$row → Female', '2024-05-17 15:55:52'),
+(280, 13, 'Users', 'UPDATE', 'UPDATED USER: Samantha Berin\nGender: Female → <?$row[\'gender\']?>', '2024-05-17 15:55:58'),
+(281, 13, 'Users', 'UPDATE', 'UPDATED USER: Samantha Berin\nGender: <?$row → Female', '2024-05-17 15:56:25'),
+(282, 13, 'Users', 'UPDATE', 'UPDATED USER: Samantha Berin', '2024-05-17 15:56:29'),
+(283, 13, 'Users', 'UPDATE', 'UPDATED USER: Samantha Berin', '2024-05-17 15:56:52'),
+(284, 6, 'Users', 'DELETE', 'DELETED USER: Samantha Berin \nEmail: sam@gmail.com \nGender: Female \nRole: Cashier', '2024-05-18 00:15:40'),
+(285, 6, 'Users', 'UPDATE', 'UPDATED USER: Keqing\nPassword: Modified', '2024-05-18 01:14:47'),
+(286, 6, 'Users', 'UPDATE', 'UPDATED USER: Keqing\nGender: female → Female\nRole: cashier → Cashier', '2024-05-18 01:14:54'),
+(287, 6, 'Users', 'UPDATE', 'UPDATED USER: Keqing\nEmail: keqing@email.com → keqing@gmail.com', '2024-05-18 01:15:58'),
+(288, 6, 'Users', 'UPDATE', 'UPDATED USER: Keqing\nRole: Cashier → User', '2024-05-18 01:16:11'),
+(289, 6, 'Users', 'UPDATE', 'UPDATED USER: Rhayli\nRole: Supervisor → Manager', '2024-05-18 01:28:55');
 
 -- --------------------------------------------------------
 
@@ -280,7 +314,8 @@ INSERT INTO `categories` (`id`, `name`, `description`, `if_deleted`) VALUES
 (21, 'Beverages', 'Cheese, salami, ham, turkey, etc.', 1),
 (23, 'School Supplies', 'School tools and equipment for students', 0),
 (24, 'Clothing', 'Personal Clothes, styles, appearance, outfit', 0),
-(26, 'Vegetables', 'Potatoes, onions, carrots, salad greens, broccoli, peppers, tomatoes, cucumbers, etc.', 0);
+(26, 'Vegetables', 'Potatoes, onions, carrots, salad greens, broccoli, peppers, tomatoes, cucumbers, etc.', 0),
+(30, 'Sample Category', 'Category Desc', 0);
 
 -- --------------------------------------------------------
 
@@ -312,7 +347,11 @@ INSERT INTO `deleted_items` (`id`, `deleted_id`, `from_table`, `user_id`, `date_
 (20, 72, 'Products', 6, '2024-05-16 00:07:24'),
 (21, 72, 'Products', 6, '2024-05-16 00:07:25'),
 (22, 24, 'Products', 6, '2024-05-16 00:08:53'),
-(23, 3, 'Suppliers', 13, '2024-05-16 00:16:14');
+(23, 3, 'Suppliers', 13, '2024-05-16 00:16:14'),
+(24, 21, 'Users', 1, '2024-05-16 15:09:17'),
+(25, 4, 'Products', 6, '2024-05-16 16:52:36'),
+(26, 31, 'Products', 13, '2024-05-16 17:08:55'),
+(27, 22, 'Users', 6, '2024-05-18 00:15:40');
 
 -- --------------------------------------------------------
 
@@ -339,28 +378,30 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `barcode`, `description`, `stock`, `amount`, `image`, `user_id`, `date`, `views`, `category`, `if_deleted`) VALUES
-(3, '2222947895764', 'Crisps', 193, 4.95, 'uploads/a376a3a3f34dc21971ca40ac6dd6664585c197a6_4817.jpg', '1', '2022-01-09 08:46:29', 59, 'Snacks', 0),
-(4, '2222881344444', 'Burger', 196, 10.00, 'uploads/c322c54a3249e75ca46347a2c4ec9385672cb8e3_5698.jpg', '1', '2022-01-09 08:47:02', 18, 'Snacks', 0),
-(5, '1234', 'So good milk', 88, 20.00, 'uploads/e149b8702ddb43e5cda3c10803c563203b27cfc0_6896.jpg', '1', '2022-01-09 08:47:54', 26, 'Dairy Products', 0),
-(6, '2222925913231', 'OMO SOFTENER', 79, 50.00, 'uploads/e80200cc753ea342725ba080f668144fe4c763b9_7977.jpg', 'Unknown', '2022-01-16 08:35:24', 59, 'Detergent', 0),
-(8, '2222595564534', '7 UP', 40, 34.00, 'uploads/a6f424034ca00dc2c3b55761f2b1c31d689ca215_6797.jpg', '6', '2023-07-01 12:15:13', 5, 'Beverages', 0),
-(10, '2222974243584', 'Caramel Moolatte', 21, 5.00, 'uploads/7efe697d3a3cafad54574764253c1c4e5ee3de93_3723.png', '1', '2023-07-01 12:59:42', 7, 'Frozen Foods', 0),
-(11, '2222123200968', 'Monster', 198, 45.00, 'uploads/40fbc31c9795970c2b93419196a07354829db713_1986.jpg', '6', '2023-07-01 16:25:41', 5, 'Beverages', 0),
-(15, '2222135063866', 'Cola Zero in can', 25, 39.00, 'uploads/a54741bf6d71e0b52ce6cd34d0d526c6dd4e94a6_4751.jpg', '6', '2023-07-03 11:07:15', 1, 'Beverages', 0),
-(16, '2222877211304', 'Mirinda', 29, 35.00, 'uploads/e5bc61c49ab567c8e2a921d735f77c19955571c1_5489.jpg', '6', '2023-07-03 11:08:04', 1, 'Beverages', 0),
-(17, '2222774991043', 'Spindrift', 100, 50.00, 'uploads/5e07651f0573ad1d5851ce6ea26eae85d59b67dc_2952.jpg', '6', '2023-07-03 11:08:40', 0, 'Beverages', 0),
-(18, '2222794658425', 'Boost Energy', 55, 50.00, 'uploads/5edd64c0e275bd3cb6e9940773da659adfb228dc_9357.jpg', '6', '2023-07-03 13:20:21', 0, 'Beverages', 0),
-(19, '2222893703661', 'Fifa', 50, 23.00, 'uploads/product/a5ff699d375e9743390192ba1674647dfc51025d_2043.jpg', '6', '2023-07-03 14:11:53', 1, 'Beverages', 0),
-(23, '2223519322434', 'CDO Luncheon Meat 350g', 92, 150.00, 'uploads/product85853e6e9d47bdb7286d1076c1aeabdb0ebe74bc_9138.jpg', '1', '2024-03-26 07:16:38', 3, 'Canned Goods', 0),
+(3, '2222947895764', 'Crisps', 189, 4.95, 'uploads/a376a3a3f34dc21971ca40ac6dd6664585c197a6_4817.jpg', '1', '2022-01-09 08:46:29', 63, 'Snacks', 0),
+(4, '2222881344444', 'Burger', 196, 10.00, 'uploads/c322c54a3249e75ca46347a2c4ec9385672cb8e3_5698.jpg', '1', '2022-01-09 08:47:02', 18, 'Snacks', 1),
+(5, '1234', 'So good milk', 72, 20.00, 'uploads/e149b8702ddb43e5cda3c10803c563203b27cfc0_6896.jpg', '1', '2022-01-09 08:47:54', 42, 'Dairy Products', 0),
+(6, '2222925913231', 'OMO SOFTENER', 72, 50.00, 'uploads/e80200cc753ea342725ba080f668144fe4c763b9_7977.jpg', 'Unknown', '2022-01-16 08:35:24', 63, 'Detergent', 0),
+(8, '2223443576258', '7 UP', 3, 34.00, 'uploads/a6f424034ca00dc2c3b55761f2b1c31d689ca215_6797.jpg', '6', '2023-07-01 12:15:13', 35, 'Beverages', 0),
+(10, '2222974243584', 'Caramel Moolatte', 0, 5.00, 'uploads/7efe697d3a3cafad54574764253c1c4e5ee3de93_3723.png', '1', '2023-07-01 12:59:42', 13, 'Frozen Foods', 0),
+(11, '2222123200968', 'Monster', 179, 45.00, 'uploads/40fbc31c9795970c2b93419196a07354829db713_1986.jpg', '6', '2023-07-01 16:25:41', 21, 'Beverages', 0),
+(15, '2223731757377', 'Cola Zero in can', 1, 39.00, 'uploads/a54741bf6d71e0b52ce6cd34d0d526c6dd4e94a6_4751.jpg', '6', '2023-07-03 11:07:15', 22, 'Beverages', 0),
+(16, '2222877211304', 'Mirinda', 0, 35.00, 'uploads/e5bc61c49ab567c8e2a921d735f77c19955571c1_5489.jpg', '6', '2023-07-03 11:08:04', 3, 'Beverages', 0),
+(17, '2223442023546', 'Spindrift', 100, 50.00, 'uploads/5e07651f0573ad1d5851ce6ea26eae85d59b67dc_2952.jpg', '6', '2023-07-03 11:08:40', 0, 'Beverages', 0),
+(18, '2223388047139', 'Boost Energy', 54, 50.00, 'uploads/5edd64c0e275bd3cb6e9940773da659adfb228dc_9357.jpg', '6', '2023-07-03 13:20:21', 1, 'Beverages', 0),
+(19, '2223960714790', 'Fifa', 27, 23.00, 'uploads/product/a5ff699d375e9743390192ba1674647dfc51025d_2043.jpg', '6', '2023-07-03 14:11:53', 22, 'Beverages', 0),
+(23, '2223519322434', 'CDO Luncheon Meat 350g', 71, 150.00, 'uploads/product85853e6e9d47bdb7286d1076c1aeabdb0ebe74bc_9138.jpg', '1', '2024-03-26 07:16:38', 20, 'Canned Goods', 0),
 (24, '2223375580155', 'Lucky Me Beef Noodles', 95, 25.00, 'uploads/product7eb433368ec83423b493eb98b515917409b145f7_8232.jpg', '1', '2024-03-26 07:21:19', 1, 'Pasta & Noodles', 1),
 (25, '2223686064536', 'ID Lace', 100, 25.00, 'uploads/product6f21ec36b38e2139a8b5a643e1fcb6b5330e45d1_6010.jfif', '1', '2024-04-02 02:33:17', 0, 'School Supplies', 1),
-(26, '2223155520988', 'Black T-Shirt', 100, 150.00, 'uploads/product5ea1733a8d127449fd3ad4ed51938de31dd3e668_2079.jpg', '1', '2024-04-02 02:33:45', 0, 'Clothing', 0),
-(27, '2223636584775', 'White T-Shirt', 26, 150.00, 'uploads/productf57de05611fffd9ab731fb1ee845793193845dc0_9018.jpg', '1', '2024-04-02 02:34:19', 0, 'Clothing', 0),
+(26, '2223155520988', 'Black T-Shirt', 98, 150.00, 'uploads/product5ea1733a8d127449fd3ad4ed51938de31dd3e668_2079.jpg', '1', '2024-04-02 02:33:45', 1, 'Clothing', 0),
+(27, '2223636584775', 'White T-Shirt', 24, 150.00, 'uploads/productf57de05611fffd9ab731fb1ee845793193845dc0_9018.jpg', '1', '2024-04-02 02:34:19', 1, 'Clothing', 0),
 (30, '2223434399143', 'Snapback Hat', 53, 75.00, 'uploads/product3e434d486cd8acf99a8cd93bf97c966f5009d804_9935.jpg', '1', '2024-04-02 02:41:19', 0, 'Clothing', 1),
-(31, '2223780889232', 'Long Envelope', 61, 25.00, 'uploads/product/a7dd6ef7ce24f5af8f33242b463fac7e72630816_6287.jpg', '6', '2024-04-02 02:41:48', 0, 'School Supplies', 0),
+(31, '2223780889232', 'Long Envelope', 61, 25.00, 'uploads/product/a7dd6ef7ce24f5af8f33242b463fac7e72630816_6287.jpg', '6', '2024-04-02 02:41:48', 0, 'School Supplies', 1),
 (70, '2223921386792', 'alfadogs', 2, 45.00, 'uploads/product2e97d71d6565dd572ff5f0c9d85630eb43475ffd_7100.jpg', '13', '2024-05-14 19:12:56', 0, 'Snacks', 1),
 (71, '2223180878842', '2Dkun sticker', 12, 15.00, 'uploads/product886eb2a3918f07e75438af918699640273d1e423_5736.jpg', '6', '2024-05-15 10:38:10', 0, '---', 1),
-(72, '222378939232', 'Alfadogs', 1, 55.00, 'uploads/product/775a7935b90d0f0f9a20c772fbb18ce8d22861d0_5907.png', '6', '2024-05-15 14:58:31', 0, 'Snacks', 1);
+(72, '222378939232', 'Alfadogs', 1, 55.00, 'uploads/product/775a7935b90d0f0f9a20c772fbb18ce8d22861d0_5907.png', '6', '2024-05-15 14:58:31', 0, 'Snacks', 1),
+(73, '8998666001702', 'Kopiko 3 in One', 25, 25.00, 'uploads/product/5e4e4c01fefe22e5f14717ecd70dd58bcc2da777_2060.jpg', '13', '2024-05-16 12:39:26', 1, 'Beverages', 0),
+(74, '2223525334763', 'Tango', 50, 39.00, 'uploads/product1498ec696e35eb4f91eb6f8d2c3d391653b815c4_4689.png', '13', '2024-05-16 17:08:00', 0, 'Beverages', 0);
 
 -- --------------------------------------------------------
 
@@ -378,11 +419,11 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `role_name`) VALUES
-(1, 'admin'),
-(2, 'supervisor'),
-(3, 'manager'),
-(4, 'cashier'),
-(5, 'user');
+(1, 'Admin'),
+(2, 'Supervisor'),
+(3, 'Manager'),
+(4, 'Cashier'),
+(5, 'User');
 
 -- --------------------------------------------------------
 
@@ -438,30 +479,148 @@ INSERT INTO `sales` (`id`, `barcode`, `receipt_no`, `description`, `qty`, `amoun
 (226, '2223375580155', 20, 'Lucky Me Beef Noodles', 5, 25.00, 125.00, '2024-05-15 22:44:20', '6', 'CASH '),
 (227, '2223519322434', 20, 'CDO Luncheon Meat 350g', 3, 150.00, 450.00, '2024-05-15 22:44:20', '6', 'CASH '),
 (228, '2223519322434', 21, 'CDO Luncheon Meat 350g', 3, 150.00, 450.00, '2024-05-15 22:46:17', '6', 'CASH '),
-(229, '2222595564534', 21, '7 UP', 5, 34.00, 170.00, '2024-05-15 22:46:17', '6', 'CASH ');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `supplier`
---
-
-CREATE TABLE `supplier` (
-  `id` int(11) NOT NULL,
-  `supplier_name` varchar(255) NOT NULL,
-  `contact_person` varchar(255) NOT NULL,
-  `contact_number` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `business_type` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `supplier`
---
-
-INSERT INTO `supplier` (`id`, `supplier_name`, `contact_person`, `contact_number`, `email`, `business_type`) VALUES
-(5, 'School Supplies', 'John Ramos', '098765432132', 'john@gmail.com', 'Distributor'),
-(6, 'Food Supplies', 'Vincent Ilaya', '09345678543', 'vincent@gmail.com', 'Wholesale');
+(229, '2222595564534', 21, '7 UP', 5, 34.00, 170.00, '2024-05-15 22:46:17', '6', 'CASH '),
+(230, '2223519322434', 22, 'CDO Luncheon Meat 350g', 1, 150.00, 150.00, '2024-05-16 09:17:00', '1', 'CASH '),
+(231, '8998666001702', 23, 'Coffee Sample', 1, 43.00, 43.00, '2024-05-16 13:07:22', '12', 'CASH '),
+(232, '2223960714790', 24, 'Fifa', 1, 23.00, 23.00, '2024-05-16 15:41:04', '9', 'CASH '),
+(233, '2222877211304', 24, 'Mirinda', 1, 35.00, 35.00, '2024-05-16 15:41:04', '9', 'CASH '),
+(234, '2222123200968', 25, 'Monster', 1, 45.00, 45.00, '2024-05-16 15:44:17', '9', 'CASH '),
+(235, '2223519322434', 25, 'CDO Luncheon Meat 350g', 2, 150.00, 300.00, '2024-05-16 15:44:17', '9', 'CASH '),
+(236, '1234', 26, 'So good milk', 1, 20.00, 20.00, '2024-05-16 16:00:28', '13', 'CASH '),
+(237, '2223443576258', 26, '7 UP', 2, 34.00, 68.00, '2024-05-16 16:00:28', '13', 'CASH '),
+(238, '2222974243584', 27, 'Caramel Moolatte', 15, 5.00, 75.00, '2024-05-16 16:59:01', '8', 'CASH '),
+(239, '2222877211304', 28, 'Mirinda', 28, 35.00, 980.00, '2024-05-16 16:59:57', '8', 'CASH '),
+(240, '1234', 29, 'So good milk', 1, 20.00, 20.00, '2024-05-17 16:24:33', '13', 'CASH '),
+(241, '2223519322434', 29, 'CDO Luncheon Meat 350g', 2, 150.00, 300.00, '2024-05-17 16:24:33', '13', 'CASH '),
+(242, '2222123200968', 29, 'Monster', 1, 45.00, 45.00, '2024-05-17 16:24:33', '13', 'CASH '),
+(243, '2222925913231', 29, 'OMO SOFTENER', 4, 50.00, 200.00, '2024-05-17 16:24:33', '13', 'CASH '),
+(244, '2223960714790', 29, 'Fifa', 2, 23.00, 46.00, '2024-05-17 16:24:33', '13', 'CASH '),
+(245, '2222974243584', 30, 'Caramel Moolatte', 2, 5.00, 10.00, '2024-05-17 16:44:17', '13', 'CASH '),
+(246, '2223960714790', 30, 'Fifa', 1, 23.00, 23.00, '2024-05-17 16:44:17', '13', 'CASH '),
+(247, '2223519322434', 30, 'CDO Luncheon Meat 350g', 1, 150.00, 150.00, '2024-05-17 16:44:17', '13', 'CASH '),
+(248, '2223443576258', 30, '7 UP', 1, 34.00, 34.00, '2024-05-17 16:44:17', '13', 'CASH '),
+(249, '2222123200968', 30, 'Monster', 1, 45.00, 45.00, '2024-05-17 16:44:17', '13', 'CASH '),
+(250, '2222974243584', 31, 'Caramel Moolatte', 1, 5.00, 5.00, '2024-05-17 16:49:41', '13', 'CASH '),
+(251, '1234', 31, 'So good milk', 1, 20.00, 20.00, '2024-05-17 16:49:41', '13', 'CASH '),
+(252, '2222947895764', 31, 'Crisps', 1, 4.95, 4.95, '2024-05-17 16:49:41', '13', 'CASH '),
+(253, '2223443576258', 31, '7 UP', 1, 34.00, 34.00, '2024-05-17 16:49:41', '13', 'CASH '),
+(254, '2223519322434', 31, 'CDO Luncheon Meat 350g', 1, 150.00, 150.00, '2024-05-17 16:49:41', '13', 'CASH '),
+(255, '2223960714790', 31, 'Fifa', 1, 23.00, 23.00, '2024-05-17 16:49:41', '13', 'CASH '),
+(256, '2222974243584', 32, 'Caramel Moolatte', 1, 5.00, 5.00, '2024-05-17 16:56:50', '13', 'CASH '),
+(257, '1234', 32, 'So good milk', 1, 20.00, 20.00, '2024-05-17 16:56:50', '13', 'CASH '),
+(258, '2222925913231', 32, 'OMO SOFTENER', 1, 50.00, 50.00, '2024-05-17 16:56:50', '13', 'CASH '),
+(259, '2222974243584', 33, 'Caramel Moolatte', 1, 5.00, 5.00, '2024-05-17 17:05:37', '13', 'CASH '),
+(260, '1234', 33, 'So good milk', 1, 20.00, 20.00, '2024-05-17 17:05:37', '13', 'CASH '),
+(261, '2223519322434', 33, 'CDO Luncheon Meat 350g', 1, 150.00, 150.00, '2024-05-17 17:05:37', '13', 'CASH '),
+(262, '2223960714790', 33, 'Fifa', 1, 23.00, 23.00, '2024-05-17 17:05:37', '13', 'CASH '),
+(263, '2222123200968', 34, 'Monster', 1, 45.00, 45.00, '2024-05-17 17:05:58', '13', 'CASH '),
+(264, '2223960714790', 34, 'Fifa', 1, 23.00, 23.00, '2024-05-17 17:05:58', '13', 'CASH '),
+(265, '2222925913231', 35, 'OMO SOFTENER', 1, 50.00, 50.00, '2024-05-17 17:09:29', '13', 'CASH '),
+(266, '2223519322434', 35, 'CDO Luncheon Meat 350g', 1, 150.00, 150.00, '2024-05-17 17:09:29', '13', 'CASH '),
+(267, '2223443576258', 35, '7 UP', 1, 34.00, 34.00, '2024-05-17 17:09:29', '13', 'CASH '),
+(268, '2222947895764', 35, 'Crisps', 1, 4.95, 4.95, '2024-05-17 17:09:29', '13', 'CASH '),
+(269, '1234', 36, 'So good milk', 1, 20.00, 20.00, '2024-05-17 17:10:01', '13', 'CASH '),
+(270, '2222123200968', 36, 'Monster', 1, 45.00, 45.00, '2024-05-17 17:10:01', '13', 'CASH '),
+(271, '2223960714790', 36, 'Fifa', 1, 23.00, 23.00, '2024-05-17 17:10:01', '13', 'CASH '),
+(272, '2222974243584', 37, 'Caramel Moolatte', 1, 5.00, 5.00, '2024-05-17 17:10:44', '13', 'CASH '),
+(273, '1234', 37, 'So good milk', 1, 20.00, 20.00, '2024-05-17 17:10:44', '13', 'CASH '),
+(274, '2223443576258', 37, '7 UP', 1, 34.00, 34.00, '2024-05-17 17:10:44', '13', 'CASH '),
+(275, '1234', 38, 'So good milk', 1, 20.00, 20.00, '2024-05-17 17:13:22', '13', 'CASH '),
+(276, '2223960714790', 38, 'Fifa', 2, 23.00, 46.00, '2024-05-17 17:13:22', '13', 'CASH '),
+(277, '2223443576258', 38, '7 UP', 1, 34.00, 34.00, '2024-05-17 17:15:02', '9', 'CASH '),
+(278, '2223731757377', 38, 'Cola Zero in can', 1, 39.00, 39.00, '2024-05-17 17:15:02', '9', 'CASH '),
+(279, '2223960714790', 38, 'Fifa', 1, 23.00, 23.00, '2024-05-17 17:15:02', '9', 'CASH '),
+(280, '2223443576258', 38, '7 UP', 1, 34.00, 34.00, '2024-05-17 17:16:24', '9', 'CASH '),
+(281, '1234', 38, 'So good milk', 1, 20.00, 20.00, '2024-05-17 17:16:24', '9', 'CASH '),
+(282, '2223731757377', 38, 'Cola Zero in can', 1, 39.00, 39.00, '2024-05-17 17:16:24', '9', 'CASH '),
+(283, '2223519322434', 38, 'CDO Luncheon Meat 350g', 1, 150.00, 150.00, '2024-05-17 17:16:24', '9', 'CASH '),
+(284, '2223960714790', 38, 'Fifa', 1, 23.00, 23.00, '2024-05-17 17:16:24', '9', 'CASH '),
+(285, '1234', 39, 'So good milk', 1, 20.00, 20.00, '2024-05-17 17:16:48', '9', 'CASH '),
+(286, '2222123200968', 39, 'Monster', 1, 45.00, 45.00, '2024-05-17 17:16:48', '9', 'CASH '),
+(287, '2223443576258', 39, '7 UP', 2, 34.00, 68.00, '2024-05-17 17:16:48', '9', 'CASH '),
+(288, '2223731757377', 39, 'Cola Zero in can', 1, 39.00, 39.00, '2024-05-17 17:20:38', '9', 'CASH '),
+(289, '2223443576258', 39, '7 UP', 1, 34.00, 34.00, '2024-05-17 17:20:38', '9', 'CASH '),
+(290, '2223960714790', 39, 'Fifa', 1, 23.00, 23.00, '2024-05-17 17:20:38', '9', 'CASH '),
+(291, '1234', 41, 'So good milk', 1, 20.00, 20.00, '2024-05-17 17:25:29', '9', 'CASH '),
+(292, '2223443576258', 42, '7 UP', 1, 34.00, 34.00, '2024-05-17 17:25:29', '9', 'CASH '),
+(293, '2223731757377', 43, 'Cola Zero in can', 1, 39.00, 39.00, '2024-05-17 17:25:29', '9', 'CASH '),
+(294, '2223443576258', 44, '7 UP', 1, 34.00, 34.00, '2024-05-17 17:27:31', '9', 'CASH '),
+(295, '2223731757377', 44, 'Cola Zero in can', 2, 39.00, 78.00, '2024-05-17 17:27:31', '9', 'CASH '),
+(296, '2223519322434', 44, 'CDO Luncheon Meat 350g', 1, 150.00, 150.00, '2024-05-17 17:27:31', '9', 'CASH '),
+(297, '2223443576258', 45, '7 UP', 1, 34.00, 34.00, '2024-05-17 18:37:24', '9', 'CASH '),
+(298, '1234', 45, 'So good milk', 1, 20.00, 20.00, '2024-05-17 18:37:24', '9', 'CASH '),
+(299, '2222123200968', 45, 'Monster', 1, 45.00, 45.00, '2024-05-17 18:37:24', '9', 'CASH '),
+(300, '2223731757377', 45, 'Cola Zero in can', 1, 39.00, 39.00, '2024-05-17 18:37:24', '9', 'CASH '),
+(301, '2222947895764', 46, 'Crisps', 1, 4.95, 4.95, '2024-05-17 18:40:22', '13', 'CASH '),
+(302, '2223960714790', 46, 'Fifa', 1, 23.00, 23.00, '2024-05-17 18:40:22', '13', 'CASH '),
+(303, '2223519322434', 46, 'CDO Luncheon Meat 350g', 1, 150.00, 150.00, '2024-05-17 18:40:22', '13', 'CASH '),
+(304, '1234', 46, 'So good milk', 1, 20.00, 20.00, '2024-05-17 18:40:22', '13', 'CASH '),
+(305, '2223731757377', 47, 'Cola Zero in can', 3, 39.00, 117.00, '2024-05-17 18:42:40', '9', 'CASH '),
+(306, '2222123200968', 47, 'Monster', 2, 45.00, 90.00, '2024-05-17 18:42:40', '9', 'CASH '),
+(307, '2223731757377', 48, 'Cola Zero in can', 1, 39.00, 39.00, '2024-05-17 18:49:46', '9', 'CASH '),
+(308, '2223960714790', 48, 'Fifa', 1, 23.00, 23.00, '2024-05-17 18:49:46', '9', 'CASH '),
+(309, '2222123200968', 48, 'Monster', 1, 45.00, 45.00, '2024-05-17 18:49:46', '9', 'CASH '),
+(310, '2223443576258', 48, '7 UP', 1, 34.00, 34.00, '2024-05-17 18:49:46', '9', 'CASH '),
+(311, '2223731757377', 49, 'Cola Zero in can', 1, 39.00, 39.00, '2024-05-17 18:50:09', '9', 'CASH '),
+(312, '2223960714790', 49, 'Fifa', 1, 23.00, 23.00, '2024-05-17 18:50:09', '9', 'CASH '),
+(313, '2223519322434', 49, 'CDO Luncheon Meat 350g', 1, 150.00, 150.00, '2024-05-17 18:50:09', '9', 'CASH '),
+(314, '2223443576258', 49, '7 UP', 1, 34.00, 34.00, '2024-05-17 18:50:09', '9', 'CASH '),
+(315, '2223443576258', 50, '7 UP', 1, 34.00, 34.00, '2024-05-17 19:02:18', '9', 'CASH '),
+(316, '2222123200968', 50, 'Monster', 1, 45.00, 45.00, '2024-05-17 19:02:18', '9', 'CASH '),
+(317, '2223519322434', 50, 'CDO Luncheon Meat 350g', 1, 150.00, 150.00, '2024-05-17 19:02:18', '9', 'CASH '),
+(318, '2223731757377', 50, 'Cola Zero in can', 1, 39.00, 39.00, '2024-05-17 19:02:18', '9', 'CASH '),
+(319, '2223731757377', 51, 'Cola Zero in can', 1, 39.00, 39.00, '2024-05-17 19:02:48', '9', 'CASH '),
+(320, '2223960714790', 51, 'Fifa', 1, 23.00, 23.00, '2024-05-17 19:02:48', '9', 'CASH '),
+(321, '2223443576258', 51, '7 UP', 1, 34.00, 34.00, '2024-05-17 19:02:48', '9', 'CASH '),
+(322, '2223443576258', 52, '7 UP', 1, 34.00, 34.00, '2024-05-17 19:03:03', '13', 'CASH '),
+(323, '2223519322434', 52, 'CDO Luncheon Meat 350g', 1, 150.00, 150.00, '2024-05-17 19:03:03', '13', 'CASH '),
+(324, '2222123200968', 52, 'Monster', 1, 45.00, 45.00, '2024-05-17 19:03:03', '13', 'CASH '),
+(325, '2223731757377', 53, 'Cola Zero in can', 1, 39.00, 39.00, '2024-05-17 19:03:17', '13', 'CASH '),
+(326, '2223443576258', 53, '7 UP', 1, 34.00, 34.00, '2024-05-17 19:03:17', '13', 'CASH '),
+(327, '2223519322434', 53, 'CDO Luncheon Meat 350g', 1, 150.00, 150.00, '2024-05-17 19:03:17', '13', 'CASH '),
+(328, '2222123200968', 54, 'Monster', 2, 45.00, 90.00, '2024-05-17 19:05:44', '9', 'CASH '),
+(329, '2223731757377', 54, 'Cola Zero in can', 1, 39.00, 39.00, '2024-05-17 19:05:44', '9', 'CASH '),
+(330, '2223443576258', 54, '7 UP', 1, 34.00, 34.00, '2024-05-17 19:05:44', '9', 'CASH '),
+(331, '2223443576258', 55, '7 UP', 1, 34.00, 34.00, '2024-05-17 19:09:35', '9', 'CASH '),
+(332, '2223960714790', 55, 'Fifa', 1, 23.00, 23.00, '2024-05-17 19:09:35', '9', 'CASH '),
+(333, '2223731757377', 55, 'Cola Zero in can', 1, 39.00, 39.00, '2024-05-17 19:09:35', '9', 'CASH '),
+(334, '2223519322434', 55, 'CDO Luncheon Meat 350g', 1, 150.00, 150.00, '2024-05-17 19:09:35', '9', 'CASH '),
+(335, '2223443576258', 56, '7 UP', 1, 34.00, 34.00, '2024-05-17 19:10:34', '9', 'CASH '),
+(336, '2223960714790', 56, 'Fifa', 1, 23.00, 23.00, '2024-05-17 19:10:34', '9', 'CASH '),
+(337, '1234', 57, 'So good milk', 1, 20.00, 20.00, '2024-05-17 19:10:48', '9', 'CASH '),
+(338, '2223731757377', 57, 'Cola Zero in can', 1, 39.00, 39.00, '2024-05-17 19:10:48', '9', 'CASH '),
+(339, '2223443576258', 58, '7 UP', 2, 34.00, 68.00, '2024-05-17 19:11:10', '9', 'CASH '),
+(340, '2223731757377', 58, 'Cola Zero in can', 1, 39.00, 39.00, '2024-05-17 19:11:10', '9', 'CASH '),
+(341, '2223443576258', 59, '7 UP', 3, 34.00, 102.00, '2024-05-17 19:16:20', '13', 'CASH '),
+(342, '2222925913231', 60, 'OMO SOFTENER', 1, 50.00, 50.00, '2024-05-17 19:22:08', '13', 'CASH '),
+(343, '2222123200968', 60, 'Monster', 1, 45.00, 45.00, '2024-05-17 19:22:08', '13', 'CASH '),
+(344, '2223731757377', 61, 'Cola Zero in can', 1, 39.00, 39.00, '2024-05-17 19:23:54', '13', 'CASH '),
+(345, '2223443576258', 61, '7 UP', 1, 34.00, 34.00, '2024-05-17 19:23:54', '13', 'CASH '),
+(346, '2223443576258', 62, '7 UP', 1, 34.00, 34.00, '2024-05-17 19:45:41', '13', 'CASH '),
+(347, '2223960714790', 62, 'Fifa', 1, 23.00, 23.00, '2024-05-17 19:45:41', '13', 'CASH '),
+(348, '2223519322434', 62, 'CDO Luncheon Meat 350g', 1, 150.00, 150.00, '2024-05-17 19:45:41', '13', 'CASH '),
+(349, '2223731757377', 62, 'Cola Zero in can', 1, 39.00, 39.00, '2024-05-17 19:45:41', '13', 'CASH '),
+(350, '1234', 63, 'So good milk', 1, 20.00, 20.00, '2024-05-17 19:48:33', '13', 'CASH '),
+(351, '2222123200968', 64, 'Monster', 2, 45.00, 90.00, '2024-05-17 19:49:33', '13', 'CASH '),
+(352, '2223443576258', 64, '7 UP', 1, 34.00, 34.00, '2024-05-17 19:49:33', '13', 'CASH '),
+(353, '2223960714790', 65, 'Fifa', 1, 23.00, 23.00, '2024-05-17 19:50:27', '13', 'CASH '),
+(354, '2223731757377', 65, 'Cola Zero in can', 1, 39.00, 39.00, '2024-05-17 19:50:27', '13', 'CASH '),
+(355, '2223443576258', 65, '7 UP', 1, 34.00, 34.00, '2024-05-17 19:50:27', '13', 'CASH '),
+(356, '2223443576258', 66, '7 UP', 2, 34.00, 68.00, '2024-05-17 19:51:58', '13', 'CASH '),
+(357, '2223519322434', 66, 'CDO Luncheon Meat 350g', 3, 150.00, 450.00, '2024-05-17 19:51:58', '13', 'CASH '),
+(358, '1234', 66, 'So good milk', 1, 20.00, 20.00, '2024-05-17 19:51:58', '13', 'CASH '),
+(359, '2222123200968', 66, 'Monster', 1, 45.00, 45.00, '2024-05-17 19:51:58', '13', 'CASH '),
+(360, '2223388047139', 66, 'Boost Energy', 1, 50.00, 50.00, '2024-05-17 19:51:58', '13', 'CASH '),
+(361, '2223155520988', 66, 'Black T-Shirt', 2, 150.00, 300.00, '2024-05-17 19:51:58', '13', 'CASH '),
+(362, '2223636584775', 66, 'White T-Shirt', 2, 150.00, 300.00, '2024-05-17 19:51:58', '13', 'CASH '),
+(363, '2223443576258', 67, '7 UP', 1, 34.00, 34.00, '2024-05-17 20:09:54', '13', 'CASH '),
+(364, '2223960714790', 67, 'Fifa', 1, 23.00, 23.00, '2024-05-17 20:09:54', '13', 'CASH '),
+(365, '2222123200968', 67, 'Monster', 1, 45.00, 45.00, '2024-05-17 20:09:54', '13', 'CASH '),
+(366, '2223731757377', 67, 'Cola Zero in can', 1, 39.00, 39.00, '2024-05-17 20:09:54', '13', 'CASH '),
+(367, '2222947895764', 68, 'Crisps', 1, 4.95, 4.95, '2024-05-17 20:14:20', '13', ' '),
+(368, '2223960714790', 68, 'Fifa', 1, 23.00, 23.00, '2024-05-17 20:14:20', '13', ' '),
+(369, '2223443576258', 68, '7 UP', 2, 34.00, 68.00, '2024-05-17 20:14:20', '13', ' '),
+(370, '2223731757377', 68, 'Cola Zero in can', 1, 39.00, 39.00, '2024-05-17 20:14:20', '13', ' ');
 
 -- --------------------------------------------------------
 
@@ -486,8 +645,9 @@ CREATE TABLE `suppliers` (
 
 INSERT INTO `suppliers` (`id`, `company_name`, `company_address`, `contact_person`, `contact_number`, `contact_email`, `business_type`, `if_deleted`) VALUES
 (1, 'Sample Company', '1234 Sample Address St. Manila, Philippines', 'Sample Name', '09123456799', 'example@email.com', 'Service', 0),
-(2, 'kunyare', 'feaf', 'ito lang nabago', '456789', 'faf@aefae.com', 'Manufacturer', 0),
-(3, 'Try change', 'try address edit', 'kunyare lang na edit', '10123456', 'naibakunyaretry@gmail.com', 'Wholesale', 1);
+(2, 'sample', 'sample address', 'Juan Dela Cruz', '0965487123', 'faf@aefae.com', 'Manufacturer', 0),
+(3, 'Try change', 'try address edit', 'kunyare lang na edit', '10123456', 'naibakunyaretry@gmail.com', 'Wholesale', 1),
+(4, 'isa pa ', 'isapang company', 'Llyle', '09123456789', 'maibanamanto@email.ito', 'Manufacturer', 0);
 
 -- --------------------------------------------------------
 
@@ -514,8 +674,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `date`, `image`, `role`, `gender`, `deletable`, `void_code`, `if_deleted`) VALUES
-(1, 'TUP Admin', 'tup@tup.com', '$2y$10$nah2kwq0IHoepQc/JDV78OgQVfz5fS3X3qZRhqnP5qc7LOYJKS.Yi', '2021-12-28 09:33:15', 'uploads/b9f374a1b62b51b3ded23d37248aa8ab5f9d34fc_3518.png', 'Admin', 'male', 0, '12345', 0),
-(2, 'Keqing', 'keqing@email.com', '$2y$10$nah2kwq0IHoepQc/JDV78OgQVfz5fS3X3qZRhqnP5qc7LOYJKS.Yi', '2021-12-28 10:39:58', 'uploads/user/c73cac02fb8be32cd2d07a65c6092db6c04a074e_7337.png', 'cashier', 'female', 1, '', 0),
+(1, 'TUP Admin', 'tup@tup.com', '$2y$10$nah2kwq0IHoepQc/JDV78OgQVfz5fS3X3qZRhqnP5qc7LOYJKS.Yi', '2021-12-28 09:33:15', 'uploads/b9f374a1b62b51b3ded23d37248aa8ab5f9d34fc_3518.png', 'admin', 'male', 0, '12345', 0),
+(2, 'Keqing', 'keqing@gmail.com', '$2y$10$dphVYgQBThDc6JQR40XMH.TNDpcdglALdvq.WL4WcB.ox3MiCT6Ci', '2021-12-28 10:39:58', 'uploads/user/c73cac02fb8be32cd2d07a65c6092db6c04a074e_7337.png', 'User', 'Female', 1, '', 0),
 (5, 'some user', 'mail@mail.com', '$2y$10$nah2kwq0IHoepQc/JDV78OgQVfz5fS3X3qZRhqnP5qc7LOYJKS.Yi', '2022-02-17 19:13:49', NULL, 'User', 'male', 1, '', 1),
 (6, 'Trick', 'jhypsss@gmail.com', '$2y$10$VJanESVTpnaT0JyiTgKPGOTeP8Yps7gbF6T0vB1aoS7hEzlGcSSBS', '2023-07-01 09:30:31', 'uploads/user/07524a465c5686c33c39f99fe955173b8d2d3431_9044.jpg', 'Admin', 'Male', 0, '54321', 0),
 (7, 'Hitori Gotoh', 'bocchi@gmail.com', '$2y$10$MGfAr8fNoCLlPlh6dQOYDejX3oq92DJBkULiXhapGTx4Hc3Dd.LkS', '2023-07-01 09:31:07', 'uploads/71266d5faa035f21973b3dc9e234bac0cc299bab_8219.jpg', 'Supervisor', 'Female', 1, '', 0),
@@ -525,8 +685,9 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `date`, `image`, `ro
 (12, 'Wednesday', 'wednesday@gmail.com', '$2y$10$dgJz2vbwYuVDh0TM7zn7BunzW9jpJQaS6HExB2P3EwOgo43lP098i', '2023-07-03 12:02:31', 'uploads/188e2135e926173ebb76e6894cce1f51e1b3b42d_2500.jpg', 'Cashier', 'Female', 1, '', 0),
 (13, 'Power', 'power@gmail.com', '$2y$10$UaaxmelZNHzmRUYG2EtRjuCprMsPOCmxjpClBz68rY1tDv6o8sX1W', '2023-07-03 12:09:34', 'uploads/user/c74fc9e325c707e0f7c4e5bcf94f1bde505985f1_2149.jpg', 'Admin', 'Male', 1, '', 0),
 (14, 'Zhara Gonzales', 'zharagon@gmail.com', '$2y$10$W9tl/OeBHy4GNWxxlgOLYeKbPYmpxSMSwVppgCy3UddG9M3OnAQVu', '2024-05-10 06:15:17', NULL, 'Supervisor', 'Female', 1, '', 0),
-(20, 'Rhayli', 'rhayli@gmail.com', '$2y$10$ONdTq41AaJ6HKdluYkK7M.AtJTrK.B34KzHW/Q5N6D8vJFScwP5Zq', '2024-05-13 03:10:16', 'uploads/user/727cfe0614525a64ae2b68f61ea2ad2810ac0ba7_1552.png', 'Supervisor', 'Male', 1, '111222', 0),
-(21, 'tryexample', 'tryexample@email.com', '$2y$10$J3LeBmQ8iPWBo1XYABw8.uCvF4wRfgCTjkphNk.HAihThMlIsqr.C', '2024-05-15 09:27:33', NULL, 'Cashier', 'Female', 1, '', 0);
+(20, 'Rhayli', 'rhayli@gmail.com', '$2y$10$ONdTq41AaJ6HKdluYkK7M.AtJTrK.B34KzHW/Q5N6D8vJFScwP5Zq', '2024-05-13 03:10:16', 'uploads/user/727cfe0614525a64ae2b68f61ea2ad2810ac0ba7_1552.png', 'Manager', 'Male', 1, '111222', 0),
+(21, 'tryexample', 'tryexample@email.com', '$2y$10$J3LeBmQ8iPWBo1XYABw8.uCvF4wRfgCTjkphNk.HAihThMlIsqr.C', '2024-05-15 09:27:33', NULL, 'Cashier', 'Female', 1, '', 1),
+(22, 'Samantha Berin', 'sam@gmail.com', '$2y$10$igAqUXgMQ/Va.kByjGzZvO4m3k43EzDN89u9aHUmDkwQ07acP8OA6', '2024-05-16 17:06:13', NULL, 'Cashier', 'Female', 1, '', 1);
 
 -- --------------------------------------------------------
 
@@ -601,12 +762,6 @@ ALTER TABLE `sales`
   ADD KEY `receipt_no` (`receipt_no`);
 
 --
--- Indexes for table `supplier`
---
-ALTER TABLE `supplier`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `suppliers`
 --
 ALTER TABLE `suppliers`
@@ -639,55 +794,49 @@ ALTER TABLE `void_items`
 -- AUTO_INCREMENT for table `audit_trail`
 --
 ALTER TABLE `audit_trail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=256;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=290;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `deleted_items`
 --
 ALTER TABLE `deleted_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=230;
-
---
--- AUTO_INCREMENT for table `supplier`
---
-ALTER TABLE `supplier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=371;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `void_items`
