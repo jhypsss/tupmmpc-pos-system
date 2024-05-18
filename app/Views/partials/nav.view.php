@@ -2,14 +2,13 @@
 	$productClass = new Product();
 	$stocks = $productClass->query("SELECT * FROM products WHERE if_deleted=0 AND (stock <= 20 OR stock = 0)");
 	$stocksCount = $productClass->query("SELECT COUNT(*) AS count FROM products WHERE if_deleted=0 AND (stock <= 20 OR stock = 0)");
+	$role = Auth::get('role');
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light" style="min-width:350px; background-color: #ffdddd; ">
 	  <div class="container-fluid">
 		
-	  	<?php 
-			$role = Auth::get('role');
-			if ($role=='Supervisor' || $role=='Manager' || $role=='Cashier' || $role=='User'):?>
+	  	<?php if ($role=='Supervisor' || $role=='Manager' || $role=='Cashier' || $role=='User'):?>
 				<a class="navbar-brand" href="index.php?pg=home" style="font-family:Verdana; font-weight:bold;">
 		<?php else: ?>
 				<a class="navbar-brand" href="index.php?pg=admin" style="font-family:Verdana; font-weight:bold;">
@@ -23,8 +22,7 @@
 	    </button>
 	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-		  	<?php $role = Auth::get('role');
-				if ($role=='Admin'):?>
+		  	<?php if ($role=='Admin'):?>
 
 					<li class="nav-item">
 						<a class="nav-link active" aria-current="page" href="index.php?pg=admin">Admin Panel</a>
@@ -50,7 +48,7 @@
 		        </li>
 		    <?php endif;?>
 
-			<?php if(!Auth::access('User')):?>
+			<?php if($role!='User'):?>
 				<li class="nav-item">
 					<?php if (!empty($stocks)):?>
 						<a href="" class="nav-link" data-toggle="modal" data-target="#notifModal" style="color:#cc0000">

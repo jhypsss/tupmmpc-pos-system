@@ -37,14 +37,14 @@
 </script>
 
 
-<div class="table-responsive" style="height: 650px;overflow-y: scroll;">
+<div class="table-responsive" style="height: 600px;overflow-y: scroll;">
 
     <!-- Table section -->
-    <table class="table table-striped table-hover">
+    <table class="table table-responsive table-striped table-hover">
         <thead class="table-light" style="position: sticky;top: 0">
         <tr>
             <th>Barcode</th>
-            <th>Product</th>
+            <th>Item Name</th>
             <th>Category</th>
             <th>Stock</th>
             <th>Price</th>

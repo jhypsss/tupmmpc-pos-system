@@ -5,12 +5,13 @@ $tab = $_GET['tab'] ?? 'dashboard';
 if($tab == "users")
 {
 
-	$limit = 5;
-	$pager = new Pager($limit);
-	$offset = $pager->offset;
+	//$limit = 5;
+	//$pager = new Pager($limit);
+	//$offset = $pager->offset;
 
 	$userClass = new User();
-	$users = $userClass->query("select * from users where if_deleted = 0 order by id desc limit $limit offset $offset");
+	//$users = $userClass->query("select * from users where if_deleted = 0 order by id desc limit $limit offset $offset");
+	$users = $userClass->query("select * from users where if_deleted = 0 order by id desc");
 	$totalUsers = $userClass->query("SELECT COUNT(*) AS total FROM users WHERE if_deleted=0;");
 }
 
@@ -23,7 +24,7 @@ else if($tab == "categories")
 
 else if($tab == "products")
 {
-	//$limit = 5;
+	//$limit = 10;
 	//$pager = new Pager($limit);
 	//$offset = $pager->offset;
 

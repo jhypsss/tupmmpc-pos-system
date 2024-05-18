@@ -1,8 +1,9 @@
-<div class="table-responsive">
+<div class="table-responsive" style="height: 650px;overflow-y: scroll;">
 	<table class="table table-striped table-hover">
+		<thead class="table-light" style="position: sticky;top: 0">
 		<tr>
 			<th>Image</th>
-			<th>Username</th>
+			<th>Name</th>
 			<th>Gender</th>
 			<th>Email</th>
 			<th>Role</th>
@@ -13,6 +14,8 @@
 				</a>
 			</th>
 		</tr>
+		</thead>
+		<tbody>
 
 		<?php if (!empty($users)):?>
 			<?php foreach ($users as $user):?>
@@ -44,9 +47,8 @@
 			</tr>
 			<?php endforeach;?>
 		<?php endif;?>
-		
+		</tbody>
 	</table>
 
-	<?php 
-	$pager->display($totalUsers)?>
+	<?php //$pager->display($totalUsers)?>
 </div>

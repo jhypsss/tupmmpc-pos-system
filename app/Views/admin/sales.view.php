@@ -3,12 +3,17 @@
   
   <li class="nav-item">
     <a class="nav-link <?=($section =='table') ? 'active':''?>" aria-current="page" href="index.php?pg=admin&tab=sales">
-	    Table View
+	    List View
 	</a>
   </li>
   <li class="nav-item">
     <a class="nav-link <?=($section =='graph') ? 'active':''?>" href="index.php?pg=admin&tab=sales&s=graph">
 	    Graph View
+	</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link <?=($section =='generate') ? 'active':''?>" href="index.php?pg=admin&tab=sales&s=generate">
+	    Generate Sales View
 	</a>
   </li>
   
@@ -40,10 +45,11 @@
 			<input type="hidden" name="tab" value="sales">
 	</form>
 	<div class="clearfix" ></div>
+	<h2>Today's Total: ₱<?=number_format($sales_total,2)?></h2>	
 </div>
 
-<div class="table-responsive">
-	<h2>Today's Total: ₱<?=number_format($sales_total,2)?></h2>
+<div class="table-responsive" style="height: 500px;overflow-y: scroll;">
+	
 	<table class="table table-striped table-hover">
 		<thead class="table-light" style="position: sticky;top: 0">
 		<tr>
@@ -102,7 +108,7 @@
 ?>
 </div>
 
-<?php else:?>
+<?php elseif($section == 'graph'):?>
 	<?php 
 		$graph = new Graph();
 
@@ -156,5 +162,7 @@
 		}
 
 	?>
+<?php elseif($section == 'generate'):?>
+
 
 <?php endif;?>
