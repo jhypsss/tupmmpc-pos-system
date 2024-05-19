@@ -39,11 +39,12 @@ System Functions to do
 ✅ Receipt Preview
 ✅ Not Available Items must also show in POS
 - yellow color if low stocks in POS 
+✅ Generate Sales Report
 
 
 System Checking
 ✅ Receipt = need to show who's the encoder with date and time (will fix and modify soon)
-- Generate Sales Report = Today's, Monthly, Annual (made by third party programmer - will migrate it to dashboard panel)
+✅ Generate Sales Report = Today's, Monthly, Annual (made by third party programmer - will migrate it to dashboard panel)
 
 New Ideas:
 - Tallying Today's Sales per User/Cashier
