@@ -1,4 +1,25 @@
-
+<style>
+	@media print {
+		@page {
+			size: letter;
+		}
+		body * {
+			visibility: hidden;
+		}
+		
+		#generateResult, #generateResult * {
+			visibility: visible;
+		}
+		#generateResult {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			margin: 0;
+		}
+		
+	}
+</style>
 <ul class="nav nav-tabs">
   
   <li class="nav-item">
@@ -13,7 +34,7 @@
   </li>
   <li class="nav-item">
     <a class="nav-link <?=($section =='generate') ? 'active':''?>" href="index.php?pg=admin&tab=sales&s=generate">
-	    Generate Sales View
+	    Generate Sales
 	</a>
   </li>
   
@@ -29,11 +50,11 @@
 	<form class="row float-end" >
 			<div class="col">
 				<label for="start">Start Date:</label>
-				<input class="form-control" id="start" type="date" name="start" value="<?=!empty($_GET['start']) ? $_GET['start']:''?>">
+				<input class="form-control" id="start" type="date" name="start" value="<?=!empty($_GET['start']) ? $_GET['start']:''?>" required>
 			</div>
 			<div class="col">
 				<label for="end">End Date:</label>
-				<input class="form-control" id="end" type="date" name="end" value="<?=!empty($_GET['end']) ? $_GET['end']:''?>">
+				<input class="form-control" id="end" type="date" name="end" value="<?=!empty($_GET['end']) ? $_GET['end']:''?>" required>
 			</div>
 			<div class="col">
 				<label for="limit">Rows:</label>
@@ -163,6 +184,117 @@
 
 	?>
 <?php elseif($section == 'generate'):?>
+	<div class="row justify-content-center">
+		<div class="col-md-10 p-3 border border-secondary border-3 rounded">
+			<div class="form-container">
+				<h2 class="text-center mb-3">GENERATE SALES</h2>
+				<form method="GET" class="row row-cols-lg-auto justify-content-center">
+						<input type="hidden" name="pg" value="admin">
+						<input type="hidden" name="tab" value="sales">
+						<input type="hidden" name="s" value="generate">
+					<div class="col-12">
+						<div class="input-group">
+						<label class="input-group-text" for="from_date">From:</label>
+						<input class="form-control" name="from_date" type="date" id="from_date" value="<?=!empty($_GET['from_date']) ? $_GET['from_date']:''?>">
+						</div>
+					</div>
 
+					<div class="col-12">
+						<div class="input-group">
+						<label class="input-group-text" for="to_date">To:</label>
+						<input class="form-control" name="to_date" type="date" id="to_date" value="<?=!empty($_GET['to_date']) ? $_GET['to_date']:''?>">
+						</div>
+					</div>
+
+					<div class="col-12">
+						<button class="btn btn-primary">Generate</button>
+					</div>
+				</form>
+			</div>
+		</div>
+    </div>
+
+	<div class="row mt-4 table-responsive ">
+        <div class="col-md-12">
+			<h4 class="col-12">SALES REPORT</h4>
+			<button class="btn btn-success mb-2" onclick="printSalesTable()">Print Data</button>
+
+			<div class="table-responsive border border-secondary border-3 rounded p-4" id="generateResult">
+				
+				<h5> Store: <?= esc(APP_NAME); ?></h6>
+				<h6> <?= esc($TimePeriod); ?> </h6>
+				<!-- Sales Per Category Table -->
+				<table class="table table-striped table-hover" style="width:75%;">
+					<thead class="table-light" style="position: sticky;top: 0">
+						<tr>
+							<th colspan="3">SALES PER CATEGORY: </th>
+						</tr>
+						<tr>
+							<th>Category</th>
+							<th>Gross QTY</th>
+							<th>Gross Sales</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach($SalesPerCategories as $SalesPerCategory) :?>
+						<tr>
+							<td><?= esc($SalesPerCategory['category']) ?></td>
+							<td><?= esc($SalesPerCategory['gross_qty']) ?></td>
+							<td>₱<?= esc($SalesPerCategory['gross_sales']) ?></td>
+						</tr>
+						<?php endforeach?>
+						<?php foreach($TotalSales as $TotalSale) :?>
+						<tr style="border-top:2px solid">
+							<th>TOTAL: </th>
+							<th><?= esc($TotalSale['total_grossqty']) ?></th>
+							<th>₱<?= esc($TotalSale['total_grosssales']) ?></th>
+						</tr>
+						<?php endforeach?>
+					</tbody>
+
+				</table>
+				<!-- Sales Per Product Table -->
+				<table class="table table-striped table-hover">
+					<thead class="table-light" style="position: sticky;top: 0">
+						<tr>
+							<th colspan="5">PRODUCTS LIST SOLD: </th>
+						</tr>
+						<tr>
+							<th>Barcode</th>
+							<th>Product Name</th>
+							<th>Price</th>
+							<th>Gross QTY</th>
+							<th>Gross Sales</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach($SalesPerProducts as $SalesPerProduct) :?>
+						<tr>
+							<td><?= esc($SalesPerProduct['barcode']) ?></td>
+							<td><?= esc($SalesPerProduct['description']) ?></td>
+							<td><?= esc($SalesPerProduct['amount']) ?></td>
+							<td><?= esc($SalesPerProduct['gross_qty']) ?></td>
+							<td>₱<?= esc($SalesPerProduct['gross_sales']) ?></td>
+						</tr>
+						<?php endforeach?>
+						<?php foreach($TotalSales as $TotalSale) :?>
+						<tr style="border-top:2px solid">
+							<th colspan="2"></th>
+							<th>TOTAL: </th>
+							<th><?= esc($TotalSale['total_grossqty']) ?></th>
+							<th>₱<?= esc($TotalSale['total_grosssales']) ?></th>
+						</tr>
+						<?php endforeach?>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+	<script>
+        function printSalesTable() {
+            window.print();
+        }
+    </script>
 
 <?php endif;?>

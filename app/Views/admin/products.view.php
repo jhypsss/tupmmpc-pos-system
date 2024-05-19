@@ -44,7 +44,7 @@
         <thead class="table-light" style="position: sticky;top: 0">
         <tr>
             <th>Barcode</th>
-            <th>Item Name</th>
+            <th>Product Name</th>
             <th>Category</th>
             <th>Stock</th>
             <th>Price</th>

@@ -10,8 +10,8 @@ Guide to create new Menu Dashboard
 
 Access Roles
 ✅ admin = Admin Panel (All access), POS System
-- supervisor = Admin Panel (Categories, Products, Sales, Void Items, Audit Trail), Points-of-sale
-- manager = Admin Panel (Categories, Products, Sales, Void Items), Points-of-sale
+- supervisor = Admin Panel (Categories, Products, Sales, Suppliers, Refunded Items, Audit Trail)
+- manager = Admin Panel (Categories, Products, Sales, Suppliers, Refunded Items), Points-of-sale
 ✅ cashier = Points-of-sale
 ✅ user (default) = no access in any parts of system functionalities (new user)
 
@@ -38,6 +38,8 @@ System Functions to do
 - date_modified : Users, Products, 
 ✅ Receipt Preview
 ✅ Not Available Items must also show in POS
+- yellow color if low stocks in POS 
+
 
 System Checking
 ✅ Receipt = need to show who's the encoder with date and time (will fix and modify soon)

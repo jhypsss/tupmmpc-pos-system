@@ -584,7 +584,8 @@ $conn->close();
 		});
 
 		print_receipt({
-			company: '<?= esc(APP_NAME) ?>',
+			store: '<?= esc(APP_NAME) ?>',
+			address: 'Ayala Blvd., Ermita, Manila, 1000, Philippines',
 			amount: amount,
 			change: CHANGE,
 			gtotal: GTOTAL,

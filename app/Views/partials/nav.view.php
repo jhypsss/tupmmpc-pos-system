@@ -48,6 +48,13 @@
 		        </li>
 		    <?php endif;?>
 
+			
+
+		    <?php if(!Auth::logged_in()):?>
+		        <li class="nav-item">
+		          <a class="nav-link" href="index.php?pg=login">Log In</a>
+		        </li>
+	        <?php else:?>
 			<?php if($role!='User'):?>
 				<li class="nav-item">
 					<?php if (!empty($stocks)):?>
@@ -59,12 +66,6 @@
 					<?php endif;?>
 		        </li>
 			<?php endif;?>
-
-		    <?php if(!Auth::logged_in()):?>
-		        <li class="nav-item">
-		          <a class="nav-link" href="index.php?pg=login">Log In</a>
-		        </li>
-	        <?php else:?>
 		        <li class="nav-item dropdown">
 		          <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 		            Hi, <?=auth('username')?> (<?=(Auth::get('role'))?>)

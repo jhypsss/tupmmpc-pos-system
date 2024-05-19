@@ -50,9 +50,21 @@
 <?php if(is_array($obj)):?>
 
 	<center>
-		<h1><?=$obj['company']?></h1>
-		<h4>Receipt</h4>
+		<h3><?=$obj['store']?></h3>
+		<p><?=$obj['address']?></p>
+		<h6>OFFICIAL RECEIPT</h6>
+		<p><?=date("M j, Y (D) H:i:s")?></p>
 	</center>
+	<table class="table table-default table-sm">
+		<tbody>
+			<tr>
+				<td colspan="2">Staff: <?= strtoupper($obj['staff'])?></td>
+			</tr>
+			<tr>
+				<td>Receipt: #<?=$obj['receiptno']?></td>
+			</tr>
+		</tbody>
+	</table>
 
 	<table class="table table-striped table-sm">
 		<thead class="table">
@@ -61,57 +73,44 @@
 		</tr>
 		</thead>
 		<tbody>
-		<?php foreach ($obj['data'] as $row):?>
+		<?php $i=0; foreach ($obj['data'] as $row):?>
 			<tr>
 				<td><?=$row['qty']?></td><td><?=$row['description']?></td>
 				<td>₱<?=$row['amount']?></td>
 				<td>₱<?=number_format($row['qty'] * $row['amount'],2)?></td>
 			</tr>
+			<?php $i=$i+1;?>
 		<?php endforeach;?>
 		</tbody>
 
 		<tbody>
 		<tr>
-			<td colspan="2"></td><td><b>Total:</b></td><td><b>₱<?=$obj['gtotal']?></b></td>
+			<td colspan="2"></td><td><b>Total Amount Due (<?= esc($i)?>):</b></td>
+			<td style="font-size:16px;"><b>₱<?=number_format($obj['gtotal'],2)?></b></td>
 		</tr>
 		<tr>
-			<td colspan="2"></td><td>Amount paid:</td><td>₱<?=$obj['amount']?></td>
+			<td colspan="2"></td>
+			<td>Amount To Pay:</td>
+			<td>₱<?=number_format($obj['amount'],2)?></td>
 		</tr>
 		<tr>
-			<td colspan="2"></td><td>Change:</td><td>₱<?=$obj['change']?></td>
-		</tr>
-		</tbody>
-
-		<tbody>
-		<tr>
-			<td>Receipt No:</td>
-			<td colspan="3">
-				<?=$obj['receiptno']?>
-			</td>
-		</tr>
-		<tr>
-			<td>Staff: </td> 
-			<td colspan="3"> 
-				<?=$obj['staff']?>
-			</td>
-		</tr>
-		<tr>
-			<td>Date:</td>
-			<td colspan="3">
-				<?=date("M j, Y")?>
-			</td>
-		</tr>
-		<tr>
-			<td>Time:</td>
-			<td colspan="3">
-				<?=date("h:i a")?>
-			</td>
+			<td colspan="2"></td>
+			<td>Change:</td>
+			<td>₱<?=number_format($obj['change'],2)?></td>
 		</tr>
 		</tbody>
 	</table>
 
 	<center>
-		<p>This serves as your Official Receipt.<br><i>Thanks for shopping with us!</i></p></center>
+		<i>Thanks for shopping with us!</i>
+		<br><br>
+		<p>
+		CONTACT US <br>
+		Email: tup@tup.edu.ph <br>
+		Website: www.tup.edu.ph
+		</p>
+		<i>This serves as your Official Receipt.</i>
+	</center>
 <?php endif;?>
 
 <script>
