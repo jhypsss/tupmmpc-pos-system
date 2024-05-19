@@ -66,29 +66,6 @@ else if($tab == "sales")
 	$day = date("d");
 
 	$query_total = "SELECT sum(total) as total FROM sales WHERE day(date) = $day && month(date) = $month && year(date) = $year";
-
-
-	//if both start and end are set
- 	if($startdate && $enddate)
- 	{
- 		
- 		$query = "select * from sales where date BETWEEN '$startdate' AND '$enddate' order by id desc limit $limit offset $offset";
- 		$query_total = "select sum(total) as total from sales where date BETWEEN '$startdate' AND '$enddate'";
- 	
- 	}else
-
-	//if only start date is set
- 	if($startdate && !$enddate)
- 	{
- 		$styear = date("Y",strtotime($startdate));
- 		$stmonth = date("m",strtotime($startdate));
- 		$stday = date("d",strtotime($startdate));
- 		
- 		$query = "select * from sales where date = '$startdate' order by id desc limit $limit offset $offset";
- 		$query_total = "select sum(total) as total from sales where date = '$startdate' ";
- 	}
-	
-
 	$sales = $saleClass->query($query);
 
 	$st = $saleClass->query($query_total);

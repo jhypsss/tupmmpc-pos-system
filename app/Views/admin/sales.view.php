@@ -9,6 +9,7 @@
 		
 		#generateResult, #generateResult * {
 			visibility: visible;
+			
 		}
 		#generateResult {
 			position: absolute;
@@ -47,25 +48,6 @@
 <a href="../app/views/admin/sales_report.php"><button style="background-color: orange; border-radius: 5px;  color: white; border-color: white; padding: 7px;">SALES REPORTS</button></a>
 -->
 <div>
-	<form class="row float-end" >
-			<div class="col">
-				<label for="start">Start Date:</label>
-				<input class="form-control" id="start" type="date" name="start" value="<?=!empty($_GET['start']) ? $_GET['start']:''?>" required>
-			</div>
-			<div class="col">
-				<label for="end">End Date:</label>
-				<input class="form-control" id="end" type="date" name="end" value="<?=!empty($_GET['end']) ? $_GET['end']:''?>" required>
-			</div>
-			<div class="col">
-				<label for="limit">Rows:</label>
-				<input style="max-width: 80px" class="form-control" id="limit" type="number" min="1" name="limit" value="<?=!empty($_GET['limit']) ? $_GET['limit']:'20'?>">
-			</div>
-			
-			<button style="max-width:50px" class="btn col btn-primary btn-sm">Go <i class="fa fa-chevron-right"></i></button>
-			<input type="hidden" name="pg" value="admin">
-			<input type="hidden" name="tab" value="sales">
-	</form>
-	<div class="clearfix" ></div>
 	<h2>Today's Total: ₱<?=number_format($sales_total,2)?></h2>	
 </div>
 
@@ -184,8 +166,8 @@
 
 	?>
 <?php elseif($section == 'generate'):?>
-	<div class="row justify-content-center">
-		<div class="col-md-10 p-3 border border-secondary border-3 rounded">
+	<div class="row justify-content-center md-10 mx-1 px-3 border-3 border-top border-bottom bottom-secondary">
+		<div class="col-md-10 p-3">
 			<div class="form-container">
 				<h2 class="text-center mb-3">GENERATE SALES</h2>
 				<form method="GET" class="row row-cols-lg-auto justify-content-center">
@@ -215,10 +197,11 @@
     </div>
 
 	<div class="row mt-4 table-responsive ">
-        <div class="col-md-12">
-			<h4 class="col-12">SALES REPORT</h4>
-			<button class="btn btn-success mb-2" onclick="printSalesTable()">Print Data</button>
-
+        <div class="col-md-12 ">
+			<nav class="row row-cols-lg-auto g-3">
+				<h4 class="col-12">SALES REPORT</h4>
+				<button class="btn btn-success mb-2 col-12" onclick="printSalesTable()">Print Data</button>
+			</nav>
 			<div class="table-responsive border border-secondary border-3 rounded p-4" id="generateResult">
 				
 				<h5> Store: <?= esc(APP_NAME); ?></h6>
