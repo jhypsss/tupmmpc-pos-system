@@ -242,7 +242,7 @@ $conn->close();
 	function product_html(data,index)
 	{
 
-		if (data.stock > 0) {
+		if (data.stock > 20) {
 			return `
 			<!--card-->
 			<div class="card m-2 border-0 mx-auto" style="min-width: 190px;max-width: 190px;">
@@ -257,6 +257,22 @@ $conn->close();
 			</div>
 			<!--end card-->
 			`;
+		} else if (data.stock > 0 && data.stock <= 20) {
+			return `
+			<!--card-->
+			<div class="card m-2 border-0 mx-auto" style="min-width: 190px;max-width: 190px;">
+				<a href="#">
+				<img index="${index}" src="${data.image}" style="width: 100%;max-width:175px" class="w-100 rounded border border-2">
+				</a>
+				<div class="p-2">
+				<div class="text-muted"><b>${data.description}</b></div>
+				<div class="" style="font-size:20px"><b>₱${data.amount}</b></div>
+				<div class="" style="font-size:15px;color:#D68910;">Available: <b>${data.stock}</b></div>
+				</div>
+			</div>
+			<!--end card-->
+			`;
+
 		} else if (data.stock == 0){
 			return `
 			<!--card-->

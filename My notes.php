@@ -38,7 +38,7 @@ System Functions to do
 - date_modified : Users, Products, 
 ✅ Receipt Preview
 ✅ Not Available Items must also show in POS
-- yellow color if low stocks in POS 
+✅ orange color if low stocks in POS 
 ✅ Generate Sales Report
 
 
