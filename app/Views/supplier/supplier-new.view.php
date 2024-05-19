@@ -9,7 +9,7 @@
 			<br>
 			<div class="mb-3">
 			  <label for="supplierControlInput1" class="form-label">Company Name</label>
-			  <input name="company_name" type="text" class="form-control <?=!empty($errors['name']) ? 'border-danger':''?>" id="supplierControlInput1" placeholder="Company Name">
+			  <input name="company_name" type="text" class="form-control <?=!empty($errors['name']) ? 'border-danger':''?>" id="supplierControlInput1" placeholder="Company Name" autocomplete="off">
 			  <?php if(!empty($errors['company_name'])):?>
 					<small class="text-danger"><?=$errors['company_name']?></small>
 				<?php endif;?>
@@ -17,7 +17,7 @@
 
 			<div class="mb-3">
 			  <label for="supplierControlInput2" class="form-label">Company Address</label>
-			  <input name="company_address" type="text" class="form-control <?=!empty($errors['company_address']) ? 'border-danger':''?>" id="supplierControlInput2" placeholder="Company Address">
+			  <input name="company_address" type="text" class="form-control <?=!empty($errors['company_address']) ? 'border-danger':''?>" id="supplierControlInput2" placeholder="Company Address" autocomplete="off">
 			  <?php if(!empty($errors['company_address'])):?>
 					<small class="text-danger"><?=$errors['company_address']?></small>
 				<?php endif;?>
@@ -25,7 +25,7 @@
 
             <div class="mb-3">
 			  <label for="supplierControlInput3" class="form-label">Contact Person</label>
-			  <input name="contact_person" type="text" class="form-control <?=!empty($errors['contact_person']) ? 'border-danger':''?>" id="supplierControlInput3" placeholder="Contact Person">
+			  <input name="contact_person" type="text" class="form-control <?=!empty($errors['contact_person']) ? 'border-danger':''?>" id="supplierControlInput3" placeholder="Contact Person" autocomplete="off">
 			  <?php if(!empty($errors['contact_person'])):?>
 					<small class="text-danger"><?=$errors['contact_person']?></small>
 				<?php endif;?>
@@ -33,7 +33,7 @@
 
             <div class="mb-3">
 			  <label for="supplierControlInput4" class="form-label">Contact Number</label>
-			  <input name="contact_number" type="text" class="form-control <?=!empty($errors['contact_number']) ? 'border-danger':''?>" id="supplierControlInput4" placeholder="Contact Number">
+			  <input name="contact_number" type="text" class="form-control <?=!empty($errors['contact_number']) ? 'border-danger':''?>" id="supplierControlInput4" placeholder="Contact Number" autocomplete="off">
 			  <?php if(!empty($errors['contact_number'])):?>
 					<small class="text-danger"><?=$errors['contact_number']?></small>
 				<?php endif;?>
@@ -41,7 +41,7 @@
 
             <div class="mb-3">
 			  <label for="supplierControlInput5" class="form-label">Email</label>
-			  <input name="contact_email" type="text" class="form-control <?=!empty($errors['contact_email']) ? 'border-danger':''?>" id="supplierControlInput5" placeholder="Email">
+			  <input name="contact_email" type="text" class="form-control <?=!empty($errors['contact_email']) ? 'border-danger':''?>" id="supplierControlInput5" placeholder="Email" autocomplete="off">
 			  <?php if(!empty($errors['contact_email'])):?>
 					<small class="text-danger"><?=$errors['contact_email']?></small>
 				<?php endif;?>

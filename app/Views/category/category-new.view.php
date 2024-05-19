@@ -9,7 +9,7 @@
 			<br>
 			<div class="mb-3">
 			  <label for="categoryControlInput1" class="form-label">Category Name</label>
-			  <input name="name" type="text" class="form-control <?=!empty($errors['name']) ? 'border-danger':''?>" id="categoryControlInput1" placeholder="Category Name">
+			  <input name="name" type="text" class="form-control <?=!empty($errors['name']) ? 'border-danger':''?>" id="categoryControlInput1" placeholder="Category Name" autocomplete="off">
 			  <?php if(!empty($errors['name'])):?>
 					<small class="text-danger"><?=$errors['name']?></small>
 				<?php endif;?>
@@ -17,7 +17,7 @@
 
 			<div class="mb-3">
 			  <label for="categoryControlInput2" class="form-label">Category Description</label>
-			  <input name="description" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="categoryControlInput2" placeholder="Description">
+			  <input name="description" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="categoryControlInput2" placeholder="Description" autocomplete="off">
 			  <?php if(!empty($errors['description'])):?>
 					<small class="text-danger"><?=$errors['description']?></small>
 				<?php endif;?>

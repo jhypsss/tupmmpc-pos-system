@@ -5,12 +5,13 @@ $tab = $_GET['tab'] ?? 'dashboard';
 if($tab == "users")
 {
 
-	$limit = 5;
-	$pager = new Pager($limit);
-	$offset = $pager->offset;
+	//$limit = 5;
+	//$pager = new Pager($limit);
+	//$offset = $pager->offset;
 
 	$userClass = new User();
-	$users = $userClass->query("select * from users where if_deleted = 0 order by id desc limit $limit offset $offset");
+	//$users = $userClass->query("select * from users where if_deleted = 0 order by id desc limit $limit offset $offset");
+	$users = $userClass->query("select * from users where if_deleted = 0 order by id desc");
 	$totalUsers = $userClass->query("SELECT COUNT(*) AS total FROM users WHERE if_deleted=0;");
 }
 
@@ -23,7 +24,7 @@ else if($tab == "categories")
 
 else if($tab == "products")
 {
-	//$limit = 5;
+	//$limit = 10;
 	//$pager = new Pager($limit);
 	//$offset = $pager->offset;
 
@@ -47,7 +48,6 @@ else if($tab == "sales")
 	$startdate = $_GET['start'] ?? null;
 	$enddate = $_GET['end'] ?? null;
 
-
 	$saleClass = new Sale();
 	
 	$limit = $_GET['limit'] ?? 20;
@@ -66,29 +66,6 @@ else if($tab == "sales")
 	$day = date("d");
 
 	$query_total = "SELECT sum(total) as total FROM sales WHERE day(date) = $day && month(date) = $month && year(date) = $year";
-
-
-	//if both start and end are set
- 	if($startdate && $enddate)
- 	{
- 		
- 		$query = "select * from sales where date BETWEEN '$startdate' AND '$enddate' order by id desc limit $limit offset $offset";
- 		$query_total = "select sum(total) as total from sales where date BETWEEN '$startdate' AND '$enddate'";
- 	
- 	}else
-
-	//if only start date is set
- 	if($startdate && !$enddate)
- 	{
- 		$styear = date("Y",strtotime($startdate));
- 		$stmonth = date("m",strtotime($startdate));
- 		$stday = date("d",strtotime($startdate));
- 		
- 		$query = "select * from sales where date = '$startdate' order by id desc limit $limit offset $offset";
- 		$query_total = "select sum(total) as total from sales where date = '$startdate' ";
- 	}
-	
-
 	$sales = $saleClass->query($query);
 
 	$st = $saleClass->query($query_total);
@@ -122,6 +99,27 @@ else if($tab == "sales")
 		// Query all records
 		$query = "SELECT total, date FROM sales";
 		$all_records = $db->query($query);
+
+	}
+
+	else if($section == "generate"){
+		$salesClass = new Sale();
+		$years = $salesClass->query("SELECT DISTINCT year(date) AS years FROM sales ORDER BY years DESC");
+		$from_Date = $_GET['from_date'] ?? null;
+		$to_Date = $_GET['to_date'] ?? null;
+
+		if($from_Date && $to_Date){ //searched
+			$TimePeriod = "Time Period From: ".date('M j, Y', strtotime($from_Date))." to: ". date("M j, Y", strtotime($to_Date));
+			$SalesPerCategories = $salesClass->query("SELECT category, SUM(qty) AS gross_qty, SUM(total) AS gross_sales FROM sales WHERE date(date) BETWEEN '$from_Date' AND '$to_Date' GROUP BY category ORDER BY category;");
+			$SalesPerProducts = $salesClass->query("SELECT barcode, description, amount, SUM(qty) AS gross_qty, SUM(total) AS gross_sales FROM sales WHERE date(date) BETWEEN '$from_Date' AND '$to_Date' GROUP BY description ORDER BY description;");
+			$TotalSales = $salesClass->query("SELECT SUM(qty) AS total_grossqty, SUM(total) AS total_grosssales FROM sales WHERE date(date) BETWEEN '$from_Date' AND '$to_Date'");
+
+		} else { //Today's Sales
+			$TimePeriod = "Date: ".date("M j, Y");
+			$SalesPerCategories = $salesClass->query("SELECT category, SUM(qty) AS gross_qty, SUM(total) AS gross_sales FROM sales WHERE date(date) = CURRENT_DATE() GROUP BY category ORDER BY category;");
+			$SalesPerProducts = $salesClass->query("SELECT barcode, description, amount, SUM(qty) AS gross_qty, SUM(total) AS gross_sales FROM sales WHERE date(date) = CURRENT_DATE() GROUP BY description ORDER BY description;");
+			$TotalSales = $salesClass->query("SELECT SUM(qty) AS total_grossqty, SUM(total) AS total_grosssales FROM sales WHERE date(date) = CURRENT_DATE();");
+		}
 
 	}
 
@@ -175,7 +173,7 @@ else if($tab == "dashboard")
 
 
 
-if(Auth::access('Supervisor')){
+if(Auth::access('Admin') || Auth::access('Supervisor') || Auth::access('Manager')){
 	require views_path('admin/admin');
 }
 else{

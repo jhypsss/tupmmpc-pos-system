@@ -74,6 +74,7 @@ if(!empty($raw_data))
 					$arr = [];
 					$arr['barcode'] 	= $check['barcode'];
 					$arr['description'] = $check['description'];
+					$arr['category'] 	= $check['category'];
 					$arr['amount'] 		= $check['amount'];
 					$arr['qty'] 		= $row['qty'];
 					$arr['total'] 		= $row['qty'] * $check['amount'];
@@ -82,7 +83,7 @@ if(!empty($raw_data))
 					$arr['user_id'] 	= $user_id;
 					$arr['payment_method'] 	= $payment_method . ' '.$payment_reference ;
 
-					$query = "insert into sales (barcode,receipt_no,description,qty,amount,total,date,user_id,payment_method) values (:barcode,:receipt_no,:description,:qty,:amount,:total,:date,:user_id,:payment_method)";
+					$query = "insert into sales (barcode,receipt_no,description,category,qty,amount,total,date,user_id,payment_method) values (:barcode,:receipt_no,:description,:category,:qty,:amount,:total,:date,:user_id,:payment_method)";
 					$db->query($query,$arr);
 
 					//add view count for this product
@@ -92,8 +93,6 @@ if(!empty($raw_data))
 					//subtract quantity for this product
 					$query = "UPDATE products SET stock = stock - :qty WHERE id = :id LIMIT 1";
     				$db->query($query, ['id' => $check['id'], 'qty' => $row['qty']]);
-
-					
 				}
 
 			}

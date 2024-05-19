@@ -1,20 +1,50 @@
-<input type="text" class="form-control" id="searchInput" placeholder="Search..." style="width: 50%; float: right;"><br>
-<th>
+
+<div class="table-responsive">
     <a href="index.php?pg=product-new">
         <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add new</button>
     </a>
     <a href="index.php?pg=barcode.view">
         <button class="btn btn-success btn-sm"><i class="fa fa-barcode"></i> Barcode</button>
     </a>
-</th>
-<div class="table-responsive" style="height: 650px;overflow-y: scroll;">
+    <input type="text" class="form-control" id="searchInput" placeholder="Search..." style="width: 50%; float: right;">
+    <br>
+    <br>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var searchInput = document.getElementById('searchInput');
+        var tableRows = document.querySelectorAll('.table tbody tr');
+
+        // Search functionality
+        searchInput.addEventListener('keyup', function(event) {
+            var query = event.target.value.toLowerCase();
+
+            tableRows.forEach(function(row) {
+                var cells = row.getElementsByTagName('td');
+                var found = false;
+
+                Array.from(cells).forEach(function(cell) {
+                    var cellText = cell.textContent.toLowerCase();
+                    if (cellText.indexOf(query) > -1) {
+                        found = true;
+                    }
+                });
+
+                row.style.display = found ? '' : 'none';
+            });
+        });
+    });
+</script>
+
+
+<div class="table-responsive" style="height: 600px;overflow-y: scroll;">
 
     <!-- Table section -->
-    <table class="table table-striped table-hover">
+    <table class="table table-responsive table-striped table-hover">
         <thead class="table-light" style="position: sticky;top: 0">
         <tr>
             <th>Barcode</th>
-            <th>Product</th>
+            <th>Product Name</th>
             <th>Category</th>
             <th>Stock</th>
             <th>Price</th>
@@ -97,33 +127,3 @@
     <?php //$pager->display($totalProducts)?>
 </div>
 
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var searchInput = document.getElementById('searchInput');
-        var tableRows = document.querySelectorAll('.table tbody tr');
-        // Assuming the barcode is in the first column (index 0) and description is in the second column (index 1)
-        var barcodeColumnIndex = 0;
-        var descriptionColumnIndex = 1;
-
-        // Search functionality
-        searchInput.addEventListener('keyup', function(event) {
-            var query = event.target.value.toLowerCase();
-
-            tableRows.forEach(function(row) {
-                var cells = row.getElementsByTagName('td');
-                var barcodeText = cells[barcodeColumnIndex].textContent.toLowerCase();
-                var descriptionText = cells[descriptionColumnIndex].textContent.toLowerCase();
-                
-                if (barcodeText.indexOf(query) > -1 || descriptionText.indexOf(query) > -1) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
-        });
-    });
-</script>
