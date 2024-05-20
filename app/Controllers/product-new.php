@@ -2,6 +2,9 @@
 
 $errors = [];
 
+$categoryClass = new Category();
+$list_categories = $categoryClass->query("SELECT * FROM categories WHERE if_deleted = 0 ORDER BY name");
+
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
 

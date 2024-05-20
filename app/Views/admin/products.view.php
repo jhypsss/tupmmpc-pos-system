@@ -56,7 +56,8 @@
         </thead>
         <tbody>
         <?php if (!empty($products)):?>
-            <?php foreach ($products as $product):?>
+            <?php foreach ($products as $product):
+                    $get_category = get_CategoryName($product['category_id']); ?>
                 <tr>
                     <td><?=esc($product['barcode'])?></td>
                     <td>
@@ -65,7 +66,7 @@
                         </a>    
                     </td>
                     <td>
-                            <?=esc($product['category'])?>
+                            <?=esc($get_category)?>
                     </td>
                     <td>
                         <?php 

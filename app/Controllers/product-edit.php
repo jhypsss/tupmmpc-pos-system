@@ -7,6 +7,10 @@ $product = new Product();
 
 $row = $product->first(['id'=>$id]);
 
+$categoryClass = new Category();
+$list_categories = $categoryClass->query("SELECT * FROM categories WHERE if_deleted = 0 ORDER BY name");
+
+
 if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 {
 	//$_POST['user_id'] = auth("id");
@@ -55,6 +59,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 
 		redirect('admin&tab=products');
 	}
+
+	
 
 
 }

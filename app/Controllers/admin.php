@@ -31,8 +31,9 @@ else if($tab == "products")
 	$productClass = new Product();
 	$products = $productClass->query("select * from products where if_deleted = 0 order by id desc");
 	$totalProducts = $productClass->query("SELECT COUNT(*) AS total FROM products WHERE if_deleted=0;");
-	$stocks = $productClass->query("SELECT * FROM products WHERE stock <= 10 OR stock = 0");	
+	$stocks = $productClass->query("SELECT * FROM products WHERE stock <= 10 OR stock = 0");
 }
+
 else if($tab == "suppliers")
 {
 	$supplierClass = new Supplier();
@@ -110,17 +111,17 @@ else if($tab == "sales")
 
 		if($from_Date && $to_Date){ //searched
 			if ($from_Date == $to_Date)
-				$TimePeriod = "Date: ".date("M j, Y");
+				$TimePeriod = date('M j, Y', strtotime($from_Date));
 			else 
 				$TimePeriod = "Time Period from: ".date('M j, Y', strtotime($from_Date))." to: ". date("M j, Y", strtotime($to_Date));
 			
-			$SalesPerCategories = $salesClass->query("SELECT category, SUM(qty) AS gross_qty, SUM(total) AS gross_sales FROM sales WHERE date(date) BETWEEN '$from_Date' AND '$to_Date' GROUP BY category ORDER BY category;");
+			$SalesPerCategories = $salesClass->query("SELECT category_id, SUM(qty) AS gross_qty, SUM(total) AS gross_sales FROM sales WHERE date(date) BETWEEN '$from_Date' AND '$to_Date' GROUP BY category_id ORDER BY category_id;");
 			$SalesPerProducts = $salesClass->query("SELECT barcode, description, amount, SUM(qty) AS gross_qty, SUM(total) AS gross_sales FROM sales WHERE date(date) BETWEEN '$from_Date' AND '$to_Date' GROUP BY description ORDER BY description;");
 			$TotalSales = $salesClass->query("SELECT SUM(qty) AS total_grossqty, SUM(total) AS total_grosssales FROM sales WHERE date(date) BETWEEN '$from_Date' AND '$to_Date'");
 
 		} else if (!$from_Date && !$to_Date){ //Today's Sales
 			$TimePeriod = "Date: ".date("M j, Y");
-			$SalesPerCategories = $salesClass->query("SELECT category, SUM(qty) AS gross_qty, SUM(total) AS gross_sales FROM sales WHERE date(date) = CURRENT_DATE() GROUP BY category ORDER BY category;");
+			$SalesPerCategories = $salesClass->query("SELECT category_id, SUM(qty) AS gross_qty, SUM(total) AS gross_sales FROM sales WHERE date(date) = CURRENT_DATE() GROUP BY category_id ORDER BY category_id;");
 			$SalesPerProducts = $salesClass->query("SELECT barcode, description, amount, SUM(qty) AS gross_qty, SUM(total) AS gross_sales FROM sales WHERE date(date) = CURRENT_DATE() GROUP BY description ORDER BY description;");
 			$TotalSales = $salesClass->query("SELECT SUM(qty) AS total_grossqty, SUM(total) AS total_grosssales FROM sales WHERE date(date) = CURRENT_DATE();");
 		}

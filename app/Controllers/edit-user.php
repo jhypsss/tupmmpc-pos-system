@@ -6,6 +6,9 @@ $user = new User();
 $id = $_GET['id'] ?? null;
 $row = $user->first(['id'=>$id]);
 
+$allRoles = new Database();
+$userRoles = $allRoles->query("SELECT * FROM roles");
+
 if(!empty($_SERVER['HTTP_REFERER']) && !strstr($_SERVER['HTTP_REFERER'], "edit-user"))
 {
 	$_SESSION['referer'] = $_SERVER['HTTP_REFERER'];

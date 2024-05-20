@@ -64,10 +64,6 @@ if(!empty($_SESSION['referer'])){
  				<select  name="role" class="form-control  <?=!empty($errors['role']) ? 'border-danger':''?>" >
 					
 					<option hidden><?=$row['role']?></option>
-					<?php 
-						$allRoles = new Database();
-						$userRoles = $allRoles->query("SELECT * FROM roles");
-					?>
 						<?php foreach ($userRoles as $userRole):?>
 							<option value="<?=$userRole['role_name']?>"> <?=$userRole['role_name']?> </option>
 						<?php endforeach;?>

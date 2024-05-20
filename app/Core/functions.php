@@ -311,3 +311,15 @@ function generate_yearly_data($allrecords) {
     
     return $result;
 }
+
+function get_CategoryName($id){
+		
+	$categoryClass = new Category();
+	$categoryID = $id;
+	$results = $categoryClass->query("SELECT name FROM categories WHERE id=$categoryID");
+
+	if(!empty($results))
+		return $results[0]['name'];
+	else
+		return 'Unknown Category';
+}

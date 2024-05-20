@@ -170,9 +170,10 @@ class Model extends Database
 				$productName = isset($data['description']) ? $data['description'] : 'Unknown Product';
 				$productStock = isset($data['stock']) ? $data['stock'] : 'Unknown Stock';
 				$productPrice = isset($data['amount']) ? $data['amount'] : 'Unknown Price';
-				$productCategory = isset($data['category']) ? $data['category'] : 'Unknown Category';
+				$productCategory = isset($data['category_id']) ? $data['category_id'] : 'Unknown Category';
+				$productCategoryName = get_CategoryName($productCategory);
 
-				$details = "NEW ITEM: $productBarcode\nProduct: $productName \nQty: $productStock \nPrice: $productPrice \nCategory: $productCategory";
+				$details = "NEW ITEM: $productBarcode\nProduct: $productName \nQty: $productStock \nPrice: $productPrice \nCategory: $productCategoryName";
 			}
 			else if(strcmp($source, "Suppliers") == 0){
 				// Get the details
@@ -262,7 +263,8 @@ class Model extends Database
 				$oldstock = $row['stock'];
 				$oldprice = $row['amount'];
 				$oldimage = $row['image'];
-				$oldcategory = $row['category'];
+				$oldcategory = $row['category_id'];
+				$oldcategoryName = get_CategoryName($oldcategory);
 
 				//Get the new details
 				$productBarcode = isset($data['barcode']) ? $data['barcode'] : 'Unknown Barcode';
@@ -271,7 +273,8 @@ class Model extends Database
 				$productStock = isset($data['stock']) ? $data['stock'] : 'Unknown Stock';
 				$productPrice = isset($data['amount']) ? $data['amount'] : 'Unknown Price';
 				$productImage = isset($data['image']) ? $data['image'] : 'Unknown Image';
-				$productCategory = isset($data['category']) ? $data['category'] : 'Unknown Category';
+				$productCategory = isset($data['category_id']) ? $data['category_id'] : 'Unknown Category';
+				$productCategoryName = get_CategoryName($productCategory);
 				
 				// Insert into audit trail
 				//Compare changes in Details
@@ -288,8 +291,8 @@ class Model extends Database
 				if (strcmp($oldprice, $productPrice) !== 0){
 					$details .= "\nPrice: $oldprice → $productPrice";
 				}
-				if (strcmp($oldcategory, $productCategory) !== 0){
-					$details .= "\nCategory: $oldcategory → $productCategory";
+				if (strcmp($oldcategoryName, $productCategoryName) !== 0){
+					$details .= "\nCategory: $oldcategoryName → $productCategoryName";
 				}
 				if (strcmp($productImage, "Unknown Image") != 0){
 					if (strcmp($oldimage, $productImage) !== 0){
@@ -366,9 +369,10 @@ class Model extends Database
 				$productName = $row['description'];
 				$productStock = $row['stock'];
 				$productPrice = $row['amount'];
-				$productCategory = $row['category'];
+				$productCategory = $row['category_id'];
+				$productCategoryName = get_CategoryName($productCategory);
 
-				$details = "DELETED ITEM: $productBarcode \nProduct Name: $productName \nQty: $productStock \nPrice: $productPrice\n Category: $productCategory";
+				$details = "DELETED ITEM: $productBarcode \nProduct Name: $productName \nQty: $productStock \nPrice: $productPrice\n Category: $productCategoryName";
 			}
 			else if (strcmp($source, "Suppliers") == 0){
 				$supllier = new Supplier();

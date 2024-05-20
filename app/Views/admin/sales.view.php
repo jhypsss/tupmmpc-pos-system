@@ -224,8 +224,9 @@
 					</thead>
 					<tbody>
 						<?php foreach($SalesPerCategories as $SalesPerCategory) :?>
+							<?php $PerCategoryName = get_CategoryName($SalesPerCategory['category_id']) ?>
 						<tr>
-							<td><?= esc($SalesPerCategory['category']) ?></td>
+							<td><?= esc($PerCategoryName) ?></td>
 							<td><?= esc($SalesPerCategory['gross_qty']) ?></td>
 							<td>₱<?= esc($SalesPerCategory['gross_sales']) ?></td>
 						</tr>

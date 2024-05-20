@@ -20,6 +20,7 @@ if(!empty($raw_data))
 			{
 				//get all
 				//$limit = 10,$offset = 0,$order = "desc",$order_column = "id"
+				$query = "SELECT * FROM products WHERE if_deleted = 0 AND (description LIKE :find OR barcode = :barcode) ORDER BY views desc";
 				$rows = $productClass->getAll('desc','views');
 			}else{
 				//search
@@ -29,7 +30,6 @@ if(!empty($raw_data))
 				//$query = "SELECT * FROM products WHERE description LIKE :find or barcode = :barcode ORDER BY views DESC LIMIT $limit";
 				$query = "SELECT * FROM products WHERE if_deleted = 0 AND (description LIKE :find OR barcode = :barcode) ORDER BY views desc";
 				$rows = $productClass->query($query,['find'=>$text,'barcode'=>$barcode]);
-				//$rows = $productClass->query($query,['find'=>$text]);
 			}
 			
 			if($rows){
