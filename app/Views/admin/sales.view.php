@@ -177,14 +177,14 @@
 					<div class="col-12">
 						<div class="input-group">
 						<label class="input-group-text" for="from_date">From:</label>
-						<input class="form-control" name="from_date" type="date" id="from_date" value="<?=!empty($_GET['from_date']) ? $_GET['from_date']:''?>">
+						<input class="form-control" name="from_date" type="date" id="from_date" value="<?=!empty($_GET['from_date']) ? $_GET['from_date']: date("Y-m-d")?>">
 						</div>
 					</div>
 
 					<div class="col-12">
 						<div class="input-group">
 						<label class="input-group-text" for="to_date">To:</label>
-						<input class="form-control" name="to_date" type="date" id="to_date" value="<?=!empty($_GET['to_date']) ? $_GET['to_date']:''?>">
+						<input class="form-control" name="to_date" type="date" id="to_date" value="<?=!empty($_GET['to_date']) ? $_GET['to_date']: date("Y-m-d")?>">
 						</div>
 					</div>
 
@@ -198,10 +198,14 @@
 
 	<div class="row mt-4 table-responsive ">
         <div class="col-md-12 ">
+			<?php if(!$SalesPerCategories && !$SalesPerProducts):?>
+			<h3> No Sales For Today: <?= esc(date("M j, Y")); ?></h3>
+			<?php else:?>
 			<nav class="row row-cols-lg-auto g-3">
 				<h4 class="col-12">SALES REPORT</h4>
 				<button class="btn btn-success mb-2 col-12" onclick="printSalesTable()">Print Data</button>
 			</nav>
+			
 			<div class="table-responsive border border-secondary border-3 rounded p-4" id="generateResult">
 				
 				<h5> Store: <?= esc(APP_NAME); ?></h6>
@@ -272,6 +276,7 @@
 				</table>
 
 			</div>
+			<?php endif; ?>
 		</div>
 	</div>
 	<script>

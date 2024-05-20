@@ -109,12 +109,16 @@ else if($tab == "sales")
 		$to_Date = $_GET['to_date'] ?? null;
 
 		if($from_Date && $to_Date){ //searched
-			$TimePeriod = "Time Period From: ".date('M j, Y', strtotime($from_Date))." to: ". date("M j, Y", strtotime($to_Date));
+			if ($from_Date == $to_Date)
+				$TimePeriod = "Date: ".date("M j, Y");
+			else 
+				$TimePeriod = "Time Period from: ".date('M j, Y', strtotime($from_Date))." to: ". date("M j, Y", strtotime($to_Date));
+			
 			$SalesPerCategories = $salesClass->query("SELECT category, SUM(qty) AS gross_qty, SUM(total) AS gross_sales FROM sales WHERE date(date) BETWEEN '$from_Date' AND '$to_Date' GROUP BY category ORDER BY category;");
 			$SalesPerProducts = $salesClass->query("SELECT barcode, description, amount, SUM(qty) AS gross_qty, SUM(total) AS gross_sales FROM sales WHERE date(date) BETWEEN '$from_Date' AND '$to_Date' GROUP BY description ORDER BY description;");
 			$TotalSales = $salesClass->query("SELECT SUM(qty) AS total_grossqty, SUM(total) AS total_grosssales FROM sales WHERE date(date) BETWEEN '$from_Date' AND '$to_Date'");
 
-		} else { //Today's Sales
+		} else if (!$from_Date && !$to_Date){ //Today's Sales
 			$TimePeriod = "Date: ".date("M j, Y");
 			$SalesPerCategories = $salesClass->query("SELECT category, SUM(qty) AS gross_qty, SUM(total) AS gross_sales FROM sales WHERE date(date) = CURRENT_DATE() GROUP BY category ORDER BY category;");
 			$SalesPerProducts = $salesClass->query("SELECT barcode, description, amount, SUM(qty) AS gross_qty, SUM(total) AS gross_sales FROM sales WHERE date(date) = CURRENT_DATE() GROUP BY description ORDER BY description;");
