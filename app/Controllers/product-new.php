@@ -30,7 +30,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	$errors = $product->validate($_POST);
 	if(empty($errors)){
 		
-		$folder = "uploads/product";
+		$folder = "uploads/products/";
 		if(!file_exists($folder))
 		{
 			mkdir($folder,0777,true);

@@ -10,6 +10,7 @@ class User extends Model
 	protected $table = "users";
 	protected $allowed_columns = [
 
+				'userid',
 				'username',
 				'email',
 				'password',
@@ -24,6 +25,12 @@ class User extends Model
  	public function validate($data, $id = null)
 	{
 		$errors = [];
+
+			//check userid
+			if(empty($data['userid']))
+			{
+				$errors['userid'] = "User ID is required";
+			}
 
 			//check username
 			if(empty($data['username']))

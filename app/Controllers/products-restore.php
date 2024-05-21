@@ -12,11 +12,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 	//$_POST['user_id'] = auth("id");
 	$_POST['date'] = date("Y-m-d H:i:s");
 	$_POST['source'] = "Products";
-	$_POST['action'] = "DELETE";
+	$_POST['action'] = "RESTORE";
 
 	//$product->audit_trail($row['id'], null, "Products", "DELETE");
 	$product->audit_trail($row['id'], $_POST);
-	$product->delete_item($row['id']);
+	$product->restore($row['id']);
   	
 	/*/delete old image
 	if(file_exists($row['image']))
@@ -24,10 +24,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 		unlink($row['image']);
 	}
 	*/
-	redirect('admin&tab=products');
+	redirect('admin&tab=deleted items');
 	
 }
 
 
-require views_path('products/product-delete');
+require views_path('products/product-restore');
 

@@ -178,138 +178,144 @@ function get_user_by_id($id)
 	return $user->first(['id'=>$id]);
 }
 
-function get_deleted_details($deleted_id, $source){
+function get_details($id, $source){
 	if ($source == "Users"){
 		$users = new User();
-		return $users->first(['id'=>$deleted_id]);
+		return $users->first(['id'=>$id]);
 	}
 	else if ($source == "Categories"){
 		$categories = new Category();
-		return $categories->first(['id'=>$deleted_id]);
+		return $categories->first(['id'=>$id]);
 	} 
 	else if ($source == "Products"){
 		$products = new Product();
-		return $products->first(["id"=>$deleted_id]);
+		return $products->first(["id"=>$id]);
 	}
 	else if ($source == "Suppliers"){
 		$supplier = new Supplier();
-		return $supplier->first(["id"=>$deleted_id]);
+		return $supplier->first(["id"=>$id]);
 	}
 }
 
 function generate_daily_data($records)
 {
-	$arr = [];
-	// Check if $records is an array
-	if (!is_array($records)) {
-		return $arr;
-	}
-
-	for ($i=0; $i < 24; $i++) { 
-		
-		if(!isset($arr[$i])){
-		
-			$arr[$i] = 0;
+	if(!empty($records)){
+		$arr = [];
+		// Check if $records is an array
+		if (!is_array($records)) {
+			return $arr;
 		}
 
-		foreach ($records as $row) {
+		for ($i=0; $i < 24; $i++) { 
 			
-			$hour = date('H',strtotime($row['date']));
-			if($hour == $i){
+			if(!isset($arr[$i])){
+			
+				$arr[$i] = 0;
+			}
 
-				$arr[$i] += $row['total'];
+			foreach ($records as $row) {
+				
+				$hour = date('H',strtotime($row['date']));
+				if($hour == $i){
+
+					$arr[$i] += $row['total'];
+				}
 			}
 		}
-	}
 
-	return $arr;
-	
+		return $arr;
+	}
 }
 
 function generate_monthly_data($records)
 {
-	$arr = [];
-	$total_days = cal_days_in_month(CAL_GREGORIAN, date('m'), date('Y'));
+	if(!empty($records)){
+		$arr = [];
+		$total_days = cal_days_in_month(CAL_GREGORIAN, date('m'), date('Y'));
 
-	for ($i=1; $i <= $total_days; $i++) { 
-		
-		if(!isset($arr[$i])){
-		
-			$arr[$i] = 0;
-		}
-
-		foreach ($records as $row) {
+		for ($i=1; $i <= $total_days; $i++) { 
 			
-			$day = date('d',strtotime($row['date']));
-			if($day == $i){
+			if(!isset($arr[$i])){
+			
+				$arr[$i] = 0;
+			}
 
-				$arr[$i] += $row['total'];
+			foreach ($records as $row) {
+				
+				$day = date('d',strtotime($row['date']));
+				if($day == $i){
+
+					$arr[$i] += $row['total'];
+				}
 			}
 		}
-	}
 
-	return $arr;
+		return $arr;
+	}
 }
 
 function generate_thisyear_data($records)
 {
-	$arr = [];
-	$months = ['0','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+	if(!empty($records)){
+		$arr = [];
+		$months = ['0','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-	for ($i=1; $i <= 12; $i++) { 
-		
-		if(!isset($arr[$months[$i]])){
-		
-			$arr[$months[$i]] = 0;
-		}
-
-		foreach ($records as $row) {
+		for ($i=1; $i <= 12; $i++) { 
 			
-			$month = date('m',strtotime($row['date']));
-			if($month == $i){
+			if(!isset($arr[$months[$i]])){
+			
+				$arr[$months[$i]] = 0;
+			}
 
-				$arr[$months[$i]] += $row['total'];
+			foreach ($records as $row) {
+				
+				$month = date('m',strtotime($row['date']));
+				if($month == $i){
+
+					$arr[$months[$i]] += $row['total'];
+				}
 			}
 		}
+
+		return $arr;
 	}
-
-	return $arr;
-
 }
 
 function generate_yearly_data($allrecords) {
-    $arr = [];
-    
-    // Get the starting and recent years from the records
-    $startingYear = date('Y');
-    $recentYear = date('Y');
-    
-    foreach ($allrecords as $row) {
-        $year = date('Y', strtotime($row['date']));
-        
-        // Update the starting and recent years if necessary
-        if ($year < $startingYear) {
-            $startingYear = $year;
-        }
-        if ($year > $recentYear) {
-            $recentYear = $year;
-        }
-        
-        if (!isset($arr[$year])) {
-            $arr[$year] = 0;
-        }
-        
-        $arr[$year] += $row['total'];
-    }
-    
-    $result = [];
-    
-    // Generate data for each year from starting year to recent year
-    for ($i = $startingYear; $i <= $recentYear; $i++) {
-        $result[$i] = isset($arr[$i]) ? $arr[$i] : 0;
-    }
-    
-    return $result;
+	if(!empty($allrecords)){
+		$arr = [];
+		
+		// Get the starting and recent years from the records
+		$startingYear = date('Y');
+		$recentYear = date('Y');
+		
+		foreach ($allrecords as $row) {
+			$year = date('Y', strtotime($row['date']));
+			
+			// Update the starting and recent years if necessary
+			if ($year < $startingYear) {
+				$startingYear = $year;
+			}
+			if ($year > $recentYear) {
+				$recentYear = $year;
+			}
+			
+			if (!isset($arr[$year])) {
+				$arr[$year] = 0;
+			}
+			
+			$arr[$year] += $row['total'];
+		}
+		
+		$result = [];
+		
+		// Generate data for each year from starting year to recent year
+		for ($i = $startingYear; $i <= $recentYear; $i++) {
+			$result[$i] = isset($arr[$i]) ? $arr[$i] : 0;
+		}
+		
+		return $result;
+	}
 }
 
 function get_CategoryName($id){

@@ -6,9 +6,9 @@
 
 		<form method="post" enctype="multipart/form-data">
 
-			<h5 class="text-primary"><i class="fa fa-table"></i> Delete Category</h5>
+			<h5 class="text-primary"><i class="fa fa-table"></i> Restore Category</h5>
 
-			<div class="alert alert-danger text-center">Are you sure you want to delete this Category??!!</div>
+			<div class="alert alert-success text-center">Are you sure you want to restore this Category?</div>
 
 			<div class="mb-3">
 			  <label for="categoryControlInput1" class="form-label">Category Name</label>
@@ -26,16 +26,16 @@
 				<?php endif;?>
 			</div>
 			
-			<button class="btn btn-danger float-end">Delete</button>
-			<a href="index.php?pg=admin&tab=categories">
+			<button class="btn btn-success float-end">Restore</button>
+			<a href="index.php?pg=admin&tab=deleted items">
 				<button type="button" class="btn btn-primary">Cancel</button>
 			</a>
 		</form>
 		<?php else:?>
 			That Category was not found
 			<br><br>
-			<a href="index.php?pg=admin&tab=categories">
-				<button type="button" class="btn btn-primary">Back to Categories</button>
+			<a href="index.php?pg=admin&tab=deleted items">
+				<button type="button" class="btn btn-primary">Back to Deleted Items</button>
 			</a>
 
 		<?php endif;?>

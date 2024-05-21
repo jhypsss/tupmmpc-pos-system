@@ -5,6 +5,10 @@
  */
 class Model extends Database
 {
+
+	protected $allowed_columns = [];
+	protected $table = [];
+
 	protected function get_allowed_columns($data)
 	{
  
@@ -26,7 +30,7 @@ class Model extends Database
 	public function insert($data)
 	{
 		// Insert into db
-		$clean_array = $this->get_allowed_columns($data, $this->table);
+		$clean_array = $this->get_allowed_columns($data);
 		$keys = array_keys($clean_array);
 		
 		$query = "INSERT INTO $this->table ";
@@ -40,7 +44,7 @@ class Model extends Database
 	//update query
 	public function update($id, $data)
 	{
-		$clean_array = $this->get_allowed_columns($data, $this->table);
+		$clean_array = $this->get_allowed_columns($data);
 		$keys = array_keys($clean_array);
 		
 		$query = "UPDATE $this->table SET ";
@@ -56,9 +60,33 @@ class Model extends Database
 		$db = new Database;
 		$db->query($query, $clean_array);
 	}
+
+	public function restore($id){
+		$user_id = auth("id");
+		$source = $_POST['source'];
+		$clean_array['id'] = $id;
+		
+		$db = new Database;
+		//Update deleted to false
+		$query = "UPDATE $this->table SET if_deleted = 0 WHERE id = :id";
+		$db = new Database;
+		$db->query($query, $clean_array);
+
+		//record it in restored_items table
+		$query2 = "INSERT INTO restored_items (restored_id, from_table, user_id) VALUES (:deleted_id, :from_table, :user_id)";
+		$params = array(
+			'deleted_id' => $id,
+			'from_table' => $source,
+			'user_id' => $user_id,
+		);
+		$db->query($query2, $params);
+
+		//remove it in deleted_items table
+		$db->query("DELETE FROM deleted_items WHERE deleted_id = $id");
+	}
 	
 	//delete query
-	public function delete($id)
+	public function delete_item($id)
 	{
 		/*/ Old delete query
 		$query = "DELETE FROM $this->table WHERE id = :id LIMIT 1";
@@ -69,19 +97,20 @@ class Model extends Database
 		$source = $_POST['source'];
 		$clean_array['id'] = $id;
 		
-		$query = "UPDATE $this->table SET if_deleted = 1 WHERE id = :id";
-		
 		$db = new Database;
-		$db->query($query, $clean_array);
+		//Soft Delete
+		$query = "UPDATE $this->table SET if_deleted = 1 WHERE id = :id";
 
+
+		$db->query($query, $clean_array);
+		//Record it in database
 		$query2 = "INSERT INTO deleted_items (deleted_id, from_table, user_id) VALUES (:deleted_id, :from_table, :user_id)";
 		$params = array(
 			'deleted_id' => $id,
 			'from_table' => $source,
 			'user_id' => $user_id,
 		);
-		$db2 = new Database;
-		$db2->query($query2, $params);
+		$db->query($query2, $params);
 		
 	}
 	
@@ -91,7 +120,7 @@ class Model extends Database
 
 		$keys = array_keys($data);
 		
-		$query = "select * from $this->table where ";
+		$query = "select * from $this->table where if_deleted=0 AND ";
 
 		foreach ($keys as $key) {
 			// code...
@@ -150,12 +179,13 @@ class Model extends Database
 		if (strcmp($action, "ADD") == 0){
 			if (strcmp($source, "Users") == 0){
 				// Get the details
-				$newUsername = isset($data['username']) ? $data['username'] : 'Unknown User';
+				$newUserID = isset($data['userid']) ? $data['userid'] : 'Unknown User ID';
+				$newUsername = isset($data['username']) ? $data['username'] : 'Unknown Username';
 				$userEmail = isset($data['email']) ? $data['email'] : 'Unknown Email';
 				$userGender = isset($data['gender']) ? $data['gender'] : 'Unknown Gender';
 				$userRole = isset($data['role']) ? $data['role'] : 'Unknown Role';
 
-				$details = "NEW USER: $newUsername \nEmail: $userEmail \nGender: $userGender \nRole: $userRole";
+				$details = "NEW USER: $newUserID \nName: $newUsername \nEmail: $userEmail \nGender: $userGender \nRole: $userRole";
 			}
 			else if (strcmp($source, "Categories") == 0){
 				// Get the details
@@ -189,6 +219,7 @@ class Model extends Database
 				$user = new User();
 				$row = $user->first(['id'=>$id]);
 				// Get the Old Details
+				$oldUserID = $row['userid'];
 				$oldUsername = $row['username'];
 				$oldEmail = $row['email'];
 				$oldPassword = $row['password'];
@@ -197,15 +228,18 @@ class Model extends Database
 				$oldImage = $row['image'];
 
 				// Get the new details
+				$newUserID = isset($data['userid']) ? $data['userid'] : 'Unknown User ID';
 				$newUsername = isset($data['username']) ? $data['username'] : 'Unknown User';
 				$userEmail = isset($data['email']) ? $data['email'] : 'Unknown Email';
 				$userPassword = isset($data['password']) ? $data['password'] : 'Unknown Password';
 				$userGender = isset($data['gender']) ? $data['gender'] : 'Unknown Gender';
 				$userRole = isset($data['role']) ? $data['role'] : 'Unknown Role';
-				//dd($userRole);
 				$userImage = isset($data['image']) ? $data['image'] : 'Unknown Image';
 
-				$details = "UPDATED USER: $newUsername";
+				$details = "UPDATED USER: $newUserID";
+				if (strcmp($oldUserID, $newUserID) !== 0){
+					$details .= "\nUsername: $oldUserID → $newUserID";
+				}
 				if (strcmp($oldUsername, $newUsername) !== 0){
 					$details .= "\nUsername: $oldUsername → $newUsername";
 				}
@@ -225,7 +259,7 @@ class Model extends Database
 				}
 				if (strcmp($userImage, "Unknown Image") !== 0){
 					if (strcmp($oldImage, $userImage) !== 0){
-						$details .= "\nUser Image: User Image Changed";
+						$details .= "\nUser Image: User Image Updated";
 					}
 				}
 			}
@@ -296,7 +330,7 @@ class Model extends Database
 				}
 				if (strcmp($productImage, "Unknown Image") != 0){
 					if (strcmp($oldimage, $productImage) !== 0){
-						$details .= "\nProduct Image: Modified";
+						$details .= "\nProduct Image: Product Image Updated";
 					}
 				}
 			}
@@ -350,11 +384,12 @@ class Model extends Database
 			if (strcmp($source, "Users") == 0){
 				$user = new User();
 				$row = $user->first(['id'=>$id]);
+				$deletedUserID = $row['userid'];
 				$deletedUser = $row['username'];
 				$userEmail = $row['email'];
 				$userGender = $row['gender'];
 				$userRole = $row['role'];
-				$details = "DELETED USER: $deletedUser \nEmail: $userEmail \nGender: $userGender \nRole: $userRole";
+				$details = "DELETED USER: $deletedUserID\n Name: $deletedUser \nEmail: $userEmail \nGender: $userGender \nRole: $userRole";
 			}
 			else if (strcmp($source, "Categories") == 0){
 				$category = new Category();
@@ -375,10 +410,46 @@ class Model extends Database
 				$details = "DELETED ITEM: $productBarcode \nProduct Name: $productName \nQty: $productStock \nPrice: $productPrice\n Category: $productCategoryName";
 			}
 			else if (strcmp($source, "Suppliers") == 0){
-				$supllier = new Supplier();
-				$row = $supllier->first(['id'=>$id]);
+				$supplier = new Supplier();
+				$row = $supplier->first(['id'=>$id]);
 				$companyName = $row['company_name'];
 				$details = "DELETED SUPPLIER: $companyName";
+			}
+		}
+		else if(strcmp($action, "RESTORE") == 0){
+			if (strcmp($source, "Users") == 0){
+				$user = new User();
+				$row = $user->first(['id'=>$id]);
+				$restoreUserID = $row['userid'];
+				$restoreUsername = $row['username'];
+				$userEmail = $row['email'];
+				$userGender = $row['gender'];
+				$userRole = $row['role'];
+				$details = "RESTORED USER: $restoreUserID \nName: $restoreUsername \nEmail: $userEmail \nGender: $userGender \nRole: $userRole";
+			}
+			else if (strcmp($source, "Categories") == 0){
+				$category = new Category();
+				$row = $category->first(['id'=>$id]);
+				$categoryName = $row['name'];
+				$details = "RESTORED CATEGORY: $categoryName";
+			}
+			else if (strcmp($source, "Products") == 0){
+				$product = new Product();
+				$row = $product->first(['id'=>$id]);
+				$productBarcode = $row['barcode'];
+				$productName = $row['description'];
+				$productStock = $row['stock'];
+				$productPrice = $row['amount'];
+				$productCategory = $row['category_id'];
+				$productCategoryName = get_CategoryName($productCategory);
+
+				$details = "RESTORED ITEM: $productBarcode \nProduct Name: $productName \nQty: $productStock \nPrice: $productPrice\n Category: $productCategoryName";
+			}
+			else if (strcmp($source, "Suppliers") == 0){
+				$supplier = new Supplier();
+				$row = $supplier->first(['id'=>$id]);
+				$companyName = $row['company_name'];
+				$details = "RESTORED SUPPLIER: $companyName";
 			}
 		}
 		// Insert to Audit Trail

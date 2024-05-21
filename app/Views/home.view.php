@@ -289,7 +289,7 @@ $conn->close();
 			<!--end card-->
 			`;
 		} else {
-			return ""; // Return empty	
+			return ''; // Return empty	
 		}
 	}
 

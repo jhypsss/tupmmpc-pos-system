@@ -32,6 +32,9 @@
 				<a href="index.php?pg=admin&tab=deleted items">
 			  		<li class="list-group-item <?=$tab=='deleted items'?'active':''?>"><i class="fas fa-trash-alt"></i></i> Deleted Items</li>
 				</a>
+				<a href="index.php?pg=admin&tab=restored items">
+			  		<li class="list-group-item <?=$tab=='restored items'?'active':''?>"><i class="fas fa-trash-restore-alt"></i> Restored Items</li>
+				</a>
 			  	<a href="index.php?pg=logout">
 			  		<li class="list-group-item"><i class="fa fa-sign-out-alt"></i> Log Out</li>
 				</a>
@@ -82,6 +85,11 @@
 					case 'deleted items':
 						// code...
 						require views_path('admin/deleted_items');
+						break;
+					
+					case 'restored items':
+						// code...
+						require views_path('admin/restored_items');
 						break;
 
 					case 'barcode':

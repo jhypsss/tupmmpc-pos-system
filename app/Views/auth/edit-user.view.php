@@ -19,6 +19,8 @@ if(!empty($_SESSION['referer'])){
 				<div><?=esc(APP_NAME)?></div>
 			</center>
 			<br>
+			<img class="mx-auto d-block border border-2 border-secondary p-3 rounded" src="<?=$row['image']?>" style="width:40%;">
+			<br>
 		 	<div class="mb-3">
 			  <label for="formFile" class="form-label">User Image</label>
 			  <input name="image" class="form-control <?=!empty($errors['image']) ? 'border-danger':''?>" type="file" id="formFile">
@@ -26,9 +28,14 @@ if(!empty($_SESSION['referer'])){
 					<small class="text-danger"><?=$errors['image']?></small>
 				<?php endif;?>
 			</div>
-			<br>
-			<img class="mx-auto d-block" src="<?=$row['image']?>" style="width:50%;">
-			<br>
+
+			<div class="mb-3">
+			  <label for="exampleFormControlInput1" class="form-label">User ID</label>
+			  <input value="<?=set_value('userid',$row['userid'])?>" name="userid" type="text" class="form-control <?=!empty($errors['userid']) ? 'border-danger':''?>" id="exampleFormControlInput1" placeholder="User ID" autocomplete="off">
+				<?php if(!empty($errors['username'])):?>
+					<small class="text-danger"><?=$errors['userid']?></small>
+				<?php endif;?>
+			</div>
 
 			<div class="mb-3">
 			  <label for="exampleFormControlInput1" class="form-label">Username</label>
@@ -40,7 +47,7 @@ if(!empty($_SESSION['referer'])){
 			
 			<div class="mb-3">
 			  <label for="exampleFormControlInput1" class="form-label">Email address</label>
-			  <input value="<?=set_value('email',$row['email'])?>" name="email" type="email" class="form-control  <?=!empty($errors['email']) ? 'border-danger':''?>" id="exampleFormControlInput1" placeholder="name@example.com" autocomplete="off">
+			  <input value="<?=set_value('email',$row['email'])?>" name="email" type="email" class="form-control  <?=!empty($errors['email']) ? 'border-danger':''?>" id="exampleFormControlInput1" placeholder="example@email.com" autocomplete="off">
 				<?php if(!empty($errors['email'])):?>
 					<small class="text-danger"><?=$errors['email']?></small>
 				<?php endif;?>

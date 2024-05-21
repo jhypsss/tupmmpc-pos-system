@@ -14,7 +14,7 @@
         <?php if (!empty($audit_trails)):?>
             <?php foreach ($audit_trails as $audit_trail):?>
                 <tr>
-                    <td><?=date("M j, Y \n H:i:s",strtotime($audit_trail['date']))?></td>
+                    <td><?=date("M j, Y, h:i a",strtotime($audit_trail['date']))?></td>
 
                     <?php 
                         $user = get_user_by_id($audit_trail['user_id']);
@@ -33,7 +33,7 @@
                     </td>
                     <td><?=esc($audit_trail['source'])?></td>
                     <td><?=esc($audit_trail['action'])?></td>
-                    <td><?=nl2br(esc($audit_trail['details']))?></td>
+                    <td style="width:50%"><?=nl2br(esc($audit_trail['details']))?></td>
 
                     
                 </tr>

@@ -71,14 +71,13 @@
 		            Hi, <?=auth('username')?> (<?=(Auth::get('role'))?>)
 		          </a>
 		          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-		            <li><a class="dropdown-item" href="index.php?pg=profile">Profile</a></li>
-		            <li><a class="dropdown-item" href="index.php?pg=edit-user&id=<?=Auth::get('id')?>">Profile-Settings</a></li>
+		            <li><a class="dropdown-item" href="index.php?pg=profile"><i class="fas fa-user"></i> Profile</a></li>
+		            <li><a class="dropdown-item" href="index.php?pg=edit-user&id=<?=Auth::get('id')?>"><i class="fa fa-cog"></i> Profile-Settings</a></li>
 		            <li><hr class="dropdown-divider"></li>
-		            <li><a class="dropdown-item" href="index.php?pg=logout">Log Out</a></li>
+		            <li><a class="dropdown-item" href="index.php?pg=logout"><i class="fa fa-sign-out-alt"></i> Log Out</a></li>
 		          </ul>
 		        </li>
 	    	 <?php endif;?>
-
 	      </ul>
 	    </div>
 	  </div>

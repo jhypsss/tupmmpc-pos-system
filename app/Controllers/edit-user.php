@@ -36,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	$errors = $user->validate($_POST, $id);
 	if(empty($errors)){
 		
-		$folder = "uploads/user/";
+		$folder = "uploads/users/";
 		if(!file_exists($folder))
 		{
 			mkdir($folder,0777,true);

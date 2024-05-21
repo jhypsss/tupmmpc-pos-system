@@ -11,7 +11,7 @@ if($tab == "users")
 
 	$userClass = new User();
 	//$users = $userClass->query("select * from users where if_deleted = 0 order by id desc limit $limit offset $offset");
-	$users = $userClass->query("select * from users where if_deleted = 0 order by id desc");
+	$users = $userClass->query("select * from users where if_deleted = 0");
 	$totalUsers = $userClass->query("SELECT COUNT(*) AS total FROM users WHERE if_deleted=0;");
 }
 
@@ -139,9 +139,15 @@ else if($tab == "audit trail")
 
 else if($tab == "deleted items")
 {
-	$deleted_itemsClass = new Database();
-	$deleted_items = $deleted_itemsClass->query("select * from deleted_items order by id desc");
-	$totalDeleted = $deleted_itemsClass->query("SELECT COUNT(*) AS total FROM deleted_items");
+	$deleted_db = new Database();
+	$deleted_items = $deleted_db->query("select * from deleted_items order by id desc");
+	$totalDeleted = $deleted_db->query("SELECT COUNT(*) AS total FROM deleted_items");
+}
+else if($tab == "restored items")
+{
+	$restored_db = new Database();
+	$restored_items = $restored_db->query("select * from restored_items order by id desc");
+	//$totalDeleted = $restored_db->query("SELECT COUNT(*) AS total FROM deleted_items");
 }
 
 else if($tab == "dashboard")

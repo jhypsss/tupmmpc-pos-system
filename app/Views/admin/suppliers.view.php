@@ -1,5 +1,46 @@
-<input type="text" class="form-control" id="searchInput" placeholder="Search..." style="width: 50%; float: right;"><br><br>
+<style>
+    .task-roll-up {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 50px;
+	}
+	
+	.no-items-message {
+	font-size: 20px;
+	color: #666;
+	margin-bottom: 20px;
+	display: flex;
+	align-items: center;
+	}
+	
+	.add-button {
+	padding: 10px 20px;
+	background-color: #0078d7;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	}
+	
+	.fa-fw {
+	font-size: 1em;
+	margin-right: 5px;
+	}
+	
+	.icon {
+	font-size: 4em;
+	}
+</style>
+
+
+
+<?php if (!empty($suppliers)):?>
+    <input type="text" class="form-control" id="searchInput" placeholder="Search..." style="width: 50%; float: right;"><br><br>
 <div class="table-responsive" style="height: 650px;overflow-y: scroll;">
+        <?php foreach ($suppliers as $supplier):?>
     <!-- Table section -->
     <table class="table table-striped table-hover">
         <thead class="table-light" style="position: sticky;top: 0">
@@ -19,8 +60,7 @@
         </tr>
         </thead>
         <tbody>
-        <?php if (!empty($suppliers)):?>
-            <?php foreach ($suppliers as $supplier):?>
+        
                 <tr>
                     <td><a href="index.php?pg=supplier-edit&id=<?=$supplier['id']?>">
                         <?=esc($supplier['company_name'])?></a>
@@ -40,10 +80,18 @@
                         </a>
                     </td>
                 </tr>
-            <?php endforeach;?>
-        <?php endif;?>
         </tbody>
     </table>
+    <?php endforeach;?>
+    <?php else:?>
+        <div class="task-roll-up">
+            <i class="fa fa-truck fa-fw icon"></i>
+            <p class="no-items-message"> There are no suppliers to show.</p>
+            <a href="index.php?pg=supplier-new">
+                <button class="btn btn-primary btn"><i class="fa fa-plus fa-fw"></i> Add Supplier</button>
+            </a>
+        </div>
+    <?php endif;?>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

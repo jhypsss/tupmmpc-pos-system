@@ -18,8 +18,8 @@
 			<img class="mx-auto d-block" src="<?=$row['image']?>" style="width:80%;">
 			<br>
 			<div class="mb-3">
-			  <label for="productControlInput1" class="form-label">Product description</label>
-			  <input value="<?=set_value('description',$row['description'])?>" name="description" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="productControlInput1" placeholder="Product description" autocomplete="off">
+			  <label for="productControlInput1" class="form-label">Product Description</label>
+			  <input value="<?=set_value('description',$row['description'])?>" name="description" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="productControlInput1" placeholder="Product Description" autocomplete="off">
 			  <?php if(!empty($errors['description'])):?>
 					<small class="text-danger"><?=$errors['description']?></small>
 				<?php endif;?>

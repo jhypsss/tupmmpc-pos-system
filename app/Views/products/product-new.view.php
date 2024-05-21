@@ -14,8 +14,8 @@
 			</div>
 			<br>
 			<div class="mb-3">
-			  <label for="productControlInput1" class="form-label">Product description</label>
-			  <input name="description" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="productControlInput1" placeholder="Product description" autocomplete="off">
+			  <label for="productControlInput1" class="form-label">Product Description</label>
+			  <input name="description" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="productControlInput1" placeholder="Product Description" autocomplete="off">
 			  <?php if(!empty($errors['description'])):?>
 					<small class="text-danger"><?=$errors['description']?></small>
 				<?php endif;?>
