@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2024 at 10:13 PM
+-- Generation Time: May 22, 2024 at 04:17 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -69,7 +69,35 @@ INSERT INTO `audit_trail` (`id`, `user_id`, `source`, `action`, `details`, `date
 (26, 6, 'Users', 'UPDATE', 'UPDATED USER: samberin\nRole: User → Cashier', '2024-05-21 21:50:56'),
 (27, 6, 'Users', 'UPDATE', 'UPDATED USER: samberin\nUser Image: User Image Updated', '2024-05-21 21:51:05'),
 (28, 6, 'Users', 'UPDATE', 'UPDATED USER: rhaylisilongan\nRole: User → Supervisor\nUser Image: User Image Updated', '2024-05-21 21:51:39'),
-(29, 6, 'Users', 'UPDATE', 'UPDATED USER: kobefundario\nRole: User → Manager', '2024-05-21 21:51:49');
+(29, 6, 'Users', 'UPDATE', 'UPDATED USER: kobefundario\nRole: User → Manager', '2024-05-21 21:51:49'),
+(30, 4, 'Categories', 'ADD', 'NEW CATEGORY: School Merch \nDescription: Apparel, Accessories, Stationery, Drinkware, Tech Accessories, Miscellaneous Items', '2024-05-22 08:21:41'),
+(31, 4, 'Categories', 'ADD', 'NEW CATEGORY: Snacks \nDescription: Salty Snacks, Sweet Snacks, Healthy Snacks, Protein-Rich Snacks, Dairy Snacks, Baked Snacks, Specialty Snacks', '2024-05-22 08:24:25'),
+(32, 4, 'Categories', 'ADD', 'NEW CATEGORY: Beverage \nDescription: Water, Sports Drink, Juice, Tea, Coffee, Milk, Smoothie, Energy Drinks, Lemonade', '2024-05-22 08:28:36'),
+(33, 4, 'Categories', 'ADD', 'NEW CATEGORY: School Supplies \nDescription: Writing Instruments, Paper Products, Organizational Tools, Technology and Accessories, Art Supplies, Classroom Essentials, Backpack and Bags, Study Aids, Health and Hygiene, Miscellaneous Supplies', '2024-05-22 09:49:00'),
+(34, 4, 'Products', 'ADD', 'NEW ITEM: 2223752926390\nProduct: C2  \nQty: 5 \nPrice: 35 \nCategory: Beverage', '2024-05-22 09:51:41'),
+(35, 4, 'Products', 'ADD', 'NEW ITEM: 2223744340436\nProduct: Mogu Mogu \nQty: 30 \nPrice: 40 \nCategory: Beverage', '2024-05-22 09:53:44'),
+(36, 4, 'Products', 'ADD', 'NEW ITEM: 2223898209592\nProduct: Mountain Dew \nQty: 50 \nPrice: 50 \nCategory: Beverage', '2024-05-22 09:54:06'),
+(37, 4, 'Products', 'ADD', 'NEW ITEM: 2223130175859\nProduct: Pocari Sweat \nQty: 100 \nPrice: 30 \nCategory: Beverage', '2024-05-22 09:54:46'),
+(38, 4, 'Products', 'ADD', 'NEW ITEM: 2223286700590\nProduct: Red Bull \nQty: 75 \nPrice: 75 \nCategory: Beverage', '2024-05-22 09:55:08'),
+(39, 4, 'Products', 'ADD', 'NEW ITEM: 2223330048837\nProduct: Brown Envelope \nQty: 100 \nPrice: 15 \nCategory: School Supplies', '2024-05-22 09:57:55'),
+(40, 4, 'Products', 'ADD', 'NEW ITEM: 2223474402290\nProduct: Long Folder \nQty: 100 \nPrice: 16 \nCategory: School Supplies', '2024-05-22 09:58:20'),
+(41, 4, 'Products', 'ADD', 'NEW ITEM: 2223989316961\nProduct: Index Card (1 pack) \nQty: 100 \nPrice: 30 \nCategory: School Supplies', '2024-05-22 09:58:51'),
+(42, 4, 'Products', 'ADD', 'NEW ITEM: 2223136144858\nProduct: Scientific Calculator \nQty: 50 \nPrice: 250 \nCategory: School Supplies', '2024-05-22 09:59:47'),
+(43, 4, 'Products', 'ADD', 'NEW ITEM: 2223562053126\nProduct: Yellow Pad Paper \nQty: 100 \nPrice: 25 \nCategory: School Supplies', '2024-05-22 10:00:13'),
+(44, 4, 'Products', 'ADD', 'NEW ITEM: 2223804737259\nProduct: Bread Pan \nQty: 500 \nPrice: 20 \nCategory: Snacks', '2024-05-22 10:00:51'),
+(45, 4, 'Products', 'ADD', 'NEW ITEM: 2223362259212\nProduct: Nova \nQty: 5 \nPrice: 17 \nCategory: Snacks', '2024-05-22 10:01:09'),
+(46, 4, 'Products', 'ADD', 'NEW ITEM: 2223795298756\nProduct: Oishi Prawn Crackers \nQty: 50 \nPrice: 20 \nCategory: Snacks', '2024-05-22 10:01:30'),
+(47, 4, 'Products', 'ADD', 'NEW ITEM: 2223828501872\nProduct: Piattos \nQty: 15 \nPrice: 20 \nCategory: Snacks', '2024-05-22 10:01:57'),
+(48, 4, 'Products', 'ADD', 'NEW ITEM: 2223824388896\nProduct: Pillows (Chocolate) \nQty: 28 \nPrice: 15 \nCategory: Snacks', '2024-05-22 10:02:20'),
+(49, 4, 'Products', 'ADD', 'NEW ITEM: 2223344887351\nProduct: COS Polo Shirt (Red) \nQty: 20 \nPrice: 300 \nCategory: School Merch', '2024-05-22 10:03:14'),
+(50, 4, 'Products', 'ADD', 'NEW ITEM: 2223344114763\nProduct: Gear Track Jacket \nQty: 20 \nPrice: 450 \nCategory: School Merch', '2024-05-22 10:03:54'),
+(51, 4, 'Products', 'ADD', 'NEW ITEM: 2223539392362\nProduct: Gear Jersey \nQty: 20 \nPrice: 350 \nCategory: School Merch', '2024-05-22 10:04:25'),
+(52, 4, 'Products', 'ADD', 'NEW ITEM: 2223605679101\nProduct: TUP T-Shirt (White) \nQty: 30 \nPrice: 150 \nCategory: School Merch', '2024-05-22 10:05:16'),
+(53, 4, 'Products', 'ADD', 'NEW ITEM: 2223446997863\nProduct: TUP T-Shirt (Black) \nQty: 30 \nPrice: 150 \nCategory: School Merch', '2024-05-22 10:05:37'),
+(54, 4, 'Products', 'ADD', 'NEW ITEM: 2223679136953\nProduct: P.E Pants \nQty: 100 \nPrice: 200 \nCategory: School Merch', '2024-05-22 10:07:01'),
+(55, 4, 'Products', 'DELETE', 'DELETED ITEM: 2223679136953 \nProduct Name: P.E Pants \nQty: 100 \nPrice: 200.00\n Category: School Merch', '2024-05-22 10:07:13'),
+(56, 4, 'Suppliers', 'ADD', 'NEW SUPPLIER: National Book Store \nCompany Address: 4th Floor, Quad Alpha Centrum Building, 125 Pioneer Street, Mandaluyong City 1550, Philippines', '2024-05-22 10:10:36'),
+(57, 4, 'Suppliers', 'ADD', 'NEW SUPPLIER: Expressions Stationery Shop, Inc. \nCompany Address: Unit 2310, Cityland 10 Tower II, H.V. Dela Costa St., Salcedo Village, Makati City 1227, Philippines', '2024-05-22 10:14:06');
 
 -- --------------------------------------------------------
 
@@ -84,6 +112,16 @@ CREATE TABLE `categories` (
   `if_deleted` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `description`, `if_deleted`) VALUES
+(1, 'School Merch', 'Apparel, Accessories, Stationery, Drinkware, Tech Accessories, Miscellaneous Items', 0),
+(2, 'Snacks', 'Salty Snacks, Sweet Snacks, Healthy Snacks, Protein-Rich Snacks, Dairy Snacks, Baked Snacks, Specialty Snacks', 0),
+(3, 'Beverage', 'Water, Sports Drink, Juice, Tea, Coffee, Milk, Smoothie, Energy Drinks, Lemonade', 0),
+(4, 'School Supplies', 'Writing Instruments, Paper Products, Organizational Tools, Technology and Accessories, Art Supplies, Classroom Essentials, Backpack and Bags, Study Aids, Health and Hygiene, Miscellaneous Supplies', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -97,6 +135,13 @@ CREATE TABLE `deleted_items` (
   `user_id` int(11) NOT NULL,
   `date_deleted` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `deleted_items`
+--
+
+INSERT INTO `deleted_items` (`id`, `deleted_id`, `from_table`, `user_id`, `date_deleted`) VALUES
+(1, 21, 'Products', 4, '2024-05-22 10:07:13');
 
 -- --------------------------------------------------------
 
@@ -117,6 +162,33 @@ CREATE TABLE `products` (
   `category_id` int(11) NOT NULL,
   `if_deleted` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `barcode`, `description`, `stock`, `amount`, `image`, `user_id`, `date`, `views`, `category_id`, `if_deleted`) VALUES
+(1, '2223752926390', 'C2 ', 5, 35.00, 'uploads/products/ee99c0765e47dad751ee1f36a824500b87e93228_1762.png', '4', '2024-05-22 03:51:41', 0, 3, 0),
+(2, '2223744340436', 'Mogu Mogu', 30, 40.00, 'uploads/products/5176a899e03349d9b21d3ab3aeccc234d5e11411_7468.png', '4', '2024-05-22 03:53:44', 0, 3, 0),
+(3, '2223898209592', 'Mountain Dew', 50, 50.00, 'uploads/products/bdf5b690f4227caa3a3349af4658df4999a75dfe_8378.png', '4', '2024-05-22 03:54:06', 0, 3, 0),
+(4, '2223130175859', 'Pocari Sweat', 100, 30.00, 'uploads/products/a1e06012c907a49fab1c46aa8125f54ab0055b73_1657.jpg', '4', '2024-05-22 03:54:46', 0, 3, 0),
+(5, '2223286700590', 'Red Bull', 75, 75.00, 'uploads/products/47b4ea9d37abe38f6aafea9aa0c599f6a9510182_1304.png', '4', '2024-05-22 03:55:08', 0, 3, 0),
+(6, '2223330048837', 'Brown Envelope', 100, 15.00, 'uploads/products/c0498136027142a1f643d77e198b1834f2c2a06d_4465.jpg', '4', '2024-05-22 03:57:55', 0, 4, 0),
+(7, '2223474402290', 'Long Folder', 100, 16.00, 'uploads/products/c3b666f45d0963af9f1eaaeac0959142812e8ea3_8965.jpg', '4', '2024-05-22 03:58:20', 0, 4, 0),
+(8, '2223989316961', 'Index Card (1 pack)', 100, 30.00, 'uploads/products/7bbfdc0f0a92ffefa17b8465772ecebac87c1cda_5399.jpg', '4', '2024-05-22 03:58:51', 0, 4, 0),
+(9, '2223136144858', 'Scientific Calculator', 50, 250.00, 'uploads/products/b110624b898fdea1e08a4d4e05611f0e0b10f218_6886.jpg', '4', '2024-05-22 03:59:47', 0, 4, 0),
+(10, '2223562053126', 'Yellow Pad Paper', 100, 25.00, 'uploads/products/624bb0011f9ff7a38b31dacd4102b8d65f114146_8469.jpg', '4', '2024-05-22 04:00:13', 0, 4, 0),
+(11, '2223804737259', 'Bread Pan', 500, 20.00, 'uploads/products/6e417b0bd74b08668c9c8b97067c85353a89e6a4_4122.png', '4', '2024-05-22 04:00:51', 0, 2, 0),
+(12, '2223362259212', 'Nova', 5, 17.00, 'uploads/products/3441c55c6bf3a2bb75953cd1667e14c42e84879d_3478.png', '4', '2024-05-22 04:01:09', 0, 2, 0),
+(13, '2223795298756', 'Oishi Prawn Crackers', 50, 20.00, 'uploads/products/63bdaee2b95e3eed8c11c22eae23aee66b09f121_6015.png', '4', '2024-05-22 04:01:30', 0, 2, 0),
+(14, '2223828501872', 'Piattos', 15, 20.00, 'uploads/products/f8cbf31c273bcd1c3e10dc85a5cd28b089069ae4_7580.png', '4', '2024-05-22 04:01:57', 0, 2, 0),
+(15, '2223824388896', 'Pillows (Chocolate)', 28, 15.00, 'uploads/products/5746ef55100159ed2f74f20c94466285655dd8e4_1551.png', '4', '2024-05-22 04:02:20', 0, 2, 0),
+(16, '2223344887351', 'COS Polo Shirt (Red)', 20, 300.00, 'uploads/products/95f53ed9c1b07bcb452d709fbf1409ef75e17303_9644.jpg', '4', '2024-05-22 04:03:14', 0, 1, 0),
+(17, '2223344114763', 'Gear Track Jacket', 20, 450.00, 'uploads/products/677021edb5091a5ed17c3d3c95ccf7d57b16089c_2263.jpg', '4', '2024-05-22 04:03:54', 0, 1, 0),
+(18, '2223539392362', 'Gear Jersey', 20, 350.00, 'uploads/products/62292992bb680000371f7ed44287e6b602c4f6e5_4575.jpg', '4', '2024-05-22 04:04:24', 0, 1, 0),
+(19, '2223605679101', 'TUP T-Shirt (White)', 30, 150.00, 'uploads/products/c64fd75924944e3d03c61a67b5f5bc05a6930fed_4590.jpg', '4', '2024-05-22 04:05:16', 0, 1, 0),
+(20, '2223446997863', 'TUP T-Shirt (Black)', 30, 150.00, 'uploads/products/4cef0742a325f6a9847506f5e5f8f45841292574_3486.jpg', '4', '2024-05-22 04:05:37', 0, 1, 0),
+(21, '2223679136953', 'P.E Pants', 100, 200.00, 'uploads/products/1aca206759ffe7635a6c332c2e1663e8f85b396b_1094.png', '4', '2024-05-22 04:07:01', 0, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -190,6 +262,14 @@ CREATE TABLE `suppliers` (
   `business_type` varchar(255) NOT NULL,
   `if_deleted` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `suppliers`
+--
+
+INSERT INTO `suppliers` (`id`, `company_name`, `company_address`, `contact_person`, `contact_number`, `contact_email`, `business_type`, `if_deleted`) VALUES
+(1, 'National Book Store', '4th Floor, Quad Alpha Centrum Building, 125 Pioneer Street, Mandaluyong City 1550, Philippines', 'Ana Cruz, Sales Manager', '+63 (2) 8888-8627', 'ana.cruz@nationalbookstore.com', 'Distributor', 0),
+(2, 'Expressions Stationery Shop, Inc.', 'Unit 2310, Cityland 10 Tower II, H.V. Dela Costa St., Salcedo Village, Makati City 1227, Philippines', 'Maria Rivera, Operations Manager', '+63 (2) 8886-8888', 'maria.rivera@expressions.com.ph', 'Retails', 0);
 
 -- --------------------------------------------------------
 
@@ -312,25 +392,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `audit_trail`
 --
 ALTER TABLE `audit_trail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `deleted_items`
 --
 ALTER TABLE `deleted_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `restored_items`
@@ -354,7 +434,7 @@ ALTER TABLE `sales`
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
