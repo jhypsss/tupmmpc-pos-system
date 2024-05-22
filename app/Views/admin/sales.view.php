@@ -82,7 +82,7 @@
 <a href="../app/views/admin/sales_report.php"><button style="background-color: orange; border-radius: 5px;  color: white; border-color: white; padding: 7px;">SALES REPORTS</button></a>
 -->
 <?php if (!empty($sales)):?>
-	<?php foreach ($sales as $sale):?>
+	
 <div>
 	<h2>Today's Total: ₱<?=number_format($sales_total,2)?></h2>	
 </div>
@@ -103,7 +103,7 @@
 		</tr>
 		</thead>
 		<tbody>
-		
+		<?php foreach ($sales as $sale):?>
 	 		<tr>
 				<td><?=esc($sale['barcode'])?></td>
 				<td><?=esc($sale['receipt_no'])?></td>
