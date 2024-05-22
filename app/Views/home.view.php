@@ -99,6 +99,7 @@ $conn->close();
 		<div style="width:500px;min-height:200px;background-color:white;padding:10px;margin:auto;margin-top:100px">
 			<h4>Checkout <button role="close-button" onclick="hide_modal(event,'amount-paid')" class="btn btn-danger float-end p-0 px-2">X</button></h4>
 			<br>
+			<form>
 				<h4>Payment</h4 >
 				<input onkeyup="if(event.keyCode == 13)validate_amount_paid(event)" type="number" class="js-amount-paid-input form-control" placeholder="Enter amount paid">
 				<br>
@@ -114,8 +115,9 @@ $conn->close();
 				
 				<input id="reference_number" onkeyup="if(event.keyCode == 13)validate_amount_paid(event)" type="label" class="js-amount-ref-input form-control" placeholder="Enter last 6 reference number ">
 				<br>-->
-				<button onclick="validate_amount_paid(event)" class="btn btn-primary float-end">Next</button>
 				<button role="close-button" onclick="hide_modal(event,'amount-paid')" class="btn btn-secondary">Cancel</button>
+				<button onclick="validate_amount_paid(event)" class="btn btn-primary float-end">Next</button>
+			</form>
 		</div>
 	</div>
 	<!--end enter amount modal-->
