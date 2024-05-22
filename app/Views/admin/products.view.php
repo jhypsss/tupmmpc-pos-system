@@ -76,8 +76,6 @@
 </div>
 
 <div class="table-responsive" style="height: 600px;overflow-y: scroll;">
-    <?php foreach ($products as $product):
-                $get_category = get_CategoryName($product['category_id']); ?>
     <!-- Table section -->
     <table class="table table-responsive table-striped table-hover">
         <thead class="table-light" style="position: sticky;top: 0">
@@ -94,7 +92,8 @@
         </tr>
         </thead>
         <tbody>
-        
+        <?php foreach ($products as $product):
+                $get_category = get_CategoryName($product['category_id']); ?>
                 <tr>
                     <td><?=esc($product['barcode'])?></td>
                     <td>
@@ -158,9 +157,10 @@
                         </a>
                     </td>
                 </tr>
+                <?php endforeach;?>
         </tbody>
     </table>
-    <?php endforeach;?>
+    
     <?php //$pager->display($totalProducts)?>
     <?php else:?>
         <div class="task-roll-up">

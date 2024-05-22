@@ -40,7 +40,7 @@
 <?php if (!empty($suppliers)):?>
     <input type="text" class="form-control" id="searchInput" placeholder="Search..." style="width: 50%; float: right;"><br><br>
 <div class="table-responsive" style="height: 650px;overflow-y: scroll;">
-        <?php foreach ($suppliers as $supplier):?>
+        
     <!-- Table section -->
     <table class="table table-striped table-hover">
         <thead class="table-light" style="position: sticky;top: 0">
@@ -60,7 +60,7 @@
         </tr>
         </thead>
         <tbody>
-        
+        <?php foreach ($suppliers as $supplier):?>
                 <tr>
                     <td><a href="index.php?pg=supplier-edit&id=<?=$supplier['id']?>">
                         <?=esc($supplier['company_name'])?></a>
@@ -80,9 +80,10 @@
                         </a>
                     </td>
                 </tr>
+                <?php endforeach;?>
         </tbody>
     </table>
-    <?php endforeach;?>
+    
     <?php else:?>
         <div class="task-roll-up">
             <i class="fa fa-truck fa-fw icon"></i>

@@ -38,7 +38,6 @@
     <!-- Table section -->
 <?php if (!empty($categories)):?>
 <div class="table-responsive" style="height: 600px;overflow-y: scroll;">
-    <?php foreach ($categories as $category):?>
     <table class="table table-striped table-hover">
         <thead class="table-light" style="position: sticky;top: 0">
         <tr>
@@ -52,6 +51,7 @@
         </tr>
         </thead>
         <tbody>
+        <?php foreach ($categories as $category):?>
             <tr>
                 <td><a href="index.php?pg=category-edit&id=<?=$category['id']?>">
                     <?=esc($category['name'])?></a>
@@ -67,9 +67,10 @@
                     </a>
                 </td>
             </tr>
+        <?php endforeach;?>
         </tbody>
     </table>
-    <?php endforeach;?>
+    
     <?php else:?>
         <div class="task-roll-up">
             <i class="fa fa-table fa-fw icon"></i>
