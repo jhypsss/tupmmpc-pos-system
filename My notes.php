@@ -23,6 +23,7 @@ issues or bugs found.
 - Pagination
 ✅ receipt no in print receipt. not accurate to the db
 - input tags autocomplete="off"
+- print receipt no (not accurate receipt #)
 
 
 System Functions to do
