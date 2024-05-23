@@ -51,7 +51,7 @@ if(!empty($raw_data))
 		{
 
 			$data 		= $OBJ['text'];
-			$receipt_no 	= get_receipt_no();
+			$receipt_no 	= generate_receipt_no();
 			$user_id 	= auth("id");
 			$date 		= date("Y-m-d H:i:s");
 			$payment_method = $OBJ['payment_status'];
