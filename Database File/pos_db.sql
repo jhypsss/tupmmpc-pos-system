@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2024 at 04:17 AM
+-- Generation Time: May 23, 2024 at 05:26 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -168,9 +168,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `barcode`, `description`, `stock`, `amount`, `image`, `user_id`, `date`, `views`, `category_id`, `if_deleted`) VALUES
-(1, '2223752926390', 'C2 ', 5, 35.00, 'uploads/products/ee99c0765e47dad751ee1f36a824500b87e93228_1762.png', '4', '2024-05-22 03:51:41', 0, 3, 0),
-(2, '2223744340436', 'Mogu Mogu', 30, 40.00, 'uploads/products/5176a899e03349d9b21d3ab3aeccc234d5e11411_7468.png', '4', '2024-05-22 03:53:44', 0, 3, 0),
-(3, '2223898209592', 'Mountain Dew', 50, 50.00, 'uploads/products/bdf5b690f4227caa3a3349af4658df4999a75dfe_8378.png', '4', '2024-05-22 03:54:06', 0, 3, 0),
+(1, '2223752926390', 'C2 ', 0, 35.00, 'uploads/products/ee99c0765e47dad751ee1f36a824500b87e93228_1762.png', '4', '2024-05-22 03:51:41', 1, 3, 0),
+(2, '2223744340436', 'Mogu Mogu', 25, 40.00, 'uploads/products/5176a899e03349d9b21d3ab3aeccc234d5e11411_7468.png', '4', '2024-05-22 03:53:44', 2, 3, 0),
+(3, '2223898209592', 'Mountain Dew', 49, 50.00, 'uploads/products/bdf5b690f4227caa3a3349af4658df4999a75dfe_8378.png', '4', '2024-05-22 03:54:06', 1, 3, 0),
 (4, '2223130175859', 'Pocari Sweat', 100, 30.00, 'uploads/products/a1e06012c907a49fab1c46aa8125f54ab0055b73_1657.jpg', '4', '2024-05-22 03:54:46', 0, 3, 0),
 (5, '2223286700590', 'Red Bull', 75, 75.00, 'uploads/products/47b4ea9d37abe38f6aafea9aa0c599f6a9510182_1304.png', '4', '2024-05-22 03:55:08', 0, 3, 0),
 (6, '2223330048837', 'Brown Envelope', 100, 15.00, 'uploads/products/c0498136027142a1f643d77e198b1834f2c2a06d_4465.jpg', '4', '2024-05-22 03:57:55', 0, 4, 0),
@@ -235,7 +235,7 @@ INSERT INTO `roles` (`id`, `role_name`) VALUES
 CREATE TABLE `sales` (
   `id` int(11) NOT NULL,
   `barcode` varchar(15) DEFAULT NULL,
-  `receipt_no` int(11) DEFAULT NULL,
+  `receipt_no` varchar(11) DEFAULT NULL,
   `description` varchar(50) DEFAULT NULL,
   `category_id` int(11) NOT NULL,
   `qty` int(11) DEFAULT NULL,
@@ -245,6 +245,16 @@ CREATE TABLE `sales` (
   `user_id` varchar(60) DEFAULT NULL,
   `payment_method` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `sales`
+--
+
+INSERT INTO `sales` (`id`, `barcode`, `receipt_no`, `description`, `category_id`, `qty`, `amount`, `total`, `date`, `user_id`, `payment_method`) VALUES
+(1, '2223752926390', '2185-1', 'C2 ', 3, 5, 35.00, 175.00, '2024-05-23 17:22:46', '6', ' '),
+(2, '2223744340436', '2185-1', 'Mogu Mogu', 3, 2, 40.00, 80.00, '2024-05-23 17:22:46', '6', ' '),
+(3, '2223744340436', '2185-2', 'Mogu Mogu', 3, 3, 40.00, 120.00, '2024-05-23 17:24:31', '6', ' '),
+(4, '2223898209592', '2185-2', 'Mountain Dew', 3, 1, 50.00, 50.00, '2024-05-23 17:24:31', '6', ' ');
 
 -- --------------------------------------------------------
 
@@ -297,13 +307,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `userid`, `username`, `email`, `password`, `date`, `image`, `role`, `gender`, `deletable`, `void_code`, `if_deleted`) VALUES
-(1, 'tupmanila', 'TUPMMPC Admin', 'tup@tup.edu.ph', '$2y$10$C2VrsXkhpf2eq.Uq4Rwav.R7NnzlAWe2aiIkx0kU4aOhhDdcZNh4q', '2024-05-21 19:56:10', 'uploads/user/7c8ae669ad62d6260638510ab5831e33b979489f_4519.png', 'Admin', 'Male', 0, '', 0),
+(1, 'TUPM-24-1001', 'TUPMMPC Admin', 'tup@tup.edu.ph', '$2y$10$C2VrsXkhpf2eq.Uq4Rwav.R7NnzlAWe2aiIkx0kU4aOhhDdcZNh4q', '2024-05-21 19:56:10', 'uploads/user/7c8ae669ad62d6260638510ab5831e33b979489f_4519.png', 'Admin', 'Male', 0, '', 0),
 (2, 'rhaylisilongan', 'Rhayli Silongan', 'rhayli@tup.edu.ph', '$2y$10$KJgWTJ3w7o4.RfLM1vjzZej0wChKkRhC7nf8Q3lLzwe0SPqbsTa52', '2024-05-21 21:23:21', 'uploads/user/4c2362f9cf42fdf72bc241f71412ce50988ae303_4333.png', 'Supervisor', 'Male', 1, '', 0),
-(3, 'samberin', 'Samantha Berin', 'samantha@tup.edu.ph', '$2y$10$ZGUKuUYrUKzr0cSSZlzxruREwiv28Ui/Pb6s2KQOU6avs7PgELWtC', '2024-05-21 21:24:08', 'uploads/user/8e285f23ebabe5c537a545b12fd4d1dec0329ef5_7272.png', 'Cashier', 'Female', 1, '', 0),
-(4, 'llylesanchez', 'Lordirene Llyle Prince Sanchez', 'llyle@tup.edu.ph', '$2y$10$DT2d7.cz1ruKDSBf1xnEA.DU0ypH9VBh17WkfvpIlyaZYsvJ5kBQa', '2024-05-21 21:29:33', 'uploads/user/8f25b2c94d032f844f1fdf7d55aa67de67ff144d_1436.png', 'Admin', 'Male', 1, '', 0),
-(5, 'kobefundario', 'Leynald Kobe Fundario', 'kobe@tup.edu.ph', '$2y$10$3gR5H6TAiC.X40R0n/1g0.GLMNs5rzX8MWoYwnJQBCh4KU2aISDw6', '2024-05-21 21:31:19', 'uploads/user/443adc1abe449b577d19f4d7fd2a12bd5cd2b674_2857.png', 'Manager', 'Male', 1, '', 0),
-(6, 'tricktorres', 'Jhon Patrick Torres', 'trick@tup.edu.ph', '$2y$10$0zjnm0hW13/mkEQjlvyyEePjQv51EvD1ECSSkY1ylfkTqenH9JwRC', '2024-05-21 21:31:55', 'uploads/user/93926f66b00e835986c093465e0413e9449ee10c_3178.png', 'Admin', 'Male', 0, '', 0),
-(7, 'power', 'Power', 'power@tup.edu.ph', '$2y$10$NR3yAvnlk.LiDwikWAGzteMDW0eRPTmx3L2Bvxjnw794N687E8n0e', '2024-05-21 21:34:50', 'uploads/user/a6dd6720ffcb97b1116785a90ba4977373f9002e_8520.jpg', 'Admin', 'Female', 1, '', 0);
+(3, 'TUPM-20-2152', 'Samantha Berin', 'samantha@tup.edu.ph', '$2y$10$ZGUKuUYrUKzr0cSSZlzxruREwiv28Ui/Pb6s2KQOU6avs7PgELWtC', '2024-05-21 21:24:08', 'uploads/user/8e285f23ebabe5c537a545b12fd4d1dec0329ef5_7272.png', 'Cashier', 'Female', 1, '', 0),
+(4, 'TUPM-20-1196', 'Lordirene Llyle Prince Sanchez', 'llyle@tup.edu.ph', '$2y$10$DT2d7.cz1ruKDSBf1xnEA.DU0ypH9VBh17WkfvpIlyaZYsvJ5kBQa', '2024-05-21 21:29:33', 'uploads/user/8f25b2c94d032f844f1fdf7d55aa67de67ff144d_1436.png', 'Admin', 'Male', 1, '', 0),
+(5, 'TUPM-20-2151', 'Leynald Kobe Fundario', 'kobe@tup.edu.ph', '$2y$10$3gR5H6TAiC.X40R0n/1g0.GLMNs5rzX8MWoYwnJQBCh4KU2aISDw6', '2024-05-21 21:31:19', 'uploads/user/443adc1abe449b577d19f4d7fd2a12bd5cd2b674_2857.png', 'Manager', 'Male', 1, '', 0),
+(6, 'TUPM-20-2185', 'Jhon Patrick Torres', 'trick@tup.edu.ph', '$2y$10$0zjnm0hW13/mkEQjlvyyEePjQv51EvD1ECSSkY1ylfkTqenH9JwRC', '2024-05-21 21:31:55', 'uploads/user/93926f66b00e835986c093465e0413e9449ee10c_3178.png', 'Admin', 'Male', 0, '', 0),
+(7, 'TUPM-24-1002', 'Power', 'power@tup.edu.ph', '$2y$10$NR3yAvnlk.LiDwikWAGzteMDW0eRPTmx3L2Bvxjnw794N687E8n0e', '2024-05-21 21:34:50', 'uploads/user/a6dd6720ffcb97b1116785a90ba4977373f9002e_8520.jpg', 'Admin', 'Female', 1, '', 0);
 
 --
 -- Indexes for dumped tables
@@ -428,7 +438,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
