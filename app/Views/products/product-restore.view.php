@@ -8,7 +8,7 @@
 
 			<h5 class="text-primary"><i class="fa fa-hamburger"></i> Restore Product</h5>
 
-			<div class="alert alert-success text-center">Are you sure you want to delete this product??!!</div>
+			<div class="alert alert-success text-center">Are you sure you want to restore this product?</div>
 
 			<div class="mb-3">
 			  <label for="productControlInput1" class="form-label">Product Description</label>
@@ -30,7 +30,7 @@
 			<br>
 			<img class="mx-auto d-block" src="<?=$row['image']?>" style="width:80%;">
 			<br>
-			<button class="btn btn-success float-end">Delete</button>
+			<button class="btn btn-success float-end">Restore</button>
 			<a href="index.php?pg=admin&tab=products">
 				<button type="button" class="btn btn-primary">Cancel</button>
 			</a>

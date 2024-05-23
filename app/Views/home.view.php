@@ -383,7 +383,7 @@ $conn->close();
 		gtotal_div.innerHTML = "Total: ₱" + grand_total.toFixed(2);
 		GTOTAL = grand_total;
 		//autofocus to search input
-		document.getElementById('searchitem').focus();
+		//document.getElementById('searchitem').focus();
 	}
 
 	var voidCodes = <?php echo json_encode($void_codes); ?>;
@@ -531,7 +531,6 @@ $conn->close();
 
 			mydiv.querySelector(".js-change-input").innerHTML = CHANGE;
 			mydiv.querySelector(".js-btn-close-change").focus();
-			location.reload();
 		} 
 	}
 	
