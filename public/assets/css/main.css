@@ -7,7 +7,9 @@ body {
     background-size: cover; /* Cover the entire viewport */
     background-repeat: no-repeat; /* Prevent background image from repeating */
 }
-
+/*
 a {
-    text-decoration: none; /* Remove underline from links */
+    text-decoration: none;
 }
+
+*/
