@@ -153,7 +153,7 @@ function crop($filename,$size = 400,$type = 'product')
 
 	return $cropped_file;
 }
-
+/*
 function get_receipt_no()
 {
 	$num = 1;
@@ -165,6 +165,28 @@ function get_receipt_no()
 		$num = (int)$rows[0]['receipt_no'] + 1;
 	}
 	return $num;
+}
+*/
+function generate_receipt_no(){
+	$num = 1;
+	$parts2 = '';
+	$userid = auth("userid");
+	$parts1 = explode('-', $userid);
+	$last_userid = intval($parts1[2]);
+
+	$db = new Database();
+	$rows = $db->query("select receipt_no from sales order by id desc limit 1"); //Get the last receipt no.
+	if(is_array($rows))
+	{
+		$parts2 = explode('-', $rows[0]['receipt_no']); //explode between -
+		$last_digit = $parts2[1] + 1; //example 2165-101, [0]=2165, [1]=101;
+		$new_receipt_no = $last_userid."-".$last_digit;
+		return $new_receipt_no;
+	}else{
+		$new_receipt_no = $last_userid."-".$num;
+		return $new_receipt_no;
+	}
+	
 }
 
 function get_date($date)

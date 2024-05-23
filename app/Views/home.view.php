@@ -114,8 +114,8 @@ $conn->close();
 				
 				<input id="reference_number" onkeyup="if(event.keyCode == 13)validate_amount_paid(event)" type="label" class="js-amount-ref-input form-control" placeholder="Enter last 6 reference number ">
 				<br>-->
-				<button onclick="validate_amount_paid(event)" class="btn btn-primary float-end">Next</button>
 				<button role="close-button" onclick="hide_modal(event,'amount-paid')" class="btn btn-secondary">Cancel</button>
+				<button onclick="validate_amount_paid(event)" class="btn btn-primary float-end">Next</button>
 		</div>
 	</div>
 	<!--end enter amount modal-->
@@ -287,7 +287,7 @@ $conn->close();
 			<!--end card-->
 			`;
 		} else {
-			return ''; // Return empty	
+			return ""; // Return empty	
 		}
 	}
 
@@ -531,7 +531,7 @@ $conn->close();
 
 			mydiv.querySelector(".js-change-input").innerHTML = CHANGE;
 			mydiv.querySelector(".js-btn-close-change").focus();
-			
+			location.reload();
 		} 
 	}
 	
@@ -548,7 +548,6 @@ $conn->close();
 			else if(modal == "change"){
 				var mydiv = document.querySelector(".js-change-modal");
 				mydiv.classList.add("hide");
-				location.reload();
 				document.getElementById('searchitem').focus();
 			}
 		}	
@@ -604,7 +603,7 @@ $conn->close();
 			amount: amount,
 			change: CHANGE,
 			gtotal: GTOTAL,
-			receiptno: '<?= get_receipt_no() ?>',
+			receiptno: '<?= generate_receipt_no() ?>',
 			staff: '<?= auth('username') ?>',
 			data: ITEMS,
 			
