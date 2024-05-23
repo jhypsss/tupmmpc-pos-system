@@ -36,7 +36,7 @@
                 <td><?=date("M j, Y",strtotime($user['date']))?></td>
                 <td>
                     <a href="index.php?pg=edit-user&id=<?=$user['id']?>">
-                        <button class="btn btn-success btn-sm" style="background-color: #00ab41; border: none; color: white;"><i class="fas fa-user-cog"></i></button>
+                        <button class="btn btn-success btn-sm" style="background-color: #00ab41 ; border: none; color: white;"><i class="fas fa-user-cog"></i></button>
                     </a>
                     <a href="index.php?pg=delete-user&id=<?=$user['id']?>">
                         <button class="btn btn-danger btn-sm" style="background-color: #d1001f; border: none; color: white;"><i class="fas fa-trash"></i></button>
