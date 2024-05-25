@@ -58,7 +58,7 @@
 	<table class="table table-default table-sm">
 		<tbody>
 			<tr>
-				<td colspan="2">Staff: <?= strtoupper($obj['staff'])?></td>
+				<td colspan="2">Cashier: <?= strtoupper($obj['staffid'])?> - <?=strtoupper($obj['staff'])?></td>
 			</tr>
 			<tr>
 				<td>Receipt: #<?=$obj['receiptno']?></td>

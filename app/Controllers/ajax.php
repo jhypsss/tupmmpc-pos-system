@@ -14,22 +14,29 @@ if(!empty($raw_data))
 		{
 
 			$productClass = new Product();
-			//$limit = 20;
 
-			if(empty($OBJ['text']))
+			if(!empty($OBJ['text']))
 			{
-				//get all
-				//$limit = 10,$offset = 0,$order = "desc",$order_column = "id"
-				//$query = "SELECT * FROM products WHERE if_deleted = 0 AND (description LIKE :find OR barcode = :barcode) ORDER BY views desc";
-				$rows = $productClass->getAll('desc','views');
-			}else{
 				//search
-				$barcode = $OBJ['text'];
-				$text = "%".$OBJ['text']."%";
-				$if_deleted = 0;
-				//$query = "SELECT * FROM products WHERE description LIKE :find or barcode = :barcode ORDER BY views DESC LIMIT $limit";
-				$query = "SELECT * FROM products WHERE if_deleted = 0 AND (description LIKE :find OR barcode = :barcode) ORDER BY views desc";
-				$rows = $productClass->query($query,['find'=>$text,'barcode'=>$barcode]);
+				$input = $OBJ['text'];
+				if (preg_match('/^\d+$/', $input) || preg_match('/^\d{13}$/', $input) || preg_match('/^[a-zA-Z0-9]+$/', $input)){
+					$barcode = $OBJ['text'];
+					$query = "SELECT * FROM products WHERE barcode = :barcode AND if_deleted = 0 order by views desc";
+					$rows = $productClass->query($query,['barcode'=>$barcode]);
+				} else {
+					$text = "%".$OBJ['text']."%";
+					$query = "SELECT * FROM products WHERE description like :find AND if_deleted = 0 order by views desc";
+					$rows = $productClass->query($query,['find'=>$text]);
+				}
+
+				//$barcode = $OBJ['text'];
+				//$text = "%".$OBJ['text']."%";
+				//$query = "SELECT * FROM products WHERE (description like :find || barcode = :barcode) AND if_deleted = 0 order by views desc";
+				//$rows = $productClass->query($query,['find'=>$text,'barcode'=>$barcode]);
+			}else{
+				//get all
+				$query = "SELECT * FROM products WHERE if_deleted = 0 ORDER BY views desc";
+				$rows = $productClass->query($query);
 			}
 			
 			if($rows){

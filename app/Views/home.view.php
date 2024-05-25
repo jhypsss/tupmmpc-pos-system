@@ -52,7 +52,7 @@ $conn->close();
 		<div style="max-height:800px;" class="shadow-sm col-7 p-4">
 			
 			<div class="input-group mb-3"><h3> Items </h3>
-			  <input onkeyup="check_for_enter_key(event)" oninput="search_item(event)" type="text" class="ms-4 form-control js-search" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1" id='searchitem' autocomplete="off">
+			  <input onkeyup="check_for_enter_key(event)" oninput="search_item(event)" type="text" class="ms-4 form-control js-search" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1" autocomplete="off">
 			  <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
 			</div>
 
@@ -146,7 +146,7 @@ $conn->close();
 	var RECEIPT_WINDOW = null;
 
 	var main_input = document.querySelector(".js-search");
-	document.getElementById('searchitem').focus();
+	main_input.focus();
 
 	function search_item(e){
 
@@ -255,7 +255,7 @@ $conn->close();
 			</div>
 			<!--end card-->
 			`;
-		} else if (data.stock > 0 && data.stock <= 20) {
+		} else if (data.stock > 5 && data.stock <= 20) {
 			return `
 			<!--card-->
 			<div class="card m-2 border-0 mx-auto" style="min-width: 190px;max-width: 190px;">
@@ -266,6 +266,22 @@ $conn->close();
 				<div class="text-muted"><b>${data.description}</b></div>
 				<div class="" style="font-size:20px"><b>₱${data.amount}</b></div>
 				<div class="" style="font-size:15px;color:#D68910;">Available: <b>${data.stock}</b></div>
+				</div>
+			</div>
+			<!--end card-->
+			`;
+
+		} else if (data.stock > 0 && data.stock <= 5) {
+			return `
+			<!--card-->
+			<div class="card m-2 border-0 mx-auto" style="min-width: 190px;max-width: 190px;">
+				<a href="#">
+				<img index="${index}" src="${data.image}" style="width: 100%;max-width:175px" class="w-100 rounded border border-2">
+				</a>
+				<div class="p-2">
+				<div class="text-muted"><b>${data.description}</b></div>
+				<div class="" style="font-size:20px"><b>₱${data.amount}</b></div>
+				<div class="" style="font-size:15px;color:red;">Available: <b>${data.stock}</b></div>
 				</div>
 			</div>
 			<!--end card-->
@@ -328,28 +344,27 @@ $conn->close();
 			//check if items exists
 			if(PRODUCTS[index].stock > 0){
 
-			for (var i = ITEMS.length - 1; i >= 0; i--) {
-				
-				if(ITEMS[i].id == PRODUCTS[index].id)
-				{
-					if (ITEMS[i].qty < PRODUCTS[index].stock) {
-						ITEMS[i].qty += 1;
+				for (var i = ITEMS.length - 1; i >= 0; i--) {
+					
+					if(ITEMS[i].id == PRODUCTS[index].id)
+					{
+						if (ITEMS[i].qty < PRODUCTS[index].stock) {
+							ITEMS[i].qty += 1;
+						}
+						refresh_items_display();
+						return;
 					}
-					refresh_items_display();
-					return;
 				}
-			}
 
 			var temp = PRODUCTS[index];
 			temp.qty = 1;
 
 			ITEMS.push(temp);
-			search_item({ target: { value: "" } });
-			refresh_items_display();
-			} else {
+			
+			} else if (PRODUCTS[index].stock == 0){
 				alert(PRODUCTS[index].description + " is out of stocks!");
 			}
-
+			refresh_items_display();
 	}
 
 	function add_item(e)
@@ -382,8 +397,7 @@ $conn->close();
 		var gtotal_div = document.querySelector(".js-gtotal");
 		gtotal_div.innerHTML = "Total: ₱" + grand_total.toFixed(2);
 		GTOTAL = grand_total;
-		//autofocus to search input
-		//document.getElementById('searchitem').focus();
+		search_item({ target: { value: "" } });
 	}
 
 	var voidCodes = <?php echo json_encode($void_codes); ?>;
@@ -398,9 +412,10 @@ $conn->close();
 		} else if (voidCodes.includes(code.trim())) {
 			ITEMS = [];
 			refresh_items_display();
-			setTimeout(function () {
+			/*setTimeout(function () {
 				location.reload();
 				},100);
+			*/
 		} else {
 			alert("Incorrect code.");
 		}
@@ -505,7 +520,6 @@ $conn->close();
 		{
 			BARCODE = true;
 			search_item(e);
-			//search_item({ target: { value: "" } });
 		}
 	}
 
@@ -531,7 +545,7 @@ $conn->close();
 
 			mydiv.querySelector(".js-change-input").innerHTML = CHANGE;
 			mydiv.querySelector(".js-btn-close-change").focus();
-		} 
+		}
 	}
 	
 	function hide_modal(e,modal)
@@ -542,12 +556,11 @@ $conn->close();
 			if(modal == "amount-paid"){
 				var mydiv = document.querySelector(".js-amount-paid-modal");
 				mydiv.classList.add("hide");
-				document.getElementById('searchitem').focus();
 			}
 			else if(modal == "change"){
 				var mydiv = document.querySelector(".js-change-modal");
 				mydiv.classList.add("hide");
-				document.getElementById('searchitem').focus();
+				main_input.focus();
 			}
 		}	
 	}
@@ -603,6 +616,7 @@ $conn->close();
 			change: CHANGE,
 			gtotal: GTOTAL,
 			receiptno: '<?= generate_receipt_no() ?>',
+			staffid: '<?= auth('userid') ?>',
 			staff: '<?= auth('username') ?>',
 			data: ITEMS,
 			
@@ -623,7 +637,7 @@ $conn->close();
 	{
 		var vars = JSON.stringify(obj);
 
-		RECEIPT_WINDOW = window.open('index.php?pg=print&vars='+vars,'printpage',"width=100px;");
+		RECEIPT_WINDOW = window.open('index.php?pg=print&vars='+vars,'printpage',"width=500px;");
 
 		setTimeout(close_receipt_window,2000);
 		
@@ -635,7 +649,6 @@ $conn->close();
  	}
 
 	send_data({
-
 		data_type:"search",
 		text:""
 	});

@@ -24,6 +24,7 @@ issues or bugs found.
 ✅ receipt no in print receipt. not accurate to the db
 - input tags autocomplete="off"
 - print receipt no (not accurate receipt #)
+- barcode must be unique... when adding/editing product, need check to database if the barcode is already exist
 
 
 System Functions to do
