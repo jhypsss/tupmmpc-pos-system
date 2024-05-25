@@ -141,12 +141,22 @@ $conn->close();
 	var PRODUCTS 	= [];
 	var ITEMS 		= [];
 	var BARCODE 	= false;
+	var AMOUNT 		= 0;
 	var GTOTAL  	= 0;
 	var CHANGE  	= 0;
+	var RECEIPT_NO 	= "";
 	var RECEIPT_WINDOW = null;
 
 	var main_input = document.querySelector(".js-search");
 	main_input.focus();
+
+	//prevents reload
+	document.addEventListener('keydown', function (event) {
+		// Check for F5 key (key code 116)
+		if (event.key === 'F5' || (event.ctrlKey && event.key === 'r')) {
+			event.preventDefault();
+		}
+	});
 
 	function search_item(e){
 
@@ -231,10 +241,32 @@ $conn->close();
 						add_item_from_index(0);
 					}
 				}
-			}
-			
-		}
+			} else if (obj.data_type == "print_checkout"){
+				
+				RECEIPT_NO = obj.receipt_no;
 
+				print_receipt({
+					store: '<?= esc(APP_NAME) ?>',
+					address: 'Ayala Blvd., Ermita, Manila, 1000, Philippines',
+					amount: AMOUNT,
+					change: CHANGE,
+					gtotal: GTOTAL,
+					receiptno: RECEIPT_NO,
+					staffid: '<?= auth('userid') ?>',
+					staff: '<?= auth('username') ?>',
+					data: ITEMS,
+				});
+				//clear items
+				ITEMS = [];
+				refresh_items_display();
+
+				//reload products
+				send_data({
+					data_type:"search",
+					text:""
+				});
+			}
+		}
 	}
 
 	function product_html(data,index)
@@ -569,7 +601,7 @@ $conn->close();
 	{
 
 		var amount = e.currentTarget.parentNode.querySelector(".js-amount-paid-input").value.trim();
-		
+		AMOUNT = amount;
 		if(amount == "")
 		{
 			alert("Please enter a valid amount");
@@ -584,7 +616,7 @@ $conn->close();
 			return;
 		}
 
-		CHANGE = amount - GTOTAL ;
+		CHANGE = AMOUNT - GTOTAL ;
 		CHANGE = CHANGE.toFixed(2);
 		
 
@@ -609,28 +641,31 @@ $conn->close();
 			text:ITEMS_NEW
 		});
 
+		/*
 		print_receipt({
 			store: '<?= esc(APP_NAME) ?>',
 			address: 'Ayala Blvd., Ermita, Manila, 1000, Philippines',
-			amount: amount,
+			amount: AMOUNT,
 			change: CHANGE,
 			gtotal: GTOTAL,
-			receiptno: '<?= generate_receipt_no() ?>',
+			receiptno: RECEIPT_NO,
 			staffid: '<?= auth('userid') ?>',
 			staff: '<?= auth('username') ?>',
 			data: ITEMS,
-			
 		});
+		
 
 		//clear items
 		ITEMS = [];
 		refresh_items_display();
+		
 
 		//reload products
 		send_data({
 			data_type:"search",
 			text:""
 		});
+		*/
 	}
 
 	function print_receipt(obj)

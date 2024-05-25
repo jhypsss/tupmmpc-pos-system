@@ -65,24 +65,3 @@ Llyle:
 ✅ UPDATE: Click VOID msg: "Please Enter a Code."
 ✅ Delete Item (Deleted at Products but not deleted at POS)
 ✅ Sales Time ("not accurate")
-
-Categories
-	<option>School Supplies</option>
-	<option>Clothing</option>
-	<option>Baked Goods</option>
-	<option>Beverages</option>
-	<option>Canned Goods</option>
-	<option>Dairy Products</option>
-	<option>Desserts</option>
-	<option>Detergent</option>
-	<option>Frozen Foods</option>
-	<option>Fruits</option>
-	<option>Grains</option>
-	<option>Meat & Poultry</option>
-	<option>Pasta & Noodles</option>
-	<option>Sauces</option>
-	<option>Seafood</option>
-	<option>Snacks</option>
-	<option>Vegetables</option>
-
-	<!-- Add more options as needed -->

@@ -61,8 +61,8 @@ if(!empty($raw_data))
 			$receipt_no 	= generate_receipt_no();
 			$user_id 	= auth("id");
 			$date 		= date("Y-m-d H:i:s");
-			$payment_method = $OBJ['payment_status'];
-			$payment_reference = $OBJ['payment_reference'];
+			//$payment_method = $OBJ['payment_status'];
+			//$payment_reference = $OBJ['payment_reference'];
 			$db = new Database();
 
 			//read from database
@@ -88,13 +88,14 @@ if(!empty($raw_data))
 					$arr['receipt_no'] 	= $receipt_no;
 					$arr['date'] 		= $date;
 					$arr['user_id'] 	= $user_id;
-					$arr['payment_method'] 	= $payment_method . ' '.$payment_reference ;
+					//$arr['payment_method'] 	= $payment_method . ' '.$payment_reference ;
 
-					$query = "insert into sales (barcode,receipt_no,description,category_id,qty,amount,total,date,user_id,payment_method) values (:barcode,:receipt_no,:description,:category_id,:qty,:amount,:total,:date,:user_id,:payment_method)";
+					//$query = "insert into sales (barcode,receipt_no,description,category_id,qty,amount,total,date,user_id,payment_method) values (:barcode,:receipt_no,:description,:category_id,:qty,:amount,:total,:date,:user_id,:payment_method)";
+					$query = "INSERT into sales (barcode,receipt_no,description,category_id,qty,amount,total,date,user_id) values (:barcode,:receipt_no,:description,:category_id,:qty,:amount,:total,:date,:user_id)";
 					$db->query($query,$arr);
 
 					//add view count for this product
-					$query = "update products set views = views + 1 where id = :id limit 1";
+					$query = "UPDATE products set views = views + 1 where id = :id limit 1";
 					$db->query($query,['id'=>$check['id']]);
 
 					//subtract quantity for this product
@@ -104,10 +105,10 @@ if(!empty($raw_data))
 
 			}
 
-			//barcode 	receipt_no 	description 	qty 	amount 	total 	date 	user_id 
-
-			$info['data_type'] = "checkout";
-			$info['data'] = "items saved successfully!";
+			$info['data_type'] = "print_checkout";
+			$info['receipt_no'] = $receipt_no;
+			//$info['data'] = "items saved successfully!";
+			
 				
 			echo json_encode($info);
 		}
