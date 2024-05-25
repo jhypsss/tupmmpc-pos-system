@@ -1,6 +1,6 @@
 <?php
 	$productClass = new Product();
-	$stocks = $productClass->query("SELECT * FROM products WHERE if_deleted=0 AND (stock <= 20 OR stock = 0)");
+	$stocks = $productClass->query("SELECT * FROM products WHERE if_deleted=0 AND (stock <= 20 OR stock = 0) ORDER BY views DESC");
 	$stocksCount = $productClass->query("SELECT COUNT(*) AS count FROM products WHERE if_deleted=0 AND (stock <= 20 OR stock = 0)");
 	$role = Auth::get('role');
 ?>

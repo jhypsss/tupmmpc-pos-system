@@ -37,6 +37,11 @@
 			margin: 10mm 15mm 10mm 15mm; /* margin you want for the content */
 			font-size:12px;
 		}
+
+		.price {
+			text-align:right;
+			width: 20%;
+		}
 	</style>
 </head>
 <body>
@@ -58,7 +63,7 @@
 	<table class="table table-default table-sm">
 		<tbody>
 			<tr>
-				<td colspan="2">Staff: <?= strtoupper($obj['staff'])?></td>
+				<td colspan="2">Cashier: <?= strtoupper($obj['staffid'])?> - <?=strtoupper($obj['staff'])?></td>
 			</tr>
 			<tr>
 				<td>Receipt: #<?=$obj['receiptno']?></td>
@@ -69,15 +74,16 @@
 	<table class="table table-striped table-sm">
 		<thead class="table">
 		<tr>
-			<th>Qty</th><th>Description</th><th>@</th><th>Amount</th>
+			<th>Qty</th><th>Description</th><th style="text-align:right;">@</th><th style="text-align:right;">Amount</th>
 		</tr>
 		</thead>
 		<tbody>
 		<?php $i=0; foreach ($obj['data'] as $row):?>
 			<tr>
-				<td><?=$row['qty']?></td><td><?=$row['description']?></td>
-				<td>₱<?=$row['amount']?></td>
-				<td>₱<?=number_format($row['qty'] * $row['amount'],2)?></td>
+				<td><?=$row['qty']?></td>
+				<td style="width: auto;"><?=$row['description']?></td>
+				<td class="price"><?=$row['amount']?></td>
+				<td class="price"><?=number_format($row['qty'] * $row['amount'],2)?></td>
 			</tr>
 			<?php $i=$i+1;?>
 		<?php endforeach;?>
@@ -85,18 +91,18 @@
 
 		<tbody>
 		<tr>
-			<td colspan="2"></td><td><b>Total Amount Due (<?= esc($i)?>):</b></td>
-			<td style="font-size:16px;"><b>₱<?=number_format($obj['gtotal'],2)?></b></td>
+			<td colspan="2"></td><td><b>Total Due:</b></td>
+			<td class="price" style="font-size:16px;"><b>₱<?=number_format($obj['gtotal'],2)?></b></td>
 		</tr>
 		<tr>
 			<td colspan="2"></td>
-			<td>Amount To Pay:</td>
-			<td>₱<?=number_format($obj['amount'],2)?></td>
+			<td>Cash:</td>
+			<td class="price">₱<?=number_format($obj['amount'],2)?></td>
 		</tr>
 		<tr>
 			<td colspan="2"></td>
 			<td>Change:</td>
-			<td>₱<?=number_format($obj['change'],2)?></td>
+			<td class="price"><?=number_format($obj['change'],2)?></td>
 		</tr>
 		</tbody>
 	</table>
