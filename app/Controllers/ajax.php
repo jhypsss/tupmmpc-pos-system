@@ -19,7 +19,7 @@ if(!empty($raw_data))
 			{
 				//search
 				$input = $OBJ['text'];
-				if (preg_match('/^\d+$/', $input) || preg_match('/^\d{13}$/', $input) || preg_match('/^[a-zA-Z0-9]+$/', $input)){
+				if (preg_match('/^\d+$/', $input) || preg_match('/^\d{13}$/', $input)){
 					$barcode = $OBJ['text'];
 					$query = "SELECT * FROM products WHERE barcode = :barcode AND if_deleted = 0 order by views desc";
 					$rows = $productClass->query($query,['barcode'=>$barcode]);

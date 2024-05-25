@@ -373,30 +373,30 @@ $conn->close();
 	
 	function add_item_from_index(index)
 	{
-			//check if items exists
-			if(PRODUCTS[index].stock > 0){
+		//check if items exists
+		if(PRODUCTS[index].stock > 0){
 
-				for (var i = ITEMS.length - 1; i >= 0; i--) {
-					
-					if(ITEMS[i].id == PRODUCTS[index].id)
-					{
-						if (ITEMS[i].qty < PRODUCTS[index].stock) {
-							ITEMS[i].qty += 1;
-						}
-						refresh_items_display();
-						return;
+			for (var i = ITEMS.length - 1; i >= 0; i--) {
+				
+				if(ITEMS[i].id == PRODUCTS[index].id)
+				{
+					if (ITEMS[i].qty < PRODUCTS[index].stock) {
+						ITEMS[i].qty += 1;
 					}
+					refresh_items_display();
+					return;
 				}
-
-			var temp = PRODUCTS[index];
-			temp.qty = 1;
-
-			ITEMS.push(temp);
-			
-			} else if (PRODUCTS[index].stock == 0){
-				alert(PRODUCTS[index].description + " is out of stocks!");
 			}
-			refresh_items_display();
+
+		var temp = PRODUCTS[index];
+		temp.qty = 1;
+
+		ITEMS.push(temp);
+		
+		} else if (PRODUCTS[index].stock == 0){
+			alert(PRODUCTS[index].description + " is out of stocks!");
+		}
+		refresh_items_display();
 	}
 
 	function add_item(e)
@@ -552,6 +552,7 @@ $conn->close();
 		{
 			BARCODE = true;
 			search_item(e);
+			refresh_items_display();
 		}
 	}
 
