@@ -1,13 +1,13 @@
 <div class="table-responsive" style="height: 650px;overflow-y: scroll;">
     <!-- Table section -->
     <table class="table table-striped table-hover">
-        <thead class="table-light" style="position: sticky;top: 0">
+    <thead class="table-red" style="position: sticky;top: 0; background-color: #f94449;">
         <tr>
-            <th>Date | Time</th>
-            <th>Initiator(User)</th>
-            <th>Source</th>
-            <th>Action</th>
-            <th>Details</th>
+            <th style="color: black;">Date | Time</th>
+            <th style="color: black;">Initiator(User)</th>
+            <th style="color: black;">Source</th>
+            <th style="color: black;">Action</th>
+            <th style="color: black;">Details</th>
         </tr>
         </thead>
         <tbody>

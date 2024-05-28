@@ -1,89 +1,92 @@
 <style>
     .task-roll-up {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin-top: 50px;
-	}
-	
-	.no-items-message {
-	font-size: 20px;
-	color: #666;
-	margin-bottom: 20px;
-	display: flex;
-	align-items: center;
-	}
-	
-	.add-button {
-	padding: 10px 20px;
-	background-color: #0078d7;
-	color: #fff;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	}
-	
-	.fa-fw {
-	font-size: 1em;
-	margin-right: 5px;
-	}
-	
-	.icon {
-	font-size: 4em;
-	}
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+    }
+    
+    .no-items-message {
+        font-size: 20px;
+        color: #666;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .add-button {
+        padding: 10px 20px;
+        background-color: #0078d7;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+    
+    .fa-fw {
+        font-size: 1em;
+        margin-right: 5px;
+    }
+    
+    .icon {
+        font-size: 4em;
+    }
+    
+    .button-container {
+        display: flex;
+        gap: 5px;
+    }
 </style>
 
 
 
 <?php if (!empty($suppliers)):?>
     <input type="text" class="form-control" id="searchInput" placeholder="Search..." style="width: 50%; float: right;"><br><br>
-<div class="table-responsive" style="height: 650px;overflow-y: scroll;">
-        
+    <div class="table-responsive" style="height: 650px; overflow-y: scroll;">
     <!-- Table section -->
     <table class="table table-striped table-hover">
-        <thead class="table-light" style="position: sticky;top: 0">
+        <thead class="table-red" style="position: sticky; top: 0; background-color: #f94449;">
         <tr>
-            <th>Company Name</th>
-            <th>Company Address</th>
-            <th>Contact Person</th>
-            <th>Contact Number</th>
-            <th>Email</th>
-            <th>Business Type</th>
-
+            <th style="color: black;">Company Name</th>
+            <th style="color: black;">Company Address</th>
+            <th style="color: black;">Contact Person</th>
+            <th style="color: black;">Contact Number</th>
+            <th style="color: black;">Email</th>
+            <th style="color: black;">Business Type</th>
             <th>
-				<a href="index.php?pg=supplier-new">
-					<button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add new</button>
-				</a>
-			</th>
+                <a href="index.php?pg=supplier-new">
+                    <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add new</button>
+                </a>
+            </th>
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($suppliers as $supplier):?>
-                <tr>
-                    <td><a href="index.php?pg=supplier-edit&id=<?=$supplier['id']?>">
-                        <?=esc($supplier['company_name'])?></a>
-                    </td>
-                    <td><?=esc($supplier['company_address'])?></td>
-                    <td><?=esc($supplier['contact_person'])?></td>
-                    <td><?=esc($supplier['contact_number'])?></td>
-                    <td><?=esc($supplier['contact_email'])?></td>
-                    <td><?=esc($supplier['business_type'])?></td>
-
-                    <td>
-                        <a href="index.php?pg=supplier-edit&id=<?=$supplier['id']?>">
-                        <button class="btn btn-success btn-sm"><i class="fa fa-cog"></i></button>
+        <?php foreach ($suppliers as $supplier): ?>
+            <tr>
+                <td><a href="index.php?pg=supplier-edit&id=<?= $supplier['id'] ?>"><?= esc($supplier['company_name']) ?></a></td>
+                <td><?= esc($supplier['company_address']) ?></td>
+                <td><?= esc($supplier['contact_person']) ?></td>
+                <td><?= esc($supplier['contact_number']) ?></td>
+                <td><?= esc($supplier['contact_email']) ?></td>
+                <td><?= esc($supplier['business_type']) ?></td>
+                <td>
+                    <div class="button-container">
+                        <a href="index.php?pg=supplier-edit&id=<?= $supplier['id'] ?>">
+                            <button class="btn btn-success btn-sm"><i class="fa fa-cog"></i></button>
                         </a>
-                        <a href="index.php?pg=supplier-delete&id=<?=$supplier['id']?>">
-                        <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                        <a href="index.php?pg=supplier-delete&id=<?= $supplier['id'] ?>">
+                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                         </a>
-                    </td>
-                </tr>
-                <?php endforeach;?>
+                    </div>
+                </td>
+            </tr>
+        <?php endforeach; ?>
         </tbody>
     </table>
-    
+</div>
+
     <?php else:?>
         <div class="task-roll-up">
             <i class="fa fa-truck fa-fw icon"></i>
