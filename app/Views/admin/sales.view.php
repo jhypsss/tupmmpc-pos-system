@@ -88,7 +88,6 @@
 </div>
 
 <div class="table-responsive" style="height: 500px;overflow-y: scroll;">
-    
     <table class="table table-striped table-hover">
         <thead class="table-light" style="position: sticky;top: 0">
             <tr>
@@ -98,7 +97,7 @@
                 <th style="background-color: #f94449; color: black;">Qty</th>
                 <th style="background-color: #f94449; color: black;">Amount</th>
                 <th style="background-color: #f94449; color: black;">Total</th>
-                <th style="background-color: #f94449; color: black;">Cashier</th>
+                <th style="background-color: #f94449; color: black;">Encoder</th>
                 <th colspan="2" style="background-color: #f94449; color: black;">Date | Time</th>           
             </tr>
         </thead>
@@ -129,7 +128,7 @@
                     </a>
                 </td>
         
-                <td><?=date("M j, Y | h:i:s a",strtotime($sale['date']))?></td>
+                <td><?=date("M j, Y | h:i:sa",strtotime($sale['date']))?></td>
                 <td>
                     <a href="index.php?pg=#&id=<?=$sale['id']?>">
                     <button class="btn btn-success btn-sm"><i class="fa fa-cog"></i></button>
@@ -140,7 +139,7 @@
         
         </tbody>
     </table>
-    
+
 <?php
         $pager->display($totalSales);
 ?>

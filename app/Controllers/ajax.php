@@ -79,6 +79,7 @@ if(!empty($raw_data))
 
 					//save to database
 					$arr = [];
+					$arr['product_id']  = $row['id'];
 					$arr['barcode'] 	= $check['barcode'];
 					$arr['description'] = $check['description'];
 					$arr['category_id'] 	= $check['category_id'];
@@ -91,7 +92,8 @@ if(!empty($raw_data))
 					//$arr['payment_method'] 	= $payment_method . ' '.$payment_reference ;
 
 					//$query = "insert into sales (barcode,receipt_no,description,category_id,qty,amount,total,date,user_id,payment_method) values (:barcode,:receipt_no,:description,:category_id,:qty,:amount,:total,:date,:user_id,:payment_method)";
-					$query = "INSERT into sales (barcode,receipt_no,description,category_id,qty,amount,total,date,user_id) values (:barcode,:receipt_no,:description,:category_id,:qty,:amount,:total,:date,:user_id)";
+					$query = "INSERT into sales (product_id,barcode,receipt_no,description,category_id,qty,amount,total,date,user_id) 
+									values (:product_id,:barcode,:receipt_no,:description,:category_id,:qty,:amount,:total,:date,:user_id)";
 					$db->query($query,$arr);
 
 					//add view count for this product

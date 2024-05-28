@@ -130,6 +130,11 @@ else if($tab == "sales")
 
 }
 
+else if($tab == "refunded items"){
+	$refund_db = new Database();
+	$refunded_items = $refund_db->query("SELECT * FROM refunded_items order by id desc");
+}
+
 else if($tab == "audit trail")
 {
 	$audit_trailClass = new Audit_trail();

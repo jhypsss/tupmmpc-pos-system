@@ -1,5 +1,3 @@
-<?php require views_path('partials/header'); ?>
-
 <style>
     .admin-panel {
         color: #444;
@@ -35,10 +33,8 @@
     }
 </style>
 
-<div class="admin-panel">
-    <center class="p-2">
-        <h4><i class="fa fa-user-shield"></i> Admin Panel</h4>
-    </center>
+<?php require views_path('partials/header'); ?>
+<div class="admin-panel" style="color:#444">
     <div class="container-fluid row">
         <div class="col-12 col-sm-4 col-md-3 col-lg-2 bg-light">
             <ul class="list-group">
