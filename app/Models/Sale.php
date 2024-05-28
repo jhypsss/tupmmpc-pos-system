@@ -10,52 +10,51 @@ class Sale extends Model
 	protected $table = "sales";
 
 	protected $allowed_columns = [
-
+				'product_id',
 				'barcode',
 				'receipt_no',
 				'user_id',
 				'description',
+				'category_id',
 				'qty',
 				'amount',
 				'total',
 				'date',
+				'refund_qty',
+				'status',
+				'remarks'
 			];
 
 
  	public function validate($data, $id = null)
 	{
 		$errors = [];
-
-			//check description
-			if(empty($data['description']))
+			//check refund_qty
+			if(empty($data['refund_qty']))
 			{
-				$errors['description'] = "Sale description is required";
+				$errors['refund_qty'] = "Refund (Qty) is required";
 			}else
-			if(!preg_match('/[a-zA-Z0-9 _\-\&\(\)]+/', $data['description']))
+			if(!preg_match('/^[0-9]+$/', $data['refund_qty']))
 			{
-				$errors['description'] = "Only letters allowed in description";
+				$errors['refund_qty'] = "Refund (Qty) must be a number";
 			}
-
-			//check qty
-			if(empty($data['qty']))
+			//check status and remarks
+			if(empty($data['status']))
 			{
-				$errors['qty'] = "Sale quantity is required";
+				$errors['status'] = "Sale status is required";
 			}else
-			if(!preg_match('/^[0-9]+$/', $data['qty']))
+			if(!preg_match('/[a-zA-Z0-9 _\-\&\(\)]+/', $data['status']))
 			{
-				$errors['qty'] = "quantity must be a number";
+				$errors['status'] = "Only letters allowed in status";
 			}
-
-			//check amount
-			if(empty($data['amount']))
+			if(empty($data['remarks']))
 			{
-				$errors['amount'] = "Sale amount is required";
+				$errors['remarks'] = "Sale remarks is required";
 			}else
-			if(!preg_match('/^[0-9.]+$/', $data['amount']))
+			if(!preg_match('/[a-zA-Z0-9 _\-\&\(\)]+/', $data['remarks']))
 			{
-				$errors['amount'] = "amount must be a number";
+				$errors['remarks'] = "Only letters allowed in remarks";
 			}
-  
 			
 		return $errors;
 	}

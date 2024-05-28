@@ -1,0 +1,34 @@
+.task-roll-up {
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-top: 50px;
+}
+
+.no-items-message {
+font-size: 20px;
+color: #666;
+margin-bottom: 20px;
+display: flex;
+align-items: center;
+}
+
+.add-button {
+padding: 10px 20px;
+background-color: #0078d7;
+color: #fff;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+display: flex;
+align-items: center;
+}
+
+.fa-fw {
+font-size: 1em;
+margin-right: 5px;
+}
+
+.icon {
+font-size: 4em;
+}

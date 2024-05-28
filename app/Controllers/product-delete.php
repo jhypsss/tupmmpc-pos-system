@@ -16,7 +16,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 
 	//$product->audit_trail($row['id'], null, "Products", "DELETE");
 	$product->audit_trail($row['id'], $_POST);
-	$product->delete($row['id']);
+	$product->delete_item($row['id']);
   	
 	/*/delete old image
 	if(file_exists($row['image']))

@@ -11,8 +11,8 @@
 			<div class="alert alert-danger text-center">Are you sure you want to delete this product??!!</div>
 
 			<div class="mb-3">
-			  <label for="productControlInput1" class="form-label">Product description</label>
-			  <input disabled value="<?=set_value('description',$row['description'])?>" name="description" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="productControlInput1" placeholder="Product description">
+			  <label for="productControlInput1" class="form-label">Product Description</label>
+			  <input disabled value="<?=set_value('description',$row['description'])?>" name="Description" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="productControlInput1" placeholder="Product Description">
 			  <?php if(!empty($errors['description'])):?>
 					<small class="text-danger"><?=$errors['description']?></small>
 				<?php endif;?>
@@ -39,7 +39,7 @@
 			That product was not found
 			<br><br>
 			<a href="index.php?pg=admin&tab=products">
-				<button type="button" class="btn btn-primary">Back to products</button>
+				<button type="button" class="btn btn-primary">Back to Products</button>
 			</a>
 
 		<?php endif;?>

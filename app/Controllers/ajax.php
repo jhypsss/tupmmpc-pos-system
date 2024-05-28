@@ -14,22 +14,29 @@ if(!empty($raw_data))
 		{
 
 			$productClass = new Product();
-			//$limit = 20;
 
-			if(empty($OBJ['text']))
+			if(!empty($OBJ['text']))
 			{
-				//get all
-				//$limit = 10,$offset = 0,$order = "desc",$order_column = "id"
-				$rows = $productClass->getAll('desc','views');
-			}else{
 				//search
-				$barcode = $OBJ['text'];
-				$text = "%".$OBJ['text']."%";
-				$if_deleted = 0;
-				//$query = "SELECT * FROM products WHERE description LIKE :find or barcode = :barcode ORDER BY views DESC LIMIT $limit";
-				$query = "SELECT * FROM products WHERE if_deleted = 0 AND (description LIKE :find OR barcode = :barcode) ORDER BY views desc";
-				$rows = $productClass->query($query,['find'=>$text,'barcode'=>$barcode]);
-				//$rows = $productClass->query($query,['find'=>$text]);
+				$input = $OBJ['text'];
+				if (preg_match('/^\d+$/', $input) || preg_match('/^\d{13}$/', $input)){
+					$barcode = $OBJ['text'];
+					$query = "SELECT * FROM products WHERE barcode = :barcode AND if_deleted = 0 order by views desc";
+					$rows = $productClass->query($query,['barcode'=>$barcode]);
+				} else {
+					$text = "%".$OBJ['text']."%";
+					$query = "SELECT * FROM products WHERE description like :find AND if_deleted = 0 order by views desc";
+					$rows = $productClass->query($query,['find'=>$text]);
+				}
+
+				//$barcode = $OBJ['text'];
+				//$text = "%".$OBJ['text']."%";
+				//$query = "SELECT * FROM products WHERE (description like :find || barcode = :barcode) AND if_deleted = 0 order by views desc";
+				//$rows = $productClass->query($query,['find'=>$text,'barcode'=>$barcode]);
+			}else{
+				//get all
+				$query = "SELECT * FROM products WHERE if_deleted = 0 ORDER BY views desc";
+				$rows = $productClass->query($query);
 			}
 			
 			if($rows){
@@ -51,11 +58,11 @@ if(!empty($raw_data))
 		{
 
 			$data 		= $OBJ['text'];
-			$receipt_no 	= get_receipt_no();
+			$receipt_no 	= generate_receipt_no();
 			$user_id 	= auth("id");
 			$date 		= date("Y-m-d H:i:s");
-			$payment_method = $OBJ['payment_status'];
-			$payment_reference = $OBJ['payment_reference'];
+			//$payment_method = $OBJ['payment_status'];
+			//$payment_reference = $OBJ['payment_reference'];
 			$db = new Database();
 
 			//read from database
@@ -72,22 +79,25 @@ if(!empty($raw_data))
 
 					//save to database
 					$arr = [];
+					$arr['product_id']  = $row['id'];
 					$arr['barcode'] 	= $check['barcode'];
 					$arr['description'] = $check['description'];
-					$arr['category'] 	= $check['category'];
+					$arr['category_id'] 	= $check['category_id'];
 					$arr['amount'] 		= $check['amount'];
 					$arr['qty'] 		= $row['qty'];
 					$arr['total'] 		= $row['qty'] * $check['amount'];
 					$arr['receipt_no'] 	= $receipt_no;
 					$arr['date'] 		= $date;
 					$arr['user_id'] 	= $user_id;
-					$arr['payment_method'] 	= $payment_method . ' '.$payment_reference ;
+					//$arr['payment_method'] 	= $payment_method . ' '.$payment_reference ;
 
-					$query = "insert into sales (barcode,receipt_no,description,category,qty,amount,total,date,user_id,payment_method) values (:barcode,:receipt_no,:description,:category,:qty,:amount,:total,:date,:user_id,:payment_method)";
+					//$query = "insert into sales (barcode,receipt_no,description,category_id,qty,amount,total,date,user_id,payment_method) values (:barcode,:receipt_no,:description,:category_id,:qty,:amount,:total,:date,:user_id,:payment_method)";
+					$query = "INSERT into sales (product_id,barcode,receipt_no,description,category_id,qty,amount,total,date,user_id) 
+									values (:product_id,:barcode,:receipt_no,:description,:category_id,:qty,:amount,:total,:date,:user_id)";
 					$db->query($query,$arr);
 
 					//add view count for this product
-					$query = "update products set views = views + 1 where id = :id limit 1";
+					$query = "UPDATE products set views = views + 1 where id = :id limit 1";
 					$db->query($query,['id'=>$check['id']]);
 
 					//subtract quantity for this product
@@ -97,10 +107,10 @@ if(!empty($raw_data))
 
 			}
 
-			//barcode 	receipt_no 	description 	qty 	amount 	total 	date 	user_id 
-
-			$info['data_type'] = "checkout";
-			$info['data'] = "items saved successfully!";
+			$info['data_type'] = "print_checkout";
+			$info['receipt_no'] = $receipt_no;
+			//$info['data'] = "items saved successfully!";
+			
 				
 			echo json_encode($info);
 		}

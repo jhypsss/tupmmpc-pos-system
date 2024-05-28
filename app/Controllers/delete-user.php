@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	if(is_array($row) && Auth::access('Admin') && $row['deletable'])
 	{
 		$user->audit_trail($id, $_POST);
-		$user->delete($id);
+		$user->delete_item($id);
 		redirect('admin&tab=users');
 	}
 

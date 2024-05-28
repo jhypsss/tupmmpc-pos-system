@@ -7,6 +7,7 @@
             <th>From:</th>
             <th>Deleted Info</th>
             <th>Removed by:</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -17,7 +18,7 @@
                     <td><?=date("M j, Y - h:i a",strtotime($deleted_item['date_deleted'])) ?></td>
                     <td><?=strtoupper(esc($deleted_item['from_table']))?></td>
                     <?php
-                        $deleted_details = get_deleted_details($deleted_item['deleted_id'], $deleted_item['from_table']);
+                        $deleted_details = get_details($deleted_item['deleted_id'], $deleted_item['from_table']);
                     ?>
 
                     <td>
@@ -35,18 +36,23 @@
 
 
                     <?php
-                        $deleted_item = get_user_by_id($deleted_item['user_id']);
-                        if(empty($deleted_item)){
+                        $deleter_id = get_user_by_id($deleted_item['user_id']);
+                        if(empty($deleter_id)){
                             $deleter = "Unknown User";
                             $namelink = "#";
                         }else{
-                            $deleter = $deleted_item['username'];
-                            $namelink = "index.php?pg=profile&id=".$deleted_item['id'];
+                            $deleter = $deleter_id['username'];
+                            $namelink = "index.php?pg=profile&id=".$deleter_id['id'];
                         }
                     ?>
                     <td><a href="<?=esc($namelink)?>"><?=esc($deleter)?></a></td>
+                    <td>
+                        <a href="index.php?pg=<?=strtolower($deleted_item['from_table'])?>-restore&id=<?=$deleted_item['deleted_id']?>">
+                        <button class="btn btn-success btn-sm"><i class="fas fa-trash-restore-alt"></i></button>
+                        </a>
+                    </td>
+                            
                         <!--
-                            <button class="btn btn-success btn-sm"><i class="fas fa-cog"></i></button>
                             <button onclick="delete_btn()" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                         -->
                 </tr>

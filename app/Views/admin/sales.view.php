@@ -20,6 +20,40 @@
 		}
 		
 	}
+	.task-roll-up {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 50px;
+	}
+	
+	.no-items-message {
+	font-size: 20px;
+	color: #666;
+	margin-bottom: 20px;
+	display: flex;
+	align-items: center;
+	}
+	
+	.add-button {
+	padding: 10px 20px;
+	background-color: #0078d7;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	}
+	
+	.fa-fw {
+	font-size: 1em;
+	margin-right: 5px;
+	}
+	
+	.icon {
+	font-size: 4em;
+	}
 </style>
 <ul class="nav nav-tabs">
   
@@ -47,6 +81,8 @@
 <!--
 <a href="../app/views/admin/sales_report.php"><button style="background-color: orange; border-radius: 5px;  color: white; border-color: white; padding: 7px;">SALES REPORTS</button></a>
 -->
+<?php if (!empty($sales)):?>
+	
 <div>
 	<h2>Today's Total: ₱<?=number_format($sales_total,2)?></h2>	
 </div>
@@ -56,25 +92,22 @@
 	<table class="table table-striped table-hover">
 		<thead class="table-light" style="position: sticky;top: 0">
 		<tr>
-			<th>Barcode</th>
 			<th>Receipt No</th>
+			<th>Barcode</th>
 			<th>Description</th>
 			<th>Qty</th>
 			<th>Amount</th>
 			<th>Total</th>
-			<th>Cashier</th>
+			<th>Encoder</th>
 			<th colspan=2>Date | Time</th>			
 		</tr>
 		</thead>
 		<tbody>
-		<?php if (!empty($sales)):?>
-			<?php foreach ($sales as $sale):?>
+		<?php foreach ($sales as $sale):?>
 	 		<tr>
-				<td><?=esc($sale['barcode'])?></td>
 				<td><?=esc($sale['receipt_no'])?></td>
-				<td>
- 					<?=esc($sale['description'])?>
- 				</td>
+				<td><?=esc($sale['barcode'])?></td>
+				<td><?=esc($sale['description'])?></td>
 				<td><?=esc($sale['qty'])?></td>
 				<td><?=esc($sale['amount'])?></td>
 				<td><?=esc($sale['total'])?></td>
@@ -94,24 +127,33 @@
 					</a>
 				</td>
 		
-				<td><?=date("M j, Y | h:i:s a",strtotime($sale['date']))?></td>
+				<td><?=date("M j, Y | h:i:sa",strtotime($sale['date']))?></td>
 				<td>
-					<a href="index.php?pg=#&id=<?=$sale['id']?>">
+					<a href="index.php?pg=sale-refund&id=<?=$sale['id']?>">
 					<button class="btn btn-success btn-sm"><i class="fa fa-cog"></i></button>
 					</a>
 				</td>
 			</tr>
 			<?php endforeach;?>
-		<?php endif;?>
+		
 		</tbody>
 	</table>
-
+	
 <?php
 		$pager->display($totalSales);
 ?>
+<?php else:?>
+
+	<div class="task-roll-up">
+		<i class="fa fa-money-bill-wave icon fa-fw"></i>
+		<p class="no-items-message"> There are no sales for today.</p>
+	</div>
+<?php endif;?>
+
 </div>
 
 <?php elseif($section == 'graph'):?>
+	<h2 class="text-center mb-3">GRAPH VIEW</h2>
 	<?php 
 		$graph = new Graph();
 
@@ -163,7 +205,6 @@
 			$graph->display($data);
 			echo "<br>";
 		}
-
 	?>
 <?php elseif($section == 'generate'):?>
 	<div class="row justify-content-center md-10 mx-1 px-3 border-3 border-top border-bottom bottom-secondary">
@@ -224,8 +265,9 @@
 					</thead>
 					<tbody>
 						<?php foreach($SalesPerCategories as $SalesPerCategory) :?>
+							<?php $PerCategoryName = get_CategoryName($SalesPerCategory['category_id']) ?>
 						<tr>
-							<td><?= esc($SalesPerCategory['category']) ?></td>
+							<td><?= esc($PerCategoryName) ?></td>
 							<td><?= esc($SalesPerCategory['gross_qty']) ?></td>
 							<td>₱<?= esc($SalesPerCategory['gross_sales']) ?></td>
 						</tr>

@@ -19,7 +19,7 @@ class Product extends Model
 				'image',
 				'date',
 				'views',
-				'category',
+				'category_id',
 			];
 
 

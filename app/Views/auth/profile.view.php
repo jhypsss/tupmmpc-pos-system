@@ -1,6 +1,6 @@
 <?php require views_path('partials/header');?>
 
-	<div class="container-fluid border col-lg-5 col-md-6 mt-5 p-4" >
+	<div class="container-fluid border col-lg-6 col-md-6 mt-5 p-4" >
 		
 		<?php if(is_array($row)):?>
 
@@ -10,13 +10,15 @@
 			</center>
 			<br>
 
-			<table class="table table-hover table-striped">
+			<table class="table table-hover table-borderless" style="background:#F7F7F7;">
 				<tr>
-					<td rowspan="6">
-						<center> <img src="<?=crop($row['image'],400,$row['gender'])?>" style="width: 100%;max-width:200px;" > </center>
+					<td rowspan="7">
+						<center> <img src="<?=crop($row['image'],400,$row['gender'])?>" style="width: 100%;max-width:250px;" > </center>
 					</td>
 				</tr>
-
+				<tr>
+					<th>User ID</th><td><?=$row['userid']?></td>
+				</tr>
 				<tr>
 					<th>Username</th><td><?=$row['username']?></td>
 				</tr>
@@ -35,6 +37,9 @@
 				
 			</table>
 			<br>
+			<a href="index.php?pg=admin&tab=users">
+				<button type="button" class="btn btn-secondary">Back</button>
+			</a>
 			<a href="index.php?pg=edit-user&id=<?=$row['id']?>">
 				<button type="button" class="btn btn-primary">Edit</button>
 			</a>

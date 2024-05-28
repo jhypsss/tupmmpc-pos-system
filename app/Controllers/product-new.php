@@ -2,6 +2,9 @@
 
 $errors = [];
 
+$categoryClass = new Category();
+$list_categories = $categoryClass->query("SELECT * FROM categories WHERE if_deleted = 0 ORDER BY name");
+
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
 
@@ -27,7 +30,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	$errors = $product->validate($_POST);
 	if(empty($errors)){
 		
-		$folder = "uploads/product";
+		$folder = "uploads/products/";
 		if(!file_exists($folder))
 		{
 			mkdir($folder,0777,true);

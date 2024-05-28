@@ -18,8 +18,8 @@
 			<img class="mx-auto d-block" src="<?=$row['image']?>" style="width:80%;">
 			<br>
 			<div class="mb-3">
-			  <label for="productControlInput1" class="form-label">Product description</label>
-			  <input value="<?=set_value('description',$row['description'])?>" name="description" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="productControlInput1" placeholder="Product description" autocomplete="off">
+			  <label for="productControlInput1" class="form-label">Product Description</label>
+			  <input value="<?=set_value('description',$row['description'])?>" name="description" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="productControlInput1" placeholder="Product Description" autocomplete="off">
 			  <?php if(!empty($errors['description'])):?>
 					<small class="text-danger"><?=$errors['description']?></small>
 				<?php endif;?>
@@ -27,23 +27,16 @@
 
 			<div class="mb-3">
 			<label for="Category" class="form-label">Category</label>
-			<select name="category" class="form-select <?= !empty($errors['category']) ? 'border-danger' : '' ?>" id="Category">
-				
+			<select name="category_id" class="form-select <?= !empty($errors['category_id']) ? 'border-danger' : '' ?>" id="Category">
+				<option value="0" disabled>Select Category</option>
+				<?php foreach ($list_categories as $list_category):
+						if($list_category['id'] == $row['category_id']): ?>
+						<option value="<?=$list_category['id'] ?>" selected><?= $list_category['name'] ?></option>
+					<?php else: ?>
+						<option value="<?=$list_category['id']?>"> <?=$list_category['name']?> </option>
+					<?php endif; ?>
+				<?php endforeach;?>
 
-				<?php if(strcmp($row['category'], "---") !== 0): ?>
-					<option value="<?= esc($row['category']) ?>" hidden><?= esc($row['category']) ?></option>
-				<?php else: ?>
-					<option value="---">Select a Category</option>
-				<?php endif; ?>
-				
-				
-				<?php 
-				    $allCategories = new Database();
-					$list_categories = $allCategories->query("SELECT * FROM categories ORDER BY name");
-				?>
-					<?php foreach ($list_categories as $list_category):?>
-						<option value="<?=$list_category['name']?>"> <?=$list_category['name']?> </option>
-					<?php endforeach;?>
 			</select>
 			<?php if (!empty($errors['category'])): ?>
 				<small class="text-danger"><?= $errors['category'] ?></small>

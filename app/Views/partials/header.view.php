@@ -6,9 +6,9 @@
 	<title><?=esc(APP_NAME)?></title>
 	
 	<link rel="icon" href="assets/images/logo.png" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/all.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 </head>
 <body>
 

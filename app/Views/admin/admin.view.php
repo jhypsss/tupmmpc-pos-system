@@ -17,20 +17,23 @@
 			  	<a href="index.php?pg=admin&tab=products">
 			  		<li class="list-group-item <?=$tab=='products'?'active':''?>"><i class="fa fa-hamburger"></i> Products</li>
 				</a>
+				<a href="index.php?pg=admin&tab=suppliers">
+			  		<li class="list-group-item <?=$tab=='suppliers'?'active':''?>"><i class="fa fa-truck"></i> Suppliers</li>
+				</a>
 				<a href="index.php?pg=admin&tab=sales">
 			  		<li class="list-group-item <?=$tab=='sales'?'active':''?>"><i class="fa fa-money-bill-wave"></i> Sales</li>
 				</a>
 				<a href="index.php?pg=admin&tab=refunded items">
 			  		<li class="list-group-item <?=$tab=='refunded items'?'active':''?>"><i class="fas fa-undo-alt"></i> Refunded Items</li>
 				</a>
-				<a href="index.php?pg=admin&tab=suppliers">
-			  		<li class="list-group-item <?=$tab=='suppliers'?'active':''?>"><i class="fa fa-truck"></i> Suppliers</li>
-				</a>
 				<a href="index.php?pg=admin&tab=audit trail">
 			  		<li class="list-group-item <?=$tab=='audit trail'?'active':''?>"><i class="fas fa-file-alt"></i> Audit Trail</li>
 				</a>
 				<a href="index.php?pg=admin&tab=deleted items">
 			  		<li class="list-group-item <?=$tab=='deleted items'?'active':''?>"><i class="fas fa-trash-alt"></i></i> Deleted Items</li>
+				</a>
+				<a href="index.php?pg=admin&tab=restored items">
+			  		<li class="list-group-item <?=$tab=='restored items'?'active':''?>"><i class="fas fa-trash-restore-alt"></i> Restored Items</li>
 				</a>
 			  	<a href="index.php?pg=logout">
 			  		<li class="list-group-item"><i class="fa fa-sign-out-alt"></i> Log Out</li>
@@ -82,6 +85,11 @@
 					case 'deleted items':
 						// code...
 						require views_path('admin/deleted_items');
+						break;
+					
+					case 'restored items':
+						// code...
+						require views_path('admin/restored_items');
 						break;
 
 					case 'barcode':

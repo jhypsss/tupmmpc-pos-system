@@ -1,15 +1,39 @@
-
-<div class="table-responsive">
-    <a href="index.php?pg=product-new">
-        <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add new</button>
-    </a>
-    <a href="index.php?pg=barcode.view">
-        <button class="btn btn-success btn-sm"><i class="fa fa-barcode"></i> Barcode</button>
-    </a>
-    <input type="text" class="form-control" id="searchInput" placeholder="Search..." style="width: 50%; float: right;">
-    <br>
-    <br>
-</div>
+<style>
+    .task-roll-up {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 50px;
+	}
+	
+	.no-items-message {
+	font-size: 20px;
+	color: #666;
+	margin-bottom: 20px;
+	display: flex;
+	align-items: center;
+	}
+	
+	.add-button {
+	padding: 10px 20px;
+	background-color: #0078d7;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	}
+	
+	.fa-fw {
+	font-size: 1em;
+	margin-right: 5px;
+	}
+	
+	.icon {
+	font-size: 4em;
+	}
+</style>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         var searchInput = document.getElementById('searchInput');
@@ -37,8 +61,21 @@
 </script>
 
 
-<div class="table-responsive" style="height: 600px;overflow-y: scroll;">
 
+<?php if (!empty($products)):?>
+<div class="table-responsive">
+    <a href="index.php?pg=product-new">
+        <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add new</button>
+    </a>
+    <a href="index.php?pg=barcode.view">
+        <button class="btn btn-success btn-sm"><i class="fa fa-barcode"></i> Barcode</button>
+    </a>
+    <input type="text" class="form-control" id="searchInput" placeholder="Search..." style="width: 50%; float: right;">
+    <br>
+    <br>
+</div>
+
+<div class="table-responsive" style="height: 600px;overflow-y: scroll;">
     <!-- Table section -->
     <table class="table table-responsive table-striped table-hover">
         <thead class="table-light" style="position: sticky;top: 0">
@@ -55,8 +92,8 @@
         </tr>
         </thead>
         <tbody>
-        <?php if (!empty($products)):?>
-            <?php foreach ($products as $product):?>
+        <?php foreach ($products as $product):
+                $get_category = get_CategoryName($product['category_id']); ?>
                 <tr>
                     <td><?=esc($product['barcode'])?></td>
                     <td>
@@ -65,7 +102,7 @@
                         </a>    
                     </td>
                     <td>
-                            <?=esc($product['category'])?>
+                            <?=esc($get_category)?>
                     </td>
                     <td>
                         <?php 
@@ -120,10 +157,19 @@
                         </a>
                     </td>
                 </tr>
-            <?php endforeach;?>
-        <?php endif;?>
+                <?php endforeach;?>
         </tbody>
     </table>
+    
     <?php //$pager->display($totalProducts)?>
+    <?php else:?>
+        <div class="task-roll-up">
+            <i class="fa fa-hamburger fa-fw icon"></i>
+            <p class="no-items-message"> There are no products to show.</p>
+            <a href="index.php?pg=product-new">
+                <button class="btn btn-primary btn"><i class="fa fa-plus fa-fw"></i> Add Product</button>
+            </a>
+        </div>
+    <?php endif;?>
 </div>
 
