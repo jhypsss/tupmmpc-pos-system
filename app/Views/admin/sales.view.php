@@ -92,24 +92,22 @@
 	<table class="table table-striped table-hover">
 		<thead class="table-light" style="position: sticky;top: 0">
 		<tr>
-			<th>Barcode</th>
 			<th>Receipt No</th>
+			<th>Barcode</th>
 			<th>Description</th>
 			<th>Qty</th>
 			<th>Amount</th>
 			<th>Total</th>
-			<th>Cashier</th>
+			<th>Encoder</th>
 			<th colspan=2>Date | Time</th>			
 		</tr>
 		</thead>
 		<tbody>
 		<?php foreach ($sales as $sale):?>
 	 		<tr>
-				<td><?=esc($sale['barcode'])?></td>
 				<td><?=esc($sale['receipt_no'])?></td>
-				<td>
- 					<?=esc($sale['description'])?>
- 				</td>
+				<td><?=esc($sale['barcode'])?></td>
+				<td><?=esc($sale['description'])?></td>
 				<td><?=esc($sale['qty'])?></td>
 				<td><?=esc($sale['amount'])?></td>
 				<td><?=esc($sale['total'])?></td>
@@ -129,9 +127,9 @@
 					</a>
 				</td>
 		
-				<td><?=date("M j, Y | h:i:s a",strtotime($sale['date']))?></td>
+				<td><?=date("M j, Y | h:i:sa",strtotime($sale['date']))?></td>
 				<td>
-					<a href="index.php?pg=#&id=<?=$sale['id']?>">
+					<a href="index.php?pg=sale-refund&id=<?=$sale['id']?>">
 					<button class="btn btn-success btn-sm"><i class="fa fa-cog"></i></button>
 					</a>
 				</td>

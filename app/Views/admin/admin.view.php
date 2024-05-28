@@ -17,14 +17,14 @@
 			  	<a href="index.php?pg=admin&tab=products">
 			  		<li class="list-group-item <?=$tab=='products'?'active':''?>"><i class="fa fa-hamburger"></i> Products</li>
 				</a>
+				<a href="index.php?pg=admin&tab=suppliers">
+			  		<li class="list-group-item <?=$tab=='suppliers'?'active':''?>"><i class="fa fa-truck"></i> Suppliers</li>
+				</a>
 				<a href="index.php?pg=admin&tab=sales">
 			  		<li class="list-group-item <?=$tab=='sales'?'active':''?>"><i class="fa fa-money-bill-wave"></i> Sales</li>
 				</a>
 				<a href="index.php?pg=admin&tab=refunded items">
 			  		<li class="list-group-item <?=$tab=='refunded items'?'active':''?>"><i class="fas fa-undo-alt"></i> Refunded Items</li>
-				</a>
-				<a href="index.php?pg=admin&tab=suppliers">
-			  		<li class="list-group-item <?=$tab=='suppliers'?'active':''?>"><i class="fa fa-truck"></i> Suppliers</li>
 				</a>
 				<a href="index.php?pg=admin&tab=audit trail">
 			  		<li class="list-group-item <?=$tab=='audit trail'?'active':''?>"><i class="fas fa-file-alt"></i> Audit Trail</li>

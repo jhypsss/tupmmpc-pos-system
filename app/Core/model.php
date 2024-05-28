@@ -84,6 +84,42 @@ class Model extends Database
 		//remove it in deleted_items table
 		$db->query("DELETE FROM deleted_items WHERE deleted_id = $id");
 	}
+
+	public function refund($id, $row, $data){
+		$clean_array = $this->get_allowed_columns($data);
+		$user_id = auth("id");
+		$saleqty = $row['qty']; //item sold qty
+		$saleamount = $row['amount']; //price per item
+		$refundqty = $data['refund_qty'];
+		$total_refundedAmount = $refundqty * $saleamount;
+
+		$db = new Database;
+		if ($saleqty >= $refundqty){
+			if($saleqty == $refundqty){ //if all item are refund, remove from sale
+				$db->query("DELETE FROM sales WHERE id = $id");
+			} else {
+				$newQty = $saleqty - $refundqty;
+				$newTotal = $newQty * $saleamount;
+				$db->query("UPDATE sales SET qty='$newQty', total='$newTotal' WHERE id = $id");
+			}
+			$query2 = "INSERT INTO refunded_items (product_id,barcode,receipt_no,description,category_id,qty,amount,total,user_id,status,remarks) 
+							VALUES (:product_id,:barcode,:receipt_no,:description,:category_id,:qty,:amount,:total,:user_id,:status,:remarks)";
+				$params = array(
+					'product_id' => $row['product_id'],
+					'barcode' => $row['barcode'],
+					'receipt_no' => $row['receipt_no'],
+					'description'=> $row['description'],
+					'category_id'=> $row['category_id'],
+					'qty'=> $refundqty,
+					'amount'=> $row['amount'],
+					'total'=> $total_refundedAmount,
+					'user_id'=> $user_id,
+					'status'	=> $data['status'],
+					'remarks'=> $data['remarks'],
+				);
+			$db->query($query2, $params);
+		}
+	}
 	
 	//delete query
 	public function delete_item($id)
@@ -450,6 +486,24 @@ class Model extends Database
 				$row = $supplier->first(['id'=>$id]);
 				$companyName = $row['company_name'];
 				$details = "RESTORED SUPPLIER: $companyName";
+			}
+		} else if(strcmp($action, "REFUND") == 0){
+			if (strcmp($source, "Sales") == 0){
+				$saleClass = new Sale();
+				$sale_row = $saleClass->first(["id"=>$id]);
+				
+				$saleReceipt = $sale_row["receipt_no"];
+				$saleBarcode = $sale_row["barcode"];
+				$saleProductName = $sale_row["description"];
+				$product_price = $sale_row["amount"];
+				$product_sold = $sale_row["qty"];
+				$sale_total = $sale_row["total"];
+				$refund_qty = $data["refund_qty"];
+				$total_amount = $data["tot_Refund_amount"];
+				$status = $data["status"];
+				$remarks = $data["remarks"];
+
+				$details = "REFUNDED ITEM: $saleBarcode\nReceipt No: $saleReceipt\nProduct Name: $saleProductName\nProduct Price: $product_price\nProduct Sold: $product_sold (₱$sale_total)\nRefund Qty: $refund_qty\nTotal Amount: ₱$total_amount\nStatus: $status\nRemarks: $remarks";
 			}
 		}
 		// Insert to Audit Trail
