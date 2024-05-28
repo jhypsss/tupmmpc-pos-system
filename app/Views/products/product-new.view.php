@@ -15,7 +15,7 @@
 			<br>
 			<div class="mb-3">
 			  <label for="productControlInput1" class="form-label">Product description</label>
-			  <input name="description" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="productControlInput1" placeholder="Product description">
+			  <input name="description" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="productControlInput1" placeholder="Product description" autocomplete="off">
 			  <?php if(!empty($errors['description'])):?>
 					<small class="text-danger"><?=$errors['description']?></small>
 				<?php endif;?>
@@ -42,7 +42,7 @@
 			
 			<div class="mb-3">
 			  <label for="barcodeControlInput1" class="form-label">Barcode <small class="text-muted">(Auto Generated Barcode)</small></label>
-			  <input name="barcode" type="text" class="form-control <?=!empty($errors['barcode']) ? 'border-danger':''?>" id="barcodeControlInput1" placeholder="(Insert optional)">
+			  <input name="barcode" type="text" class="form-control <?=!empty($errors['barcode']) ? 'border-danger':''?>" id="barcodeControlInput1" placeholder="(Insert optional)" autocomplete="off">
 			  <?php if(!empty($errors['barcode'])):?>
 					<small class="text-danger"><?=$errors['barcode']?></small>
 				<?php endif;?>
@@ -50,9 +50,9 @@
 
 			<div class="input-group mb-3">
 			  <span class="input-group-text">Stock:</span>
-			  <input name="stock" value="1" type="number" class="form-control <?=!empty($errors['stock']) ? 'border-danger':''?>" placeholder="1" aria-label="Quantity">
+			  <input name="stock" value="1" type="number" class="form-control <?=!empty($errors['stock']) ? 'border-danger':''?>" placeholder="1" aria-label="Quantity" autocomplete="off">
 			  <span class="input-group-text">Amount:</span>
-			  <input name="amount" value="" step="any" type="number" class="form-control <?=!empty($errors['amount']) ? 'border-danger':''?>" placeholder="0.00" aria-label="Amount">
+			  <input name="amount" value="" step="any" type="number" class="form-control <?=!empty($errors['amount']) ? 'border-danger':''?>" placeholder="0.00" aria-label="Amount" autocomplete="off">
 			</div>
 				<?php if(!empty($errors['Stock'])):?>
 					<small class="text-danger"><?=$errors['stock']?></small>

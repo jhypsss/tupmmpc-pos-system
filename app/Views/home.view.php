@@ -46,14 +46,13 @@ $conn->close();
 
 	</style>
 
-	<input type="hidden" id="username" value="<?php echo $_SESSION['USER']['email']; ?>">
-
+	<input type="hidden" id="username" value="<?php echo $_SESSION['USER']['username']; ?>">
 
 	<div class="d-flex">
 		<div style="max-height:800px;" class="shadow-sm col-7 p-4">
 			
 			<div class="input-group mb-3"><h3> Items </h3>
-			  <input onkeyup="check_for_enter_key(event)" oninput="search_item(event)" type="text" class="ms-4 form-control js-search" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1" autofocus id='searchitem'>
+			  <input onkeyup="check_for_enter_key(event)" oninput="search_item(event)" type="text" class="ms-4 form-control js-search" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1" id='searchitem' autocomplete="off">
 			  <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
 			</div>
 
@@ -63,14 +62,14 @@ $conn->close();
 			</div>
 		</div>
 		
-		<div class="col-5 bg-light p-4 pt-2">
+		<div class="col-5 bg-light p-3 pt-4">
 			
 			<div><center><h3>Cart <div class="js-item-count badge bg-primary rounded-circle">0</div></h3>
 			</center>
 			
 			</div>
 			
-			<div class="table-responsive" style="height:400px;overflow-y: scroll;">
+			<div class="table-responsive bg-light" style="height:450px;overflow-y: scroll;">
 				<table class="table table-striped table-hover">
 					<tr>
 						<th>Image</th><th>Description</th><th>Stock</th><th>Amount</th>
@@ -101,22 +100,23 @@ $conn->close();
 			<h4>Checkout <button role="close-button" onclick="hide_modal(event,'amount-paid')" class="btn btn-danger float-end p-0 px-2">X</button></h4>
 			<br>
 			<form>
-			<h4>Payment</h4 >
-			<input onkeyup="if(event.keyCode == 13)validate_amount_paid(event)" type="text" class="js-amount-paid-input form-control" placeholder="Enter amount paid" autofocus>
-			<br>
-			<!----><h4>Payment Method</h4 >
-				<select class="js-method-paid-input form-control" name="payment_status" id="payment_status">
+				<h4>Payment</h4 >
+				<input onkeyup="if(event.keyCode == 13)validate_amount_paid(event)" type="number" class="js-amount-paid-input form-control" placeholder="Enter amount paid">
+				<br>
+				<!--<h4>Payment Method</h4 >
+					<select class="js-method-paid-input form-control" name="payment_status" id="payment_status">
 
-                      <option value ="CASH">CASH</option>
-                      <option value ="G-CASH">G-CASH</option>
+						<option value ="CASH">CASH</option>
+						<option value ="G-CASH">G-CASH</option>
 
-                </select>
-			<br>
-			<h4>Reference Number for G-CASH</h4 >
-			<input id="reference_number" onkeyup="if(event.keyCode == 13)validate_amount_paid(event)" type="label" class="js-amount-ref-input form-control" placeholder="Enter last 6 reference number ">
-			<br>
-			<button role="close-button" onclick="hide_modal(event,'amount-paid')" class="btn btn-secondary">Cancel</button>
-			<button onclick="validate_amount_paid(event)" class="btn btn-primary float-end">Next</button>
+					</select>
+				<br>
+				<h4>Reference Number for G-CASH</h4 >
+				
+				<input id="reference_number" onkeyup="if(event.keyCode == 13)validate_amount_paid(event)" type="label" class="js-amount-ref-input form-control" placeholder="Enter last 6 reference number ">
+				<br>-->
+				<button role="close-button" onclick="hide_modal(event,'amount-paid')" class="btn btn-secondary">Cancel</button>
+				<button onclick="validate_amount_paid(event)" class="btn btn-primary float-end">Next</button>
 			</form>
 		</div>
 	</div>
@@ -148,6 +148,7 @@ $conn->close();
 	var RECEIPT_WINDOW = null;
 
 	var main_input = document.querySelector(".js-search");
+	document.getElementById('searchitem').focus();
 
 	function search_item(e){
 
@@ -162,8 +163,8 @@ $conn->close();
 
 	function send_data(data)
 	{
-		data.payment_status = document.getElementById('payment_status').value;
-		data.payment_reference = document.getElementById('reference_number').value;
+		//data.payment_status = document.getElementById('payment_status').value;
+		//data.payment_reference = document.getElementById('reference_number').value;
 		
 		var ajax = new XMLHttpRequest();
 
@@ -205,7 +206,6 @@ $conn->close();
 	}
 
 	function handle_result(result){
-		
 		//console.log(result);
 		var obj = JSON.parse(result);
 		if(typeof obj != "undefined"){
@@ -242,29 +242,60 @@ $conn->close();
 	function product_html(data,index)
 	{
 
-		if (data.stock > 0) {
+		if (data.stock > 20) {
 			return `
 			<!--card-->
 			<div class="card m-2 border-0 mx-auto" style="min-width: 190px;max-width: 190px;">
 				<a href="#">
-				<img index="${index}" src="${data.image}" style="width: 100%;max-width:175px" class="w-100 rounded border">
+				<img index="${index}" src="${data.image}" style="width: 100%;max-width:175px" class="w-100 rounded border border-2">
 				</a>
 				<div class="p-2">
 				<div class="text-muted"><b>${data.description}</b></div>
 				<div class="" style="font-size:20px"><b>₱${data.amount}</b></div>
-				<div class="text-muted" style="font-size:15px">Available: ${data.stock}</div>
+				<div class="" style="font-size:15px;color:green;">Available: <b>${data.stock}</b></div>
+				</div>
+			</div>
+			<!--end card-->
+			`;
+		} else if (data.stock > 0 && data.stock <= 20) {
+			return `
+			<!--card-->
+			<div class="card m-2 border-0 mx-auto" style="min-width: 190px;max-width: 190px;">
+				<a href="#">
+				<img index="${index}" src="${data.image}" style="width: 100%;max-width:175px" class="w-100 rounded border border-2">
+				</a>
+				<div class="p-2">
+				<div class="text-muted"><b>${data.description}</b></div>
+				<div class="" style="font-size:20px"><b>₱${data.amount}</b></div>
+				<div class="" style="font-size:15px;color:#D68910;">Available: <b>${data.stock}</b></div>
+				</div>
+			</div>
+			<!--end card-->
+			`;
+
+		} else if (data.stock == 0){
+			return `
+			<!--card-->
+			<div class="card m-2 border-0 mx-auto" style="min-width: 190px;max-width: 190px; color:red;">
+				<a href="#">
+				<img index="${index}" src="${data.image}" style="width: 100%;max-width:175px" class="w-100 rounded border border-3 border-danger">
+				</a>
+				<div class="p-2">
+				<div class="text-muted text-decoration-line-through"><b>${data.description}</b></div>
+				<div class="text-decoration-line-through" style="font-size:20px"><b>₱${data.amount}</b></div>
+				<div class="" style="font-size:15px;font-weight:bold;">Not Available</div>
 				</div>
 			</div>
 			<!--end card-->
 			`;
 		} else {
-			return ""; // Return empty string for products with 0 quantity	
+			return ""; // Return empty	
 		}
 	}
 
 	function item_html(data,index)
 	{
-
+		
 		return `
 			<!--item-->
 			<tr>
@@ -296,7 +327,6 @@ $conn->close();
 	
 	function add_item_from_index(index)
 	{
-
 			//check if items exists
 			if(PRODUCTS[index].stock > 0){
 
@@ -318,6 +348,8 @@ $conn->close();
 			ITEMS.push(temp);
 			search_item({ target: { value: "" } });
 			refresh_items_display();
+			} else {
+				alert(PRODUCTS[index].description + " is out of stocks!");
 			}
 
 	}
@@ -342,6 +374,7 @@ $conn->close();
 		items_div.innerHTML = "";
 		var grand_total = 0;
 
+
 		for (var i = ITEMS.length - 1; i >= 0; i--) {
 
 			items_div.innerHTML += item_html(ITEMS[i],i);
@@ -351,7 +384,8 @@ $conn->close();
 		var gtotal_div = document.querySelector(".js-gtotal");
 		gtotal_div.innerHTML = "Total: ₱" + grand_total.toFixed(2);
 		GTOTAL = grand_total;
-
+		//autofocus to search input
+		document.getElementById('searchitem').focus();
 	}
 
 	var voidCodes = <?php echo json_encode($void_codes); ?>;
@@ -359,7 +393,7 @@ $conn->close();
 	function clear_all()
 	{
 		var code = prompt("Are you sure you want to clear all items in the list?!\nPlease enter a code.");
-
+	
 		// Check if the code matches
 		if (code === null || code.trim() === '') {
 			return; // User canceled or entered empty code
@@ -414,7 +448,6 @@ $conn->close();
 
 		ITEMS.splice(index,1);
 		refresh_items_display();
-
 	}
 
 	function change_qty(direction,e)
@@ -443,7 +476,6 @@ $conn->close();
 		{
 			ITEMS[index].qty = 1;
 		}
-
 		refresh_items_display();
 	}
 
@@ -461,53 +493,48 @@ $conn->close();
 		}
 	}
 
+	/*
 	function check_enter_key(event, input, index) {
 		if (event.key === "Enter") {
 			validate_qty(input, index);
 			event.preventDefault(); // Prevent the default Enter key behavior (e.g., form submission)
 		}
-	}
+	}*/
 
 	function check_for_enter_key(e)
 	{
-
 		if(e.keyCode == 13)
 		{
 			BARCODE = true;
 			search_item(e);
-			search_item({ target: { value: "" } });
+			//search_item({ target: { value: "" } });
 		}
 	}
 
 	function show_modal(modal)
 	{
-
 		if(modal == "amount-paid"){
 
 			if(ITEMS.length == 0){
 
 				alert("Please add at least one item to the cart");
 				return;
-				
 			}
 			var mydiv = document.querySelector(".js-amount-paid-modal");
 			mydiv.classList.remove("hide");
 
 			mydiv.querySelector(".js-amount-paid-input").value = "";
 			mydiv.querySelector(".js-amount-paid-input").focus();
-			document.getElementById('searchitem').focus();
-		}else
-		if(modal == "change"){
+		}
+		else if(modal == "change"){
  
 			var mydiv = document.querySelector(".js-change-modal");
 			mydiv.classList.remove("hide");
 
 			mydiv.querySelector(".js-change-input").innerHTML = CHANGE;
 			mydiv.querySelector(".js-btn-close-change").focus();
-			document.getElementById('searchitem').focus();
-		}
-		document.getElementById('searchitem').focus();
-
+			
+		} 
 	}
 	
 	function hide_modal(e,modal)
@@ -518,24 +545,20 @@ $conn->close();
 			if(modal == "amount-paid"){
 				var mydiv = document.querySelector(".js-amount-paid-modal");
 				mydiv.classList.add("hide");
-			}else 
-			if(modal == "change"){
+				document.getElementById('searchitem').focus();
+			}
+			else if(modal == "change"){
 				var mydiv = document.querySelector(".js-change-modal");
 				mydiv.classList.add("hide");
-				setTimeout(function () {
-            location.reload();
-            },100);
-			}			
-					
-		}
-		//document.getElementById('searchitem').focus();
+				document.getElementById('searchitem').focus();
+			}
+		}	
 	}
 
 	function validate_amount_paid(e)
 	{
 
 		var amount = e.currentTarget.parentNode.querySelector(".js-amount-paid-input").value.trim();
-		var username = document.getElementById('username').value; // Retrieve username from the hidden input field
 		
 		if(amount == "")
 		{
@@ -547,16 +570,18 @@ $conn->close();
 		amount = parseFloat(amount);
 		if(amount < GTOTAL){
 
-			alert("Amount must be higher or equal to the total");
+			alert("Amount must be higher or equal to the total amount");
 			return;
 		}
 
 		CHANGE = amount - GTOTAL ;
 		CHANGE = CHANGE.toFixed(2);
+		
 
 		hide_modal(true,'amount-paid');
 		show_modal('change');
 
+		
 		//remove unwanted information
 		var ITEMS_NEW = [];
 		for (var i = 0; i < ITEMS.length; i++) {
@@ -570,18 +595,20 @@ $conn->close();
 
 		//send cart data through ajax
 		send_data({
-
 			data_type:"checkout",
 			text:ITEMS_NEW
 		});
 
 		print_receipt({
-			company: '<?= esc(APP_NAME)?>',
+			store: '<?= esc(APP_NAME) ?>',
+			address: 'Ayala Blvd., Ermita, Manila, 1000, Philippines',
 			amount: amount,
 			change: CHANGE,
 			gtotal: GTOTAL,
+			receiptno: '<?= get_receipt_no() ?>',
+			staff: '<?= auth('username') ?>',
 			data: ITEMS,
-			username: '<?php echo $_SESSION['USER']['username']; ?>'
+			
 		});
 
 		//clear items
@@ -590,7 +617,6 @@ $conn->close();
 
 		//reload products
 		send_data({
-
 			data_type:"search",
 			text:""
 		});
@@ -617,16 +643,6 @@ $conn->close();
 		text:""
 	});
 
-	window.onload = function() {
-            
-            document.getElementById('searchitem').focus();
-            
-          }
-		  setTimeout(function () {
-			document.getElementById('searchitem').value = '<?php echo''; ?>';
-			document.getElementById('searchitem').focus();
-            }, 1000);
-			document.getElementById('searchitem').focus();
 </script>
 
 <?php require views_path('partials/footer');?>

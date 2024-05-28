@@ -21,7 +21,7 @@
 			  		<li class="list-group-item <?=$tab=='sales'?'active':''?>"><i class="fa fa-money-bill-wave"></i> Sales</li>
 				</a>
 				<a href="index.php?pg=admin&tab=refunded items">
-			  		<li class="list-group-item <?=$tab=='refunded_items'?'active':''?>"><i class="fas fa-undo-alt"></i> Refunded Items</li>
+			  		<li class="list-group-item <?=$tab=='refunded items'?'active':''?>"><i class="fas fa-undo-alt"></i> Refunded Items</li>
 				</a>
 				<a href="index.php?pg=admin&tab=suppliers">
 			  		<li class="list-group-item <?=$tab=='suppliers'?'active':''?>"><i class="fa fa-truck"></i> Suppliers</li>

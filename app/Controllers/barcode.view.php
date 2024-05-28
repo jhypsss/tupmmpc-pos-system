@@ -31,7 +31,7 @@ $pdf->Ln();
 $pdf->Cell(0, 10, 'TUPMMPC Product Barcode List', 0, 1, 'C');
 
 // Fetch data from the products table
-$query = "SELECT barcode, description, amount FROM products";
+$query = "SELECT barcode, description, amount FROM products WHERE if_deleted = 0";
 $result = $conn->query($query);
 
 if ($result->num_rows > 0) {
@@ -52,7 +52,8 @@ if ($result->num_rows > 0) {
         $amount = $row['amount'];
 
         // Add product information to the table
-        $pdf->Cell(90, 10, $description . "\nPrice: $amount", 0, 0, 'L');
+        //$pdf->Cell(90, 10, "Name: $description \nPrice: $amount", 0, 0, 'L');
+        $pdf->MultiCell(90, 10, "Name: $description \nPrice: $amount", 0, 'L', 0, 0);
         
         // Add a 1D barcode (CODE 39)
         $style = array(

@@ -1,6 +1,7 @@
-<div class="table-responsive">
+<div class="table-responsive" style="height: 600px;overflow-y: scroll;">
     <!-- Table section -->
     <table class="table table-striped table-hover">
+        <thead class="table-light" style="position: sticky;top: 0">
         <tr>
             <th>Name</th>
             <th>Description</th>
@@ -10,7 +11,8 @@
 				</a>
 			</th>
         </tr>
-
+        </thead>
+        <tbody>
         <?php if (!empty($categories)):?>
             <?php foreach ($categories as $category):?>
                 <tr>
@@ -30,6 +32,6 @@
                 </tr>
             <?php endforeach;?>
         <?php endif;?>
-        
+        </tbody>
     </table>
 </div>

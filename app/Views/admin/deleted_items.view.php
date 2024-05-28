@@ -1,15 +1,15 @@
-<div class="table-responsive">
+<div class="table-responsive" style="height: 650px;overflow-y: scroll;">
     <!-- Table section -->
     <table class="table table-striped table-hover">
+        <thead class="table-light" style="position: sticky;top: 0">
         <tr>
             <th>Date Deleted</th>
             <th>From:</th>
             <th>Deleted Info</th>
-            <th>Remover</th>
-            <th>Action</th>
+            <th>Removed by:</th>
         </tr>
-        
-
+        </thead>
+        <tbody>
         <?php if (!empty($deleted_items)):?>
             
             <?php foreach ($deleted_items as $deleted_item):?>
@@ -45,14 +45,13 @@
                         }
                     ?>
                     <td><a href="<?=esc($namelink)?>"><?=esc($deleter)?></a></td>
-                    <td>
-                        <a href="index.php?pg=#&id=<?=$deleted_item['id']?>">
-                            <button class="btn btn-success btn-sm"><i class="fas fa-trash-restore"></i></button>
-                        </a>
-                    </td>
+                        <!--
+                            <button class="btn btn-success btn-sm"><i class="fas fa-cog"></i></button>
+                            <button onclick="delete_btn()" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                        -->
                 </tr>
             <?php endforeach;?>
         <?php endif;?>
-        
+        </tbody>
     </table>
 </div>

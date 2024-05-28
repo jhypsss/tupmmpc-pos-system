@@ -28,8 +28,6 @@ function redirect($page)
 	die;
 }
 
-
-
 function set_value($key,$default = "")
 {
 
@@ -51,9 +49,9 @@ function auth($column)
 {
 	if(!empty($_SESSION['USER'][$column])){
 		return $_SESSION['USER'][$column];
+	}else{
+		return "Unknown";
 	}
-
-	return "Unknown";
 }
 
 function crop($filename,$size = 400,$type = 'product')
@@ -159,7 +157,6 @@ function crop($filename,$size = 400,$type = 'product')
 function get_receipt_no()
 {
 	$num = 1;
-
 	$db = new Database();
 	$rows = $db->query("select receipt_no from sales order by id desc limit 1");
 
@@ -167,7 +164,6 @@ function get_receipt_no()
 	{
 		$num = (int)$rows[0]['receipt_no'] + 1;
 	}
-
 	return $num;
 }
 

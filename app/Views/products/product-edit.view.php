@@ -19,7 +19,7 @@
 			<br>
 			<div class="mb-3">
 			  <label for="productControlInput1" class="form-label">Product description</label>
-			  <input value="<?=set_value('description',$row['description'])?>" name="description" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="productControlInput1" placeholder="Product description">
+			  <input value="<?=set_value('description',$row['description'])?>" name="description" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="productControlInput1" placeholder="Product description" autocomplete="off">
 			  <?php if(!empty($errors['description'])):?>
 					<small class="text-danger"><?=$errors['description']?></small>
 				<?php endif;?>
@@ -54,7 +54,7 @@
 			
 			<div class="mb-3">
 			  <label for="barcodeControlInput1" class="form-label">Barcode <small class="text-muted">(Optional)</small></label>
-			  <input value="<?=set_value('barcode',$row['barcode'])?>" name="barcode" type="text" class="form-control <?=!empty($errors['barcode']) ? 'border-danger':''?>" id="barcodeControlInput1" placeholder="Product barcode">
+			  <input value="<?=set_value('barcode',$row['barcode'])?>" name="barcode" type="text" class="form-control <?=!empty($errors['barcode']) ? 'border-danger':''?>" id="barcodeControlInput1" placeholder="Product barcode" autocomplete="off">
 			  <?php if(!empty($errors['barcode'])):?>
 					<small class="text-danger"><?=$errors['barcode']?></small>
 				<?php endif;?>
@@ -64,9 +64,9 @@
 			<input name="stock" value="<?=set_value('stock',$row['stock'])?>" type="number" class="form-control <?=!empty($errors['stock']) ? 'border-danger':''?>" hidden readonly>
 			<div class="input-group mb-3">
 			  <span class="input-group-text">Add Stock:</span>
-			  <input name="addStock" value="" type="number" class="form-control <?=!empty($errors['stock']) ? 'border-danger':''?>" id="stockControlInput1" placeholder="Quantity" aria-label="Quantity">
+			  <input name="addStock" value="" type="number" class="form-control <?=!empty($errors['stock']) ? 'border-danger':''?>" id="stockControlInput1" placeholder="Quantity" aria-label="Quantity" autocomplete="off">
 			  <span class="input-group-text">Amount:</span>
-			  <input name="amount" value="<?=set_value('amount',$row['amount'])?>" step="any" type="number" class="form-control <?=!empty($errors['amount']) ? 'border-danger':''?>" placeholder="Amount" aria-label="Amount">
+			  <input name="amount" value="<?=set_value('amount',$row['amount'])?>" step="any" type="number" class="form-control <?=!empty($errors['amount']) ? 'border-danger':''?>" placeholder="Amount" aria-label="Amount" autocomplete="off">
 			</div>
 				<?php if(!empty($errors['stock'])):?>
 					<small class="text-danger"><?=$errors['stock']?></small>

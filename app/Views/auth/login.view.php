@@ -1,6 +1,6 @@
 <?php require views_path('partials/header');?>
 
-	<div class="container-fluid border col-lg-4 col-md-5 mt-5 p-4 shadow-sm" >
+	<div class="container-fluid border col-lg-4 col-md-5 mt-5 p-4 shadow-sm">
 		
 		<form method="post">
 			<center>
@@ -11,7 +11,7 @@
 			<br>
 		
 			<div class="mb-3">
-			  <input  value="<?=set_value('email')?>" autocomplete="off" name="email" type="email" class="form-control  <?=!empty($errors['email']) ? 'border-danger':''?>" id="exampleFormControlInput1" placeholder="Email" autofocus>
+			  <input  value="<?=set_value('email')?>" autocomplete="off" name="email" type="email" class="form-control  <?=!empty($errors['email']) ? 'border-danger':''?>" id="exampleFormControlInput1" placeholder="Email" autofocus autocomplete="off">
 				<?php if(!empty($errors['email'])):?>
 					<small class="text-danger"><?=$errors['email']?></small>
 				<?php endif;?>
