@@ -176,17 +176,22 @@ function generate_receipt_no(){
 
 	$db = new Database();
 	$rows = $db->query("select receipt_no from sales order by id desc limit 1"); //Get the last receipt no.
+
 	if(is_array($rows))
 	{
 		$parts2 = explode('-', $rows[0]['receipt_no']); //explode between -
-		$last_digit = $parts2[1] + 1; //example 2165-101, [0]=2165, [1]=101;
-		$new_receipt_no = $last_userid."-".$last_digit;
-		return $new_receipt_no;
-	}else{
-		$new_receipt_no = $last_userid."-".$num;
-		return $new_receipt_no;
+		if (count($parts2) === 2 && is_numeric($parts2[1])) {
+            $last_digit = intval($parts2[1]) + 1; // Increment the last digit
+        } else {
+            error_log("Unexpected receipt_no format: " . $rows[0]['receipt_no']);
+            $last_digit = $num; // Fallback value
+        }
+		$new_receipt_no = $last_userid . "-" . $last_digit;
 	}
-	
+	else{
+		$new_receipt_no = $last_userid."-".$num;
+	}
+	return $new_receipt_no;
 }
 
 function get_date($date)
