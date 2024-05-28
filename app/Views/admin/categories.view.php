@@ -40,6 +40,7 @@
     .table th {
         font-size: 14px;
     }
+    
 </style>
 
 <!-- Table section -->
@@ -48,8 +49,8 @@
     <table class="table table-striped table-hover">
         <thead class="table-light" style="position: sticky; top: 0;">
             <tr>
-                <th style="background-color: #f94449; color: black; font-size: 18px;">Name</th>
-                <th style="background-color: #f94449; color: black; font-size: 18px;">Description</th>
+                <th style="background-color: #f94449; color: black;">Name</th>
+                <th style="background-color: #f94449; color: black;">Description</th>
                 <th style="background-color: #f94449; color: black;">
                     <a href="index.php?pg=category-new" class="add-button">
                         <i class="fa fa-plus fa-fw style=font-size: 10px;"></i>Add new
