@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
     $_POST['source'] = "Sales";
 	$_POST['action'] = "REFUND";
     $errors = $sale->validate($_POST, $row['id']);
-    $_POST['tot_Refund_amount'] = $_POST['refund_qty'] * $row['amount'];
+    //$_POST['tot_Refund_amount'] = $_POST['refund_qty'] * $row['amount'];
 	
     if(empty($errors)){
         $sale->audit_trail($row['id'], $_POST);

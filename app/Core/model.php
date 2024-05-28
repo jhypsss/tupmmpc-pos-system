@@ -499,11 +499,11 @@ class Model extends Database
 				$product_sold = $sale_row["qty"];
 				$sale_total = $sale_row["total"];
 				$refund_qty = $data["refund_qty"];
-				$total_amount = $data["tot_Refund_amount"];
+				$total_amount = $refund_qty * $product_price;
 				$status = $data["status"];
 				$remarks = $data["remarks"];
 
-				$details = "REFUNDED ITEM: $saleBarcode\nReceipt No: $saleReceipt\nProduct Name: $saleProductName\nProduct Price: $product_price\nProduct Sold: $product_sold (₱$sale_total)\nRefund Qty: $refund_qty\nTotal Amount: ₱$total_amount\nStatus: $status\nRemarks: $remarks";
+				$details = "REFUNDED ITEM: $saleBarcode\nReceipt No: $saleReceipt\nProduct Name: $saleProductName\nProduct Price: $product_price\nProduct Sold: $product_sold (₱$sale_total)\nRefund Qty: $refund_qty\nTotal Amount Refund: ₱$total_amount\nStatus: $status\nRemarks: $remarks";
 			}
 		}
 		// Insert to Audit Trail
