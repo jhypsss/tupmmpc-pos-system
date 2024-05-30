@@ -46,11 +46,11 @@
 
 			<div class="input-group mb-3">
 			  <span class="input-group-text">Stock:</span>
-			  <input name="stock" value="1" type="number" class="form-control <?=!empty($errors['stock']) ? 'border-danger':''?>" placeholder="1" aria-label="Quantity" autocomplete="off">
+			  <input min="0" name="stock" value="" type="number" class="form-control <?=!empty($errors['stock']) ? 'border-danger':''?>" placeholder="Quantity" aria-label="Quantity" autocomplete="off">
 			  <span class="input-group-text">Amount:</span>
-			  <input name="amount" value="" step="any" type="number" class="form-control <?=!empty($errors['amount']) ? 'border-danger':''?>" placeholder="0.00" aria-label="Amount" autocomplete="off">
+			  <input min="0" name="amount" value="" step="any" type="number" class="form-control <?=!empty($errors['amount']) ? 'border-danger':''?>" placeholder="0.00" aria-label="Amount" autocomplete="off">
 			</div>
-				<?php if(!empty($errors['Stock'])):?>
+				<?php if(!empty($errors['stock'])):?>
 					<small class="text-danger"><?=$errors['stock']?></small>
 				<?php endif;?>
 				<?php if(!empty($errors['amount'])):?>

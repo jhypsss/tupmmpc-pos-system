@@ -60,7 +60,6 @@ if(!empty($raw_data))
 			$data 		= $OBJ['text'];
 			$receipt_no 	= generate_receipt_no();
 			$user_id 	= auth("id");
-			$date 		= date("Y-m-d H:i:s");
 			//$payment_method = $OBJ['payment_status'];
 			//$payment_reference = $OBJ['payment_reference'];
 			$db = new Database();
@@ -87,7 +86,6 @@ if(!empty($raw_data))
 					$arr['qty'] 		= $row['qty'];
 					$arr['total'] 		= $row['qty'] * $check['amount'];
 					$arr['receipt_no'] 	= $receipt_no;
-					//$arr['date'] 		= $date;
 					$arr['user_id'] 	= $user_id;
 					//$arr['payment_method'] 	= $payment_method . ' '.$payment_reference ;
 
