@@ -1,54 +1,64 @@
 <style>
     .task-roll-up {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin-top: 50px;
-	}
-	
-	.no-items-message {
-	font-size: 20px;
-	color: #666;
-	margin-bottom: 20px;
-	display: flex;
-	align-items: center;
-	}
-	
-	.add-button {
-	padding: 10px 20px;
-	background-color: #0078d7;
-	color: #fff;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	}
-	
-	.fa-fw {
-	font-size: 1em;
-	margin-right: 5px;
-	}
-	
-	.icon {
-	font-size: 4em;
-	}
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+    }
+    
+    .no-items-message {
+        font-size: 20px;
+        color: #666;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .add-button {
+        padding: 8px 10px; /* Adjust the padding */
+        background-color: #24a0ed;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        width: 115px;
+        height: 35px;
+        cursor: pointer;
+        display: inline-block; /* Make it inline-block to connect with the text */
+        font-size: 14px;
+        text-decoration: none; /* Remove underlining */
+        margin-top: 1px; /* Adjust margin for alignment */
+    }
+    
+    .fa-fw {
+        font-size: 1em;
+        margin-right: 5px;
+    }
+    
+    .icon {
+        font-size: 4em;
+    }
+
+    .table td,
+    .table th {
+        font-size: 14px;
+    }
+    
 </style>
 
-    <!-- Table section -->
+<!-- Table section -->
 <?php if (!empty($categories)):?>
-<div class="table-responsive" style="height: 600px;overflow-y: scroll;">
+<div class="table-responsive" style="height: 600px; overflow-y: scroll;">
     <table class="table table-striped table-hover">
-        <thead class="table-light" style="position: sticky;top: 0">
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>
-				<a href="index.php?pg=category-new">
-					<button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add new</button>
-				</a>
-			</th>
-        </tr>
+        <thead class="table-light" style="position: sticky; top: 0;">
+            <tr>
+                <th style="background-color: #C23540; color: black;">Name</th>
+                <th style="background-color: #C23540; color: black;">Description</th>
+                <th style="background-color: #C23540; color: black;">
+                    <a href="index.php?pg=category-new" class="add-button">
+                        <i class="fa fa-plus fa-fw style=font-size: 10px;" ></i>Add new
+                    </a>
+                </th>
+            </tr>
         </thead>
         <tbody>
         <?php foreach ($categories as $category):?>
@@ -75,10 +85,9 @@
         <div class="task-roll-up">
             <i class="fa fa-table fa-fw icon"></i>
             <p class="no-items-message"> There are no categories to show.</p>
-            <a href="index.php?pg=category-new">
-                <button class="btn btn-primary btn"><i class="fa fa-plus fa-fw"></i> Add Category</button>
+            <a href="index.php?pg=category-new" class="add-button">
+                <i class="fa fa-plus fa-fw"></i> Add Category
             </a>
         </div>
     <?php endif;?>
 </div>
-

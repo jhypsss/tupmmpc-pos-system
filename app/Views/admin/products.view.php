@@ -79,24 +79,25 @@
     <br>
 </div>
 
+
 <div class="table-responsive" style="height: 600px;overflow-y: scroll;">
     <!-- Table section -->
     <table class="table table-responsive table-striped table-hover">
         <thead class="table-light" style="position: sticky;top: 0">
-        <tr>
-            <th>Barcode</th>
-            <th>Product Name</th>
-            <th>Category</th>
-            <th>Stock</th>
-            <th>Price</th>
-            <th>Image</th>
-            <th>Date Created</th>
-            <th>Encoder</th>
-            <th>Action</th>
-        </tr>
+            <tr>
+                <th style="background-color: #C23540; color: black;">Barcode</th>
+                <th style="background-color: #C23540; color: black;">Product Name</th>
+                <th style="background-color: #C23540; color: black;">Category</th>
+                <th style="background-color: #C23540; color: black;">Stock</th>
+                <th style="background-color: #C23540; color: black;">Price</th>
+                <th style="background-color: #C23540; color: black;">Image</th>
+                <th style="background-color: #C23540; color: black;">Date Created</th>
+                <th style="background-color: #C23540; color: black;">Encoder</th>
+                <th style="background-color: #C23540; color: black;">Action</th>
+            </tr>
         </thead>
         <tbody>
-        <?php foreach ($products as $product):
+            <?php foreach ($products as $product):
                 $get_category = get_CategoryName($product['category_id']); ?>
                 <tr>
                     <td><?=esc($product['barcode'])?></td>
@@ -106,7 +107,7 @@
                         </a>    
                     </td>
                     <td>
-                            <?=esc($get_category)?>
+                        <?=esc($get_category)?>
                     </td>
                     <td>
                         <?php 
@@ -130,13 +131,11 @@
                             <?= esc($product['stock']) ?>
                         <?php endif; ?>
                     </td>
-
                     <td><?=esc($product['amount'])?></td>
                     <td>
                         <img src="<?=($product['image'])?>" style="width: 100%;max-width:100px;" >
                     </td>
                     <td><?=date("M j, Y",strtotime($product['date']))?></td>
-                    
                     <?php 
                         $cashier = get_user_by_id($product['user_id']);
                         if(empty($cashier)){
@@ -170,10 +169,9 @@
         <div class="task-roll-up">
             <i class="fa fa-hamburger fa-fw icon"></i>
             <p class="no-items-message"> There are no products to show.</p>
-            <a href="index.php?pg=product-new">
-                <button class="btn btn-primary btn"><i class="fa fa-plus fa-fw"></i> Add Product</button>
+            <a href="index.php?pg=product-new" class="add-button">
+                <i class="fa fa-plus fa-fw"></i> Add Product
             </a>
         </div>
     <?php endif;?>
 </div>
-

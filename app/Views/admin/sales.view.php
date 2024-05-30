@@ -81,6 +81,7 @@
 <!--
 <a href="../app/views/admin/sales_report.php"><button style="background-color: orange; border-radius: 5px;  color: white; border-color: white; padding: 7px;">SALES REPORTS</button></a>
 -->
+
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         var searchInput = document.getElementById('searchInput');
@@ -119,120 +120,144 @@
 </div>
 
 <div class="table-responsive" style="height: 500px;overflow-y: scroll;">
-	
-	<table class="table table-striped table-hover">
-		<thead class="table-light" style="position: sticky;top: 0">
-		<tr>
-			<th>Receipt No</th>
-			<th>Barcode</th>
-			<th>Description</th>
-			<th>Qty</th>
-			<th>Amount</th>
-			<th>Total</th>
-			<th>Encoder</th>
-			<th colspan=2>Date | Time</th>			
-		</tr>
-		</thead>
-		<tbody>
-		<?php foreach ($sales as $sale):?>
-	 		<tr>
-				<td><?=esc($sale['receipt_no'])?></td>
-				<td><?=esc($sale['barcode'])?></td>
-				<td><?=esc($sale['description'])?></td>
-				<td><?=esc($sale['qty'])?></td>
-				<td><?=esc($sale['amount'])?></td>
-				<td><?=esc($sale['total'])?></td>
-				<?php 
-					$cashier = get_user_by_id($sale['user_id']);
-					if(empty($cashier)){
-						$name = "Unknown";
-						$namelink = "#";
-					}else{
-						$name = $cashier['username'];
-						$namelink = "index.php?pg=profile&id=".$cashier['id'];
-					}
-				?>
-				<td>
-					<a href="<?=$namelink?>">
-						<?=esc($name)?>
-					</a>
-				</td>
-		
-				<td><?=date("M j, Y | h:i:sa",strtotime($sale['date']))?></td>
-				<td>
-					<a href="index.php?pg=sale-refund&id=<?=$sale['id']?>">
-					<button class="btn btn-success btn-sm"><i class="fa fa-cog"></i></button>
-					</a>
-				</td>
-			</tr>
-			<?php endforeach;?>
-		
-		</tbody>
-	</table>
+    <table class="table table-striped table-hover">
+        <thead class="table-light" style="position: sticky;top: 0">
+            <tr>
+                <th style="background-color: #C23540; color: black;">Receipt No</th>
+                <th style="background-color: #C23540; color: black;">Barcode</th>
+                <th style="background-color: #C23540; color: black;">Description</th>
+                <th style="background-color: #C23540; color: black;">Qty</th>
+                <th style="background-color: #C23540; color: black;">Amount</th>
+                <th style="background-color: #C23540; color: black;">Total</th>
+                <th style="background-color: #C23540; color: black;">Encoder</th>
+                <th colspan="2" style="background-color: #C23540; color: black;">Date | Time</th>           
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($sales as $sale):?>
+            <tr>
+                <td><?=esc($sale['receipt_no'])?></td>
+                <td><?=esc($sale['barcode'])?></td>
+                <td><?=esc($sale['description'])?></td>
+                <td><?=esc($sale['qty'])?></td>
+                <td><?=esc($sale['amount'])?></td>
+                <td><?=esc($sale['total'])?></td>
+                <?php 
+                    $cashier = get_user_by_id($sale['user_id']);
+                    if(empty($cashier)){
+                        $name = "Unknown";
+                        $namelink = "#";
+                    }else{
+                        $name = $cashier['username'];
+                        $namelink = "index.php?pg=profile&id=".$cashier['id'];
+                    }
+                ?>
+                <td>
+                    <a href="<?=$namelink?>">
+                        <?=esc($name)?>
+                    </a>
+                </td>
+        
+                <td><?=date("M j, Y | h:i:sa",strtotime($sale['date']))?></td>
+                <td>
+                    <a href="index.php?pg=#&id=<?=$sale['id']?>">
+                    <button class="btn btn-success btn-sm"><i class="fa fa-cog"></i></button>
+                    </a>
+                </td>
+            </tr>
+            <?php endforeach;?>
+        
+        </tbody>
+    </table>
+  
 <?php else:?>
 
-	<div class="task-roll-up">
-		<i class="fa fa-money-bill-wave icon fa-fw"></i>
-		<p class="no-items-message"> There are no sales for today.</p>
-	</div>
+    <div class="task-roll-up">
+        <i class="fa fa-money-bill-wave icon fa-fw"></i>
+        <p class="no-items-message"> There are no sales for today.</p>
+    </div>
 <?php endif;?>
 
 </div>
 
 <?php elseif($section == 'graph'):?>
-	<h2 class="text-center mb-3">GRAPH VIEW</h2>
-	<?php 
-		$graph = new Graph();
+    <h2 class="text-center mb-3">GRAPH VIEW</h2>
+    <?php 
+        $graph = new Graph();
 
-		$data = generate_daily_data($today_records);
+        $data = generate_daily_data($today_records);
 
-		if (empty($data)) {
-			$graph->title = "Today's sales: No sales data available for today.";
-			$graph->display([]);
-		} else {
-			$graph->title = "Today's sales";
-			$graph->xtitle = "Hours of the day";
-			$graph->styles = "width:80%;margin:auto;display:block";
-			$graph->display($data);
-			echo "<br>";
-		}
+        if (empty($data)) {
+            $graph->title = "Today's sales: No sales data available for today.";
+            $graph->display([]);
+        } else {
+            $graph->title = "Today's sales";
+            $graph->xtitle = "Hours of the day";
+            $graph->styles = "width:80%;margin:auto;display:block";
+            // Customizing graph display style for a more colorful design
+            $graph->barColor = 'rgba(255, 99, 132, 0.6)'; // Red color for bars
+            $graph->backgroundColor = 'rgba(255, 99, 132, 0.2)'; // Light red color for background
+            $graph->borderColor = 'rgba(255, 99, 132, 1)'; // Border color for bars
+            $graph->display($data);
+            echo "<br>";
+        }
 
-		$data = generate_monthly_data($thismonth_records);
-		if (empty($data)) {
-			$graph->title = "This month's sales: No sales data available for this month.";
-			$graph->display([]);
-		} else {
-			$graph->title = "This month's sales";
-			$graph->xtitle = "Days of the month";
-			$graph->styles = "width:80%;margin:auto;display:block";
-			$graph->display($data);
-			echo "<br>";
-		}
-		
-		$data = generate_thisyear_data($thisyear_records);
-		if (empty($data)) {
-			$graph->title = "This year's sales: No sales data available for this year.";
-			$graph->display([]);
-		} else {
-			$graph->title = "This year's sales";
-			$graph->xtitle = "Months of the year";
-			$graph->styles = "width:80%;margin:auto;display:block";
-			$graph->display($data);
-			echo "<br>";
-		}
+        $graph = new Graph(); // Resetting graph object for the next section
 
-		$data = generate_yearly_data($all_records);
-		if (empty($data)) {
-			$graph->title = "Annual Sales: No sales data available.";
-			$graph->display([]);
-		} else {
-			$graph->title = "Annual Sales";
-			$graph->xtitle = "Years";
-			$graph->styles = "width:80%;margin:auto;display:block";
-			$graph->display($data);
-			echo "<br>";
-		}
-	?>
+        $data = generate_monthly_data($thismonth_records);
+        if (empty($data)) {
+            $graph->title = "This month's sales: No sales data available for this month.";
+            $graph->display([]);
+        } else {
+            $graph->title = "This month's sales";
+            $graph->xtitle = "Days of the month";
+            $graph->styles = "width:80%;margin:auto;display:block";
+            // Customizing graph display style for a more colorful design
+            $graph->barColor = 'rgba(75, 192, 192, 0.6)'; // Green color for bars
+            $graph->backgroundColor = 'rgba(75, 192, 192, 0.2)'; // Light green color for background
+            $graph->borderColor = 'rgba(75, 192, 192, 1)'; // Border color for bars
+            $graph->display($data);
+            echo "<br>";
+        }
+        
+        $graph = new Graph(); // Resetting graph object for the next section
+
+        $data = generate_thisyear_data($thisyear_records);
+        if (empty($data)) {
+            $graph->title = "This year's sales: No sales data available for this year.";
+            $graph->display([]);
+        } else {
+            $graph->title = "This year's sales";
+            $graph->xtitle = "Months of the year";
+            $graph->styles = "width:80%;margin:auto;display:block";
+            // Customizing graph display style for a more colorful design
+            $graph->barColor = 'rgba(255, 206, 86, 0.6)'; // Yellow color for bars
+            $graph->backgroundColor = 'rgba(255, 206, 86, 0.2)'; // Light yellow color for background
+            $graph->borderColor = 'rgba(255, 206, 86, 1)'; // Border color for bars
+            $graph->display($data);
+            echo "<br>";
+        }
+
+        $graph = new Graph(); // Resetting graph object for the next section
+
+        $data = generate_yearly_data($all_records);
+        if (empty($data)) {
+            $graph->title = "Annual Sales: No sales data available.";
+            $graph->display([]);
+        } else {
+            $graph->title = "Annual Sales";
+            $graph->xtitle = "Years";
+            $graph->styles = "width:80%;margin:auto;display:block";
+            // Customizing graph display style for a more colorful design
+            $graph->barColor = 'rgba(153, 102, 255, 0.6)'; // Purple color for bars
+            $graph->backgroundColor = 'rgba(153, 102, 255, 0.2)'; // Light purple color for background
+            $graph->borderColor = 'rgba(153, 102, 255, 1)'; // Border color for bars
+            $graph->display($data);
+            echo "<br>";
+        }
+    ?>
+
+	
 <?php elseif($section == 'generate'):?>
 	<div class="row justify-content-center md-10 mx-1 px-3 border-3 border-top border-bottom bottom-secondary">
 		<div class="col-md-10 p-3">
@@ -269,9 +294,9 @@
 			<?php if(!$SalesPerCategories && !$SalesPerProducts):?>
 			<h3> No Sales For Today: <?= esc(date("M j, Y")); ?></h3>
 			<?php else:?>
-			<nav class="row row-cols-lg-auto g-3">
-				<h4 class="col-12">SALES REPORT</h4>
-				<button class="btn btn-success mb-2 col-12" onclick="printSalesTable()">Print Data</button>
+				<nav class="row row-cols-lg-auto g-3">
+    		<h4 class="col-12">SALES REPORT</h4>
+    		<button class="btn btn-success mb-2 col-12" onclick="printSalesTable()" style="margin-bottom: 30px;">Print Data</button>
 			</nav>
 			
 			<div class="table-responsive border border-secondary border-3 rounded p-4" id="generateResult">

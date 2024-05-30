@@ -1,13 +1,13 @@
 <div class="table-responsive" style="height: 650px;overflow-y: scroll;">
     <!-- Table section -->
     <table class="table table-striped table-hover">
-        <thead class="table-light" style="position: sticky;top: 0">
+    <thead class="table-red" style="position: sticky;top: 0; background-color: #C23540;">
         <tr>
-            <th>Date Deleted</th>
-            <th>From:</th>
-            <th>Deleted Info</th>
-            <th>Removed by:</th>
-            <th>Action</th>
+            <th style="color: black;">Date Deleted</th>
+            <th style="color: black;">From:</th>
+            <th style="color: black;">Deleted Info</th>
+            <th style="color: black;">Removed by:</th>
+            <th style="color: black;">Action</th>
         </tr>
         </thead>
         <tbody>

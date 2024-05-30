@@ -39,16 +39,16 @@
 	<table class="table table-striped table-hover">
 		<thead class="table-light" style="position: sticky;top: 0">
 		<tr>
-            <th>Receipt No</th>
-			<th>Barcode</th>
-			<th>Description</th>
-			<th>Qty</th>
-			<th>Amount</th>
-			<th>Total</th>
-			<th>Status</th>
-            <th>Remarks</th>
-            <th>Encoder</th>
-            <th>Date | Time</th>
+            <th style="background-color: #C23540; color: black;">Receipt No</th>
+			<th style="background-color: #C23540; color: black;">Barcode</th>
+			<th style="background-color: #C23540; color: black;">Description</th>
+			<th style="background-color: #C23540; color: black;">Qty</th>
+			<th style="background-color: #C23540; color: black;">Amount</th>
+			<th style="background-color: #C23540; color: black;">Total</th>
+			<th style="background-color: #C23540; color: black;">Status</th>
+            <th style="background-color: #C23540; color: black;">Remarks</th>
+            <th style="background-color: #C23540; color: black;">Encoder</th>
+            <th style="background-color: #C23540; color: black;">Date | Time</th>
 		</tr>
 		</thead>
 		<tbody>
