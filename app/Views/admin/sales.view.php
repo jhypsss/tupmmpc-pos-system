@@ -160,7 +160,7 @@
         
                 <td><?=date("M j, Y | h:i:sa",strtotime($sale['date']))?></td>
                 <td>
-                    <a href="index.php?pg=#&id=<?=$sale['id']?>">
+                    <a href="index.php?pg=sale-refund&id=<?=$sale['id']?>">
                     <button class="btn btn-success btn-sm"><i class="fa fa-cog"></i></button>
                     </a>
                 </td>
