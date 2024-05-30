@@ -57,7 +57,7 @@
 			<input name="stock" value="<?=set_value('stock',$row['stock'])?>" type="number" class="form-control <?=!empty($errors['stock']) ? 'border-danger':''?>" hidden readonly>
 			<div class="input-group mb-3">
 			  <span class="input-group-text">Add Stock:</span>
-			  <input name="addStock" value="" type="number" class="form-control <?=!empty($errors['stock']) ? 'border-danger':''?>" id="stockControlInput1" placeholder="Quantity" aria-label="Quantity" autocomplete="off">
+			  <input name="addStock" value="" type="number" class="form-control <?=!empty($errors['stock']) ? 'border-danger':''?>" id="addStock" placeholder="Quantity" aria-label="Quantity" autocomplete="off">
 			  <span class="input-group-text">Amount:</span>
 			  <input name="amount" value="<?=set_value('amount',$row['amount'])?>" step="any" type="number" class="form-control <?=!empty($errors['amount']) ? 'border-danger':''?>" placeholder="Amount" aria-label="Amount" autocomplete="off">
 			</div>
@@ -86,3 +86,19 @@
 	</div>
 
 <?php require views_path('partials/footer');?>
+
+<script>
+	document.getElementById('addStock').addEventListener('input', function (event) {
+		// Ensure the value is non-negative
+		if (this.value < 0) {
+			this.value = '0';
+		}
+	});
+
+	document.getElementById('addStock').addEventListener('keydown', function (event) {
+		// Prevent the user from typing the minus sign
+		if (event.key === '-' || event.key === 'Minus') {
+			event.preventDefault();
+		}
+	});
+</script>
