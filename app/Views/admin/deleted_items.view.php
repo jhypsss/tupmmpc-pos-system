@@ -1,7 +1,7 @@
 <div class="table-responsive" style="height: 650px;overflow-y: scroll;">
     <!-- Table section -->
     <table class="table table-striped table-hover">
-    <thead class="table-red" style="position: sticky;top: 0; background-color: #f94449;">
+    <thead class="table-red" style="position: sticky;top: 0; background-color: #C23540;">
         <tr>
             <th style="color: black;">Date Deleted</th>
             <th style="color: black;">From:</th>

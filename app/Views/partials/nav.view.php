@@ -5,7 +5,7 @@
 	$role = Auth::get('role');
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-light" style="min-width:350px; background-color: #f69697; ">
+<nav class="navbar navbar-expand-lg navbar-light" style="min-width:350px; background-color: #FFA0A2; ">
 	  <div class="container-fluid">
 		
 	  	<?php if ($role=='Supervisor' || $role=='Manager' || $role=='Cashier' || $role=='User'):?>

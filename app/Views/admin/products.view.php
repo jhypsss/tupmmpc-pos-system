@@ -47,12 +47,16 @@
                 var cells = row.getElementsByTagName('td');
                 var found = false;
 
-                Array.from(cells).forEach(function(cell) {
-                    var cellText = cell.textContent.toLowerCase();
-                    if (cellText.indexOf(query) > -1) {
-                        found = true;
+                if (cells.length >= 2) {
+                    // Only search in the first and second columns
+                    for (var i = 0; i < 2; i++) {
+                        var cellText = cells[i].textContent.toLowerCase();
+                        if (cellText.indexOf(query) > -1) {
+                            found = true;
+                            break;
+                        }
                     }
-                });
+                }
 
                 row.style.display = found ? '' : 'none';
             });
@@ -81,15 +85,15 @@
     <table class="table table-responsive table-striped table-hover">
         <thead class="table-light" style="position: sticky;top: 0">
             <tr>
-                <th style="background-color: #f94449; color: black;">Barcode</th>
-                <th style="background-color: #f94449; color: black;">Product Name</th>
-                <th style="background-color: #f94449; color: black;">Category</th>
-                <th style="background-color: #f94449; color: black;">Stock</th>
-                <th style="background-color: #f94449; color: black;">Price</th>
-                <th style="background-color: #f94449; color: black;">Image</th>
-                <th style="background-color: #f94449; color: black;">Date Created</th>
-                <th style="background-color: #f94449; color: black;">Encoder</th>
-                <th style="background-color: #f94449; color: black;">Action</th>
+                <th style="background-color: #C23540; color: black;">Barcode</th>
+                <th style="background-color: #C23540; color: black;">Product Name</th>
+                <th style="background-color: #C23540; color: black;">Category</th>
+                <th style="background-color: #C23540; color: black;">Stock</th>
+                <th style="background-color: #C23540; color: black;">Price</th>
+                <th style="background-color: #C23540; color: black;">Image</th>
+                <th style="background-color: #C23540; color: black;">Date Created</th>
+                <th style="background-color: #C23540; color: black;">Encoder</th>
+                <th style="background-color: #C23540; color: black;">Action</th>
             </tr>
         </thead>
         <tbody>
