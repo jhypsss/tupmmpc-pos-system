@@ -2,15 +2,15 @@
     <table class="table table-striped table-hover">
         <thead style="position: sticky; top: 0; background-color: #000; color: white;">
             <tr>
-                <th style="background-color: #f94449; color: black;">Image</th>
-                <th style="background-color: #f94449; color: black;">Name</th>
-                <th style="background-color: #f94449; color: black;">Gender</th>
-                <th style="background-color: #f94449; color: black;">Email</th>
-                <th style="background-color: #f94449; color: black;">Role</th>
-                <th style="background-color: #f94449; color: black;">Date Created</th>
-                <th style="background-color: #f94449; color: black;">
+                <th style="color: black;">Image</th>
+                <th style="color: black;">Name</th>
+                <th style="color: black;">Gender</th>
+                <th style="color: black;">Email</th>
+                <th style="color: black;">Role</th>
+                <th style="color: black;">Date Created</th>
+                <th>
                     <a href="index.php?pg=signup">
-                        <button class="btn btn-primary btn-sm" style="background-color: #24a0ed; border: none; color: white;"><i class="fa fa-plus"></i> Add new</button>
+                        <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add new</button>
                     </a>
                 </th>
             </tr>
@@ -54,7 +54,6 @@
 <style>
     .table-responsive {
         background-color: #fff;
-        border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
     .table-hover tbody tr:hover {
@@ -68,7 +67,8 @@
     }
     .table thead th {
         text-align: center;
-        color: white;
+        background-color: #C23540; 
+        color: #fff;
     }
     .table tbody td {
         text-align: center;
@@ -78,9 +78,11 @@
         border-radius: 50%;
     }
     .btn-primary {
-        background: #f94449;
         border: none;
+        background-color:;
         color: white;
+        width: 100px;
+        height: 40px;
     }
     .btn-success {
         background: #333;

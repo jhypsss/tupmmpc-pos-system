@@ -20,6 +20,8 @@
         color: #fff;
         border: none;
         border-radius: 3px;
+        width: 115px;
+        height: 35px;
         cursor: pointer;
         display: inline-block; /* Make it inline-block to connect with the text */
         font-size: 14px;
@@ -49,11 +51,11 @@
     <table class="table table-striped table-hover">
         <thead class="table-light" style="position: sticky; top: 0;">
             <tr>
-                <th style="background-color: #f94449; color: black;">Name</th>
-                <th style="background-color: #f94449; color: black;">Description</th>
-                <th style="background-color: #f94449; color: black;">
+                <th style="background-color: #C23540; color: black;">Name</th>
+                <th style="background-color: #C23540; color: black;">Description</th>
+                <th style="background-color: #C23540; color: black;">
                     <a href="index.php?pg=category-new" class="add-button">
-                        <i class="fa fa-plus fa-fw style=font-size: 10px;"></i>Add new
+                        <i class="fa fa-plus fa-fw style=font-size: 10px;" ></i>Add new
                     </a>
                 </th>
             </tr>
