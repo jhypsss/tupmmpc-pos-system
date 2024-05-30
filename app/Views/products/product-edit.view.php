@@ -15,7 +15,7 @@
 					<small class="text-danger"><?=$errors['image']?></small>
 				<?php endif;?>
 			</div>
-			<img class="mx-auto d-block" src="<?=$row['image']?>" style="width:80%;">
+			<img class="mx-auto d-block" src="<?=$row['image']?>" style="width:50%;">
 			<br>
 			<div class="mb-3">
 			  <label for="productControlInput1" class="form-label">Product Description</label>
@@ -43,8 +43,6 @@
 			<?php endif; ?>
 		</div>
 
-
-			
 			<div class="mb-3">
 			  <label for="barcodeControlInput1" class="form-label">Barcode <small class="text-muted">(Optional)</small></label>
 			  <input value="<?=set_value('barcode',$row['barcode'])?>" name="barcode" type="text" class="form-control <?=!empty($errors['barcode']) ? 'border-danger':''?>" id="barcodeControlInput1" placeholder="Product barcode" autocomplete="off">
@@ -52,22 +50,13 @@
 					<small class="text-danger"><?=$errors['barcode']?></small>
 				<?php endif;?>
 			</div>
-			
-			<label for="stockControlInput1" class="form-label"><small class="text-muted">Current Stock: <?=set_value('stock',$row['stock'])?></small></label>
-			<input name="stock" value="<?=set_value('stock',$row['stock'])?>" type="number" class="form-control <?=!empty($errors['stock']) ? 'border-danger':''?>" hidden readonly>
+
 			<div class="input-group mb-3">
-			  <span class="input-group-text">Add Stock:</span>
-			  <input name="addStock" value="" type="number" class="form-control <?=!empty($errors['stock']) ? 'border-danger':''?>" id="addStock" placeholder="Quantity" aria-label="Quantity" autocomplete="off">
+			  <span class="input-group-text">Current Stock: </span>
+			  <input disabled name="stock" value="<?=set_value('stock',$row['stock'])?>" type="number" class="form-control <?=!empty($errors['stock']) ? 'border-danger':''?>" id="stock" placeholder="Quantity" aria-label="Quantity" autocomplete="off">
 			  <span class="input-group-text">Amount:</span>
-			  <input name="amount" value="<?=set_value('amount',$row['amount'])?>" step="any" type="number" class="form-control <?=!empty($errors['amount']) ? 'border-danger':''?>" placeholder="Amount" aria-label="Amount" autocomplete="off">
+			  <input disabled name="amount" value="<?=set_value('amount',$row['amount'])?>" step="any" type="number" class="form-control <?=!empty($errors['amount']) ? 'border-danger':''?>" placeholder="Amount" aria-label="Amount" autocomplete="off">
 			</div>
-				<?php if(!empty($errors['stock'])):?>
-					<small class="text-danger"><?=$errors['stock']?></small>
-				<?php endif;?>
-				<?php if(!empty($errors['amount'])):?>
-					<small class="text-danger"><?=$errors['amount']?></small>
-				<?php endif;?>
-				<br>
 			
 			<button class="btn btn-danger float-end">Save</button>
 			<a href="index.php?pg=admin&tab=products">
@@ -90,12 +79,26 @@
 <script>
 	document.getElementById('addStock').addEventListener('input', function (event) {
 		// Ensure the value is non-negative
-		if (this.value < 0) {
-			this.value = '0';
+		if (this.value <= 0) {
+			this.value = '';
 		}
 	});
 
 	document.getElementById('addStock').addEventListener('keydown', function (event) {
+		// Prevent the user from typing the minus sign
+		if (event.key === '-' || event.key === 'Minus') {
+			event.preventDefault();
+		}
+	});
+
+	document.getElementById('amount_increase').addEventListener('input', function (event) {
+		// Ensure the value is non-negative
+		if (this.value <= 0) {
+			this.value = '';
+		}
+	});
+
+	document.getElementById('amount_increase').addEventListener('keydown', function (event) {
 		// Prevent the user from typing the minus sign
 		if (event.key === '-' || event.key === 'Minus') {
 			event.preventDefault();
