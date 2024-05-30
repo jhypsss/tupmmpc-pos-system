@@ -18,6 +18,7 @@ class Product extends Model
 				'amount',
 				'image',
 				'date',
+				'date_modified',
 				'views',
 				'category_id',
 			];
@@ -37,7 +38,10 @@ class Product extends Model
 				$errors['description'] = "Only letters allowed in description";
 			}
 
-			//check stock
+			/*
+			if(empty($data["stock"])){
+				$errors['stock'] = "Stock is required";
+			} else*/
 			if(!preg_match('/^[0-9]+$/', $data['stock']))
 			{
 				$errors['stock'] = "stock must be a number";
