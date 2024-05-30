@@ -82,17 +82,49 @@
 <a href="../app/views/admin/sales_report.php"><button style="background-color: orange; border-radius: 5px;  color: white; border-color: white; padding: 7px;">SALES REPORTS</button></a>
 -->
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var searchInput = document.getElementById('searchInput');
+        var tableRows = document.querySelectorAll('.table tbody tr');
+
+        // Search functionality
+        searchInput.addEventListener('keyup', function(event) {
+            var query = event.target.value.toLowerCase();
+
+            tableRows.forEach(function(row) {
+                var cells = row.getElementsByTagName('td');
+                var found = false;
+
+                if (cells.length >= 1) {
+                    // Only search in the first and second columns
+                    for (var i = 0; i < 1; i++) {
+                        var cellText = cells[i].textContent.toLowerCase();
+                        if (cellText.indexOf(query) > -1) {
+                            found = true;
+                            break;
+                        }
+                    }
+                }
+
+                row.style.display = found ? '' : 'none';
+            });
+        });
+    });
+</script>
+
 <?php if (!empty($sales)):?>
 <div>
-    <h2>Today's Total: ₱<?=number_format($sales_total,2)?></h2>    
+	<h5><?= date("l, M j, Y")?></h5>
+	<input type="text" class="form-control" id="searchInput" placeholder="Search Receipt No..." style="width: 50%; float: right;">
+	<h2> Today's Total: ₱<?=number_format($sales_total,2)?></h2>
 </div>
 
 <div class="table-responsive" style="height: 500px;overflow-y: scroll;">
     <table class="table table-striped table-hover">
         <thead class="table-light" style="position: sticky;top: 0">
             <tr>
-                <th style="background-color: #C23540; color: black;">Barcode</th>
                 <th style="background-color: #C23540; color: black;">Receipt No</th>
+                <th style="background-color: #C23540; color: black;">Barcode</th>
                 <th style="background-color: #C23540; color: black;">Description</th>
                 <th style="background-color: #C23540; color: black;">Qty</th>
                 <th style="background-color: #C23540; color: black;">Amount</th>
@@ -104,11 +136,9 @@
         <tbody>
         <?php foreach ($sales as $sale):?>
             <tr>
-                <td><?=esc($sale['barcode'])?></td>
                 <td><?=esc($sale['receipt_no'])?></td>
-                <td>
-                    <?=esc($sale['description'])?>
-                </td>
+                <td><?=esc($sale['barcode'])?></td>
+                <td><?=esc($sale['description'])?></td>
                 <td><?=esc($sale['qty'])?></td>
                 <td><?=esc($sale['amount'])?></td>
                 <td><?=esc($sale['total'])?></td>
@@ -139,10 +169,7 @@
         
         </tbody>
     </table>
-
-<?php
-        $pager->display($totalSales);
-?>
+  
 <?php else:?>
 
     <div class="task-roll-up">

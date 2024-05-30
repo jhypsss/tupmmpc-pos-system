@@ -47,12 +47,16 @@
                 var cells = row.getElementsByTagName('td');
                 var found = false;
 
-                Array.from(cells).forEach(function(cell) {
-                    var cellText = cell.textContent.toLowerCase();
-                    if (cellText.indexOf(query) > -1) {
-                        found = true;
+                if (cells.length >= 2) {
+                    // Only search in the first and second columns
+                    for (var i = 0; i < 2; i++) {
+                        var cellText = cells[i].textContent.toLowerCase();
+                        if (cellText.indexOf(query) > -1) {
+                            found = true;
+                            break;
+                        }
                     }
-                });
+                }
 
                 row.style.display = found ? '' : 'none';
             });

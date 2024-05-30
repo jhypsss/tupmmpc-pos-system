@@ -58,7 +58,7 @@ else if($tab == "sales")
 	$pager = new Pager($limit);
 	$offset = $pager->offset;
 
-	$query = "select * from sales order by id desc limit $limit offset $offset";
+	$query = "select * from sales order by id desc";
 	$totalSales = $saleClass->query("SELECT COUNT(*) AS total FROM sales");
 
 	//get today's sales total
