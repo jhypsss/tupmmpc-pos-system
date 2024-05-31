@@ -19,7 +19,7 @@ if(!empty($_SESSION['referer'])){
 				<div><?=esc(APP_NAME)?></div>
 			</center>
 			<br>
-			<img class="mx-auto d-block border border-2 border-secondary p-3 rounded" src="<?=$row['image']?>" style="width:40%;">
+			<img class="mx-auto d-block" src="<?=$row['image']?>" style="width:40%;">
 			<br>
 		 	<div class="mb-3">
 			  <label for="formFile" class="form-label">User Image</label>

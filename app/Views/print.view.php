@@ -58,7 +58,7 @@
 		<h3><?=$obj['store']?></h3>
 		<p><?=$obj['address']?></p>
 		<h6>OFFICIAL RECEIPT</h6>
-		<p><?=date("M j, Y (D) H:i:s")?></p>
+		<p><?=date("M j, Y (D) H:i:s",strtotime($obj['date']))?></p>
 	</center>
 	<table class="table table-default table-sm">
 		<tbody>
@@ -135,7 +135,6 @@
 
 	ajax.open('POST','',true);
 	//ajax.send();
-
 </script>
 </body>
 </html>

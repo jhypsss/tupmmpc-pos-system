@@ -144,7 +144,6 @@ $conn->close();
 	var AMOUNT 		= 0;
 	var GTOTAL  	= 0;
 	var CHANGE  	= 0;
-	var RECEIPT_NO 	= "";
 	var RECEIPT_WINDOW = null;
 
 	var main_input = document.querySelector(".js-search");
@@ -243,11 +242,12 @@ $conn->close();
 				}
 			} else if (obj.data_type == "print_checkout"){
 				
-				RECEIPT_NO = obj.receipt_no;
-
+				var RECEIPT_NO = obj.receipt_no;
+				var DATE = obj.date;
 				print_receipt({
 					store: '<?= esc(APP_NAME) ?>',
 					address: 'Ayala Blvd., Ermita, Manila, 1000, Philippines',
+					date: DATE,
 					amount: AMOUNT,
 					change: CHANGE,
 					gtotal: GTOTAL,
@@ -673,7 +673,7 @@ $conn->close();
 	{
 		var vars = JSON.stringify(obj);
 
-		RECEIPT_WINDOW = window.open('index.php?pg=print&vars='+vars,'printpage',"width=500px;");
+		RECEIPT_WINDOW = window.open('index.php?pg=print&vars='+vars,'printpage',"width=80%;");
 
 		setTimeout(close_receipt_window,2000);
 		

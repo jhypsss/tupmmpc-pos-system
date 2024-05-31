@@ -15,7 +15,7 @@
 					<small class="text-danger"><?=$errors['image']?></small>
 				<?php endif;?>
 			</div>
-			<img class="mx-auto d-block" src="<?=$row['image']?>" style="width:50%;">
+			<img class="mx-auto d-block" src="<?=$row['image']?>" style="width:40%;">
 			<br>
 			<div class="mb-3">
 			  <label for="productControlInput1" class="form-label">Product Description</label>

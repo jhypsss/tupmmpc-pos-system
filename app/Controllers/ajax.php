@@ -56,6 +56,10 @@ if(!empty($raw_data))
 		else
 		if($OBJ['data_type'] == "checkout")
 		{
+			$timezone = 'Asia/Manila';
+			date_default_timezone_set($timezone);
+
+			$date = date('Y-m-d H:i:s');
 
 			$data 		= $OBJ['text'];
 			$receipt_no 	= generate_receipt_no();
@@ -81,17 +85,18 @@ if(!empty($raw_data))
 					$arr['product_id']  = $row['id'];
 					$arr['barcode'] 	= $check['barcode'];
 					$arr['description'] = $check['description'];
-					$arr['category_id'] 	= $check['category_id'];
+					$arr['category_id'] = $check['category_id'];
 					$arr['amount'] 		= $check['amount'];
 					$arr['qty'] 		= $row['qty'];
 					$arr['total'] 		= $row['qty'] * $check['amount'];
 					$arr['receipt_no'] 	= $receipt_no;
+					$arr['date'] 		= $date;
 					$arr['user_id'] 	= $user_id;
 					//$arr['payment_method'] 	= $payment_method . ' '.$payment_reference ;
 
 					//$query = "insert into sales (barcode,receipt_no,description,category_id,qty,amount,total,date,user_id,payment_method) values (:barcode,:receipt_no,:description,:category_id,:qty,:amount,:total,:date,:user_id,:payment_method)";
-					$query = "INSERT into sales (product_id,barcode,receipt_no,description,category_id,qty,amount,total,user_id) 
-									values (:product_id,:barcode,:receipt_no,:description,:category_id,:qty,:amount,:total,:user_id)";
+					$query = "INSERT into sales (product_id,barcode,receipt_no,description,category_id,qty,amount,total,date,user_id) 
+									values (:product_id,:barcode,:receipt_no,:description,:category_id,:qty,:amount,:total,:date,:user_id)";
 					$db->query($query,$arr);
 
 					//add view count for this product
@@ -107,6 +112,7 @@ if(!empty($raw_data))
 
 			$info['data_type'] = "print_checkout";
 			$info['receipt_no'] = $receipt_no;
+			$info['date'] = $date;
 			//$info['data'] = "items saved successfully!";
 			
 				
