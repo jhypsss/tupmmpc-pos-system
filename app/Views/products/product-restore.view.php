@@ -31,7 +31,7 @@
 			<img class="mx-auto d-block" src="<?=$row['image']?>" style="width:80%;">
 			<br>
 			<button class="btn btn-success float-end">Restore</button>
-			<a href="index.php?pg=admin&tab=products">
+			<a href="index.php?pg=admin&tab=restored items">
 				<button type="button" class="btn btn-primary">Cancel</button>
 			</a>
 		</form>
