@@ -14,19 +14,20 @@
         align-items: center;
     }
     
-    .add-button {
-        padding: 8px 10px; /* Adjust the padding */
-        background-color: #24a0ed;
-        color: #fff;
+    .btn-primary {
         border: none;
-        border-radius: 3px;
-        width: 115px;
-        height: 35px;
-        cursor: pointer;
-        display: inline-block; /* Make it inline-block to connect with the text */
-        font-size: 14px;
-        text-decoration: none; /* Remove underlining */
-        margin-top: 1px; /* Adjust margin for alignment */
+        color: white;
+        width: 100px;
+    }
+    .btn-success {
+        border: none;
+        color: white;
+        padding: 10px;
+    }
+    .btn-danger {
+        border: none;
+        color: white;
+        padding: 10px;
     }
     
     .fa-fw {
@@ -37,12 +38,10 @@
     .icon {
         font-size: 4em;
     }
-
-    .table td,
-    .table th {
-        font-size: 14px;
+    .table thead th {
+        background-color: #C23540; 
+        color: #fff;
     }
-    
 </style>
 
 <!-- Table section -->
@@ -51,10 +50,10 @@
     <table class="table table-striped table-hover">
         <thead class="table-light" style="position: sticky; top: 0;">
             <tr>
-                <th style="background-color: #C23540; color: black;">Name</th>
-                <th style="background-color: #C23540; color: black;">Description</th>
-                <th style="background-color: #C23540; color: black;">
-                    <a href="index.php?pg=category-new" class="add-button">
+                <th>Name</th>
+                <th>Description</th>
+                <th>
+                    <a href="index.php?pg=category-new" class="add-button btn btn-primary btn-sm">
                         <i class="fa fa-plus fa-fw style=font-size: 10px;" ></i>Add new
                     </a>
                 </th>

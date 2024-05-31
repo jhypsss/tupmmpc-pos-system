@@ -1,11 +1,11 @@
 <?php require views_path('partials/header');?>
 
 	<div class="container-fluid border col-lg-5 col-md-6 mt-5 p-4" >
-	
+	<?php if(!empty($row)):?>
 		<form method="post">
 			<center>
 				<h3><i class="fa fa-user"></i> Restore User</h3>
-				<div class="alert alert-success text-center">Are you sure you want to delete this user?!</div>
+				<div class="alert alert-success text-center">Do you want to restore this User?</div>
 			</center>
 			<br>
 		 
@@ -35,8 +35,15 @@
             <a href="index.php?pg=admin&tab=deleted items">
 				<button type="button" class="btn btn-danger">Cancel</button>
 			</a>
-			
 		</form>
+		<?php else:?>
+			That User was not found
+			<br><br>
+			<a href="index.php?pg=admin&tab=deleted items">
+				<button type="button" class="btn btn-primary">Back to Deleted Items</button>
+			</a>
+
+		<?php endif;?>
 	</div>
 
 <?php require views_path('partials/footer');?>

@@ -14,25 +14,34 @@
 	align-items: center;
 	}
 	
-	.add-button {
-	padding: 10px 20px;
-	background-color: #0078d7;
-	color: #fff;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	}
-	
-	.fa-fw {
-	font-size: 1em;
-	margin-right: 5px;
-	}
-	
-	.icon {
-	font-size: 4em;
-	}
+	.btn-primary {
+        border: none;
+        color: white;
+        width: 100px;
+    }
+    .btn-success {
+        border: none;
+        color: white;
+        padding: 10px;
+    }
+    .btn-danger {
+        border: none;
+        color: white;
+        padding: 10px;
+    }
+    
+    .fa-fw {
+        font-size: 1em;
+        margin-right: 5px;
+    }
+    
+    .icon {
+        font-size: 4em;
+    }
+    .table thead th {
+        background-color: #C23540; 
+        color: #fff;
+    }
 </style>
 <?php if (!empty($lists)):?>
 <div class="table-responsive" style="height: 500px;overflow-y: scroll;">

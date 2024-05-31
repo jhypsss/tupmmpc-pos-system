@@ -8,7 +8,7 @@
 
 			<h5 class="text-primary"><i class="fa fa-hamburger"></i> Restore Product</h5>
 
-			<div class="alert alert-success text-center">Are you sure you want to restore this product?</div>
+			<div class="alert alert-success text-center">Do you want to restore this Product?</div>
 
 			<div class="mb-3">
 			  <label for="productControlInput1" class="form-label">Product Description</label>
@@ -31,12 +31,12 @@
 			<img class="mx-auto d-block" src="<?=$row['image']?>" style="width:80%;">
 			<br>
 			<button class="btn btn-success float-end">Restore</button>
-			<a href="index.php?pg=admin&tab=restored items">
+			<a href="index.php?pg=admin&tab=deleted items">
 				<button type="button" class="btn btn-primary">Cancel</button>
 			</a>
 		</form>
 		<?php else:?>
-			That product was not found
+			That Product was not found
 			<br><br>
 			<a href="index.php?pg=admin&tab=deleted items">
 				<button type="button" class="btn btn-primary">Back to Deleted Items</button>

@@ -46,14 +46,34 @@
 	align-items: center;
 	}
 	
-	.fa-fw {
-	font-size: 1em;
-	margin-right: 5px;
-	}
-	
-	.icon {
-	font-size: 4em;
-	}
+	.btn-primary {
+        border: none;
+        color: white;
+        width: 100px;
+    }
+    .btn-success {
+        border: none;
+        color: white;
+        padding: 10px;
+    }
+    .btn-danger {
+        border: none;
+        color: white;
+        padding: 10px;
+    }
+    
+    .fa-fw {
+        font-size: 1em;
+        margin-right: 5px;
+    }
+    
+    .icon {
+        font-size: 4em;
+    }
+    .table thead th {
+        background-color: #C23540; 
+        color: #fff;
+    }
 </style>
 <ul class="nav nav-tabs">
   
@@ -96,7 +116,7 @@
                 var found = false;
 
                 if (cells.length >= 1) {
-                    // Only search in the first and second columns
+                    // Only search in the first column
                     for (var i = 0; i < 1; i++) {
                         var cellText = cells[i].textContent.toLowerCase();
                         if (cellText.indexOf(query) > -1) {
@@ -123,14 +143,14 @@
     <table class="table table-striped table-hover">
         <thead class="table-light" style="position: sticky;top: 0">
             <tr>
-                <th style="background-color: #C23540; color: black;">Receipt No</th>
-                <th style="background-color: #C23540; color: black;">Barcode</th>
-                <th style="background-color: #C23540; color: black;">Description</th>
-                <th style="background-color: #C23540; color: black;">Qty</th>
-                <th style="background-color: #C23540; color: black;">Amount</th>
-                <th style="background-color: #C23540; color: black;">Total</th>
-                <th style="background-color: #C23540; color: black;">Encoder</th>
-                <th colspan="2" style="background-color: #C23540; color: black;">Date | Time</th>           
+                <th>Receipt No</th>
+                <th>Barcode</th>
+                <th>Description</th>
+                <th>Qty</th>
+                <th>Amount</th>
+                <th>Total</th>
+                <th>Encoder</th>
+                <th colspan="2">Date | Time</th>           
             </tr>
         </thead>
         <tbody>
@@ -194,10 +214,6 @@
             $graph->title = "Today's sales";
             $graph->xtitle = "Hours of the day";
             $graph->styles = "width:80%;margin:auto;display:block";
-            // Customizing graph display style for a more colorful design
-            $graph->barColor = 'rgba(255, 99, 132, 0.6)'; // Red color for bars
-            $graph->backgroundColor = 'rgba(255, 99, 132, 0.2)'; // Light red color for background
-            $graph->borderColor = 'rgba(255, 99, 132, 1)'; // Border color for bars
             $graph->display($data);
             echo "<br>";
         }
@@ -212,10 +228,6 @@
             $graph->title = "This month's sales";
             $graph->xtitle = "Days of the month";
             $graph->styles = "width:80%;margin:auto;display:block";
-            // Customizing graph display style for a more colorful design
-            $graph->barColor = 'rgba(75, 192, 192, 0.6)'; // Green color for bars
-            $graph->backgroundColor = 'rgba(75, 192, 192, 0.2)'; // Light green color for background
-            $graph->borderColor = 'rgba(75, 192, 192, 1)'; // Border color for bars
             $graph->display($data);
             echo "<br>";
         }
@@ -230,10 +242,6 @@
             $graph->title = "This year's sales";
             $graph->xtitle = "Months of the year";
             $graph->styles = "width:80%;margin:auto;display:block";
-            // Customizing graph display style for a more colorful design
-            $graph->barColor = 'rgba(255, 206, 86, 0.6)'; // Yellow color for bars
-            $graph->backgroundColor = 'rgba(255, 206, 86, 0.2)'; // Light yellow color for background
-            $graph->borderColor = 'rgba(255, 206, 86, 1)'; // Border color for bars
             $graph->display($data);
             echo "<br>";
         }
@@ -249,9 +257,6 @@
             $graph->xtitle = "Years";
             $graph->styles = "width:80%;margin:auto;display:block";
             // Customizing graph display style for a more colorful design
-            $graph->barColor = 'rgba(153, 102, 255, 0.6)'; // Purple color for bars
-            $graph->backgroundColor = 'rgba(153, 102, 255, 0.2)'; // Light purple color for background
-            $graph->borderColor = 'rgba(153, 102, 255, 1)'; // Border color for bars
             $graph->display($data);
             echo "<br>";
         }

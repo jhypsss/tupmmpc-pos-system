@@ -13,17 +13,20 @@
         display: flex;
         align-items: center;
     }
-    
-    .add-button {
-        padding: 10px 20px;
-        background-color: #0078d7;
-        color: #fff;
+    .btn-primary {
         border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        
+        color: white;
+        width: 100px;
+    }
+    .btn-success {
+        border: none;
+        color: white;
+        padding: 10px;
+    }
+    .btn-danger {
+        border: none;
+        color: white;
+        padding: 10px;
     }
     
     .fa-fw {
@@ -34,7 +37,11 @@
     .icon {
         font-size: 4em;
     }
-    
+    .table thead th {
+        text-align: center;
+        background-color: #C23540; 
+        color: #fff;
+    }
     .button-container {
         display: flex;
         gap: 5px;
@@ -50,12 +57,12 @@
     <table class="table table-striped table-hover">
         <thead class="table-red" style="position: sticky; top: 0; background-color: #C23540;">
         <tr>
-            <th style="color: black;">Company Name</th>
-            <th style="color: black;">Company Address</th>
-            <th style="color: black;">Contact Person</th>
-            <th style="color: black;">Contact Number</th>
-            <th style="color: black;">Email</th>
-            <th style="color: black;">Business Type</th>
+            <th>Company Name</th>
+            <th style="width:15%;">Company Address</th>
+            <th>Contact Person</th>
+            <th>Contact No</th>
+            <th>Email</th>
+            <th style="width:15%;">Business Type</th>
             <th>
                 <a href="index.php?pg=supplier-new">
                     <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add new</button>

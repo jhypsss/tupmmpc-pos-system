@@ -2,12 +2,12 @@
     <table class="table table-striped table-hover">
         <thead style="position: sticky; top: 0; background-color: #000; color: white;">
             <tr>
-                <th style="color: black;">Image</th>
-                <th style="color: black;">Name</th>
-                <th style="color: black;">Gender</th>
-                <th style="color: black;">Email</th>
-                <th style="color: black;">Role</th>
-                <th style="color: black;">Date Created</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Date Created</th>
                 <th>
                     <a href="index.php?pg=signup">
                         <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add new</button>
@@ -36,10 +36,10 @@
                 <td><?=date("M j, Y",strtotime($user['date']))?></td>
                 <td>
                     <a href="index.php?pg=edit-user&id=<?=$user['id']?>">
-                        <button class="btn btn-success btn-sm" style="background-color: #00ab41 ; border: none; color: white;"><i class="fas fa-user-cog"></i></button>
+                        <button class="btn btn-success btn-sm"><i class="fas fa-user-cog"></i></button>
                     </a>
                     <a href="index.php?pg=delete-user&id=<?=$user['id']?>">
-                        <button class="btn btn-danger btn-sm" style="background-color: #d1001f; border: none; color: white;"><i class="fas fa-trash"></i></button>
+                        <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                     </a>
                 </td>
             </tr>
@@ -79,20 +79,18 @@
     }
     .btn-primary {
         border: none;
-        background-color:;
         color: white;
         width: 100px;
-        height: 40px;
     }
     .btn-success {
-        background: #333;
         border: none;
         color: white;
+        padding: 10px;
     }
     .btn-danger {
-        background: #f94449;
         border: none;
         color: white;
+        padding: 10px;
     }
     a {
         color: #f94449;

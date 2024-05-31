@@ -8,7 +8,7 @@
 
 			<h5 class="text-primary"><i class="fa fa-truck"></i> Restore Supplier</h5>
 
-			<div class="alert alert-success text-center">Are you sure you want to restore this Supplier?</div>
+			<div class="alert alert-success text-center">Do you want to restore this Supplier?</div>
 
 			<div class="mb-3">
 			  <label for="supplierControlInput1" class="form-label">Company Name</label>
@@ -59,7 +59,7 @@
 			</div>
 			
 			<button class="btn btn-success float-end">Restore</button>
-			<a href="index.php?pg=admin&tab=suppliers">
+			<a href="index.php?pg=admin&tab=deleted items">
 				<button type="button" class="btn btn-primary">Cancel</button>
 			</a>
 		</form>

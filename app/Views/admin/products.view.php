@@ -13,26 +13,29 @@
 	display: flex;
 	align-items: center;
 	}
-	
-	.add-button {
-	padding: 10px 20px;
-	background-color: #0078d7;
-	color: #fff;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	}
-	
-	.fa-fw {
-	font-size: 1em;
-	margin-right: 5px;
-	}
-	
-	.icon {
-	font-size: 4em;
-	}
+    .btn-success {
+        border: none;
+        color: white;
+        padding: 10px;
+    }
+    .btn-danger {
+        border: none;
+        color: white;
+        padding: 10px;
+    }
+    
+    .fa-fw {
+        font-size: 1em;
+        margin-right: 5px;
+    }
+    
+    .icon {
+        font-size: 4em;
+    }
+    .table thead th {
+        background-color: #C23540; 
+        color: #fff;
+    }
 </style>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -72,7 +75,7 @@
         <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add new</button>
     </a>
     <a href="index.php?pg=barcode.view">
-        <button class="btn btn-success btn-sm"><i class="fa fa-barcode"></i> Barcode</button>
+        <button class="btn btn-secondary btn-sm"><i class="fa fa-barcode"></i> Barcode</button>
     </a>
     <input type="text" class="form-control" id="searchInput" placeholder="Search..." style="width: 50%; float: right;">
     <br>
@@ -85,15 +88,15 @@
     <table class="table table-responsive table-striped table-hover">
         <thead class="table-light" style="position: sticky;top: 0">
             <tr>
-                <th style="background-color: #C23540; color: black;">Barcode</th>
-                <th style="background-color: #C23540; color: black;">Product Name</th>
-                <th style="background-color: #C23540; color: black;">Category</th>
-                <th style="background-color: #C23540; color: black;">Stock</th>
-                <th style="background-color: #C23540; color: black;">Price</th>
-                <th style="background-color: #C23540; color: black;">Image</th>
-                <th style="background-color: #C23540; color: black;">Date Created</th>
-                <th style="background-color: #C23540; color: black;">Encoder</th>
-                <th style="background-color: #C23540; color: black;">Action</th>
+                <th>Barcode</th>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Stock</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Date Created</th>
+                <th>Encoder</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>

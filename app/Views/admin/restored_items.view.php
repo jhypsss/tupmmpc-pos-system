@@ -1,12 +1,18 @@
+<style>
+    .table thead th {
+        background-color: #C23540; 
+        color: #fff;
+    }
+</style>
 <div class="table-responsive" style="height: 650px;overflow-y: scroll;">
     <!-- Table section -->
     <table class="table table-striped table-hover">
     <thead class="table-red" style="position: sticky;top: 0; background-color: #C23540;">
         <tr>
-            <th style="color: black;">Date Restored</th>
-            <th style="color: black;">From:</th>
-            <th style="color: black;">Restored Info</th>
-            <th style="color: black;" colspan="2">Restored by:</th>
+            <th>Date Restored</th>
+            <th>From:</th>
+            <th>Restored Info</th>
+            <th colspan="2">Restored by:</th>
         </tr>
         </thead>
         <tbody>

@@ -8,7 +8,7 @@
 
 			<h5 class="text-primary"><i class="fa fa-table"></i> Restore Category</h5>
 
-			<div class="alert alert-success text-center">Are you sure you want to restore this Category?</div>
+			<div class="alert alert-success text-center">Do you want to restore this Category?</div>
 
 			<div class="mb-3">
 			  <label for="categoryControlInput1" class="form-label">Category Name</label>
