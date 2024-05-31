@@ -130,6 +130,11 @@ else if($tab == "sales")
 
 }
 
+else if($tab == "removed stocks"){
+	$removed_db = new Database();
+	$lists = $removed_db->query("SELECT * FROM removed_stocks order by id desc");
+}
+
 else if($tab == "refunded items"){
 	$refund_db = new Database();
 	$refunded_items = $refund_db->query("SELECT * FROM refunded_items order by id desc");

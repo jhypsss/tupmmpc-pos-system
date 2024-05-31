@@ -64,6 +64,9 @@
                 <a href="index.php?pg=admin&tab=sales">
                     <li class="list-group-item <?=$tab=='sales'?'active':''?>"><i class="icon fa fa-money-bill-wave"></i> Sales</li>
                 </a>
+				<a href="index.php?pg=admin&tab=removed stocks">
+			  		<li class="list-group-item <?=$tab=='removed stocks'?'active':''?>"><i class="icon fas fa-minus-square"></i> Removed Stocks</li>
+				</a>
                 <a href="index.php?pg=admin&tab=refunded items">
                     <li class="list-group-item <?=$tab=='refunded items'?'active':''?>"><i class="icon fas fa-undo-alt"></i> Refunded Items</li>
                 </a>
@@ -81,48 +84,76 @@
                 </a>
             </ul>
         </div>
-        <div class="border col p-3">
-            <h4><?=strtoupper($tab)?></h4>
+		<div class="border col p-3">
+			
+			<h4><?=strtoupper($tab)?></h4>
 
-            <?php  
-                switch ($tab) {
-                    case 'users':
-                        require views_path('admin/users');
-                        break;
-                    case 'categories':
-                        require views_path('admin/categories');
-                        break;
-                    case 'products':
-                        require views_path('admin/products');
-                        break;
-                    case 'sales':
-                        require views_path('admin/sales');
-                        break;
-                    case 'refunded items':
-                        require views_path('admin/refunded_items');
-                        break;
-                    case 'suppliers':
-                        require views_path('admin/suppliers');
-                        break;
-                    case 'audit trail':
-                        require views_path('admin/audit_trail');
-                        break;
-                    case 'deleted items':
-                        require views_path('admin/deleted_items');
-                        break;
-                    case 'restored items':
-                        require views_path('admin/restored_items');
-                        break;
-                    case 'barcode':
-                        require views_path('admin/barcode');
-                        break;
-                    default:
-                        require views_path('admin/dashboard');
-                        break;
-                }
-            ?>
-        </div>
-    </div>
+			<?php  
+
+				switch ($tab) {
+					case 'users':
+						// code...
+						require views_path('admin/users');
+						break;
+
+					case 'categories':
+						// code...
+						require views_path('admin/categories');
+						break;
+
+					case 'products':
+						// code...
+						require views_path('admin/products');
+						break;
+
+					case 'sales':
+						// code...
+						require views_path('admin/sales');
+						break;
+					case 'removed stocks':
+						// code...
+						require views_path('admin/removed_stocks');
+						break;
+						
+					case 'refunded items':
+						// code...
+						require views_path('admin/refunded_items');
+						break;
+					
+					case 'suppliers':
+						// code...
+						require views_path('admin/suppliers');
+						break;
+
+					case 'audit trail':
+						// code...
+						require views_path('admin/audit_trail');
+						break;
+
+					case 'deleted items':
+						// code...
+						require views_path('admin/deleted_items');
+						break;
+					
+					case 'restored items':
+						// code...
+						require views_path('admin/restored_items');
+						break;
+
+					case 'barcode':
+						// code...
+						require views_path('admin/barcode');
+						break;
+					
+					default:
+						// code...
+						require views_path('admin/dashboard');
+						break;
+				}
+			?>
+		</div>
+	</div>
+>>>>>>> devs
 </div>
 
 <?php require views_path('partials/footer'); ?>

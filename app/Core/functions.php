@@ -356,3 +356,11 @@ function get_CategoryName($id){
 	else
 		return 'Unknown Category';
 }
+
+function get_productRow($id){
+	$productClass = new Product();
+	$result = $productClass->query("SELECT * FROM products WHERE id = $id");
+
+	if(!empty($result))
+		return $result[0];
+}

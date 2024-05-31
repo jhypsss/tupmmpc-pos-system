@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2024 at 04:17 AM
+-- Generation Time: May 31, 2024 at 09:17 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -135,7 +135,56 @@ INSERT INTO `audit_trail` (`id`, `user_id`, `source`, `action`, `details`, `date
 (94, 6, 'Sales', 'REFUND', 'REFUNDED ITEM: 2223804737259\nReceipt No: 2151-118\nProduct Name: Bread Pan\nProduct Price: 20.00\nProduct Sold: 10 | ₱200.00\nRefund Qty: 1\nTotal Amount: 20\nStatus: Damaged\nRemarks: damaged', '2024-05-28 15:44:55'),
 (95, 6, 'Sales', 'REFUND', 'REFUNDED ITEM: 2223367498386\nReceipt No: 2151-117\nProduct Name: Coca Cola Zero\nProduct Price: 45.00\nProduct Sold: 12 (₱540.00)\nRefund Qty: 2\nTotal Amount: ₱90\nStatus: Damaged\nRemarks: with dents', '2024-05-28 15:49:57'),
 (96, 6, 'Users', 'UPDATE', 'UPDATED USER: TUPM-20-2003\nUsername: TUPM-20-2002 → TUPM-20-2003', '2024-05-28 15:55:03'),
-(97, 6, 'Users', 'DELETE', 'DELETED USER: TUPM-20-2003\n Name: May Garcia \nEmail: maygarcia@tup.edu.ph \nGender: Female \nRole: Cashier', '2024-05-28 15:55:16');
+(97, 6, 'Users', 'DELETE', 'DELETED USER: TUPM-20-2003\n Name: May Garcia \nEmail: maygarcia@tup.edu.ph \nGender: Female \nRole: Cashier', '2024-05-28 15:55:16'),
+(98, 6, 'Users', 'RESTORE', 'RESTORED USER: TUPM-20-2003 \nName: May Garcia \nEmail: maygarcia@tup.edu.ph \nGender: Female \nRole: Cashier', '2024-05-30 14:16:07'),
+(99, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223367498386\nProduct Name: Coca Cola Zero → Coca ColaZero', '2024-05-30 16:48:21'),
+(100, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223367498386\nProduct Name: Coca ColaZero → Coca Cola Zero', '2024-05-30 16:48:40'),
+(101, 6, 'Products', 'ADD', 'NEW ITEM: 2223285141428\nProduct: Wave \nQty: 50 \nPrice: 46 \nCategory: Beverage', '2024-05-30 20:08:38'),
+(102, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223285141428\nProduct Name: Wave → Waved', '2024-05-30 20:09:08'),
+(103, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223285141428\nProduct Name: Wave → Wave Soda', '2024-05-30 20:11:19'),
+(104, 6, 'Products', 'ADD', 'NEW ITEM: 2223507586494\nProduct: Limea \nQty: 50 \nPrice: 48 \nCategory: Beverage', '2024-05-30 20:13:28'),
+(105, 6, 'Products', 'ADD', 'NEW ITEM: 222325575939\nProduct: Adidas Cap \nQty: 50 \nPrice: 104 \nCategory: Unknown Category', '2024-05-30 20:14:59'),
+(106, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nCategory: Unknown Category → School Merch', '2024-05-30 20:17:58'),
+(107, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939', '2024-05-30 20:54:07'),
+(108, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939', '2024-05-30 20:56:17'),
+(109, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939', '2024-05-30 21:01:58'),
+(110, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223507586494\nPrice Increased: 48.00 → Unknown Amount(+Unknown Amount)', '2024-05-30 21:02:52'),
+(111, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223367498386', '2024-05-30 21:04:39'),
+(112, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223679136953', '2024-05-30 21:05:38'),
+(113, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939', '2024-05-30 21:06:25'),
+(114, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939', '2024-05-30 21:07:10'),
+(115, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nCurrent Stock Increased: 71 → 73(+2)', '2024-05-30 21:08:24'),
+(116, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nCurrent Stock Increased: 73 → 75(+2)', '2024-05-30 21:09:17'),
+(117, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223507586494\nCurrent Stock Decreased: 50 → 48(-2)', '2024-05-30 21:09:33'),
+(118, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nProduct Name: Adidas Cap → Adidas Capp', '2024-05-30 21:10:14'),
+(119, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nProduct Name: Adidas Capp → Adidas Cap\nPrice Increased: 106.00 → 106.5(+.5)', '2024-05-30 21:11:59'),
+(120, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223679136953\nPrice Increased: 200.00 → 250(+50)', '2024-05-30 21:12:43'),
+(121, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223824388896\nCurrent Stock Increased: 7 → 107(+100)', '2024-05-30 21:22:27'),
+(122, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223913899478\nCurrent Stock Increased: 0 → 100(+100)', '2024-05-30 21:26:10'),
+(123, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223432329015\nCurrent Stock Increased: 0 → 100(+100)', '2024-05-30 21:27:33'),
+(124, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nProduct Name: Adidas Capp → Adidas Cap', '2024-05-30 21:35:12'),
+(125, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nPrice Increased: 106.50 → 107(+0.50)', '2024-05-30 21:35:30'),
+(126, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nPrice Increased: 106.50 → 107(+0.50)', '2024-05-30 21:36:25'),
+(127, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nPrice Increased: 106.50 → 107.5(+1)', '2024-05-30 21:36:59'),
+(128, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nPrice Increased: 106.50 → 107.5(+1)', '2024-05-30 21:38:06'),
+(129, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nPrice Increased: 106.50 → 107.5(+1)', '2024-05-30 21:38:17'),
+(130, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nPrice Increased: 106.50 → 107.5(+1)', '2024-05-30 21:38:23'),
+(131, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nPrice Increased: 106.50 → 107.5(+1)', '2024-05-30 21:39:06'),
+(132, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nCurrent Stock Increased: 75 → 76(+1)', '2024-05-30 22:07:56'),
+(133, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nCurrent Stock Increased: 75 → 76(+1)', '2024-05-30 22:12:18'),
+(134, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nCurrent Stock Increased: 75 → 76(+1)', '2024-05-30 22:13:07'),
+(135, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nPrice Increased: 107.50 → 108.5(+1)\nCategory: School Merch → Beverage', '2024-05-30 22:16:50'),
+(136, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223507586494\nCurrent Stock Increased: 48 → 49(+1)', '2024-05-30 22:17:00'),
+(137, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223362259212\nCurrent Stock Increased: 0 → 100(+100)', '2024-05-30 22:17:34'),
+(138, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223474402290\nCurrent Stock Increased: 5 → 55(+50)', '2024-05-30 22:18:53'),
+(139, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223474402290\nCurrent Stock Decreased: 55 → 50(-5)', '2024-05-30 22:19:52'),
+(140, 6, 'Sales', 'REFUND', 'REFUNDED ITEM: 2223442023546\nReceipt No: 1001-119\nProduct Name: Pocari Sweat\nProduct Price: 30.00\nProduct Sold: 1 (₱30.00)\nRefund Qty: 1\nTotal Amount Refund: ₱30\nStatus: Refund\nRemarks: Good Condition, Reason: ()', '2024-05-30 23:17:19'),
+(141, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223731757377\nPrice Increased: 350.00 → 375(+25)', '2024-05-30 23:19:04'),
+(142, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nCurrent Stock Decreased: 76 → 75(-1)', '2024-05-30 23:19:40'),
+(143, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223507586494\nCurrent Stock Decreased: 49 → 48(-1)', '2024-05-30 23:55:52'),
+(144, 6, 'Users', 'DELETE', 'DELETED USER: TUPM-20-2003\n Name: May Garcia \nEmail: maygarcia@tup.edu.ph \nGender: Female \nRole: Cashier', '2024-05-31 09:05:39'),
+(145, 6, 'Categories', 'DELETE', 'DELETED CATEGORY: Snacks', '2024-05-31 09:08:26'),
+(146, 6, 'Categories', 'RESTORE', 'RESTORED CATEGORY: Snacks', '2024-05-31 09:08:40');
 
 -- --------------------------------------------------------
 
@@ -181,7 +230,7 @@ CREATE TABLE `deleted_items` (
 INSERT INTO `deleted_items` (`id`, `deleted_id`, `from_table`, `user_id`, `date_deleted`) VALUES
 (6, 7, 'Users', 4, '2024-05-24 16:49:11'),
 (9, 1, 'Products', 6, '2024-05-25 21:15:10'),
-(10, 9, 'Users', 6, '2024-05-28 15:55:16');
+(11, 9, 'Users', 6, '2024-05-31 09:05:39');
 
 -- --------------------------------------------------------
 
@@ -198,7 +247,8 @@ CREATE TABLE `products` (
   `amount` decimal(10,2) NOT NULL DEFAULT 0.00,
   `image` varchar(500) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `date` datetime NOT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp(),
+  `date_modified` datetime DEFAULT NULL,
   `views` int(11) NOT NULL DEFAULT 0,
   `if_deleted` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -207,29 +257,32 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `barcode`, `description`, `category_id`, `stock`, `amount`, `image`, `user_id`, `date`, `views`, `if_deleted`) VALUES
-(1, '2223752926390', 'C2 Apple Green Tea', 3, 50, 35.00, 'uploads/products/ee99c0765e47dad751ee1f36a824500b87e93228_1762.png', 4, '2024-05-22 03:51:41', 1, 1),
-(2, '2223432329015', 'Mogu Mogu', 3, 0, 40.00, 'uploads/products/5176a899e03349d9b21d3ab3aeccc234d5e11411_7468.png', 4, '2024-05-22 03:53:44', 11, 0),
-(3, '2223913899478', 'Mountain Dew', 3, 0, 50.00, 'uploads/products/bdf5b690f4227caa3a3349af4658df4999a75dfe_8378.png', 4, '2024-05-22 03:54:06', 15, 0),
-(4, '2223442023546', 'Pocari Sweat', 3, 36, 30.00, 'uploads/products/a1e06012c907a49fab1c46aa8125f54ab0055b73_1657.jpg', 4, '2024-05-22 03:54:46', 42, 0),
-(5, '2223286700590', 'Red Bull', 3, 33, 75.00, 'uploads/products/47b4ea9d37abe38f6aafea9aa0c599f6a9510182_1304.png', 4, '2024-05-22 03:55:08', 19, 0),
-(6, '2223330048837', 'Brown Envelope', 4, 35, 15.00, 'uploads/products/c0498136027142a1f643d77e198b1834f2c2a06d_4465.jpg', 4, '2024-05-22 03:57:55', 37, 0),
-(7, '2223474402290', 'Long Folder', 4, 5, 16.00, 'uploads/products/c3b666f45d0963af9f1eaaeac0959142812e8ea3_8965.jpg', 4, '2024-05-22 03:58:20', 66, 0),
-(8, '2223989316961', 'Index Card (1 pack)', 4, 70, 30.00, 'uploads/products/7bbfdc0f0a92ffefa17b8465772ecebac87c1cda_5399.jpg', 4, '2024-05-22 03:58:51', 17, 0),
-(9, '2223136144858', 'Scientific Calculator', 4, 42, 250.00, 'uploads/products/b110624b898fdea1e08a4d4e05611f0e0b10f218_6886.jpg', 4, '2024-05-22 03:59:47', 3, 0),
-(10, '2223562053126', 'Yellow Pad Paper', 4, 93, 25.00, 'uploads/products/624bb0011f9ff7a38b31dacd4102b8d65f114146_8469.jpg', 4, '2024-05-22 04:00:13', 3, 0),
-(11, '2223804737259', 'Bread Pan', 2, 454, 20.00, 'uploads/products/6e417b0bd74b08668c9c8b97067c85353a89e6a4_4122.png', 4, '2024-05-22 04:00:51', 8, 0),
-(12, '2223362259212', 'Nova', 2, 0, 17.00, 'uploads/products/3441c55c6bf3a2bb75953cd1667e14c42e84879d_3478.png', 4, '2024-05-22 04:01:09', 2, 0),
-(13, '2223795298756', 'Oishi Prawn Crackers', 2, 33, 20.00, 'uploads/products/63bdaee2b95e3eed8c11c22eae23aee66b09f121_6015.png', 4, '2024-05-22 04:01:30', 4, 0),
-(14, '2223828501872', 'Piattos', 2, 12, 20.00, 'uploads/products/f8cbf31c273bcd1c3e10dc85a5cd28b089069ae4_7580.png', 4, '2024-05-22 04:01:57', 2, 0),
-(15, '2223824388896', 'Pillows (Chocolate)', 2, 9, 15.00, 'uploads/products/5746ef55100159ed2f74f20c94466285655dd8e4_1551.png', 4, '2024-05-22 04:02:20', 7, 0),
-(16, '2223344887351', 'COS Polo Shirt (Red)', 1, 20, 300.00, 'uploads/products/95f53ed9c1b07bcb452d709fbf1409ef75e17303_9644.jpg', 4, '2024-05-22 04:03:14', 0, 0),
-(17, '2223344114763', 'Gear Track Jacket', 1, 18, 450.00, 'uploads/products/677021edb5091a5ed17c3d3c95ccf7d57b16089c_2263.jpg', 4, '2024-05-22 04:03:54', 2, 0),
-(18, '2223731757377', 'Gear Jersey', 1, 17, 350.00, 'uploads/products/62292992bb680000371f7ed44287e6b602c4f6e5_4575.jpg', 4, '2024-05-22 04:04:24', 3, 0),
-(19, '2223913899478', 'TUP T-Shirt (White)', 1, 25, 150.00, 'uploads/products/c64fd75924944e3d03c61a67b5f5bc05a6930fed_4590.jpg', 4, '2024-05-22 04:05:16', 4, 0),
-(20, '2223139224839', 'TUP T-Shirt (Black)', 1, 26, 150.00, 'uploads/products/4cef0742a325f6a9847506f5e5f8f45841292574_3486.jpg', 4, '2024-05-22 04:05:37', 4, 0),
-(21, '2223679136953', 'P.E Pants', 1, 96, 200.00, 'uploads/products/1aca206759ffe7635a6c332c2e1663e8f85b396b_1094.png', 4, '2024-05-22 04:07:01', 2, 0),
-(22, '2223367498386', 'Coca Cola Zero', 3, 38, 45.00, 'uploads/products/687e1a398648d588c5090b99c75dc2e0cf9fb25f_4074.jpg', 4, '2024-05-24 16:31:51', 5, 0);
+INSERT INTO `products` (`id`, `barcode`, `description`, `category_id`, `stock`, `amount`, `image`, `user_id`, `date`, `date_modified`, `views`, `if_deleted`) VALUES
+(1, '2223752926390', 'C2 Apple Green Tea', 3, 50, 35.00, 'uploads/products/ee99c0765e47dad751ee1f36a824500b87e93228_1762.png', 4, '2024-05-22 03:51:41', NULL, 1, 1),
+(2, '2223432329015', 'Mogu Mogu', 3, 100, 40.00, 'uploads/products/5176a899e03349d9b21d3ab3aeccc234d5e11411_7468.png', 4, '2024-05-22 03:53:44', NULL, 11, 0),
+(3, '2223913899478', 'Mountain Dew', 3, 100, 50.00, 'uploads/products/bdf5b690f4227caa3a3349af4658df4999a75dfe_8378.png', 4, '2024-05-22 03:54:06', NULL, 15, 0),
+(4, '2223442023546', 'Pocari Sweat', 3, 36, 30.00, 'uploads/products/a1e06012c907a49fab1c46aa8125f54ab0055b73_1657.jpg', 4, '2024-05-22 03:54:46', NULL, 42, 0),
+(5, '2223286700590', 'Red Bull', 3, 33, 75.00, 'uploads/products/47b4ea9d37abe38f6aafea9aa0c599f6a9510182_1304.png', 4, '2024-05-22 03:55:08', NULL, 19, 0),
+(6, '2223330048837', 'Brown Envelope', 4, 30, 15.00, 'uploads/products/c0498136027142a1f643d77e198b1834f2c2a06d_4465.jpg', 4, '2024-05-22 03:57:55', NULL, 39, 0),
+(7, '2223474402290', 'Long Folder', 4, 50, 16.00, 'uploads/products/c3b666f45d0963af9f1eaaeac0959142812e8ea3_8965.jpg', 4, '2024-05-22 03:58:20', '2024-05-30 22:19:52', 66, 0),
+(8, '2223989316961', 'Index Card (1 pack)', 4, 68, 30.00, 'uploads/products/7bbfdc0f0a92ffefa17b8465772ecebac87c1cda_5399.jpg', 4, '2024-05-22 03:58:51', NULL, 18, 0),
+(9, '2223136144858', 'Scientific Calculator', 4, 42, 250.00, 'uploads/products/b110624b898fdea1e08a4d4e05611f0e0b10f218_6886.jpg', 4, '2024-05-22 03:59:47', NULL, 3, 0),
+(10, '2223562053126', 'Yellow Pad Paper', 4, 93, 25.00, 'uploads/products/624bb0011f9ff7a38b31dacd4102b8d65f114146_8469.jpg', 4, '2024-05-22 04:00:13', NULL, 3, 0),
+(11, '2223804737259', 'Bread Pan', 2, 454, 20.00, 'uploads/products/6e417b0bd74b08668c9c8b97067c85353a89e6a4_4122.png', 4, '2024-05-22 04:00:51', NULL, 8, 0),
+(12, '2223362259212', 'Nova', 2, 100, 17.00, 'uploads/products/3441c55c6bf3a2bb75953cd1667e14c42e84879d_3478.png', 4, '2024-05-22 04:01:09', '2024-05-30 22:17:34', 2, 0),
+(13, '2223795298756', 'Oishi Prawn Crackers', 2, 33, 20.00, 'uploads/products/63bdaee2b95e3eed8c11c22eae23aee66b09f121_6015.png', 4, '2024-05-22 04:01:30', NULL, 4, 0),
+(14, '2223828501872', 'Piattos', 2, 11, 20.00, 'uploads/products/f8cbf31c273bcd1c3e10dc85a5cd28b089069ae4_7580.png', 4, '2024-05-22 04:01:57', NULL, 3, 0),
+(15, '2223824388896', 'Pillows (Chocolate)', 2, 107, 15.00, 'uploads/products/5746ef55100159ed2f74f20c94466285655dd8e4_1551.png', 4, '2024-05-22 04:02:20', NULL, 8, 0),
+(16, '2223344887351', 'COS Polo Shirt (Red)', 1, 20, 300.00, 'uploads/products/95f53ed9c1b07bcb452d709fbf1409ef75e17303_9644.jpg', 4, '2024-05-22 04:03:14', NULL, 0, 0),
+(17, '2223344114763', 'Gear Track Jacket', 1, 18, 450.00, 'uploads/products/677021edb5091a5ed17c3d3c95ccf7d57b16089c_2263.jpg', 4, '2024-05-22 04:03:54', NULL, 2, 0),
+(18, '2223731757377', 'Gear Jersey', 1, 17, 375.00, 'uploads/products/62292992bb680000371f7ed44287e6b602c4f6e5_4575.jpg', 4, '2024-05-22 04:04:24', '2024-05-30 23:19:04', 3, 0),
+(19, '2223913899478', 'TUP T-Shirt (White)', 1, 25, 150.00, 'uploads/products/c64fd75924944e3d03c61a67b5f5bc05a6930fed_4590.jpg', 4, '2024-05-22 04:05:16', NULL, 4, 0),
+(20, '2223139224839', 'TUP T-Shirt (Black)', 1, 26, 150.00, 'uploads/products/4cef0742a325f6a9847506f5e5f8f45841292574_3486.jpg', 4, '2024-05-22 04:05:37', NULL, 4, 0),
+(21, '2223679136953', 'P.E Pants', 1, 100, 250.00, 'uploads/products/1aca206759ffe7635a6c332c2e1663e8f85b396b_1094.png', 4, '2024-05-22 04:07:01', NULL, 2, 0),
+(22, '2223367498386', 'Coca Cola Zero', 3, 40, 45.00, 'uploads/products/687e1a398648d588c5090b99c75dc2e0cf9fb25f_4074.jpg', 4, '2024-05-24 16:31:51', NULL, 5, 0),
+(23, '2223285141428', 'Wave Soda', 3, 50, 46.00, 'uploads/products/bc63123091aadf73d91fa1fbb04ec8bcf0968cf4_7585.jpg', 6, '2024-05-30 20:08:38', NULL, 0, 0),
+(24, '2223507586494', 'Limea', 3, 48, 48.00, 'uploads/products/131055b15fa6f04da6dfed0dd16ff6f689b15d29_6152.jpg', 6, '2024-05-30 20:13:28', '2024-05-30 23:55:52', 0, 0),
+(25, '222325575939', 'Adidas Cap', 1, 75, 108.50, 'uploads/products/f1f4dce466fcfb60d6d2230b031b28bd6f78f650_5994.png', 6, '2024-05-30 20:14:59', '2024-05-30 23:19:40', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -271,7 +324,38 @@ INSERT INTO `refunded_items` (`id`, `product_id`, `barcode`, `receipt_no`, `desc
 (11, 15, '2223824388896', '2151-117', 'Pillows (Chocolate)', 2, 3, 15.00, 45.00, 6, 'Damaged', '1 - expired, 2 - with hole', '2024-05-28 15:38:57'),
 (12, 22, '2223367498386', '2151-117', 'Coca Cola Zero', 3, 3, 45.00, 135.00, 6, 'Damaged', 'Yupi', '2024-05-28 15:40:30'),
 (13, 11, '2223804737259', '2151-118', 'Bread Pan', 2, 1, 20.00, 20.00, 6, 'Damaged', 'damaged', '2024-05-28 15:44:55'),
-(14, 22, '2223367498386', '2151-117', 'Coca Cola Zero', 3, 2, 45.00, 90.00, 6, 'Damaged', 'with dents', '2024-05-28 15:49:57');
+(14, 22, '2223367498386', '2151-117', 'Coca Cola Zero', 3, 2, 45.00, 90.00, 6, 'Damaged', 'with dents', '2024-05-28 15:49:57'),
+(15, 4, '2223442023546', '1001-119', 'Pocari Sweat', 3, 1, 30.00, 30.00, 6, 'Refund', 'Good Condition, Reason: ()', '2024-05-30 23:17:19');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `removed_stocks`
+--
+
+CREATE TABLE `removed_stocks` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `removed_qty` int(11) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  `remarks` varchar(50) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `removed_stocks`
+--
+
+INSERT INTO `removed_stocks` (`id`, `product_id`, `removed_qty`, `status`, `remarks`, `user_id`, `date`) VALUES
+(1, 25, 3, 'Damaged', 'ningatngat ng daga', 0, '2024-05-30 20:29:49'),
+(2, 25, 3, 'damaged', 'damaged', 0, '2024-05-30 20:56:17'),
+(3, 25, 50, 'sdaf', 'fas', 0, '2024-05-30 20:58:05'),
+(4, 24, 1, 'ewae', 'daw', 0, '2024-05-30 21:00:29'),
+(5, 24, 2, 'asdas', 'sad', 0, '2024-05-30 21:09:33'),
+(6, 7, 5, 'afsfa', 'fasedfas', 0, '2024-05-30 22:19:52'),
+(7, 25, 1, 'fasfadf', 'fasfasf', 0, '2024-05-30 23:19:40'),
+(8, 24, 1, 'daw', 'sa', 6, '2024-05-30 23:55:52');
 
 -- --------------------------------------------------------
 
@@ -298,7 +382,9 @@ INSERT INTO `restored_items` (`id`, `restored_id`, `from_table`, `user_id`, `dat
 (4, 21, 'Products', 2, '2024-05-23 23:05:49'),
 (5, 14, 'Products', 2, '2024-05-23 23:05:59'),
 (6, 1, 'Suppliers', 4, '2024-05-24 16:50:49'),
-(7, 1, 'Products', 6, '2024-05-25 17:45:51');
+(7, 1, 'Products', 6, '2024-05-25 17:45:51'),
+(8, 9, 'Users', 6, '2024-05-30 14:16:07'),
+(9, 2, 'Categories', 6, '2024-05-31 09:08:40');
 
 -- --------------------------------------------------------
 
@@ -603,7 +689,11 @@ INSERT INTO `sales` (`id`, `product_id`, `barcode`, `receipt_no`, `description`,
 (254, 22, '2223367498386', '2151-118', 'Coca Cola Zero', 3, 10, 45.00, 450.00, '2024-05-28 15:01:50', 5),
 (255, 13, '2223795298756', '2151-118', 'Oishi Prawn Crackers', 2, 10, 20.00, 200.00, '2024-05-28 15:01:50', 5),
 (256, 6, '2223330048837', '1001-119', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-30 04:16:48', 1),
-(257, 4, '2223442023546', '1001-119', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-30 04:16:48', 1);
+(258, 6, '2223330048837', '2185-120', 'Brown Envelope', 4, 2, 15.00, 30.00, '2024-05-30 11:30:17', 6),
+(259, 6, '2223330048837', '1209-121', 'Brown Envelope', 4, 3, 15.00, 45.00, '2024-05-30 11:59:33', 2),
+(260, 15, '2223824388896', '1209-121', 'Pillows (Chocolate)', 2, 2, 15.00, 30.00, '2024-05-30 11:59:33', 2),
+(261, 14, '2223828501872', '1209-121', 'Piattos', 2, 1, 20.00, 20.00, '2024-05-30 11:59:33', 2),
+(262, 8, '2223989316961', '1209-121', 'Index Card (1 pack)', 4, 2, 30.00, 60.00, '2024-05-30 11:59:33', 2);
 
 -- --------------------------------------------------------
 
@@ -641,7 +731,7 @@ CREATE TABLE `users` (
   `userid` varchar(15) NOT NULL,
   `username` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(500) NOT NULL,
   `date` datetime NOT NULL,
   `image` varchar(500) DEFAULT NULL,
   `role` varchar(20) NOT NULL,
@@ -656,15 +746,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `userid`, `username`, `email`, `password`, `date`, `image`, `role`, `gender`, `deletable`, `void_code`, `if_deleted`) VALUES
-(1, 'TUPM-24-1001', 'TUPMMPC Admin', 'tup@tup.edu.ph', '$2y$10$C2VrsXkhpf2eq.Uq4Rwav.R7NnzlAWe2aiIkx0kU4aO', '2024-05-21 19:56:10', 'uploads/user/7c8ae669ad62d6260638510ab5831e33b979489f_4519.png', 'Admin', 'Male', 0, '', 0),
-(2, 'TUPM-20-1209', 'Rhayli Silongan', 'rhayli@tup.edu.ph', '$2y$10$KJgWTJ3w7o4.RfLM1vjzZej0wChKkRhC7nf8Q3lLzwe', '2024-05-21 21:23:21', 'uploads/user/4c2362f9cf42fdf72bc241f71412ce50988ae303_4333.png', 'Supervisor', 'Male', 1, '12345', 0),
-(3, 'TUPM-20-2152', 'Samantha Berin', 'samantha@tup.edu.ph', '$2y$10$ZGUKuUYrUKzr0cSSZlzxruREwiv28Ui/Pb6s2KQOU6a', '2024-05-21 21:24:08', 'uploads/user/8e285f23ebabe5c537a545b12fd4d1dec0329ef5_7272.png', 'Cashier', 'Female', 1, '', 0),
-(4, 'TUPM-20-1196', 'Lordirene Llyle Prince Sanchez', 'llyle@tup.edu.ph', '$2y$10$DT2d7.cz1ruKDSBf1xnEA.DU0ypH9VBh17WkfvpIlya', '2024-05-21 21:29:33', 'uploads/user/8f25b2c94d032f844f1fdf7d55aa67de67ff144d_1436.png', 'Admin', 'Male', 1, '', 0),
-(5, 'TUPM-20-2151', 'Leynald Kobe Fundario', 'kobe@tup.edu.ph', '$2y$10$3gR5H6TAiC.X40R0n/1g0.GLMNs5rzX8MWoYwnJQBCh', '2024-05-21 21:31:19', 'uploads/user/443adc1abe449b577d19f4d7fd2a12bd5cd2b674_2857.png', 'Manager', 'Male', 1, '', 0),
-(6, 'TUPM-20-2185', 'Jhon Patrick Torres', 'trick@tup.edu.ph', '$2y$10$0zjnm0hW13/mkEQjlvyyEePjQv51EvD1ECSSkY1ylfk', '2024-05-21 21:31:55', 'uploads/user/93926f66b00e835986c093465e0413e9449ee10c_3178.png', 'Admin', 'Male', 0, '', 0),
-(7, 'TUPM-24-1002', 'Power', 'power@tup.edu.ph', '$2y$10$NR3yAvnlk.LiDwikWAGzteMDW0eRPTmx3L2Bvxjnw79', '2024-05-21 21:34:50', 'uploads/user/a6dd6720ffcb97b1116785a90ba4977373f9002e_8520.jpg', 'Admin', 'Female', 1, '', 1),
-(8, 'TUPM-24-1003', 'Klee', 'klee@tup.edu.ph', '$2y$10$UQY2nR.QWbrju7vF2qHlR.KvIfu0En4nF9Xe3c4OgDD', '2024-05-23 23:28:46', 'uploads/users/28c4b2956d298331d24b54860d7257627a3af901_6217.png', 'Manager', 'Female', 1, '', 0),
-(9, 'TUPM-20-2003', 'May Garcia', 'maygarcia@tup.edu.ph', '$2y$10$plXX/lBOppEa4.yYePDwXea4FH6D4zqjcrfvJyail55', '2024-05-24 15:30:23', NULL, 'Cashier', 'Female', 1, '', 1);
+(1, 'TUPM-24-1001', 'TUPMMPC Admin', 'tup@tup.edu.ph', '$2y$10$lLzstQOHG6gkW1JcgGqBnONy5xGOT2LCBg5n5yWqjSLMAxBTNhGNe', '2024-05-21 19:56:10', 'uploads/user/7c8ae669ad62d6260638510ab5831e33b979489f_4519.png', 'Admin', 'Male', 0, '', 0),
+(2, 'TUPM-20-1209', 'Rhayli Silongan', 'rhayli@tup.edu.ph', '$2y$10$IBYL71Us6.fFSZSNsyfqXOAgw6fP8ofoxHWJ/9NlxFIYoSxSUXxAu', '2024-05-21 21:23:21', 'uploads/user/4c2362f9cf42fdf72bc241f71412ce50988ae303_4333.png', 'Supervisor', 'Male', 1, '12345', 0),
+(3, 'TUPM-20-2152', 'Samantha Berin', 'samantha@tup.edu.ph', '$2y$10$kkYjptQPIt8GK/mYtFt0V.jfx.gJrGQOB4hYwxFqPmcCeYm/kTDFi', '2024-05-21 21:24:08', 'uploads/user/8e285f23ebabe5c537a545b12fd4d1dec0329ef5_7272.png', 'Cashier', 'Female', 1, '', 0),
+(4, 'TUPM-20-1196', 'Lordirene Llyle Prince Sanchez', 'llyle@tup.edu.ph', '$2y$10$NSY6YLjl/KfGE9k6E6VwReomD9uAgeK/Rr.NP2ZvM41noBFrAEyGC', '2024-05-21 21:29:33', 'uploads/user/8f25b2c94d032f844f1fdf7d55aa67de67ff144d_1436.png', 'Admin', 'Male', 1, '', 0),
+(5, 'TUPM-20-2151', 'Leynald Kobe Fundario', 'kobe@tup.edu.ph', '$2y$10$f4K.ypylbPAOGy7eHDkiz..9Rd7kpNyMAoyQ0CA8soSmpF1iy5Jui', '2024-05-21 21:31:19', 'uploads/user/443adc1abe449b577d19f4d7fd2a12bd5cd2b674_2857.png', 'Manager', 'Male', 1, '', 0),
+(6, 'TUPM-20-2185', 'Jhon Patrick Torres', 'trick@tup.edu.ph', '$2y$10$ciSnJuzRljRuVUxhVCTwxu.nPnwN1O1oq3F2288ryv23dtEHOoRzC', '2024-05-21 21:31:55', 'uploads/user/93926f66b00e835986c093465e0413e9449ee10c_3178.png', 'Admin', 'Male', 0, '', 0),
+(7, 'TUPM-24-1002', 'Power', 'power@tup.edu.ph', '$2y$10$72FErCJc70uOehbU.2/Afe8AHl5Ulek/PLuStQR/rvU0r1yzTlaES', '2024-05-21 21:34:50', 'uploads/user/a6dd6720ffcb97b1116785a90ba4977373f9002e_8520.jpg', 'Admin', 'Female', 1, '', 1),
+(8, 'TUPM-24-1003', 'Klee', 'klee@tup.edu.ph', '$2y$10$lomJSziV4bsMMZ7TvbHnQeypFKDXkHHmPElTiEjIqfbhcvX31mS.G', '2024-05-23 23:28:46', 'uploads/users/28c4b2956d298331d24b54860d7257627a3af901_6217.png', 'Manager', 'Female', 1, '', 0),
+(9, 'TUPM-20-2003', 'May Garcia', 'maygarcia@tup.edu.ph', '$2y$10$fbaQvsT75HgTLV9LuSSGC.6BZrXS4aqU5ro1TO/Mhq2f/QfUr.O3K', '2024-05-24 15:30:23', NULL, 'Cashier', 'Female', 1, '', 1);
 
 --
 -- Indexes for dumped tables
@@ -708,6 +798,14 @@ ALTER TABLE `products`
 --
 ALTER TABLE `refunded_items`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `removed_stocks`
+--
+ALTER TABLE `removed_stocks`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `restored_items`
@@ -759,7 +857,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `audit_trail`
 --
 ALTER TABLE `audit_trail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -771,25 +869,31 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `deleted_items`
 --
 ALTER TABLE `deleted_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `refunded_items`
 --
 ALTER TABLE `refunded_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `removed_stocks`
+--
+ALTER TABLE `removed_stocks`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `restored_items`
 --
 ALTER TABLE `restored_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -801,7 +905,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=258;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=263;
 
 --
 -- AUTO_INCREMENT for table `suppliers`

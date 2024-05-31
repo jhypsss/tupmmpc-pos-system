@@ -63,18 +63,20 @@ class Model extends Database
 
 	//update product
 	public function update_product($id, $data){
+		$user_id = auth("id");
 		$db = new Database;
 		if(!empty($data['add_stock'])){
 			$newStock = $data['newStock'];
 			$db->query("UPDATE products SET stock=$newStock, date_modified=NOW() WHERE id=$id");
 		}
 		if(!empty($data['remove_stock'])){
-			$query = "INSERT INTO removed_stocks (product_id, removed_qty, status, remarks) VALUES (:product_id, :removed_qty, :status, :remarks)";
+			$query = "INSERT INTO removed_stocks (product_id, removed_qty, status, remarks, user_id) VALUES (:product_id, :removed_qty, :status, :remarks, :user_id)";
 			$params = array(
 				'product_id' => $id,
 				'removed_qty'=> $data['remove_stock'],
 				'status'=> $data['status'],
 				'remarks'=> $data['remarks'],
+				'user_id'=> $user_id,
 			);
 			$db->query($query, $params);
 
