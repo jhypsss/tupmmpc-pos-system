@@ -17,10 +17,10 @@
 					</td>
 				</tr>
 				<tr>
-					<th>User ID</th><td><?=$row['userid']?></td>
+					<th>Employee ID</th><td><?=$row['userid']?></td>
 				</tr>
 				<tr>
-					<th>Username</th><td><?=$row['username']?></td>
+					<th>Name</th><td><?=$row['username']?></td>
 				</tr>
 				<tr>
 					<th>Email</th><td><?=$row['email']?></td>
@@ -40,18 +40,22 @@
 			<a href="index.php?pg=admin&tab=users">
 				<button type="button" class="btn btn-secondary">Back</button>
 			</a>
-			<a href="index.php?pg=edit-user&id=<?=$row['id']?>">
-				<button type="button" class="btn btn-primary">Edit</button>
-			</a>
+			<?php if(Auth::access('Admin') || ($row && $row['id'] == Auth::get('id'))): ?>
+				<a href="index.php?pg=edit-user&id=<?=$row['id']?>">
+					<button type="button" class="btn btn-primary">Edit</button>
+				</a>
 
-			<a href="index.php?pg=delete-user&id=<?=$row['id']?>" class="float-end">
-				<button type="button" class="btn btn-danger">Delete</button>
-			</a>
+				<a href="index.php?pg=delete-user&id=<?=$row['id']?>" class="float-end">
+					<button type="button" class="btn btn-danger">Delete</button>
+				</a>
+			<?php endif;?>
 
 
 		<?php else:?>
 			<div class="alert alert-danger text-center">That user was not found!</div>
-
+			<a href="index.php?pg=admin&tab=users">
+				<button type="button" class="btn btn-secondary">Back</button>
+			</a>
 		<?php endif;?>
 	</div>
 

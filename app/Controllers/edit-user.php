@@ -78,7 +78,7 @@ if(Auth::access('Admin') || ($row && $row['id'] == Auth::get('id'))){
 	require views_path('auth/edit-user');
 }else{
 
-	Auth::setMessage("Only admins can create and modify users");
+	Auth::setMessage("Only Admins can create and modify users");
 	require views_path('auth/denied');
 }
 

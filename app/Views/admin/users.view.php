@@ -1,3 +1,4 @@
+<?php if (!empty($users)):?>
 <div class="table-responsive" style="height: 650px; overflow-y: scroll;">
 <input type="text" class="form-control" id="searchInput" placeholder="Search..." style="width: 50%; float: right;"><br><br>
     <table class="table table-striped table-hover">
@@ -18,7 +19,7 @@
         </thead>
         <tbody>
 
-        <?php if (!empty($users)):?>
+
             <?php foreach ($users as $user):?>
             <tr>
                 <td>
@@ -26,14 +27,14 @@
                         <img src="<?=crop($user['image'],400,$user['gender'])?>" style="width: 100%; max-width: 100px; border-radius: 50%;">
                     </a>
                 </td>
-                <td style="border-right: 1px solid #ddd;">
-                    <a href="index.php?pg=profile&id=<?=$user['id']?>" style="text-decoration: none;">
-                        <span style="color: black;"><?=esc($user['username'])?></span>
+                <td>
+                    <a href="index.php?pg=profile&id=<?=$user['id']?>">
+                        <span style="font-weight:bold"><?=esc($user['username'])?></span>
                     </a>    
                 </td>
-                <td style="border-right: 1px solid #ddd;"><?=esc($user['gender'])?></td>
-                <td style="border-right: 1px solid #ddd;"><?=esc($user['email'])?></td>
-                <td style="border-right: 1px solid #ddd;"><?=esc($user['role'])?></td>
+                <td><?=esc($user['gender'])?></td>
+                <td><?=esc($user['email'])?></td>
+                <td><?=esc($user['role'])?></td>
                 <td><?=date("M j, Y",strtotime($user['date']))?></td>
                 <td>
                     <a href="index.php?pg=edit-user&id=<?=$user['id']?>">
@@ -45,11 +46,21 @@
                 </td>
             </tr>
             <?php endforeach;?>
-        <?php endif;?>
         </tbody>
     </table>
 
     <?php //$pager->display($totalUsers)?>
+</div>
+</div>
+    <?php else:?>
+        <div class="task-roll-up">
+            <i class="fa fa-truck fa-fw icon"></i>
+            <p class="no-items-message"> There are no users to show.</p>
+            <a href="index.php?pg=supplier-new">
+                <button class="btn btn-primary btn"><i class="fa fa-plus fa-fw"></i> Add User</button>
+            </a>
+        </div>
+    <?php endif;?>
 </div>
 
 <style>
@@ -95,6 +106,19 @@
     }
     a {
         color: #f94449;
+    }
+    .task-roll-up {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .no-items-message {
+        font-size: 20px;
+        color: #666;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
     }
 </style>
 
