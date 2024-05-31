@@ -51,7 +51,6 @@
         color: white;
         padding: 10px;
     }
-    
     .fa-fw {
         font-size: 1em;
         margin-right: 5px;
@@ -60,6 +59,16 @@
     .icon {
         font-size: 4em;
     }
+    .add-button {
+        padding: 10px 20px;
+        background-color: #0078d7;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+	}
     .sales-table thead th {
         background-color: #C23540; 
         color: #fff;

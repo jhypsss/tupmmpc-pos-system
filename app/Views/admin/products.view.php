@@ -28,7 +28,16 @@
         font-size: 1em;
         margin-right: 5px;
     }
-    
+    .add-button {
+        padding: 10px 20px;
+        background-color: #0078d7;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+	}
     .icon {
         font-size: 4em;
     }
@@ -172,7 +181,7 @@
         <div class="task-roll-up">
             <i class="fa fa-hamburger fa-fw icon"></i>
             <p class="no-items-message"> There are no products to show.</p>
-            <a href="index.php?pg=product-new" class="add-button">
+            <a href="index.php?pg=product-new" class="add-button btn btn-info">
                 <i class="fa fa-plus fa-fw"></i> Add Product
             </a>
         </div>

@@ -1,17 +1,32 @@
 <style>
+    .add-button {
+        padding: 10px 20px;
+        background-color: #0078d7;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+	}
+    a {
+        color: #f94449;
+    }
     .task-roll-up {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-top: 50px;
     }
-    
     .no-items-message {
         font-size: 20px;
         color: #666;
         margin-bottom: 20px;
         display: flex;
         align-items: center;
+    }
+    .icon {
+        font-size: 4em;
     }
     .btn-primary {
         border: none;
@@ -27,15 +42,6 @@
         border: none;
         color: white;
         padding: 10px;
-    }
-    
-    .fa-fw {
-        font-size: 1em;
-        margin-right: 5px;
-    }
-    
-    .icon {
-        font-size: 4em;
     }
     .table thead th {
         text-align: center;
@@ -79,15 +85,13 @@
                 <td><?= esc($supplier['contact_number']) ?></td>
                 <td><?= esc($supplier['contact_email']) ?></td>
                 <td><?= esc($supplier['business_type']) ?></td>
-                <td>
-                    <div class="button-container">
+                <td style="text-align:center;"  >
                         <a href="index.php?pg=supplier-edit&id=<?= $supplier['id'] ?>">
                             <button class="btn btn-success btn-sm"><i class="fa fa-cog"></i></button>
                         </a>
                         <a href="index.php?pg=supplier-delete&id=<?= $supplier['id'] ?>">
                             <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                         </a>
-                    </div>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -98,8 +102,8 @@
         <div class="task-roll-up">
             <i class="fa fa-truck fa-fw icon"></i>
             <p class="no-items-message"> There are no suppliers to show.</p>
-            <a href="index.php?pg=supplier-new">
-                <button class="btn btn-primary btn"><i class="fa fa-plus fa-fw"></i> Add Supplier</button>
+            <a href="index.php?pg=supplier-new" class="add-button btn btn-info">
+                <i class="fa fa-plus fa-fw"></i> Add Supplier
             </a>
         </div>
     <?php endif;?>

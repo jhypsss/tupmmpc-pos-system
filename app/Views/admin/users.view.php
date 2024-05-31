@@ -1,3 +1,75 @@
+<style>
+    .table-responsive {
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .table-hover tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f9f9f9;
+    }
+    .table-striped tbody tr:nth-of-type(even) {
+        background-color: #e9e9e9;
+    }
+    .table thead th {
+        text-align: center;
+        background-color: #C23540; 
+        color: #fff;
+    }
+    .table tbody td {
+        text-align: center;
+        vertical-align: middle;
+    }
+    .table tbody img {
+        border-radius: 50%;
+    }
+    .btn-primary {
+        border: none;
+        color: white;
+        width: 100px;
+    }
+    .btn-success {
+        border: none;
+        color: white;
+        padding: 10px;
+    }
+    .btn-danger {
+        border: none;
+        color: white;
+        padding: 10px;
+    }
+    .add-button {
+        padding: 10px 20px;
+        background-color: #0078d7;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+	}
+    a {
+        color: #f94449;
+    }
+    .task-roll-up {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .no-items-message {
+        font-size: 20px;
+        color: #666;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+    }
+    .icon {
+        font-size: 4em;
+    }
+</style>
+
 <?php if (!empty($users)):?>
 <div class="table-responsive" style="height: 650px; overflow-y: scroll;">
 <input type="text" class="form-control" id="searchInput" placeholder="Search..." style="width: 50%; float: right;"><br><br>
@@ -54,73 +126,14 @@
 </div>
     <?php else:?>
         <div class="task-roll-up">
-            <i class="fa fa-truck fa-fw icon"></i>
+            <i class="icon fa fa-users"></i>
             <p class="no-items-message"> There are no users to show.</p>
-            <a href="index.php?pg=supplier-new">
-                <button class="btn btn-primary btn"><i class="fa fa-plus fa-fw"></i> Add User</button>
+            <a href="index.php?pg=signup" class="add-button btn btn-info">
+               <i class="fa fa-plus fa-fw"></i> Add User
             </a>
         </div>
     <?php endif;?>
 </div>
-
-<style>
-    .table-responsive {
-        background-color: #fff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    .table-hover tbody tr:hover {
-        background-color: #f1f1f1;
-    }
-    .table-striped tbody tr:nth-of-type(odd) {
-        background-color: #f9f9f9;
-    }
-    .table-striped tbody tr:nth-of-type(even) {
-        background-color: #e9e9e9;
-    }
-    .table thead th {
-        text-align: center;
-        background-color: #C23540; 
-        color: #fff;
-    }
-    .table tbody td {
-        text-align: center;
-        vertical-align: middle;
-    }
-    .table tbody img {
-        border-radius: 50%;
-    }
-    .btn-primary {
-        border: none;
-        color: white;
-        width: 100px;
-    }
-    .btn-success {
-        border: none;
-        color: white;
-        padding: 10px;
-    }
-    .btn-danger {
-        border: none;
-        color: white;
-        padding: 10px;
-    }
-    a {
-        color: #f94449;
-    }
-    .task-roll-up {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 50px;
-    }
-    .no-items-message {
-        font-size: 20px;
-        color: #666;
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-    }
-</style>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {

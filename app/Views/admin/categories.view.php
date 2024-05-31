@@ -38,6 +38,16 @@
     .icon {
         font-size: 4em;
     }
+    .add-button {
+        padding: 10px 20px;
+        background-color: #0078d7;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+	}
     .table thead th {
         background-color: #C23540; 
         color: #fff;
@@ -50,10 +60,10 @@
     <table class="table table-striped table-hover">
         <thead class="table-light" style="position: sticky; top: 0;">
             <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>
-                    <a href="index.php?pg=category-new" class="add-button btn btn-primary btn-sm">
+                <th style="width:15%">Name</th>
+                <th style="width:70%">Description</th>
+                <th style="text-align:center;">
+                    <a href="index.php?pg=category-new" class="btn btn-primary btn-sm">
                         <i class="fa fa-plus fa-fw style=font-size: 10px;" ></i>Add new
                     </a>
                 </th>
@@ -67,7 +77,7 @@
                 </td>
                 <td><?=esc($category['description'])?></td>
 
-                <td>
+                <td style="text-align:center;">
                     <a href="index.php?pg=category-edit&id=<?=$category['id']?>">
                         <button class="btn btn-success btn-sm"><i class="fa fa-cog"></i></button>
                     </a>
@@ -84,7 +94,7 @@
         <div class="task-roll-up">
             <i class="fa fa-table fa-fw icon"></i>
             <p class="no-items-message"> There are no categories to show.</p>
-            <a href="index.php?pg=category-new" class="add-button">
+            <a href="index.php?pg=category-new" class="add-button btn btn-info">
                 <i class="fa fa-plus fa-fw"></i> Add Category
             </a>
         </div>
