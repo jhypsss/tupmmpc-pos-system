@@ -55,18 +55,18 @@
                 <a href="index.php?pg=admin&tab=categories">
                     <li class="list-group-item <?=$tab=='categories'?'active':''?>"><i class="icon fa fa-table"></i> Categories</li>
                 </a>
-                <a href="index.php?pg=admin&tab=products">
-                    <li class="list-group-item <?=$tab=='products'?'active':''?>"><i class="icon fa fa-hamburger"></i> Products</li>
-                </a>
                 <a href="index.php?pg=admin&tab=suppliers">
                     <li class="list-group-item <?=$tab=='suppliers'?'active':''?>"><i class="icon fa fa-truck"></i> Suppliers</li>
                 </a>
+                <a href="index.php?pg=admin&tab=products">
+                    <li class="list-group-item <?=$tab=='products'?'active':''?>"><i class="icon fa fa-hamburger"></i> Products</li>
+                </a>
+                <a href="index.php?pg=admin&tab=removed stocks">
+			  		<li class="list-group-item <?=$tab=='removed stocks'?'active':''?>"><i class="icon fas fa-minus-square"></i> Removed Stocks</li>
+				</a>
                 <a href="index.php?pg=admin&tab=sales">
                     <li class="list-group-item <?=$tab=='sales'?'active':''?>"><i class="icon fa fa-money-bill-wave"></i> Sales</li>
                 </a>
-				<a href="index.php?pg=admin&tab=removed stocks">
-			  		<li class="list-group-item <?=$tab=='removed stocks'?'active':''?>"><i class="icon fas fa-minus-square"></i> Removed Stocks</li>
-				</a>
                 <a href="index.php?pg=admin&tab=refunded items">
                     <li class="list-group-item <?=$tab=='refunded items'?'active':''?>"><i class="icon fas fa-undo-alt"></i> Refunded Items</li>
                 </a>
