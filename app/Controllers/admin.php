@@ -58,7 +58,7 @@ else if($tab == "sales")
 	$pager = new Pager($limit);
 	$offset = $pager->offset;
 
-	$query = "select * from sales order by id desc limit $limit offset $offset";
+	$query = "select * from sales order by id desc";
 	$totalSales = $saleClass->query("SELECT COUNT(*) AS total FROM sales");
 
 	//get today's sales total
@@ -128,6 +128,11 @@ else if($tab == "sales")
 
 	}
 
+}
+
+else if($tab == "removed stocks"){
+	$removed_db = new Database();
+	$lists = $removed_db->query("SELECT * FROM removed_stocks order by id desc");
 }
 
 else if($tab == "refunded items"){

@@ -52,7 +52,7 @@ if ($result->num_rows > 0) {
         $amount = $row['amount'];
 
         // Add product information to the table
-        $pdf->Cell(90, 10, $description . "\nPrice: $amount", 0, 0, 'L');
+        $pdf->Cell(90, 10, $description . " (P$amount)", 0, 0, 'L');
         
         // Add a 1D barcode (CODE 39)
         $style = array(

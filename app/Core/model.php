@@ -61,6 +61,34 @@ class Model extends Database
 		$db->query($query, $clean_array);
 	}
 
+	//update product
+	public function update_product($id, $data){
+		$user_id = auth("id");
+		$db = new Database;
+		if(!empty($data['add_stock'])){
+			$newStock = $data['newStock'];
+			$db->query("UPDATE products SET stock=$newStock, date_modified=NOW() WHERE id=$id");
+		}
+		if(!empty($data['remove_stock'])){
+			$query = "INSERT INTO removed_stocks (product_id, removed_qty, status, remarks, user_id) VALUES (:product_id, :removed_qty, :status, :remarks, :user_id)";
+			$params = array(
+				'product_id' => $id,
+				'removed_qty'=> $data['remove_stock'],
+				'status'=> $data['status'],
+				'remarks'=> $data['remarks'],
+				'user_id'=> $user_id,
+			);
+			$db->query($query, $params);
+
+			$newStock = $data['newStock'];
+			$db->query("UPDATE products SET stock=$newStock, date_modified=NOW() WHERE id=$id");
+		}
+		if(!empty($data['increase_amount'])){
+			$newAmount = $data['newAmount'];
+			$db->query("UPDATE products SET amount=$newAmount, date_modified=NOW() WHERE id=$id");
+		}
+	}
+
 	public function restore($id){
 		$user_id = auth("id");
 		$source = $_POST['source'];
@@ -339,7 +367,13 @@ class Model extends Database
 				//Get the new details
 				$productBarcode = isset($data['barcode']) ? $data['barcode'] : 'Unknown Barcode';
 				$productName = isset($data['description']) ? $data['description'] : 'Unknown Product';
-				$addStock = isset($data['addStock']) ? $data['addStock'] : 'Unknown Qty';
+
+				$add_stock = isset($data['add_stock']) ? $data['add_stock'] : 'Unknown Qty';
+				$remove_stock = isset($data['remove_stock']) ? $data['remove_stock'] : 'Unknown Qty';
+				$newStock = isset($data['newStock']) ? $data['newStock'] : null;
+				$increase_amount = isset($data['increase_amount']) ? $data['increase_amount'] : 'Unknown Amount';
+				$newAmount = isset($data['newAmount']) ? $data['newAmount'] : null;
+				
 				$productStock = isset($data['stock']) ? $data['stock'] : 'Unknown Stock';
 				$productPrice = isset($data['amount']) ? $data['amount'] : 'Unknown Price';
 				$productImage = isset($data['image']) ? $data['image'] : 'Unknown Image';
@@ -355,11 +389,17 @@ class Model extends Database
 				if (strcmp($oldproductName, $productName) !== 0){
 					$details .= "\nProduct Name: $oldproductName → $productName";
 				}
-				if (strcmp($oldstock, $productStock) !== 0){
-					$details .= "\nCurrent Stock: $oldstock + $addStock = $productStock";
+				if ($newStock != null){
+					if($oldstock < $newStock) {
+						$details .= "\nCurrent Stock Increased: $oldstock → $newStock(+$add_stock)";
+					} else if ($oldstock > $newStock) {
+						$details .= "\nCurrent Stock Decreased: $oldstock → $newStock(-$remove_stock)";
+					}
 				}
-				if (strcmp($oldprice, $productPrice) !== 0){
-					$details .= "\nPrice: $oldprice → $productPrice";
+				if ($increase_amount != null){
+					if($oldprice < $newAmount) {
+						$details .= "\nPrice Increased: $oldprice → $newAmount(+$increase_amount)";
+					}
 				}
 				if (strcmp($oldcategoryName, $productCategoryName) !== 0){
 					$details .= "\nCategory: $oldcategoryName → $productCategoryName";
@@ -499,11 +539,11 @@ class Model extends Database
 				$product_sold = $sale_row["qty"];
 				$sale_total = $sale_row["total"];
 				$refund_qty = $data["refund_qty"];
-				$total_amount = $data["tot_Refund_amount"];
+				$total_amount = $refund_qty * $product_price;
 				$status = $data["status"];
 				$remarks = $data["remarks"];
 
-				$details = "REFUNDED ITEM: $saleBarcode\nReceipt No: $saleReceipt\nProduct Name: $saleProductName\nProduct Price: $product_price\nProduct Sold: $product_sold (₱$sale_total)\nRefund Qty: $refund_qty\nTotal Amount: ₱$total_amount\nStatus: $status\nRemarks: $remarks";
+				$details = "REFUNDED ITEM: $saleBarcode\nReceipt No: $saleReceipt\nProduct Name: $saleProductName\nProduct Price: $product_price\nProduct Sold: $product_sold (₱$sale_total)\nRefund Qty: $refund_qty\nTotal Amount Refund: ₱$total_amount\nStatus: $status\nRemarks: $remarks";
 			}
 		}
 		// Insert to Audit Trail

@@ -23,6 +23,9 @@
 				<a href="index.php?pg=admin&tab=sales">
 			  		<li class="list-group-item <?=$tab=='sales'?'active':''?>"><i class="fa fa-money-bill-wave"></i> Sales</li>
 				</a>
+				<a href="index.php?pg=admin&tab=removed stocks">
+			  		<li class="list-group-item <?=$tab=='removed stocks'?'active':''?>"><i class="fas fa-minus-square"></i> Removed Stocks</li>
+				</a>
 				<a href="index.php?pg=admin&tab=refunded items">
 			  		<li class="list-group-item <?=$tab=='refunded items'?'active':''?>"><i class="fas fa-undo-alt"></i> Refunded Items</li>
 				</a>
@@ -66,7 +69,11 @@
 						// code...
 						require views_path('admin/sales');
 						break;
-					
+					case 'removed stocks':
+						// code...
+						require views_path('admin/removed_stocks');
+						break;
+						
 					case 'refunded items':
 						// code...
 						require views_path('admin/refunded_items');
