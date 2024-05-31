@@ -15,7 +15,7 @@ if(!empty($_SESSION['referer'])){
 		<?php if(is_array($row)):?>
 		<form method="post" enctype="multipart/form-data">
 			<center>
-				<h3><i class="fa fa-user"></i> Edit User</h3>
+				<h3><i class="fa fa-user"></i> Update User</h3>
 				<div><?=esc(APP_NAME)?></div>
 			</center>
 			<br>

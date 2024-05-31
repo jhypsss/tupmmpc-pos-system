@@ -3,8 +3,8 @@
 	<div class="container-fluid border rounded p-4 m-2 col-lg-4 mx-auto">
 
 		<form method="post" enctype="multipart/form-data">
-
-			<h5 class="text-primary"><i class="fa fa-table"></i> Edit Category</h5>
+			
+			<h5 class="text-primary"><i class="fa fa-table"></i> Update Category</h5>
 			
 			<div class="mb-3">
 			  <label for="categoryControlInput1" class="form-label">Category Name</label>

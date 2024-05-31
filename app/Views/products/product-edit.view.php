@@ -6,7 +6,7 @@
 
 		<form method="post" enctype="multipart/form-data">
 
-			<h5 class="text-primary"><i class="fa fa-hamburger"></i> Edit Product</h5>
+			<h5 class="text-primary"><i class="fa fa-hamburger"></i> Update Product</h5>
 		
 			<div class="mb-3">
 			  <label for="formFile" class="form-label">Product Image</label>
