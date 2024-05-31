@@ -531,20 +531,23 @@ $conn->close();
 
 		if (quantity > availableStock) {
 			alert('Quantity exceeds available stock!');
-			input.value = ITEMS[index].qty; // Reset the input value to the previous quantity
+			input.value = availableStock; // Reset the input value to the previous quantity
+		} else if (quantity < 1) {
+			input.value = 1 // Reset the input value to the previous quantity
+		} else if (!quantity) {
+			input.value = ITEMS[index].qty;
 		} else {
 			ITEMS[index].qty = quantity;
 			refresh_items_display();
 		}
 	}
 
-	/*
 	function check_enter_key(event, input, index) {
 		if (event.key === "Enter") {
 			validate_qty(input, index);
 			event.preventDefault(); // Prevent the default Enter key behavior (e.g., form submission)
 		}
-	}*/
+	}
 
 	function check_for_enter_key(e)
 	{
