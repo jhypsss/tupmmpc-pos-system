@@ -84,7 +84,7 @@ if(!empty($_SESSION['referer'])){
 
 			<div class="mb-3">
 			  <label for="exampleFormControlInput1" class="form-label">Void Code</label>
-			  <input value="<?=set_value('void_code',$row['void_code'])?>" name="void_code" type="password" class="form-control <?=!empty($errors['void_code']) ? 'border-danger':''?>" id="exampleFormControlInput1" placeholder="Void Code">
+			  <input value="<?=set_value('void_code',$row['void_code'])?>" name="void_code" type="text" class="form-control <?=!empty($errors['void_code']) ? 'border-danger':''?>" id="exampleFormControlInput1" placeholder="Void Code">
 				<?php if(!empty($errors['void_code'])):?>
 					<small class="text-danger"><?=$errors['void_code']?></small>
 				<?php endif;?>

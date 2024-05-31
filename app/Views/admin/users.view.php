@@ -1,4 +1,5 @@
 <div class="table-responsive" style="height: 650px; overflow-y: scroll;">
+<input type="text" class="form-control" id="searchInput" placeholder="Search..." style="width: 50%; float: right;"><br><br>
     <table class="table table-striped table-hover">
         <thead style="position: sticky; top: 0; background-color: #000; color: white;">
             <tr>
@@ -96,3 +97,33 @@
         color: #f94449;
     }
 </style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var searchInput = document.getElementById('searchInput');
+        var tableRows = document.querySelectorAll('.table tbody tr');
+
+        // Search functionality
+        searchInput.addEventListener('keyup', function(event) {
+            var query = event.target.value.toLowerCase();
+
+            tableRows.forEach(function(row) {
+                var cells = row.getElementsByTagName('td');
+                var found = false;
+
+                if (cells.length >= 1) {
+                    // Only search in the first column
+                    for (var i = 0; i <= 2; i++) {
+                        var cellText = cells[i].textContent.toLowerCase();
+                        if (cellText.indexOf(query) > -1) {
+                            found = true;
+                            break;
+                        }
+                    }
+                }
+
+                row.style.display = found ? '' : 'none';
+            });
+        });
+    });
+</script>
