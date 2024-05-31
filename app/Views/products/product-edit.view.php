@@ -69,14 +69,14 @@
 			<div class="mb-3" id="add_stock">
 				<div class="input-group mb-3">
 					<span class="input-group-text">Add Stock: </span>
-					<input disabled min="0" name="add_stock" value="" type="number" class="form-control" placeholder="Quantity" aria-label="Quantity" autocomplete="off" required>
+					<input disabled name="add_stock" value="" type="number" class="form-control" placeholder="Quantity" aria-label="Quantity" autocomplete="off" required>
 				</div>
 			</div>
 			
 			<div class="mb-3" id="remove_stock">
 				<div class="input-group mb-2">
 					<span class="input-group-text">Remove Stock: </span>
-					<input disabled min="0" name="remove_stock" value="" type="number" class="form-control" placeholder="Quantity" aria-label="Quantity" autocomplete="off" required>
+					<input disabled name="remove_stock" value="" type="number" class="form-control" placeholder="Quantity" aria-label="Quantity" autocomplete="off" required>
 				</div>
 				<input disabled required name="status" type="text" class="form-control mb-2" placeholder="Status" autocomplete="off">
 				<input disabled required name="remarks" type="text" class="form-control mb-2" placeholder="Remarks" autocomplete="off">
@@ -85,7 +85,7 @@
 			<div class="mb-3" id="increase_amount">
 				<div class="input-group mb-3" >
 					<span class="input-group-text">Increase Amount: </span>
-					<input disabled min="0" name="increase_amount" value="" type="double" class="form-control" placeholder="0.00" aria-label="Quantity" autocomplete="off" required>
+					<input disabled name="increase_amount" value="" type="number" class="form-control" placeholder="0.00" aria-label="Quantity" autocomplete="off" required>
 				</div>
 			</div>
 				
@@ -95,7 +95,7 @@
 			</a>
 		</form>
 		<?php else:?>
-			That product was not found
+			That Product was not found
 			<br><br>
 			<a href="index.php?pg=admin&tab=products">
 				<button type="button" class="btn btn-primary">Back to products</button>
@@ -127,9 +127,21 @@
         
         // Show the selected div and enable its inputs, if any action is selected
         if (selectedAction) {
+			var stock = "<?=esc($row['stock'])?>";
             var selectedDiv = document.getElementById(selectedAction);
             selectedDiv.style.display = 'block';
-            selectedDiv.querySelectorAll('input').forEach(input => input.disabled = false);
+            selectedDiv.querySelectorAll('input').forEach(input => {
+                input.disabled = false;
+
+                input.addEventListener('input', function() {
+                    if (this.name === 'remove_stock') {
+                        if (this.value < 0) this.value = 0;
+                        if (this.value > stock) this.value = stock;
+                    } else {
+                        if (this.value < 0) this.value = 0;
+                    }
+                });
+            });
         }
     });
 </script>
