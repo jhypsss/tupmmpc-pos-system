@@ -77,11 +77,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 		redirect('admin&tab=products');
 	}
 
-	
-
-
 }
-
 
 require views_path('products/product-edit');
 

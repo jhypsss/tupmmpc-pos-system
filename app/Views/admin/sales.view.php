@@ -5,6 +5,7 @@
 		}
 		body * {
 			visibility: hidden;
+            color:black;
 		}
 		
 		#generateResult, #generateResult * {
@@ -35,17 +36,6 @@
 	align-items: center;
 	}
 	
-	.add-button {
-	padding: 10px 20px;
-	background-color: #0078d7;
-	color: #fff;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	}
-	
 	.btn-primary {
         border: none;
         color: white;
@@ -70,7 +60,7 @@
     .icon {
         font-size: 4em;
     }
-    .table thead th {
+    .sales-table thead th {
         background-color: #C23540; 
         color: #fff;
     }
@@ -98,39 +88,6 @@
 <br>
 
 <?php if($section == 'table'):?>
-<!--
-<a href="../app/views/admin/sales_report.php"><button style="background-color: orange; border-radius: 5px;  color: white; border-color: white; padding: 7px;">SALES REPORTS</button></a>
--->
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var searchInput = document.getElementById('searchInput');
-        var tableRows = document.querySelectorAll('.table tbody tr');
-
-        // Search functionality
-        searchInput.addEventListener('keyup', function(event) {
-            var query = event.target.value.toLowerCase();
-
-            tableRows.forEach(function(row) {
-                var cells = row.getElementsByTagName('td');
-                var found = false;
-
-                if (cells.length >= 1) {
-                    // Only search in the first column
-                    for (var i = 0; i < 1; i++) {
-                        var cellText = cells[i].textContent.toLowerCase();
-                        if (cellText.indexOf(query) > -1) {
-                            found = true;
-                            break;
-                        }
-                    }
-                }
-
-                row.style.display = found ? '' : 'none';
-            });
-        });
-    });
-</script>
 
 <?php if (!empty($sales)):?>
 <div>
@@ -140,7 +97,7 @@
 </div>
 
 <div class="table-responsive" style="height: 500px;overflow-y: scroll;">
-    <table class="table table-striped table-hover">
+    <table class="sales-table table table-striped table-hover">
         <thead class="table-light" style="position: sticky;top: 0">
             <tr>
                 <th>Receipt No</th>
@@ -272,21 +229,21 @@
 						<input type="hidden" name="pg" value="admin">
 						<input type="hidden" name="tab" value="sales">
 						<input type="hidden" name="s" value="generate">
-					<div class="col-12">
+					<div class="col-12 mx-2">
 						<div class="input-group">
 						<label class="input-group-text" for="from_date">From:</label>
 						<input class="form-control" name="from_date" type="date" id="from_date" value="<?=!empty($_GET['from_date']) ? $_GET['from_date']: date("Y-m-d")?>">
 						</div>
 					</div>
 
-					<div class="col-12">
+					<div class="col-12 mx-2">
 						<div class="input-group">
 						<label class="input-group-text" for="to_date">To:</label>
 						<input class="form-control" name="to_date" type="date" id="to_date" value="<?=!empty($_GET['to_date']) ? $_GET['to_date']: date("Y-m-d")?>">
 						</div>
 					</div>
 
-					<div class="col-12">
+					<div class="col-12 mx-2">
 						<button class="btn btn-primary">Generate</button>
 					</div>
 				</form>
@@ -299,9 +256,9 @@
 			<?php if(!$SalesPerCategories && !$SalesPerProducts):?>
 			<h3> No Sales For Today: <?= esc(date("M j, Y")); ?></h3>
 			<?php else:?>
-				<nav class="row row-cols-lg-auto g-3">
+				<nav class="row row-cols-lg-auto mb-3 mx-auto">
     		<h4 class="col-12">SALES REPORT</h4>
-    		<button class="btn btn-success mb-2 col-12" onclick="printSalesTable()" style="margin-bottom: 30px;">Print Data</button>
+    		<button class="btn btn-success col-12 mx-3 px-3" onclick="printSalesTable()">Print Data</button>
 			</nav>
 			
 			<div class="table-responsive border border-secondary border-3 rounded p-4" id="generateResult">
@@ -309,10 +266,10 @@
 				<h5> Store: <?= esc(APP_NAME); ?></h6>
 				<h6> <?= esc($TimePeriod); ?> </h6>
 				<!-- Sales Per Category Table -->
-				<table class="table table-striped table-hover" style="width:75%;">
+				<table class="table table-striped table-hover mx-auto mb-4" style="width:50%;">
 					<thead class="table-light" style="position: sticky;top: 0">
 						<tr>
-							<th colspan="3">SALES PER CATEGORY: </th>
+							<th colspan="3" style="width: 2in">SALES PER CATEGORY: </th>
 						</tr>
 						<tr>
 							<th>Category</th>
@@ -326,21 +283,21 @@
 						<tr>
 							<td><?= esc($PerCategoryName) ?></td>
 							<td><?= esc($SalesPerCategory['gross_qty']) ?></td>
-							<td>₱<?= esc($SalesPerCategory['gross_sales']) ?></td>
+							<td style="text-align:right;">₱<?= esc($SalesPerCategory['gross_sales']) ?></td>
 						</tr>
 						<?php endforeach?>
 						<?php foreach($TotalSales as $TotalSale) :?>
 						<tr style="border-top:2px solid">
 							<th>TOTAL: </th>
 							<th><?= esc($TotalSale['total_grossqty']) ?></th>
-							<th>₱<?= esc($TotalSale['total_grosssales']) ?></th>
+							<th style="width:1.2in; text-align:right;">₱<?= esc($TotalSale['total_grosssales']) ?></th>
 						</tr>
 						<?php endforeach?>
 					</tbody>
 
 				</table>
 				<!-- Sales Per Product Table -->
-				<table class="table table-striped table-hover">
+				<table class="table table-striped table-hover mx-auto" style="width:75%;">
 					<thead class="table-light" style="position: sticky;top: 0">
 						<tr>
 							<th colspan="5">PRODUCTS LIST SOLD: </th>
@@ -360,7 +317,7 @@
 							<td><?= esc($SalesPerProduct['description']) ?></td>
 							<td><?= esc($SalesPerProduct['amount']) ?></td>
 							<td><?= esc($SalesPerProduct['gross_qty']) ?></td>
-							<td>₱<?= esc($SalesPerProduct['gross_sales']) ?></td>
+							<td style="width:1.2in; text-align:right;"><?= esc($SalesPerProduct['gross_sales']) ?></td>
 						</tr>
 						<?php endforeach?>
 						<?php foreach($TotalSales as $TotalSale) :?>
@@ -368,7 +325,7 @@
 							<th colspan="2"></th>
 							<th>TOTAL: </th>
 							<th><?= esc($TotalSale['total_grossqty']) ?></th>
-							<th>₱<?= esc($TotalSale['total_grosssales']) ?></th>
+							<th style="width:1.2in; text-align:right;">₱<?= esc($TotalSale['total_grosssales']) ?></th>
 						</tr>
 						<?php endforeach?>
 					</tbody>
@@ -379,6 +336,33 @@
 		</div>
 	</div>
 	<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var searchInput = document.getElementById('searchInput');
+            var tableRows = document.querySelectorAll('.table tbody tr');
+
+            // Search functionality
+            searchInput.addEventListener('keyup', function(event) {
+                var query = event.target.value.toLowerCase();
+
+                tableRows.forEach(function(row) {
+                    var cells = row.getElementsByTagName('td');
+                    var found = false;
+
+                    if (cells.length >= 1) {
+                        // Only search in the first column
+                        for (var i = 0; i < 1; i++) {
+                            var cellText = cells[i].textContent.toLowerCase();
+                            if (cellText.indexOf(query) > -1) {
+                                found = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    row.style.display = found ? '' : 'none';
+                });
+            });
+        });
         function printSalesTable() {
             window.print();
         }
