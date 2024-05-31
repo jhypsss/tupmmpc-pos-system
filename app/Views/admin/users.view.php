@@ -72,11 +72,12 @@
 
 <?php if (!empty($users)):?>
 <div class="table-responsive" style="height: 650px; overflow-y: scroll;">
-<input type="text" class="form-control" id="searchInput" placeholder="Search..." style="width: 50%; float: right;"><br><br>
+<input type="text" class="form-control" id="searchInput" placeholder="Search ID or Name..." style="width: 50%; float: right;"><br><br>
     <table class="table table-striped table-hover">
         <thead style="position: sticky; top: 0; background-color: #000; color: white;">
             <tr>
                 <th>Image</th>
+                <th>Employee ID</th>
                 <th>Name</th>
                 <th>Gender</th>
                 <th>Email</th>
@@ -98,6 +99,11 @@
                     <a href="index.php?pg=profile&id=<?=$user['id']?>">
                         <img src="<?=crop($user['image'],400,$user['gender'])?>" style="width: 100%; max-width: 100px; border-radius: 50%;">
                     </a>
+                </td>
+                <td>
+                    <a href="index.php?pg=profile&id=<?=$user['id']?>">
+                        <span style="font-weight:bold"><?=esc($user['userid'])?></span>
+                    </a>    
                 </td>
                 <td>
                     <a href="index.php?pg=profile&id=<?=$user['id']?>">
