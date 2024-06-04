@@ -1,16 +1,6 @@
 <?php
 // Assuming you have a database connection already established
-$host = 'localhost';
-$user = 'root';
-$password = '';
-$database = 'pos_db';
-
-$conn = new mysqli($host, $user, $password, $database);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+$conn = new Database();
 
 // Include TCPDF library
 require_once('tcpdf/tcpdf.php');
@@ -32,9 +22,9 @@ $pdf->Cell(0, 10, 'TUPMMPC Product Barcode List', 0, 1, 'C');
 
 // Fetch data from the products table
 $query = "SELECT barcode, description, amount FROM products WHERE if_deleted = 0";
-$result = $conn->query($query);
+$results = $conn->query($query);
 
-if ($result->num_rows > 0) {
+if (!empty($results)) {
     // Start the table
     $pdf->SetFont('helvetica', 'B', 12);
     $pdf->SetFillColor(200, 220, 255); // Set table header background color
@@ -45,7 +35,7 @@ if ($result->num_rows > 0) {
     $pdf->SetFont('helvetica', '', 12);
 
     // Loop through the records
-    while ($row = $result->fetch_assoc()) {
+    foreach ($results as $row) {
         // Extract data from the current row
         $barcodeValue = $row['barcode'];
         $description = $row['description'];
@@ -83,7 +73,4 @@ if ($result->num_rows > 0) {
 } else {
     echo "No products found in the database.";
 }
-
-// Close the database connection
-$conn->close();
 ?>

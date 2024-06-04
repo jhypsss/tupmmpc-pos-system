@@ -1,34 +1,18 @@
 <?php
-// Database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "pos_db";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
+$conn = new Database();
 // Retrieve void_code values from the database
 $sql = "SELECT void_code FROM users";
-$result = $conn->query($sql);
+$results = $conn->query($sql);
 
 // Initialize an array to store void_code values
 $void_codes = array();
 
-if ($result->num_rows > 0) {
+if (!empty($results)) {
     // Fetch each row and store void_code in the array
-    while($row = $result->fetch_assoc()) {
-        $void_codes[] = $row['void_code'];
+    foreach($results as $result){
+        $void_codes[] = $result['void_code'];
     }
 }
-
-// Close connection
-$conn->close();
 ?>
 
 <?php require views_path('partials/header');?>
@@ -155,6 +139,16 @@ $conn->close();
 		if (event.key === 'F5' || (event.ctrlKey && event.key === 'r')) {
 			event.preventDefault();
 		}
+	});
+
+	// Disable the reload button and menu items (for most browsers)
+	window.onbeforeunload = function() {
+		return "Are you sure you want to leave? Changes you made may not be saved.";
+	};
+
+	// Remove the default confirmation if you don't need it
+	window.addEventListener('beforeunload', function (e) {
+		e.preventDefault();
 	});
 
 	function search_item(e){
@@ -543,7 +537,7 @@ $conn->close();
 	}
 
 	function check_enter_key(event, input, index) {
-		if (event.key === "Enter") {
+		if (event.key === "Enter" || event.key === "13" ) {
 			validate_qty(input, index);
 			event.preventDefault(); // Prevent the default Enter key behavior (e.g., form submission)
 		}
@@ -615,8 +609,8 @@ $conn->close();
 
 		amount = parseFloat(amount);
 		if(amount < GTOTAL){
-
-			alert("Amount must be higher or equal to the total amount");
+			let difference = GTOTAL - AMOUNT;
+			alert("Total Amount Required: "+GTOTAL+". You need to add "+difference+" more.");
 			return;
 		}
 
