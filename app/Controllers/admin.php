@@ -186,7 +186,7 @@ else if($tab == "dashboard")
 	$total_sales = $mysales[0]['total'];
 
 	//Total Suppliers
-	$query = "SELECT COUNT(id) AS total FROM Suppliers WHERE if_deleted=0;";
+	$query = "SELECT COUNT(id) AS total FROM suppliers WHERE if_deleted=0;";
 	$mysuppliers = $db->query($query);
 	$total_suppliers = $mysuppliers[0]['total'];
 	
