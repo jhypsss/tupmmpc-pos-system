@@ -135,10 +135,15 @@
 
                 input.addEventListener('input', function() {
                     if (this.name === 'remove_stock') {
-                        if (this.value < 0) this.value = 0;
-                        if (this.value > stock) this.value = stock;
+                        if (parseInt(this.value) < 0) {
+                            this.value = 0;
+                        } else if (parseInt(this.value) > stock) {
+                            this.value = stock;
+                        }
                     } else {
-                        if (this.value < 0) this.value = 0;
+                        if (parseInt(this.value) < 0) {
+                            this.value = 0;
+                        }
                     }
                 });
             });

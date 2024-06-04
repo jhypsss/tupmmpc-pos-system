@@ -13,7 +13,9 @@ $list_categories = $categoryClass->query("SELECT * FROM categories WHERE if_dele
 
 if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 {
-	//$_POST['user_id'] = auth("id");
+	$timezone = 'Asia/Singapore';
+	date_default_timezone_set($timezone);
+	$_POST['date_modified'] = date("Y-m-d H:i:s");
 	$_POST['source'] = "Products";
 	$_POST['action'] = "UPDATE";
 	$_POST['barcode'] = empty($_POST['barcode']) ? $product->generate_barcode():$_POST['barcode'];

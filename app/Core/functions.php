@@ -196,6 +196,8 @@ function generate_receipt_no(){
 
 function get_date($date)
 {
+	$timezone = 'Asia/Singapore';
+	date_default_timezone_set($timezone);
 	return date("jS M, Y",strtotime($date));
 }
 

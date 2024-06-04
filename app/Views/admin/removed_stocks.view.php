@@ -53,10 +53,9 @@
 			<th>Product Name</th>
 			<th>Price</th>
 			<th>Removed Qty</th>
+            <th>Initiator</th>
 			<th>Status</th>
 			<th>Remarks</th>
-            <th>Encoder</th>
-            
 		</tr>
 		</thead>
 		<tbody>
@@ -69,8 +68,6 @@
 			<td><?= esc($productrow['description']); ?></td>
 			<td><?= esc($productrow['amount']); ?></td>
 			<td><?= esc($list['removed_qty']); ?></td>
-			<td><?= esc($list['status']); ?></td>
-            <td><?= esc($list['remarks']); ?></td>
             <?php 
                 $removedby = get_user_by_id($list['user_id']);
                 if(empty($removedby)){
@@ -86,6 +83,9 @@
                     <?=esc($name)?>
                 </a>
             </td>
+			<td><?= esc($list['status']); ?></td>
+            <td><?= esc($list['remarks']); ?></td>
+            
 		</tr>
 		<?php endforeach;?>
 		</tbody>

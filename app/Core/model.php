@@ -65,27 +65,29 @@ class Model extends Database
 	public function update_product($id, $data){
 		$user_id = auth("id");
 		$db = new Database;
+		$date_modified = $data['date_modified'];
 		if(!empty($data['add_stock'])){
 			$newStock = $data['newStock'];
-			$db->query("UPDATE products SET stock=$newStock, date_modified=NOW() WHERE id=$id");
+			$db->query("UPDATE products SET stock=$newStock, date_modified='$date_modified' WHERE id=$id");
 		}
 		if(!empty($data['remove_stock'])){
-			$query = "INSERT INTO removed_stocks (product_id, removed_qty, status, remarks, user_id) VALUES (:product_id, :removed_qty, :status, :remarks, :user_id)";
+			$query = "INSERT INTO removed_stocks (product_id, removed_qty, status, remarks, user_id, date) VALUES (:product_id, :removed_qty, :status, :remarks, :user_id, :date)";
 			$params = array(
 				'product_id' => $id,
 				'removed_qty'=> $data['remove_stock'],
 				'status'=> $data['status'],
 				'remarks'=> $data['remarks'],
 				'user_id'=> $user_id,
+				'date'=> $date_modified,
 			);
 			$db->query($query, $params);
 
 			$newStock = $data['newStock'];
-			$db->query("UPDATE products SET stock=$newStock, date_modified=NOW() WHERE id=$id");
+			$db->query("UPDATE products SET stock=$newStock, date_modified='$date_modified' WHERE id=$id");
 		}
 		if(!empty($data['increase_amount'])){
 			$newAmount = $data['newAmount'];
-			$db->query("UPDATE products SET amount=$newAmount, date_modified=NOW() WHERE id=$id");
+			$db->query("UPDATE products SET amount=$newAmount, date_modified='$date_modified' WHERE id=$id");
 		}
 	}
 
@@ -93,6 +95,10 @@ class Model extends Database
 		$user_id = auth("id");
 		$source = $_POST['source'];
 		$clean_array['id'] = $id;
+		$timezone = 'Asia/Singapore';
+    	date_default_timezone_set($timezone);
+    	$_POST['date_modified'] = date("Y-m-d H:i:s");
+    	$date = date('Y-m-d H:i:s');
 		
 		$db = new Database;
 		//Update deleted to false
@@ -101,11 +107,12 @@ class Model extends Database
 		$db->query($query, $clean_array);
 
 		//record it in restored_items table
-		$query2 = "INSERT INTO restored_items (restored_id, from_table, user_id) VALUES (:deleted_id, :from_table, :user_id)";
+		$query2 = "INSERT INTO restored_items (restored_id, from_table, user_id, date_restored) VALUES (:deleted_id, :from_table, :user_id, :date)";
 		$params = array(
 			'deleted_id' => $id,
 			'from_table' => $source,
 			'user_id' => $user_id,
+			'date' => $date
 		);
 		$db->query($query2, $params);
 
@@ -114,7 +121,9 @@ class Model extends Database
 	}
 
 	public function refund($id, $row, $data){
-		$clean_array = $this->get_allowed_columns($data);
+		$timezone = 'Asia/Singapore';
+		date_default_timezone_set($timezone);
+		$date = date("Y-m-d H:i:s");
 		$user_id = auth("id");
 		$saleqty = $row['qty']; //item sold qty
 		$saleamount = $row['amount']; //price per item
@@ -130,8 +139,8 @@ class Model extends Database
 				$newTotal = $newQty * $saleamount;
 				$db->query("UPDATE sales SET qty='$newQty', total='$newTotal' WHERE id = $id");
 			}
-			$query2 = "INSERT INTO refunded_items (product_id,barcode,receipt_no,description,category_id,qty,amount,total,user_id,status,remarks) 
-							VALUES (:product_id,:barcode,:receipt_no,:description,:category_id,:qty,:amount,:total,:user_id,:status,:remarks)";
+			$query2 = "INSERT INTO refunded_items (product_id,barcode,receipt_no,description,category_id,qty,amount,total,user_id,status,remarks,date) 
+							VALUES (:product_id,:barcode,:receipt_no,:description,:category_id,:qty,:amount,:total,:user_id,:status,:remarks,:date)";
 				$params = array(
 					'product_id' => $row['product_id'],
 					'barcode' => $row['barcode'],
@@ -144,6 +153,7 @@ class Model extends Database
 					'user_id'=> $user_id,
 					'status'	=> $data['status'],
 					'remarks'=> $data['remarks'],
+					'date'=> $date,
 				);
 			$db->query($query2, $params);
 		}
@@ -157,6 +167,10 @@ class Model extends Database
 		$clean_array['id'] = $id;
 		*/
 		//Delete Function
+		$timezone = 'Asia/Singapore';
+		date_default_timezone_set($timezone);
+		$_POST['date_modified'] = date("Y-m-d H:i:s");
+		$date = date('Y-m-d H:i:s');
 		$user_id = auth("id");
 		$source = $_POST['source'];
 		$clean_array['id'] = $id;
@@ -168,11 +182,12 @@ class Model extends Database
 
 		$db->query($query, $clean_array);
 		//Record it in database
-		$query2 = "INSERT INTO deleted_items (deleted_id, from_table, user_id) VALUES (:deleted_id, :from_table, :user_id)";
+		$query2 = "INSERT INTO deleted_items (deleted_id, from_table, user_id, date_deleted) VALUES (:deleted_id, :from_table, :user_id, :date)";
 		$params = array(
 			'deleted_id' => $id,
 			'from_table' => $source,
 			'user_id' => $user_id,
+			'date'=> $date,
 		);
 		$db->query($query2, $params);
 		
@@ -235,6 +250,10 @@ class Model extends Database
 	//audit trail queries
 	public function audit_trail($id, $data){
 		//initialization
+		$timezone = 'Asia/Singapore';
+		date_default_timezone_set($timezone);
+
+		$date = date('Y-m-d H:i:s');
 		$username = auth("id");
 		$source = $data['source'];
 		$action = $data['action']; 
@@ -295,7 +314,7 @@ class Model extends Database
 				$newUserID = isset($data['userid']) ? $data['userid'] : 'Unknown User ID';
 				$newUsername = isset($data['username']) ? $data['username'] : 'Unknown User';
 				$userEmail = isset($data['email']) ? $data['email'] : 'Unknown Email';
-				$userPassword = isset($data['password']) ? $data['password'] : 'Unknown Password';
+				$userPassword = isset($data['password']) ? $data['password'] : $oldPassword;
 				$userGender = isset($data['gender']) ? $data['gender'] : 'Unknown Gender';
 				$userRole = isset($data['role']) ? $data['role'] : 'Unknown Role';
 				$userImage = isset($data['image']) ? $data['image'] : 'Unknown Image';
@@ -547,18 +566,19 @@ class Model extends Database
 			}
 		}
 		// Insert to Audit Trail
-		$this->insert_Audit_trail($username, $source, $action, $details);
+		$this->insert_Audit_trail($date, $username, $source, $action, $details);
 	}
 
 	//insert audit
-	public function insert_Audit_trail($username, $source, $action, $details)
+	public function insert_Audit_trail($date, $username, $source, $action, $details)
 	{
-		$query = "INSERT INTO audit_trail (user_id, source, action, details) VALUES (:username, :source, :action, :details)";
+		$query = "INSERT INTO audit_trail (user_id, source, action, details, date) VALUES (:username, :source, :action, :details, :date)";
 		$params = array(
 			'username' => $username,
 			'source' => $source,
 			'action' => $action,
-			'details' => $details
+			'details' => $details,
+			'date' => $date,
 		);
 
 		$db = new Database;

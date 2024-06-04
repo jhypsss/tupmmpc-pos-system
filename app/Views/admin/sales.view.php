@@ -74,6 +74,39 @@
         color: #fff;
     }
 </style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var searchInput = document.getElementById('searchInput');
+        var tableRows = document.querySelectorAll('.table tbody tr');
+
+        // Search functionality
+        searchInput.addEventListener('keyup', function(event) {
+            var query = event.target.value.toLowerCase();
+
+            tableRows.forEach(function(row) {
+                var cells = row.getElementsByTagName('td');
+                var found = false;
+
+                if (cells.length >= 1) {
+                    // Only search in the first column
+                    for (var i = 0; i < 1; i++) {
+                        var cellText = cells[i].textContent.toLowerCase();
+                        if (cellText.indexOf(query) > -1) {
+                            found = true;
+                            break;
+                        }
+                    }
+                }
+
+                row.style.display = found ? '' : 'none';
+            });
+        });
+    });
+    function printSalesTable() {
+        window.print();
+    }
+</script>
 <ul class="nav nav-tabs">
   
   <li class="nav-item">
@@ -344,37 +377,6 @@
 			<?php endif; ?>
 		</div>
 	</div>
-	<script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var searchInput = document.getElementById('searchInput');
-            var tableRows = document.querySelectorAll('.table tbody tr');
-
-            // Search functionality
-            searchInput.addEventListener('keyup', function(event) {
-                var query = event.target.value.toLowerCase();
-
-                tableRows.forEach(function(row) {
-                    var cells = row.getElementsByTagName('td');
-                    var found = false;
-
-                    if (cells.length >= 1) {
-                        // Only search in the first column
-                        for (var i = 0; i < 1; i++) {
-                            var cellText = cells[i].textContent.toLowerCase();
-                            if (cellText.indexOf(query) > -1) {
-                                found = true;
-                                break;
-                            }
-                        }
-                    }
-
-                    row.style.display = found ? '' : 'none';
-                });
-            });
-        });
-        function printSalesTable() {
-            window.print();
-        }
-    </script>
+	
 
 <?php endif;?>

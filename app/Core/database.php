@@ -29,7 +29,8 @@ class Database
 
 	public function query($query,$data = array())
 	{
-
+		$timezone = 'Asia/Singapore';
+		date_default_timezone_set($timezone);
 		$con = $this->db_connect();
 		$smt = $con->prepare($query);
 		$check = $smt->execute($data);

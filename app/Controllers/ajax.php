@@ -56,7 +56,7 @@ if(!empty($raw_data))
 		else
 		if($OBJ['data_type'] == "checkout")
 		{
-			$timezone = 'Asia/Manila';
+			$timezone = 'Asia/Singapore';
 			date_default_timezone_set($timezone);
 
 			$date = date('Y-m-d H:i:s');

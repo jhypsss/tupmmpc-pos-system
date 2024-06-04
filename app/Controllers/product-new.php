@@ -7,9 +7,10 @@ $list_categories = $categoryClass->query("SELECT * FROM categories WHERE if_dele
 
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
-
 	$product = new Product();
 
+	$timezone = 'Asia/Singapore';
+	date_default_timezone_set($timezone);
 	$_POST['date'] = date("Y-m-d H:i:s");
 	$_POST['user_id'] = auth("id");
 	$_POST['source'] = "Products";

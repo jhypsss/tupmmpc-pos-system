@@ -37,9 +37,15 @@
 				
 			</table>
 			<br>
+			<?php if(auth('role') == "Cashier"): ?>
+			<a href="index.php?pg=home">
+				<button type="button" class="btn btn-secondary">Back</button>
+			</a>
+			<?php else: ?>
 			<a href="index.php?pg=admin&tab=users">
 				<button type="button" class="btn btn-secondary">Back</button>
 			</a>
+			<?php endif; ?>
 			<?php if(Auth::access('Admin') || ($row && $row['id'] == Auth::get('id'))): ?>
 				<a href="index.php?pg=edit-user&id=<?=$row['id']?>">
 					<button type="button" class="btn btn-primary">Edit</button>
