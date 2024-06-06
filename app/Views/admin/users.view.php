@@ -97,7 +97,7 @@
             <tr>
                 <td>
                     <a href="index.php?pg=profile&id=<?=$user['id']?>">
-                        <img src="<?=crop($user['image'],400,$user['gender'])?>" style="width: 100%; max-width: 100px; border-radius: 50%;">
+                        <img src="<?=crop($user['image'],400,$user['gender'])?>" style="width: 100%; max-width: 100px; max-height: 100px; border-radius: 50%;">
                     </a>
                 </td>
                 <td>

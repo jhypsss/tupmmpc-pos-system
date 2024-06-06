@@ -150,7 +150,7 @@ else if($tab == "audit trail")
 else if($tab == "deleted items")
 {
 	$deleted_db = new Database();
-	$deleted_items = $deleted_db->query("select * from deleted_items order by id desc");
+	$deleted_items = $deleted_db->query("SELECT * from deleted_items where if_restored = 0 order by id desc");
 	$totalDeleted = $deleted_db->query("SELECT COUNT(*) AS total FROM deleted_items");
 }
 else if($tab == "restored items")

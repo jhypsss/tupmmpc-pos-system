@@ -117,7 +117,8 @@ class Model extends Database
 		$db->query($query2, $params);
 
 		//remove it in deleted_items table
-		$db->query("DELETE FROM deleted_items WHERE deleted_id = $id");
+		//$db->query("DELETE FROM deleted_items WHERE deleted_id = $id");
+		$db->query("UPDATE deleted_items SET if_restored = 1 WHERE deleted_id = $id");
 	}
 
 	public function refund($id, $row, $data){

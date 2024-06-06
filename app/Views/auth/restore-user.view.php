@@ -8,6 +8,11 @@
 				<div class="alert alert-success text-center">Do you want to restore this User?</div>
 			</center>
 			<br>
+
+			<div class="mb-3">
+			  <label for="exampleFormControlInput1" class="form-label">Employee ID</label>
+			 <div class="form-control"><?=esc($row['userid'])?></div>
+			</div>
 		 
 			<div class="mb-3">
 			  <label for="exampleFormControlInput1" class="form-label">Username</label>

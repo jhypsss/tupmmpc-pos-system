@@ -4,12 +4,12 @@
 		
 		<form method="post">
 			<center>
-				<h3><i class="fa fa-user"></i> Create User</h3>
+				<h3><i class="fa fa-user"></i> Create Account</h3>
 				<div><?=esc(APP_NAME)?></div>
 			</center>
 			<br>
 			<div class="mb-3">
-			  <label for="exampleFormControlInput1" class="form-label">User ID</label>
+			  <label for="exampleFormControlInput1" class="form-label">Employee ID</label>
 			  <input value="<?=set_value('userid')?>" name="userid" type="text" class="form-control <?=!empty($errors['userid']) ? 'border-danger':''?>" id="exampleFormControlInput1" placeholder="User ID" autocomplete="off">
 				<?php if(!empty($errors['userid'])):?>
 					<small class="text-danger"><?=$errors['userid']?></small>
