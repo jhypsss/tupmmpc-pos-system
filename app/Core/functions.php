@@ -347,6 +347,7 @@ function generate_yearly_data($allrecords) {
 	}
 }
 
+//Admin.php functions
 function get_CategoryName($id){
 		
 	$categoryClass = new Category();
@@ -362,6 +363,14 @@ function get_CategoryName($id){
 function get_productRow($id){
 	$productClass = new Product();
 	$result = $productClass->query("SELECT * FROM products WHERE id = $id");
+
+	if(!empty($result))
+		return $result[0];
+}
+
+function get_CurrentStock($id){
+	$productClass = new Product();
+	$result = $productClass->query("SELECT category_id, SUM(stock) AS current_stocks FROM products WHERE category_id=$id GROUP BY category_id ORDER BY category_id");
 
 	if(!empty($result))
 		return $result[0];

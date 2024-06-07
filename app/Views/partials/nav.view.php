@@ -5,34 +5,6 @@
 	$role = Auth::get('role');
 ?>
 
-<script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-        // Get the current URL
-        const currentUrl = window.location.href;
-
-        // Get the link element by ID
-        const posLink = document.getElementById('home-pos');
-		const adminLink = document.getElementById('admin-panel');
-
-        // Check if the current URL contains the link's href
-        if (currentUrl.includes("index.php?pg=home")) {
-            // Disable the link
-            posLink.style.pointerEvents = 'none';
-            posLink.style.fontWeight = 'bold'; 
-			posLink.style.color = '#C23540';
-			posLink.style.fontSize = '17px';
-		}
-		if (currentUrl.includes("index.php?pg=admin")) {
-            // Disable the link
-            adminLink.style.pointerEvents = 'none';
-            adminLink.style.fontWeight = 'bold';
-			adminLink.style.color = '#C23540';
-			adminLink.style.fontSize = '17px';
-        }
-    });
-</script>
-
-
 <nav class="navbar navbar-expand-lg navbar-light" style="min-width:350px; background-color: #ffc1c1; border-bottom: 5px solid #990000; ">
 	  <div class="container-fluid">
 		
@@ -159,6 +131,29 @@
 	</div>
 	</div>
 
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // Get the current URL
+        const currentUrl = window.location.href;
+
+        // Get the link element by ID
+        const posLink = document.getElementById('home-pos');
+		const adminLink = document.getElementById('admin-panel');
+
+        // Check if the current URL contains the link's href
+        if (currentUrl.includes("index.php?pg=home")) {
+            // Disable the link
+            posLink.style.pointerEvents = 'none';
+            posLink.style.fontWeight = 'bold'; 
+			posLink.style.color = '#C23540';
+			posLink.style.fontSize = '17px';
+		}
+		if (currentUrl.includes("index.php?pg=admin")) {
+            // Disable the link
+            adminLink.style.pointerEvents = 'none';
+            adminLink.style.fontWeight = 'bold';
+			adminLink.style.color = '#C23540';
+			adminLink.style.fontSize = '17px';
+        }
+    });
+</script>

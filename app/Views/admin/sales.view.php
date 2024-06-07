@@ -1,7 +1,7 @@
 <style>
 	@media print {
 		@page {
-			size: letter;
+			size: 8.5in 11in;
 		}
 		body * {
 			visibility: hidden;
@@ -124,10 +124,7 @@
 	    Generate Sales
 	</a>
   </li>
-  
 </ul>
-
-<br>
 
 <?php if($section == 'table'):?>
 
@@ -159,8 +156,8 @@
                 <td><?=esc($sale['barcode'])?></td>
                 <td><?=esc($sale['description'])?></td>
                 <td><?=esc($sale['qty'])?></td>
-                <td><?=esc($sale['amount'])?></td>
-                <td><?=esc($sale['total'])?></td>
+                <td><?=esc(number_format($sale['amount']))?></td>
+                <td><?=esc(number_format($sale['total']))?></td>
                 <?php 
                     $cashier = get_user_by_id($sale['user_id']);
                     if(empty($cashier)){
@@ -189,13 +186,13 @@
         </tbody>
     </table>
   
-<?php else:?>
+    <?php else:?>
 
-    <div class="task-roll-up">
-        <i class="fa fa-money-bill-wave icon fa-fw"></i>
-        <p class="no-items-message"> There are no sales for today.</p>
-    </div>
-<?php endif;?>
+        <div class="task-roll-up">
+            <i class="fa fa-money-bill-wave icon fa-fw"></i>
+            <p class="no-items-message"> There are no sales for today.</p>
+        </div>
+    <?php endif;?>
 
 </div>
 
@@ -263,12 +260,12 @@
 
 	
 <?php elseif($section == 'generate'):?>
-	<div class="row justify-content-center md-10 mx-1 px-3 border-3 border-top border-bottom bottom-secondary">
+	<div class="row justify-content-center mt-3 md-10 mx-1 px-3 border-3 border-top border-bottom bottom-secondary">
 		<div class="col-md-10 p-3">
 			<div class="form-container">
 				<h2 class="text-center mb-3">GENERATE SALES</h2>
 				<form method="GET" class="row row-cols-lg-auto justify-content-center">
-						<input type="hidden" name="pg" value="admin">
+                        <input type="hidden" name="pg" value="admin">
 						<input type="hidden" name="tab" value="sales">
 						<input type="hidden" name="s" value="generate">
 					<div class="col-12 mx-2">
@@ -296,16 +293,16 @@
 	<div class="row mt-4 table-responsive ">
         <div class="col-md-12 ">
 			<?php if(!$SalesPerCategories && !$SalesPerProducts):?>
-			<h3> No Sales For Today: <?= esc(date("M j, Y")); ?></h3>
+			<h3> No Sales For <?= esc($TimePeriod); ?></h3>
 			<?php else:?>
 				<nav class="row row-cols-lg-auto mb-3 mx-auto">
-    		<h4 class="col-12">SALES REPORT</h4>
+    		<h4 class="col-12">RESULT: </h4>
     		<button class="btn btn-success col-12 mx-3 px-3" onclick="printSalesTable()">Print Data</button>
 			</nav>
 			
 			<div class="table-responsive border border-secondary border-3 rounded p-4" id="generateResult">
-				
-				<h5> Store: <?= esc(APP_NAME); ?></h6>
+				<h2 class="mb-3" style="text-align:Center;">SALES REPORT</h2>
+				<h5> Store: <?= esc(APP_NAME); ?></h5>
 				<h6> <?= esc($TimePeriod); ?> </h6>
 				<!-- Sales Per Category Table -->
 				<table class="table table-striped table-hover mx-auto mb-4" style="width:50%;">
@@ -324,15 +321,15 @@
 							<?php $PerCategoryName = get_CategoryName($SalesPerCategory['category_id']) ?>
 						<tr>
 							<td><?= esc($PerCategoryName) ?></td>
-							<td><?= esc($SalesPerCategory['gross_qty']) ?></td>
-							<td style="text-align:right;">₱<?= esc($SalesPerCategory['gross_sales']) ?></td>
+							<td><?= esc(number_format($SalesPerCategory['gross_qty'])) ?></td>
+							<td style="text-align:right;"><?= esc(number_format($SalesPerCategory['gross_sales']))?></td>
 						</tr>
 						<?php endforeach?>
 						<?php foreach($TotalSales as $TotalSale) :?>
 						<tr style="border-top:2px solid">
 							<th>TOTAL: </th>
-							<th><?= esc($TotalSale['total_grossqty']) ?></th>
-							<th style="width:1.2in; text-align:right;">₱<?= esc($TotalSale['total_grosssales']) ?></th>
+							<th><?= esc(number_format($TotalSale['total_grossqty'])) ?></th>
+							<th style="width:1.2in; text-align:right;">₱<?= esc(number_format($TotalSale['total_grosssales']))?></th>
 						</tr>
 						<?php endforeach?>
 					</tbody>
@@ -357,9 +354,9 @@
 						<tr>
 							<td><?= esc($SalesPerProduct['barcode']) ?></td>
 							<td><?= esc($SalesPerProduct['description']) ?></td>
-							<td><?= esc($SalesPerProduct['amount']) ?></td>
-							<td><?= esc($SalesPerProduct['gross_qty']) ?></td>
-							<td style="width:1.2in; text-align:right;"><?= esc($SalesPerProduct['gross_sales']) ?></td>
+							<td><?= esc(number_format($SalesPerProduct['amount'])) ?></td>
+							<td><?= esc(number_format($SalesPerProduct['gross_qty'])) ?></td>
+							<td style="width:1.2in; text-align:right;"><?= esc(number_format($SalesPerProduct['gross_sales'])) ?></td>
 						</tr>
 						<?php endforeach?>
 						<?php foreach($TotalSales as $TotalSale) :?>
@@ -367,7 +364,7 @@
 							<th colspan="2"></th>
 							<th>TOTAL: </th>
 							<th><?= esc($TotalSale['total_grossqty']) ?></th>
-							<th style="width:1.2in; text-align:right;">₱<?= esc($TotalSale['total_grosssales']) ?></th>
+							<th style="width:1.2in; text-align:right;">₱<?= esc(number_format($TotalSale['total_grosssales'])) ?></th>
 						</tr>
 						<?php endforeach?>
 					</tbody>
