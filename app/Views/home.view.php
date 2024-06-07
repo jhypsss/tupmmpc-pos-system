@@ -133,24 +133,6 @@ if (!empty($results)) {
 	var main_input = document.querySelector(".js-search");
 	main_input.focus();
 
-	//prevents reload
-	document.addEventListener('keydown', function (event) {
-		// Check for F5 key (key code 116)
-		if (event.key === 'F5' || (event.ctrlKey && event.key === 'r')) {
-			event.preventDefault();
-		}
-	});
-
-	// Disable the reload button and menu items (for most browsers)
-	window.onbeforeunload = function() {
-		return "Are you sure you want to leave? Changes you made may not be saved.";
-	};
-
-	// Remove the default confirmation if you don't need it
-	window.addEventListener('beforeunload', function (e) {
-		e.preventDefault();
-	});
-
 	function search_item(e){
 
 		var text = e.target.value.trim();
@@ -684,6 +666,20 @@ if (!empty($results)) {
 	send_data({
 		data_type:"search",
 		text:""
+	});
+
+	//prevents reload
+	document.addEventListener('keydown', function (event) {
+		// Check for F5 key (key code 116)
+		if (event.key === 'F5' || (event.ctrlKey && event.key === 'r')) {
+			event.preventDefault();
+		}
+	});
+
+	// Remove the default confirmation if you don't need it
+	window.addEventListener('beforeunload', function (data) {
+		if(data)
+			data.preventDefault();
 	});
 
 </script>
