@@ -68,7 +68,7 @@ class Model extends Database
 		$date = $data['date_modified'];
 		if(!empty($data['add_stock'])){
 			$newStock = $data['newStock'];
-			$db->query("INSERT INTO prod_stock_in (product_id, added_qty, date_added) VALUES ($id, $newStock, '$date')");
+			$db->query("INSERT INTO stock_inventory (product_id, added_qty, date_updated) VALUES ($id, $newStock, '$date')");
 			$db->query("UPDATE products SET stock=$newStock, date_modified='$date' WHERE id=$id");
 		}
 		if(!empty($data['remove_stock'])){
@@ -84,6 +84,7 @@ class Model extends Database
 			$db->query($query, $params);
 
 			$newStock = $data['newStock'];
+			$db->query("INSERT INTO stock_inventory (product_id, removed_qty, date_updated) VALUES ($id, $newStock, '$date')");
 			$db->query("UPDATE products SET stock=$newStock, date_modified='$date' WHERE id=$id");
 		}
 		if(!empty($data['increase_amount'])){
