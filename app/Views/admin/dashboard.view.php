@@ -2,27 +2,27 @@
     <div class="col-md-3 border rounded p-4 my-2 m-2 text-center dashboard-card blue-gradient">
         <i class="fa fa-user icon"></i>
         <h4>Total Users:</h4>
-        <h1><?=$total_users?></h1>
+        <h1><?=number_format($total_users)?></h1>
     </div>
     <div class="col-md-3 border rounded p-4 my-2 m-2 text-center dashboard-card green-gradient">
         <i class="fa fa-table icon"></i>
         <h4>Categories:</h4>
-        <h1><?=$total_category?></h1>
+        <h1><?=number_format($total_category)?></h1>
     </div>
     <div class="col-md-3 border rounded p-4 my-2 m-2 text-center dashboard-card cyan-gradient">
         <i class="fa fa-truck icon"></i>
         <h4>Suppliers:</h4>
-        <h1><?=$total_suppliers?></h1>
+        <h1><?=number_format($total_suppliers)?></h1>
     </div> 
     <div class="col-md-3 border rounded p-4 my-2 m-2 text-center dashboard-card yellow-gradient">
         <i class="fa fa-hamburger icon"></i>
         <h4>Total Products:</h4>
-        <h1><?=$total_products?></h1>
+        <h1><?=number_format($total_products)?></h1>
     </div>
     <div class="col-md-3 border rounded p-4 my-2 m-2 text-center dashboard-card red-gradient">
         <i class="fa fa-money-bill-wave icon"></i>
         <h4>Total Sales:</h4>
-        <h1>₱<?=$total_sales?></h1>
+        <h1>₱<?=number_format($total_sales)?></h1>
     </div>
     
 </div>

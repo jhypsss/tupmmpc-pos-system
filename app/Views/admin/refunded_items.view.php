@@ -96,7 +96,7 @@
 	</table>
 	<?php else:?>
         <div class="task-roll-up">
-            <i class="fa fa-undo-alt"></i>
+            <i class="icon fa fa-undo-alt"></i>
             <p class="no-items-message"> There are no records to show.</p>
         </div>
     <?php endif;?>

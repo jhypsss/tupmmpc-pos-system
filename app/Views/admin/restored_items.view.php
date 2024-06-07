@@ -3,11 +3,36 @@
         background-color: #C23540; 
         color: #fff;
     }
+
+    .task-roll-up {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 50px;
+	}
+	
+	.no-items-message {
+	font-size: 20px;
+	color: #666;
+	margin-bottom: 20px;
+	display: flex;
+	align-items: center;
+	}
+
+    .fa-fw {
+        font-size: 1em;
+        margin-right: 5px;
+    }
+    
+    .icon {
+        font-size: 4em;
+    }
 </style>
+<?php if (!empty($restored_items)):?>
 <div class="table-responsive" style="height: 650px;overflow-y: scroll;">
     <!-- Table section -->
     <table class="table table-striped table-hover">
-    <thead class="table-red" style="position: sticky;top: 0; background-color: #C23540;">
+        <thead class="table-red" style="position: sticky;top: 0; background-color: #C23540;">
         <tr>
             <th>Date Restored</th>
             <th>From:</th>
@@ -16,8 +41,6 @@
         </tr>
         </thead>
         <tbody>
-        <?php if (!empty($restored_items)):?>
-            
             <?php foreach ($restored_items as $restored_item):?>
                 <tr>
                     <td><?=date("M j, Y - h:i a",strtotime($restored_item['date_restored'])) ?></td>
@@ -57,19 +80,12 @@
                         -->
                 </tr>
             <?php endforeach;?>
-        <?php endif;?>
         </tbody>
     </table>
+    <?php else:?>
+        <div class="task-roll-up">
+            <i class="icon fas fa-trash-restore-alt"></i>
+            <p class="no-items-message"> There are no records to show.</p>
+        </div>
+    <?php endif;?>
 </div>
-
-<script>
-function restore_btn() {
-  let text = "Restore ?.";
-  if (confirm(text) == true) {
-    text = "You pressed OK!";
-  } else {
-    text = "You canceled!";
-  }
-  document.getElementById("demo").innerHTML = text;
-}
-</script>

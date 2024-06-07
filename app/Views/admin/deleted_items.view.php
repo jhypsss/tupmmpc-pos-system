@@ -3,8 +3,32 @@
         background-color: #C23540; 
         color: #fff;
     }
-</style>
 
+    .task-roll-up {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 50px;
+	}
+	
+	.no-items-message {
+	font-size: 20px;
+	color: #666;
+	margin-bottom: 20px;
+	display: flex;
+	align-items: center;
+	}
+
+    .fa-fw {
+        font-size: 1em;
+        margin-right: 5px;
+    }
+    
+    .icon {
+        font-size: 4em;
+    }
+</style>
+<?php if (!empty($deleted_items)):?>
 <div class="table-responsive" style="height: 650px;overflow-y: scroll;">
     <!-- Table section -->
     <table class="table table-striped table-hover">
@@ -18,7 +42,6 @@
         </tr>
         </thead>
         <tbody>
-        <?php if (!empty($deleted_items)):?>
             
             <?php foreach ($deleted_items as $deleted_item):?>
                 <tr>
@@ -64,7 +87,12 @@
                         -->
                 </tr>
             <?php endforeach;?>
-        <?php endif;?>
         </tbody>
     </table>
+    <?php else:?>
+        <div class="task-roll-up">
+            <i class="icon fas fa-trash-alt"></i>
+            <p class="no-items-message"> There are no records to show.</p>
+        </div>
+    <?php endif;?>
 </div>
