@@ -97,7 +97,7 @@
         <?php endforeach; ?>
         </tbody>
     </table>
-</div>
+    </div>
     <?php else:?>
         <div class="task-roll-up">
             <i class="fa fa-truck fa-fw icon"></i>
