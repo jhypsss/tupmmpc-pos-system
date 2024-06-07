@@ -45,8 +45,7 @@
 			</div>
 
 			<div class="input-group mb-3">
-			  <span class="input-group-text">Stock:</span>
-			  <input min="0" name="stock" value="" type="number" class="form-control <?=!empty($errors['stock']) ? 'border-danger':''?>" placeholder="Quantity" aria-label="Quantity" autocomplete="off">
+			  <input hidden min="0" name="stock" value="0" type="number" class="form-control <?=!empty($errors['stock']) ? 'border-danger':''?>" placeholder="Quantity" aria-label="Quantity" autocomplete="off">
 			  <span class="input-group-text">Amount:</span>
 			  <input min="0" name="amount" value="" step="any" type="number" class="form-control <?=!empty($errors['amount']) ? 'border-danger':''?>" placeholder="0.00" aria-label="Amount" autocomplete="off">
 			</div>

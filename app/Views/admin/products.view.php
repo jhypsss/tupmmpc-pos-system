@@ -259,7 +259,7 @@
     <div class="row mt-4 table-responsive ">
         <div class="col-md-12 ">
 			
-        <?php if(empty($StocksPerCategories) && empty($StocksInventory)):?>
+        <?php if(!$StocksPerCategories && !$StocksInventory):?>
 			<h3> No Records for <?= esc($TimePeriod); ?></h3>
 			<?php else:?>
 			<nav class="row row-cols-lg-auto mb-3 mx-auto">
@@ -272,7 +272,7 @@
 				<h6> <?= esc($TimePeriod); ?> </h6>
                 <!-- Stocks Inventory Per Category -->
 				<table class="table table-striped table-hover mx-auto" style="width:70%;">
-					<thead class="table-light" style="position: sticky;top: 0">
+					<thead class="table-light">
 						<tr>
 							<th colspan="4">STOCKS INVENTORY PER CATEGORY: </th>
 						</tr>
@@ -294,7 +294,16 @@
                             </td>
 						</tr>
 						<?php endforeach?>
+                        <?php foreach($TotalInventory as $TotalInv) :?>
+						<tr style="border-top:2px solid">
+							<th>TOTAL: </th>
+							<th><?= esc(number_format($TotalInv['total_stock_in'])) ?></th>
+							<th><?= esc(($TotalInv['total_stock_out']))?></th>
+                            <th><?= esc(($TotalCurrentStocks[0]['total_current_stocks']))?></th>
+						</tr>
+						<?php endforeach?>
 					</tbody>
+
 				</table>
 				<!-- Per Product Table -->
 				<table class="table table-striped table-hover mx-auto" style="width:85%;">

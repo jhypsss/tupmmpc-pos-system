@@ -574,7 +574,7 @@ class Model extends Database
 		// Insert to Audit Trail
 		$this->insert_Audit_trail($date, $username, $source, $action, $details);
 	}
-
+	
 	//insert audit
 	public function insert_Audit_trail($date, $username, $source, $action, $details)
 	{

@@ -292,7 +292,7 @@
 
 	<div class="row mt-4 table-responsive ">
         <div class="col-md-12 ">
-			<?php if(!$SalesPerCategories && !$SalesPerProducts):?>
+			<?php if(!$SalesPerCategories && !$SalesPerProducts && !$RefundPerProducts):?>
 			<h3> No Sales For <?= esc($TimePeriod); ?></h3>
 			<?php else:?>
 				<nav class="row row-cols-lg-auto mb-3 mx-auto">
@@ -305,8 +305,9 @@
 				<h5> Store: <?= esc(APP_NAME); ?></h5>
 				<h6> <?= esc($TimePeriod); ?> </h6>
 				<!-- Sales Per Category Table -->
+                <?php if(!empty($SalesPerCategories) && !empty($TotalSales)): ?>
 				<table class="table table-striped table-hover mx-auto mb-4" style="width:50%;">
-					<thead class="table-light" style="position: sticky;top: 0">
+					<thead class="table-light">
 						<tr>
 							<th colspan="3" style="width: 2in">SALES PER CATEGORY: </th>
 						</tr>
@@ -316,6 +317,7 @@
 							<th>Gross Sales</th>
 						</tr>
 					</thead>
+                    
 					<tbody>
 						<?php foreach($SalesPerCategories as $SalesPerCategory) :?>
 							<?php $PerCategoryName = get_CategoryName($SalesPerCategory['category_id']) ?>
@@ -333,9 +335,10 @@
 						</tr>
 						<?php endforeach?>
 					</tbody>
-
 				</table>
+                <?php endif; ?>
 				<!-- Sales Per Product Table -->
+                <?php if(!empty($SalesPerCategories) && !empty($TotalSales)): ?>
 				<table class="table table-striped table-hover mx-auto" style="width:75%;">
 					<thead class="table-light" style="position: sticky;top: 0">
 						<tr>
@@ -367,8 +370,46 @@
 							<th style="width:1.2in; text-align:right;">₱<?= esc(number_format($TotalSale['total_grosssales'])) ?></th>
 						</tr>
 						<?php endforeach?>
-					</tbody>
-				</table>
+                    </tbody>
+                </table>
+                <?php endif; ?>
+
+                <!-- Refunded Items Per Product Table -->
+                <?php if(!empty($RefundPerProducts) && !empty($TotalRefunds)): ?>  
+				<table class="table table-striped table-hover mx-auto" style="width:75%;">
+					<thead class="table-light" style="position: sticky;top: 0">
+						<tr>
+							<th colspan="5">REFUNDED ITEMS: </th>
+						</tr>
+						<tr>
+							<th>Barcode</th>
+							<th>Product Name</th>
+							<th>Price</th>
+							<th>Refund QTY</th>
+							<th>Refunded Amount</th>
+						</tr>
+					</thead>
+					<tbody>
+                    <?php foreach($RefundPerProducts as $RefundPerProduct) :?>
+						<tr>
+							<td><?= esc($RefundPerProduct['barcode']) ?></td>
+							<td><?= esc($RefundPerProduct['description']) ?></td>
+							<td><?= esc(number_format($RefundPerProduct['amount'])) ?></td>
+							<td><?= esc(number_format($RefundPerProduct['refunded_qty'])) ?></td>
+							<td style="width:1in; text-align:right;"><?= esc(number_format($RefundPerProduct['refunded_amount'])) ?></td>
+						</tr>
+						<?php endforeach?>
+                        <?php foreach($TotalRefunds as $TotalRefund) :?>
+						<tr style="border-top:2px solid">
+							<th colspan="2"></th>
+							<th>TOTAL: </th>
+							<th><?= esc($TotalRefund['refunded_qty']) ?></th>
+							<th style="width:1in; text-align:right;">₱<?= esc(number_format($TotalRefund['refunded_amount'])) ?></th>
+						</tr>
+						<?php endforeach?>
+                    </tbody>
+                </table>
+                <?php endif; ?>
 
 			</div>
 			<?php endif; ?>
