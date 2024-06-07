@@ -65,10 +65,11 @@ class Model extends Database
 	public function update_product($id, $data){
 		$user_id = auth("id");
 		$db = new Database;
-		$date_modified = $data['date_modified'];
+		$date = $data['date_modified'];
 		if(!empty($data['add_stock'])){
 			$newStock = $data['newStock'];
-			$db->query("UPDATE products SET stock=$newStock, date_modified='$date_modified' WHERE id=$id");
+			$db->query("INSERT INTO prod_stock_in (product_id, added_qty, date_added) VALUES ($id, $newStock, '$date')");
+			$db->query("UPDATE products SET stock=$newStock, date_modified='$date' WHERE id=$id");
 		}
 		if(!empty($data['remove_stock'])){
 			$query = "INSERT INTO removed_stocks (product_id, removed_qty, status, remarks, user_id, date) VALUES (:product_id, :removed_qty, :status, :remarks, :user_id, :date)";
@@ -78,16 +79,16 @@ class Model extends Database
 				'status'=> $data['status'],
 				'remarks'=> $data['remarks'],
 				'user_id'=> $user_id,
-				'date'=> $date_modified,
+				'date'=> $date,
 			);
 			$db->query($query, $params);
 
 			$newStock = $data['newStock'];
-			$db->query("UPDATE products SET stock=$newStock, date_modified='$date_modified' WHERE id=$id");
+			$db->query("UPDATE products SET stock=$newStock, date_modified='$date' WHERE id=$id");
 		}
 		if(!empty($data['increase_amount'])){
 			$newAmount = $data['newAmount'];
-			$db->query("UPDATE products SET amount=$newAmount, date_modified='$date_modified' WHERE id=$id");
+			$db->query("UPDATE products SET amount=$newAmount, date_modified='$date' WHERE id=$id");
 		}
 	}
 
