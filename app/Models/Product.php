@@ -29,11 +29,16 @@ class Product extends Model
 		$productsdb = new Database();
 		$errors = [];
 		
-			if(!empty($data['barcode'])){
+			if(!empty($data['barcode']) && !$id){ //addproduct
 				$barcode = $data['barcode'];
 				$result = $productsdb->query("SELECT * FROM products WHERE barcode = $barcode");
 				if($result)
-					$errors['barcode'] = "Product barcode: ".$result[0]['barcode']." already exist!";
+					$errors['barcode'] = "Product barcode: ".$barcode." already exist!";
+			} else if(!empty($data['barcode']) && !empty($id)){ //editproduct
+				$barcode = $data['barcode'];
+				$result = $productsdb->query("SELECT * FROM products WHERE barcode = $barcode");
+				if($result[0]['barcode'] == $barcode && $result[0]['id'] != $id)
+					$errors['barcode'] = "Product barcode: ".$barcode." already exist!";
 			}
 
 			//check description
