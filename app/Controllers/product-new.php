@@ -4,6 +4,12 @@ $errors = [];
 
 $categoryClass = new Category();
 $list_categories = $categoryClass->query("SELECT * FROM categories WHERE if_deleted = 0 ORDER BY name");
+if(!$list_categories){
+	echo '<script> alert("You don\'t have any category yet. Add first!");
+					window.location.href = "index.php?pg=admin&tab=categories";
+		  </script>';
+	
+}
 
 if($_SERVER['REQUEST_METHOD'] == "POST")
 {
@@ -42,9 +48,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 		$destination = $folder . $product->generate_filename($ext);
 		move_uploaded_file($_POST['image']['tmp_name'], $destination);
 		$_POST['image'] = $destination;
-
-		$product->audit_trail(null, $_POST);
+		
 		$product->insert($_POST);
+		$product->audit_trail(null, $_POST);
 
 		redirect('admin&tab=products');
 	}
