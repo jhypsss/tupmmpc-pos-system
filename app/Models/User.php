@@ -33,11 +33,24 @@ class User extends Model
 			{
 				$errors['userid'] = "User ID is required";
 			} else {
-				$input_userid = $data["userid"];
-				$result = $usersdb->query("SELECT userid FROM users WHERE userid='$input_userid'");
-				if($result)
-					$errors['userid'] = $data['userid']." already exist!";
+				if(!empty($data['userid']) && !$id)
+				{
+					$input_userid = $data["userid"];
+					$result = $usersdb->query("SELECT * FROM users WHERE userid='$input_userid'");
+					if($result)
+						$errors['userid'] = $input_userid." already exist!";
+				}
+
+				if(!empty($data['userid']) && !empty($id))
+				{
+					$input_userid = $data["userid"];
+					$result = $usersdb->query("SELECT * FROM users WHERE userid='$input_userid'");
+					if($result[0]['userid'] == $input_userid && $result[0]['id'] != $id)
+						$errors['userid'] = $input_userid." already exist!";
+				}
 			}
+
+			
 
 			//check username
 			if(empty($data['username']))
@@ -58,10 +71,20 @@ class User extends Model
 			{
 				$errors['email'] = "Email is not valid";
 			} else {
-				$input = $data["email"];
-				$result = $usersdb->query("SELECT userid FROM users WHERE email='$input'");
-				if($result)
-					$errors['email'] = $data['email']." already exist!";
+				if(!empty($data['email']) && !$id)
+				{
+					$input = $data["email"];
+					$result = $usersdb->query("SELECT * FROM users WHERE email='$input'");
+					if($result)
+						$errors['email'] = $input." already exist!";
+				}
+				if(!empty($data['email']) && !empty($id))
+				{
+					$input = $data["email"];
+					$result = $usersdb->query("SELECT * FROM users WHERE email='$input'");
+					if($result)
+						$errors['email'] = $input." already exist!";
+				}
 			}
 
 			//check password

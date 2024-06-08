@@ -32,7 +32,7 @@ if(!empty($_SESSION['referer'])){
 			<div class="mb-3">
 			  <label for="exampleFormControlInput1" class="form-label">User ID</label>
 			  <input value="<?=set_value('userid',$row['userid'])?>" name="userid" type="text" class="form-control <?=!empty($errors['userid']) ? 'border-danger':''?>" id="exampleFormControlInput1" placeholder="User ID" autocomplete="off">
-				<?php if(!empty($errors['username'])):?>
+				<?php if(!empty($errors['userid'])):?>
 					<small class="text-danger"><?=$errors['userid']?></small>
 				<?php endif;?>
 			</div>
