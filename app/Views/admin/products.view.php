@@ -125,7 +125,7 @@
     <a href="index.php?pg=barcode.view" target="_blank" rel="noopener noreferrer">
         <button class="btn btn-secondary btn-sm"><i class="fa fa-barcode"></i> All Barcodes</button>
     </a>
-    <input type="text" class="form-control" id="searchInput" placeholder="Search..." style="width: 50%; float: right;">
+    <input type="text" class="form-control" id="searchInput" placeholder="Search Barcode or Product Name" style="width: 50%; float: right;">
     <br>
     <br>
 </div>
@@ -298,8 +298,8 @@
 						<tr style="border-top:2px solid">
 							<th>TOTAL: </th>
 							<th><?= esc(number_format($TotalInv['total_stock_in'])) ?></th>
-							<th><?= esc(($TotalInv['total_stock_out']))?></th>
-                            <th><?= esc(($TotalCurrentStocks[0]['total_current_stocks']))?></th>
+							<th><?= esc(number_format($TotalInv['total_stock_out']))?></th>
+                            <th><?= esc(number_format($TotalCurrentStocks[0]['total_current_stocks']))?></th>
 						</tr>
 						<?php endforeach?>
 					</tbody>
@@ -333,9 +333,9 @@
 						<tr style="border-top:2px solid">
                             <th colspan="1"></th>
 							<th>TOTAL: </th>
-							<th><?= esc(number_format($TotalInv['total_stock_in'])) ?></th>
-							<th><?= esc(($TotalInv['total_stock_out']))?></th>
-                            <th><?= esc(($TotalCurrentStocks[0]['total_current_stocks']))?></th>
+							<th><?= esc(number_format($TotalInv['total_stock_in'])) ?></t h>
+							<th><?= esc(number_format($TotalInv['total_stock_out']))?></th>
+                            <th><?= esc(number_format($TotalCurrentStocks[0]['total_current_stocks']))?></th>
 						</tr>
 					<?php endforeach?>
 					</tbody>
