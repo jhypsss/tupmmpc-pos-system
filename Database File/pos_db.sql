@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 07, 2024 at 05:56 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Host: localhost:3306
+-- Generation Time: Jun 08, 2024 at 05:44 AM
+-- Server version: 10.5.20-MariaDB
+-- PHP Version: 7.3.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `pos_db`
+-- Database: `id22255985_tupmmpc`
 --
 
 -- --------------------------------------------------------
@@ -41,175 +41,114 @@ CREATE TABLE `audit_trail` (
 --
 
 INSERT INTO `audit_trail` (`id`, `user_id`, `source`, `action`, `details`, `date`) VALUES
-(1, 1, 'Users', 'UPDATE', 'UPDATED USER: TUPMMPC Admin\nUsername: TUPMMPC admin → TUPMMPC Admin\nUser Image: User Image Updated', '2024-05-21 20:03:10'),
-(2, 1, 'Users', 'UPDATE', 'UPDATED USER: TUPMMPC Admin', '2024-05-21 20:30:21'),
-(3, 1, 'Users', 'UPDATE', 'UPDATED USER: tupmmpcadmin', '2024-05-21 20:35:49'),
-(4, 1, 'Users', 'UPDATE', 'UPDATED USER: tupmanila\nUsername: tupmmpcadmin → tupmanila', '2024-05-21 20:36:06'),
-(5, 1, 'Users', 'UPDATE', 'UPDATED USER: tupmanila', '2024-05-21 20:37:37'),
-(6, 1, 'Users', 'UPDATE', 'UPDATED USER: tupmanila', '2024-05-21 20:49:23'),
-(7, 1, 'Users', 'UPDATE', 'UPDATED USER: tupmanila', '2024-05-21 20:51:12'),
-(8, 1, 'Users', 'UPDATE', 'UPDATED USER: tupmanila', '2024-05-21 20:52:37'),
-(9, 1, 'Users', 'UPDATE', 'UPDATED USER: tupmanila', '2024-05-21 20:55:52'),
-(10, 1, 'Users', 'ADD', 'NEW USER: rhaylisilongan \nName: Rhayli Silongan \nEmail: rhayli@tup.edu.ph \nGender: Male \nRole: User', '2024-05-21 21:23:21'),
-(11, 1, 'Users', 'ADD', 'NEW USER: samberin \nName: Samantha Berin \nEmail: samantha@tup.edu.ph \nGender: unset \nRole: User', '2024-05-21 21:24:08'),
-(12, 1, 'Users', 'UPDATE', 'UPDATED USER: samberin\nGender: unset → Female', '2024-05-21 21:24:39'),
-(13, 1, 'Users', 'ADD', 'NEW USER: lyllesanchez \nName: Lordirene Llyle Prince Sanchez \nEmail: llyle@tup.edu.ph \nGender: unset \nRole: User', '2024-05-21 21:29:33'),
-(14, 1, 'Users', 'UPDATE', 'UPDATED USER: lyllesanchez\nGender: unset → Male', '2024-05-21 21:30:12'),
-(15, 1, 'Users', 'UPDATE', 'UPDATED USER: llylesanchez\nUsername: lyllesanchez → llylesanchez', '2024-05-21 21:30:53'),
-(16, 1, 'Users', 'ADD', 'NEW USER: kobefundario \nName: Leynald Kobe Fundario \nEmail: kobe@tup.edu.ph \nGender: Male \nRole: User', '2024-05-21 21:31:19'),
-(17, 1, 'Users', 'ADD', 'NEW USER: tricktorres \nName: Jhon Patrick Torres \nEmail: trick@tup.edu.ph \nGender: Male \nRole: User', '2024-05-21 21:31:55'),
-(18, 1, 'Users', 'ADD', 'NEW USER: power \nName: Power \nEmail: power@tup.edu.ph \nGender: Female \nRole: User', '2024-05-21 21:34:50'),
-(19, 1, 'Users', 'UPDATE', 'UPDATED USER: power\nRole: User → Supervisor\nUser Image: User Image Updated', '2024-05-21 21:35:58'),
-(20, 1, 'Users', 'UPDATE', 'UPDATED USER: power\nRole: Supervisor → Admin', '2024-05-21 21:36:37'),
-(21, 1, 'Users', 'UPDATE', 'UPDATED USER: tricktorres\nRole: User → Admin\nUser Image: User Image Updated', '2024-05-21 21:49:17'),
-(22, 1, 'Users', 'UPDATE', 'UPDATED USER: kobefundario\nUser Image: User Image Updated', '2024-05-21 21:49:40'),
-(23, 6, 'Users', 'UPDATE', 'UPDATED USER: llylesanchez\nUser Image: User Image Updated', '2024-05-21 21:50:33'),
-(24, 6, 'Users', 'UPDATE', 'UPDATED USER: llylesanchez\nRole: User → Supervisor', '2024-05-21 21:50:43'),
-(25, 6, 'Users', 'UPDATE', 'UPDATED USER: llylesanchez\nRole: Supervisor → Admin', '2024-05-21 21:50:47'),
-(26, 6, 'Users', 'UPDATE', 'UPDATED USER: samberin\nRole: User → Cashier', '2024-05-21 21:50:56'),
-(27, 6, 'Users', 'UPDATE', 'UPDATED USER: samberin\nUser Image: User Image Updated', '2024-05-21 21:51:05'),
-(28, 6, 'Users', 'UPDATE', 'UPDATED USER: rhaylisilongan\nRole: User → Supervisor\nUser Image: User Image Updated', '2024-05-21 21:51:39'),
-(29, 6, 'Users', 'UPDATE', 'UPDATED USER: kobefundario\nRole: User → Manager', '2024-05-21 21:51:49'),
-(30, 4, 'Categories', 'ADD', 'NEW CATEGORY: School Merch \nDescription: Apparel, Accessories, Stationery, Drinkware, Tech Accessories, Miscellaneous Items', '2024-05-22 08:21:41'),
-(31, 4, 'Categories', 'ADD', 'NEW CATEGORY: Snacks \nDescription: Salty Snacks, Sweet Snacks, Healthy Snacks, Protein-Rich Snacks, Dairy Snacks, Baked Snacks, Specialty Snacks', '2024-05-22 08:24:25'),
-(32, 4, 'Categories', 'ADD', 'NEW CATEGORY: Beverage \nDescription: Water, Sports Drink, Juice, Tea, Coffee, Milk, Smoothie, Energy Drinks, Lemonade', '2024-05-22 08:28:36'),
-(33, 4, 'Categories', 'ADD', 'NEW CATEGORY: School Supplies \nDescription: Writing Instruments, Paper Products, Organizational Tools, Technology and Accessories, Art Supplies, Classroom Essentials, Backpack and Bags, Study Aids, Health and Hygiene, Miscellaneous Supplies', '2024-05-22 09:49:00'),
-(34, 4, 'Products', 'ADD', 'NEW ITEM: 2223752926390\nProduct: C2  \nQty: 5 \nPrice: 35 \nCategory: Beverage', '2024-05-22 09:51:41'),
-(35, 4, 'Products', 'ADD', 'NEW ITEM: 2223744340436\nProduct: Mogu Mogu \nQty: 30 \nPrice: 40 \nCategory: Beverage', '2024-05-22 09:53:44'),
-(36, 4, 'Products', 'ADD', 'NEW ITEM: 2223898209592\nProduct: Mountain Dew \nQty: 50 \nPrice: 50 \nCategory: Beverage', '2024-05-22 09:54:06'),
-(37, 4, 'Products', 'ADD', 'NEW ITEM: 2223130175859\nProduct: Pocari Sweat \nQty: 100 \nPrice: 30 \nCategory: Beverage', '2024-05-22 09:54:46'),
-(38, 4, 'Products', 'ADD', 'NEW ITEM: 2223286700590\nProduct: Red Bull \nQty: 75 \nPrice: 75 \nCategory: Beverage', '2024-05-22 09:55:08'),
-(39, 4, 'Products', 'ADD', 'NEW ITEM: 2223330048837\nProduct: Brown Envelope \nQty: 100 \nPrice: 15 \nCategory: School Supplies', '2024-05-22 09:57:55'),
-(40, 4, 'Products', 'ADD', 'NEW ITEM: 2223474402290\nProduct: Long Folder \nQty: 100 \nPrice: 16 \nCategory: School Supplies', '2024-05-22 09:58:20'),
-(41, 4, 'Products', 'ADD', 'NEW ITEM: 2223989316961\nProduct: Index Card (1 pack) \nQty: 100 \nPrice: 30 \nCategory: School Supplies', '2024-05-22 09:58:51'),
-(42, 4, 'Products', 'ADD', 'NEW ITEM: 2223136144858\nProduct: Scientific Calculator \nQty: 50 \nPrice: 250 \nCategory: School Supplies', '2024-05-22 09:59:47'),
-(43, 4, 'Products', 'ADD', 'NEW ITEM: 2223562053126\nProduct: Yellow Pad Paper \nQty: 100 \nPrice: 25 \nCategory: School Supplies', '2024-05-22 10:00:13'),
-(44, 4, 'Products', 'ADD', 'NEW ITEM: 2223804737259\nProduct: Bread Pan \nQty: 500 \nPrice: 20 \nCategory: Snacks', '2024-05-22 10:00:51'),
-(45, 4, 'Products', 'ADD', 'NEW ITEM: 2223362259212\nProduct: Nova \nQty: 5 \nPrice: 17 \nCategory: Snacks', '2024-05-22 10:01:09'),
-(46, 4, 'Products', 'ADD', 'NEW ITEM: 2223795298756\nProduct: Oishi Prawn Crackers \nQty: 50 \nPrice: 20 \nCategory: Snacks', '2024-05-22 10:01:30'),
-(47, 4, 'Products', 'ADD', 'NEW ITEM: 2223828501872\nProduct: Piattos \nQty: 15 \nPrice: 20 \nCategory: Snacks', '2024-05-22 10:01:57'),
-(48, 4, 'Products', 'ADD', 'NEW ITEM: 2223824388896\nProduct: Pillows (Chocolate) \nQty: 28 \nPrice: 15 \nCategory: Snacks', '2024-05-22 10:02:20'),
-(49, 4, 'Products', 'ADD', 'NEW ITEM: 2223344887351\nProduct: COS Polo Shirt (Red) \nQty: 20 \nPrice: 300 \nCategory: School Merch', '2024-05-22 10:03:14'),
-(50, 4, 'Products', 'ADD', 'NEW ITEM: 2223344114763\nProduct: Gear Track Jacket \nQty: 20 \nPrice: 450 \nCategory: School Merch', '2024-05-22 10:03:54'),
-(51, 4, 'Products', 'ADD', 'NEW ITEM: 2223539392362\nProduct: Gear Jersey \nQty: 20 \nPrice: 350 \nCategory: School Merch', '2024-05-22 10:04:25'),
-(52, 4, 'Products', 'ADD', 'NEW ITEM: 2223605679101\nProduct: TUP T-Shirt (White) \nQty: 30 \nPrice: 150 \nCategory: School Merch', '2024-05-22 10:05:16'),
-(53, 4, 'Products', 'ADD', 'NEW ITEM: 2223446997863\nProduct: TUP T-Shirt (Black) \nQty: 30 \nPrice: 150 \nCategory: School Merch', '2024-05-22 10:05:37'),
-(54, 4, 'Products', 'ADD', 'NEW ITEM: 2223679136953\nProduct: P.E Pants \nQty: 100 \nPrice: 200 \nCategory: School Merch', '2024-05-22 10:07:01'),
-(55, 4, 'Products', 'DELETE', 'DELETED ITEM: 2223679136953 \nProduct Name: P.E Pants \nQty: 100 \nPrice: 200.00\n Category: School Merch', '2024-05-22 10:07:13'),
-(56, 4, 'Suppliers', 'ADD', 'NEW SUPPLIER: National Book Store \nCompany Address: 4th Floor, Quad Alpha Centrum Building, 125 Pioneer Street, Mandaluyong City 1550, Philippines', '2024-05-22 10:10:36'),
-(57, 4, 'Suppliers', 'ADD', 'NEW SUPPLIER: Expressions Stationery Shop, Inc. \nCompany Address: Unit 2310, Cityland 10 Tower II, H.V. Dela Costa St., Salcedo Village, Makati City 1227, Philippines', '2024-05-22 10:14:06'),
-(58, 5, 'Products', 'DELETE', 'DELETED ITEM: 2223362259212 \nProduct Name: Nova \nQty: 5 \nPrice: 17.00\n Category: Snacks', '2024-05-23 22:43:22'),
-(59, 5, 'Categories', 'DELETE', 'DELETED CATEGORY: Snacks', '2024-05-23 22:43:25'),
-(60, 5, 'Products', 'RESTORE', 'RESTORED ITEM: 2223362259212 \nProduct Name: Nova \nQty: 5 \nPrice: 17.00\n Category: Snacks', '2024-05-23 22:44:41'),
-(61, 5, 'Products', 'DELETE', 'DELETED ITEM: 2223989316961 \nProduct Name: Index Card (1 pack) \nQty: 94 \nPrice: 30.00\n Category: School Supplies', '2024-05-23 22:45:12'),
-(62, 5, 'Products', 'RESTORE', 'RESTORED ITEM: 2223989316961 \nProduct Name: Index Card (1 pack) \nQty: 94 \nPrice: 30.00\n Category: School Supplies', '2024-05-23 22:45:28'),
-(63, 5, 'Categories', 'RESTORE', 'RESTORED CATEGORY: Snacks', '2024-05-23 22:45:58'),
-(64, 5, 'Products', 'DELETE', 'DELETED ITEM: 2223828501872 \nProduct Name: Piattos \nQty: 15 \nPrice: 20.00\n Category: Snacks', '2024-05-23 22:53:48'),
-(65, 2, 'Users', 'UPDATE', 'UPDATED USER: TUPM-20-1209\nUsername: rhaylisilongan → TUPM-20-1209', '2024-05-23 23:01:42'),
-(66, 2, 'Products', 'RESTORE', 'RESTORED ITEM: 2223679136953 \nProduct Name: P.E Pants \nQty: 100 \nPrice: 200.00\n Category: School Merch', '2024-05-23 23:05:49'),
-(67, 2, 'Products', 'RESTORE', 'RESTORED ITEM: 2223828501872 \nProduct Name: Piattos \nQty: 15 \nPrice: 20.00\n Category: Snacks', '2024-05-23 23:05:59'),
-(68, 4, 'Users', 'ADD', 'NEW USER: TUPM-24-1003 \nName: Sample \nEmail: sample@tup.edu.ph \nGender: Female \nRole: User', '2024-05-23 23:28:47'),
-(69, 4, 'Users', 'UPDATE', 'UPDATED USER: TUPM-24-1003\nUsername: Sample → Klee\nEmail: sample@tup.edu.ph → klee@tup.edu.ph\nRole: User → Manager\nUser Image: User Image Updated', '2024-05-23 23:29:18'),
-(70, 6, 'Users', 'ADD', 'NEW USER: TUPM-20-2002 \nName: May Garcia \nEmail: maygarcia@tup.edu.ph \nGender: Female \nRole: User', '2024-05-24 15:30:23'),
-(71, 6, 'Users', 'UPDATE', 'UPDATED USER: TUPM-20-2002\nRole: User → Cashier', '2024-05-24 15:32:22'),
-(72, 4, 'Products', 'ADD', 'NEW ITEM: 2223367498386\nProduct: Coca Cola Zero \nQty: 50 \nPrice: 45 \nCategory: Beverage', '2024-05-24 16:31:51'),
-(73, 4, 'Products', 'UPDATE', 'UPDATED ITEM: 2223367498386\nCurrent Stock: 50 + 20 = 70', '2024-05-24 16:35:16'),
-(74, 4, 'Users', 'DELETE', 'DELETED USER: TUPM-24-1002\n Name: Power \nEmail: power@tup.edu.ph \nGender: Female \nRole: Admin', '2024-05-24 16:49:11'),
-(75, 4, 'Suppliers', 'DELETE', 'DELETED SUPPLIER: National Book Store', '2024-05-24 16:50:43'),
-(76, 4, 'Suppliers', 'RESTORE', 'RESTORED SUPPLIER: National Book Store', '2024-05-24 16:50:49'),
-(77, 6, 'Products', 'DELETE', 'DELETED ITEM: 2223752926390 \nProduct Name: C2  \nQty: 0 \nPrice: 35.00\n Category: Beverage', '2024-05-25 17:38:41'),
-(78, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223731757377\nBarcode: 2223539392362 → 2223731757377', '2024-05-25 17:44:05'),
-(79, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223913899478\nBarcode: 2223605679101 → 2223913899478', '2024-05-25 17:44:25'),
-(80, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223139224839\nBarcode: 2223446997863 → 2223139224839', '2024-05-25 17:44:43'),
-(81, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223432329015\nBarcode: 2223744340436 → 2223432329015', '2024-05-25 17:45:09'),
-(82, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223913899478\nBarcode: 2223898209592 → 2223913899478', '2024-05-25 17:45:26'),
-(83, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223442023546\nBarcode: 2223130175859 → 2223442023546', '2024-05-25 17:45:39'),
-(84, 6, 'Products', 'RESTORE', 'RESTORED ITEM: 2223752926390 \nProduct Name: C2  \nQty: 0 \nPrice: 35.00\n Category: Beverage', '2024-05-25 17:45:51'),
-(85, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223752926390', '2024-05-25 17:46:02'),
-(86, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223752926390\nCurrent Stock: 0 + 50 = 50', '2024-05-25 18:16:14'),
-(87, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223752926390\nProduct Name: C2  → C2 Apple Green Tea', '2024-05-25 18:17:09'),
-(88, 6, 'Products', 'DELETE', 'DELETED ITEM: 2223752926390 \nProduct Name: C2 Apple Green Tea \nQty: 50 \nPrice: 35.00\n Category: Beverage', '2024-05-25 21:15:10'),
-(91, 6, 'Sales', 'REFUND', 'REFUNDED ITEM: 2223824388896\nReceipt No: 2151-117\nProduct Name: Pillows (Chocolate)\nProduct Price: 15.00\nRefund Qty: 3\nTotal Amount: 45\nStatus: Damaged\nRemarks: 1 - expired', '2024-05-28 15:38:33'),
-(92, 6, 'Sales', 'REFUND', 'REFUNDED ITEM: 2223824388896\nReceipt No: 2151-117\nProduct Name: Pillows (Chocolate)\nProduct Price: 15.00\nRefund Qty: 3\nTotal Amount: 45\nStatus: Damaged\nRemarks: 1 - expired, 2 - with hole', '2024-05-28 15:38:57'),
-(93, 6, 'Sales', 'REFUND', 'REFUNDED ITEM: 2223367498386\nReceipt No: 2151-117\nProduct Name: Coca Cola Zero\nProduct Price: 45.00\nRefund Qty: 3\nTotal Amount: 135\nStatus: Damaged\nRemarks: Yupi', '2024-05-28 15:40:30'),
-(94, 6, 'Sales', 'REFUND', 'REFUNDED ITEM: 2223804737259\nReceipt No: 2151-118\nProduct Name: Bread Pan\nProduct Price: 20.00\nProduct Sold: 10 | ₱200.00\nRefund Qty: 1\nTotal Amount: 20\nStatus: Damaged\nRemarks: damaged', '2024-05-28 15:44:55'),
-(95, 6, 'Sales', 'REFUND', 'REFUNDED ITEM: 2223367498386\nReceipt No: 2151-117\nProduct Name: Coca Cola Zero\nProduct Price: 45.00\nProduct Sold: 12 (₱540.00)\nRefund Qty: 2\nTotal Amount: ₱90\nStatus: Damaged\nRemarks: with dents', '2024-05-28 15:49:57'),
-(96, 6, 'Users', 'UPDATE', 'UPDATED USER: TUPM-20-2003\nUsername: TUPM-20-2002 → TUPM-20-2003', '2024-05-28 15:55:03'),
-(97, 6, 'Users', 'DELETE', 'DELETED USER: TUPM-20-2003\n Name: May Garcia \nEmail: maygarcia@tup.edu.ph \nGender: Female \nRole: Cashier', '2024-05-28 15:55:16'),
-(98, 6, 'Users', 'RESTORE', 'RESTORED USER: TUPM-20-2003 \nName: May Garcia \nEmail: maygarcia@tup.edu.ph \nGender: Female \nRole: Cashier', '2024-05-30 14:16:07'),
-(99, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223367498386\nProduct Name: Coca Cola Zero → Coca ColaZero', '2024-05-30 16:48:21'),
-(100, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223367498386\nProduct Name: Coca ColaZero → Coca Cola Zero', '2024-05-30 16:48:40'),
-(101, 6, 'Products', 'ADD', 'NEW ITEM: 2223285141428\nProduct: Wave \nQty: 50 \nPrice: 46 \nCategory: Beverage', '2024-05-30 20:08:38'),
-(102, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223285141428\nProduct Name: Wave → Waved', '2024-05-30 20:09:08'),
-(103, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223285141428\nProduct Name: Wave → Wave Soda', '2024-05-30 20:11:19'),
-(104, 6, 'Products', 'ADD', 'NEW ITEM: 2223507586494\nProduct: Limea \nQty: 50 \nPrice: 48 \nCategory: Beverage', '2024-05-30 20:13:28'),
-(105, 6, 'Products', 'ADD', 'NEW ITEM: 222325575939\nProduct: Adidas Cap \nQty: 50 \nPrice: 104 \nCategory: Unknown Category', '2024-05-30 20:14:59'),
-(106, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nCategory: Unknown Category → School Merch', '2024-05-30 20:17:58'),
-(107, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939', '2024-05-30 20:54:07'),
-(108, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939', '2024-05-30 20:56:17'),
-(109, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939', '2024-05-30 21:01:58'),
-(110, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223507586494\nPrice Increased: 48.00 → Unknown Amount(+Unknown Amount)', '2024-05-30 21:02:52'),
-(111, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223367498386', '2024-05-30 21:04:39'),
-(112, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223679136953', '2024-05-30 21:05:38'),
-(113, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939', '2024-05-30 21:06:25'),
-(114, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939', '2024-05-30 21:07:10'),
-(115, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nCurrent Stock Increased: 71 → 73(+2)', '2024-05-30 21:08:24'),
-(116, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nCurrent Stock Increased: 73 → 75(+2)', '2024-05-30 21:09:17'),
-(117, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223507586494\nCurrent Stock Decreased: 50 → 48(-2)', '2024-05-30 21:09:33'),
-(118, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nProduct Name: Adidas Cap → Adidas Capp', '2024-05-30 21:10:14'),
-(119, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nProduct Name: Adidas Capp → Adidas Cap\nPrice Increased: 106.00 → 106.5(+.5)', '2024-05-30 21:11:59'),
-(120, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223679136953\nPrice Increased: 200.00 → 250(+50)', '2024-05-30 21:12:43'),
-(121, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223824388896\nCurrent Stock Increased: 7 → 107(+100)', '2024-05-30 21:22:27'),
-(122, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223913899478\nCurrent Stock Increased: 0 → 100(+100)', '2024-05-30 21:26:10'),
-(123, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223432329015\nCurrent Stock Increased: 0 → 100(+100)', '2024-05-30 21:27:33'),
-(124, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nProduct Name: Adidas Capp → Adidas Cap', '2024-05-30 21:35:12'),
-(125, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nPrice Increased: 106.50 → 107(+0.50)', '2024-05-30 21:35:30'),
-(126, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nPrice Increased: 106.50 → 107(+0.50)', '2024-05-30 21:36:25'),
-(127, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nPrice Increased: 106.50 → 107.5(+1)', '2024-05-30 21:36:59'),
-(128, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nPrice Increased: 106.50 → 107.5(+1)', '2024-05-30 21:38:06'),
-(129, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nPrice Increased: 106.50 → 107.5(+1)', '2024-05-30 21:38:17'),
-(130, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nPrice Increased: 106.50 → 107.5(+1)', '2024-05-30 21:38:23'),
-(131, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nPrice Increased: 106.50 → 107.5(+1)', '2024-05-30 21:39:06'),
-(132, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nCurrent Stock Increased: 75 → 76(+1)', '2024-05-30 22:07:56'),
-(133, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nCurrent Stock Increased: 75 → 76(+1)', '2024-05-30 22:12:18'),
-(134, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nCurrent Stock Increased: 75 → 76(+1)', '2024-05-30 22:13:07'),
-(135, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nPrice Increased: 107.50 → 108.5(+1)\nCategory: School Merch → Beverage', '2024-05-30 22:16:50'),
-(136, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223507586494\nCurrent Stock Increased: 48 → 49(+1)', '2024-05-30 22:17:00'),
-(137, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223362259212\nCurrent Stock Increased: 0 → 100(+100)', '2024-05-30 22:17:34'),
-(138, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223474402290\nCurrent Stock Increased: 5 → 55(+50)', '2024-05-30 22:18:53'),
-(139, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223474402290\nCurrent Stock Decreased: 55 → 50(-5)', '2024-05-30 22:19:52'),
-(140, 6, 'Sales', 'REFUND', 'REFUNDED ITEM: 2223442023546\nReceipt No: 1001-119\nProduct Name: Pocari Sweat\nProduct Price: 30.00\nProduct Sold: 1 (₱30.00)\nRefund Qty: 1\nTotal Amount Refund: ₱30\nStatus: Refund\nRemarks: Good Condition, Reason: ()', '2024-05-30 23:17:19'),
-(141, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223731757377\nPrice Increased: 350.00 → 375(+25)', '2024-05-30 23:19:04'),
-(142, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nCurrent Stock Decreased: 76 → 75(-1)', '2024-05-30 23:19:40'),
-(143, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223507586494\nCurrent Stock Decreased: 49 → 48(-1)', '2024-05-30 23:55:52'),
-(144, 6, 'Users', 'DELETE', 'DELETED USER: TUPM-20-2003\n Name: May Garcia \nEmail: maygarcia@tup.edu.ph \nGender: Female \nRole: Cashier', '2024-05-31 09:05:39'),
-(145, 6, 'Categories', 'DELETE', 'DELETED CATEGORY: Snacks', '2024-05-31 09:08:26'),
-(146, 6, 'Categories', 'RESTORE', 'RESTORED CATEGORY: Snacks', '2024-05-31 09:08:40'),
-(147, 6, 'Users', 'RESTORE', 'RESTORED USER: TUPM-24-1002 \nName: Power \nEmail: power@tup.edu.ph \nGender: Female \nRole: Admin', '2024-06-05 23:29:15'),
-(148, 6, 'Users', 'DELETE', 'DELETED USER: TUPM-24-1002\n Name: Power \nEmail: power@tup.edu.ph \nGender: Female \nRole: Admin', '2024-06-05 23:29:23'),
-(149, 6, 'Users', 'RESTORE', 'RESTORED USER: TUPM-24-1002 \nName: Power \nEmail: power@tup.edu.ph \nGender: Female \nRole: Admin', '2024-06-05 23:30:07'),
-(150, 6, 'Users', 'RESTORE', 'RESTORED USER: TUPM-24-1002 \nName: Power \nEmail: power@tup.edu.ph \nGender: Female \nRole: Admin', '2024-06-05 23:30:59'),
-(151, 6, 'Users', 'RESTORE', 'RESTORED USER: TUPM-24-1002 \nName: Power \nEmail: power@tup.edu.ph \nGender: Female \nRole: Admin', '2024-06-05 23:32:24'),
-(152, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nCurrent Stock Decreased: 74 → 73(-1)', '2024-06-05 23:41:33'),
-(153, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223507586494\nCurrent Stock Increased: 50 → 100(+50)', '2024-06-06 23:18:08'),
-(154, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223507586494\nCurrent Stock Increased: 50 → 100(+50)', '2024-06-06 23:18:34'),
-(155, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223507586494\nCurrent Stock Increased: 50 → 100(+50)', '2024-06-06 23:19:00'),
-(156, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223507586494\nCurrent Stock Increased: 50 → 100(+50)', '2024-06-06 23:19:41'),
-(157, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223507586494\nCurrent Stock Increased: 50 → 100(+50)', '2024-06-06 23:22:49'),
-(158, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223285141428\nCurrent Stock Increased: 50 → 75(+25)', '2024-06-06 23:23:16'),
-(159, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223367498386\nCurrent Stock Increased: 39 → 89(+50)', '2024-06-06 23:23:34'),
-(160, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223330048837\nCurrent Stock Increased: 18 → 68(+50)', '2024-06-06 23:23:46'),
-(161, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223828501872\nCurrent Stock Increased: 11 → 61(+50)', '2024-06-06 23:24:00'),
-(162, 6, 'Categories', 'UPDATE', 'UPDATED CATEGORY: Beverage', '2024-06-06 23:39:38'),
-(163, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nCurrent Stock Increased: 73 → 98(+25)', '2024-06-07 11:04:24'),
-(164, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nCurrent Stock Increased: 73 → 98(+25)', '2024-06-07 11:04:55'),
-(165, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222325575939\nCurrent Stock Increased: 73 → 98(+25)', '2024-06-07 11:05:27'),
-(166, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223367498386\nCurrent Stock Decreased: 89 → 80(-9)', '2024-06-07 13:14:12'),
-(167, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223824388896\nCurrent Stock Decreased: 107 → 100(-7)', '2024-06-07 13:16:41'),
-(168, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223139224839\nCurrent Stock Decreased: 26 → 25(-1)', '2024-06-07 13:19:19'),
-(169, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223474402290\nCurrent Stock Decreased: 21 → 20(-1)', '2024-06-07 13:27:27'),
-(170, 6, 'Products', 'ADD', 'NEW ITEM: 2223947136254\nProduct: So Good Milk \nQty: 0 \nPrice: 79 \nCategory: Beverage', '2024-06-07 17:54:55'),
-(171, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223947136254\nCurrent Stock Increased: 0 → 50(+50)', '2024-06-07 17:55:08');
+(1, 6, 'Categories', 'ADD', 'NEW CATEGORY: Beverages \nDescription: Coffee, teabags, milk, juice, soda, beer, wine, etc.', '2024-06-07 21:40:37'),
+(2, 6, 'Users', 'UPDATE', 'UPDATED USER: TUPM-24-1002\nRole: Admin → Manager', '2024-06-07 21:42:15'),
+(3, 7, 'Products', 'ADD', 'NEW ITEM: 2223426366325\nProduct: Coca Cola Zero \nQty: 0 \nPrice: 37 \nCategory: Beverages', '2024-06-07 21:44:17'),
+(4, 5, 'Categories', 'UPDATE', 'UPDATED CATEGORY: Beverages\nDescription: Coffee, teabags, milk, juice, soda, beer, wine, etc. → Water, Sports Drink, Juice, Tea, Coffee, Milk, Smoothie, Energy Drinks, Lemonade', '2024-06-07 21:44:23'),
+(5, 5, 'Categories', 'ADD', 'NEW CATEGORY: School Merch \nDescription: Apparel, Accessories, Stationery, Drinkware, Tech Accessories, Miscellaneous Items', '2024-06-07 21:44:53'),
+(6, 5, 'Categories', 'ADD', 'NEW CATEGORY: School Supplies \nDescription: Writing Instruments, Paper Products, Organizational Tools, Technology and Accessories, Art Supplies, Classroom Essentials, Backpack and Bags, Study Aids, Health and Hygiene, Miscellaneous Supplies', '2024-06-07 21:45:04'),
+(7, 5, 'Categories', 'ADD', 'NEW CATEGORY: Snacks \nDescription: Salty Snacks, Sweet Snacks, Healthy Snacks, Protein-Rich Snacks, Dairy Snacks, Baked Snacks, Specialty Snacks', '2024-06-07 21:45:32'),
+(8, 5, 'Suppliers', 'ADD', 'NEW SUPPLIER: Metro Retail Stores Group, Inc. \nCompany Address: Vicsal Building, Ouano Avenue cor. E.O. Perez Street, Subangdaku, Mandaue City, Cebu 6014, Philippines', '2024-06-07 21:51:43'),
+(9, 5, 'Suppliers', 'ADD', 'NEW SUPPLIER: Metro Retail Stores Group, Inc. \nCompany Address: Vicsal Building, Ouano Avenue cor. E.O. Perez Street, Subangdaku, Mandaue City, Cebu 6014, Philippines', '2024-06-07 21:53:24'),
+(10, 7, 'Suppliers', 'ADD', 'NEW SUPPLIER: Global Supplies Inc. \nCompany Address: 1234 Business Park Road Makati City, 1226 Metro Manila, Philippines', '2024-06-07 21:55:37'),
+(11, 7, 'Suppliers', 'ADD', 'NEW SUPPLIER: Global Supplies Inc. \nCompany Address: 1234 Business Park Road Makati City, 1226 Metro Manila, Philippines', '2024-06-07 21:57:05'),
+(12, 7, 'Products', 'ADD', 'NEW ITEM: 2223337259246\nProduct: 7-UP  \nQty: 0 \nPrice: 35 \nCategory: Beverages', '2024-06-07 22:00:18'),
+(13, 5, 'Categories', 'ADD', 'NEW CATEGORY: Personal Care \nDescription:  Hand sanitizers, tissues, face masks, lip balm, sunscreen, hand lotion, hair ties, combs, deodorant.', '2024-06-07 22:01:00'),
+(14, 5, 'Categories', 'ADD', 'NEW CATEGORY: Cleaning Supplies \nDescription: Disinfectant wipes, all-purpose cleaners, broom and dustpan, trash bags, sponges, dish soap, mop, hand soap.', '2024-06-07 22:01:25'),
+(15, 5, 'Categories', 'UPDATE', 'UPDATED CATEGORY: Cleaning Supplies\nDescription: Disinfectant wipes, all-purpose cleaners, broom and dustpan, trash bags, sponges, dish soap, mop, hand soap. → Disinfectant Wipes, All-Purpose Cleaners,  Broom and Dustpan, Trash Bags, Sponges, Dish Soap, Mop, Hand Soap.', '2024-06-07 22:02:55'),
+(16, 7, 'Products', 'ADD', 'NEW ITEM: 2223225640412\nProduct: Mountain Dew Carbonated Drink in can 320ml \nQty: 0 \nPrice: 35 \nCategory: Beverages', '2024-06-07 22:03:10'),
+(17, 5, 'Categories', 'UPDATE', 'UPDATED CATEGORY: Personal Care\nDescription:  Hand sanitizers, tissues, face masks, lip balm, sunscreen, hand lotion, hair ties, combs, deodorant. →  Hand Sanitizers, Tissues, Face Masks, Lip Balm, Sunscreen, Hand Lotion, Hair Ties, Combs, Deodorant.', '2024-06-07 22:03:48'),
+(18, 7, 'Products', 'UPDATE', 'UPDATED ITEM: 2223225640412\nProduct Name: Mountain Dew Carbonated Drink in can 320ml → Mountain Dew Carbonated Drink in can 330ml', '2024-06-07 22:03:49'),
+(19, 5, 'Categories', 'ADD', 'NEW CATEGORY: Gifts And Souvenirs \nDescription: Keychains, Mugs, T-Shirts, Tote Bags, Postcards, Magnets, Photo Frames, Decorative Items, Memorabilia.', '2024-06-07 22:04:05'),
+(20, 7, 'Products', 'UPDATE', 'UPDATED ITEM: 2223426366325\nProduct Name: Coca Cola Zero → Coca Cola Zero 325ml', '2024-06-07 22:04:12'),
+(21, 5, 'Categories', 'ADD', 'NEW CATEGORY: Health And Wellness \nDescription:  Vitamins, Supplements, First Aid Kits, Health Monitors, Fitness Equipment, Essential Oils, Yoga Mats, Exercise Bands.', '2024-06-07 22:04:26'),
+(22, 5, 'Categories', 'ADD', 'NEW CATEGORY: Books And Magazines \nDescription: Textbooks, Novels, Reference Books, Magazines, Journals, Educational Guides, Comic Books, Workbooks.', '2024-06-07 22:04:42'),
+(23, 5, 'Categories', 'ADD', 'NEW CATEGORY: Sports Equipment \nDescription: Balls (Basketball, Soccer, Volleyball), Sportswear, Water Bottles, Gym Bags, Protective Gear, Fitness Trackers, Sports Shoes.', '2024-06-07 22:05:07'),
+(24, 5, 'Categories', 'ADD', 'NEW CATEGORY: Art Supplies \nDescription:  Paints, Brushes, Sketchbooks, Colored Pencils, Markers, Clay, Easels, Canvas, Glue, Crafting Kits.', '2024-06-07 22:05:23'),
+(25, 5, 'Categories', 'ADD', 'NEW CATEGORY: Electronics \nDescription: Chargers, USB Drives, Headphones, Calculators, Batteries, Power Banks, Laptop Accessories, Screen Protectors, Adapters.', '2024-06-07 22:05:39'),
+(26, 7, 'Products', 'ADD', 'NEW ITEM: 2223467683847\nProduct: Royal Tru Orange \nQty: 0 \nPrice: 36 \nCategory: Beverages', '2024-06-07 22:06:26'),
+(27, 5, 'Categories', 'ADD', 'NEW CATEGORY: Toys And Games \nDescription: Board Games, Puzzles, Action Figures, Dolls, Educational Toys, Outdoor Toys, Card Games, Video Games.', '2024-06-07 22:07:39'),
+(28, 7, 'Products', 'ADD', 'NEW ITEM: 2223532342884\nProduct: Boy Bawang Cornick Garlic Flavor 90g \nQty: 0 \nPrice: 20 \nCategory: Snacks', '2024-06-07 22:09:23'),
+(29, 5, 'Suppliers', 'ADD', 'NEW SUPPLIER: Metro Retail Stores Group, Inc. \nCompany Address: Vicsal Building, Ouano Avenue cor. E.O. Perez Street, Subangdaku, Mandaue City, Cebu 6014, Philippines', '2024-06-07 22:10:10'),
+(30, 7, 'Products', 'ADD', 'NEW ITEM: 2223877671221\nProduct: Jack N Jill Piattos Cheese 85g \nQty: 0 \nPrice: 45 \nCategory: Snacks', '2024-06-07 22:10:29'),
+(31, 5, 'Suppliers', 'ADD', 'NEW SUPPLIER:  Puregold Price Club, Inc. \nCompany Address: Tabacalera Compound, E. Rodriguez Jr. Avenue, Barangay Ugong, Pasig City 1604, Philippines', '2024-06-07 22:11:01'),
+(32, 7, 'Products', 'ADD', 'NEW ITEM: 222358413372\nProduct: Jack N Jill Mang Juan Espesyal Suka\'t Sili 90g \nQty: 0 \nPrice: 25 \nCategory: Snacks', '2024-06-07 22:11:37'),
+(33, 5, 'Suppliers', 'ADD', 'NEW SUPPLIER: Wilcon Depot, Inc. \nCompany Address: Wilcon Center, 121 Visayas Avenue, Quezon City 1128, Philippines', '2024-06-07 22:11:43'),
+(34, 5, 'Suppliers', 'ADD', 'NEW SUPPLIER: Mercury Drug Corporation \nCompany Address:  7 Mercury Avenue, Bagumbayan, Quezon City 1110, Philippines', '2024-06-07 22:12:18'),
+(35, 7, 'Products', 'ADD', 'NEW ITEM: 2223854954396\nProduct: Jack N Jill Piattos Roadhouse Barbecue 85g \nQty: 0 \nPrice: 45 \nCategory: Snacks', '2024-06-07 22:12:49'),
+(36, 5, 'Suppliers', 'ADD', 'NEW SUPPLIER: National Book Store \nCompany Address: Quad Alpha Centrum Building, 125 Pioneer Street, Mandaluyong City 1550, Philippines', '2024-06-07 22:14:29'),
+(37, 5, 'Suppliers', 'ADD', 'NEW SUPPLIER: Office Warehouse, Inc. \nCompany Address:  2316 Chino Roces Avenue Extension, Makati City 1231, Philippines', '2024-06-07 22:15:01'),
+(38, 7, 'Products', 'ADD', 'NEW ITEM: 2223885790815\nProduct: Brown Envelope Short \nQty: 0 \nPrice: 10 \nCategory: School Supplies', '2024-06-07 22:15:22'),
+(39, 5, 'Suppliers', 'ADD', 'NEW SUPPLIER: Sterling Paper Products Enterprises, Inc. \nCompany Address: 2302 Sterling Place, Pasong Tamo Extension, Makati City 1231, Philippines', '2024-06-07 22:16:00'),
+(40, 7, 'Products', 'ADD', 'NEW ITEM: 2223913989232\nProduct: Brown Envelope Long \nQty: 0 \nPrice: 15 \nCategory: School Supplies', '2024-06-07 22:16:41'),
+(41, 5, 'Suppliers', 'ADD', 'NEW SUPPLIER: Pandayan Bookshop, Inc. \nCompany Address: 810 Aurora Boulevard, Cubao, Quezon City 1109, Philippines', '2024-06-07 22:17:18'),
+(42, 7, 'Products', 'ADD', 'NEW ITEM: 2223738610543\nProduct: Plastic Ruler 12\"x1\" \nQty: 0 \nPrice: 15 \nCategory: School Supplies', '2024-06-07 22:18:21'),
+(43, 4, 'Products', 'ADD', 'NEW ITEM: 222352056946\nProduct: Toblerone Milk 35g \nQty: 0 \nPrice: 60 \nCategory: Snacks', '2024-06-07 22:18:25'),
+(44, 7, 'Products', 'UPDATE', 'UPDATED ITEM: 2223426366325\nCurrent Stock Increased: 0 → 50(+50)', '2024-06-07 22:19:12'),
+(45, 5, 'Suppliers', 'ADD', 'NEW SUPPLIER: Booksale \nCompany Address:  341 N. Domingo Street, San Juan City 1500, Philippines', '2024-06-07 22:19:43'),
+(46, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223225640412\nProduct Name: Mountain Dew Carbonated Drink in can 330ml → Mountain Dew 330ml', '2024-06-07 22:25:08'),
+(47, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223854954396\nProduct Name: Jack N Jill Piattos Roadhouse Barbecue 85g → Piattos Roadhouse Barbecue 85g', '2024-06-07 22:25:16'),
+(48, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222358413372\nProduct Name: Jack N Jill Mang Juan Espesyal Suka\'t Sili 90g → Mang Juan Espesyal Suka\'t Sili 90g', '2024-06-07 22:25:24'),
+(49, 4, 'Products', 'ADD', 'NEW ITEM: 2223562280728\nProduct: Oishi Choco Chug 250 ml \nQty: 0 \nPrice: 35 \nCategory: Beverages', '2024-06-07 22:25:29'),
+(50, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223877671221\nProduct Name: Jack N Jill Piattos Cheese 85g → Piattos Cheese 85g', '2024-06-07 22:25:33'),
+(51, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223337259246\nCurrent Stock Increased: 0 → 50(+50)', '2024-06-07 22:26:58'),
+(52, 4, 'Products', 'ADD', 'NEW ITEM: 2223207025516\nProduct: Pocari Sweat 350mL \nQty: 0 \nPrice: 40 \nCategory: Beverages', '2024-06-07 22:27:09'),
+(53, 5, 'Products', 'UPDATE', 'UPDATED ITEM: 222352056946\nCurrent Stock Increased: 0 → 45(+45)', '2024-06-07 22:27:19'),
+(54, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223225640412\nCurrent Stock Increased: 0 → 40(+40)', '2024-06-07 22:28:00'),
+(55, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223225640412\nCurrent Stock Increased: 40 → 80(+40)', '2024-06-07 22:29:36'),
+(56, 5, 'Products', 'UPDATE', 'UPDATED ITEM: 2223207025516\nCurrent Stock Increased: 0 → 150(+150)', '2024-06-07 22:29:58'),
+(57, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223885790815\nCurrent Stock Increased: 0 → 100(+100)', '2024-06-07 22:31:29'),
+(58, 5, 'Products', 'UPDATE', 'UPDATED ITEM: 2223207025516\nCurrent Stock Decreased: 150 → 100(-50)', '2024-06-07 22:31:32'),
+(59, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223913989232\nCurrent Stock Increased: 0 → 100(+100)', '2024-06-07 22:31:37'),
+(60, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223738610543\nProduct Name: Plastic Ruler 12\"x1\" → Plastic Ruler 12\nCurrent Stock Increased: 0 → 50(+50)', '2024-06-07 22:31:52'),
+(61, 5, 'Products', 'UPDATE', 'UPDATED ITEM: 2223913989232\nCurrent Stock Decreased: 100 → 75(-25)', '2024-06-07 22:33:32'),
+(62, 4, 'Products', 'ADD', 'NEW ITEM: 2223779806324\nProduct: Best Buy Clipboard-Long-Pink \nQty: 0 \nPrice: 85 \nCategory: School Supplies', '2024-06-07 22:35:08'),
+(63, 4, 'Products', 'ADD', 'NEW ITEM: 2223997216704\nProduct: Best Buy Clipboard-Short-Yellow \nQty: 0 \nPrice: 65 \nCategory: School Supplies', '2024-06-07 22:36:12'),
+(64, 4, 'Products', 'ADD', 'NEW ITEM: 2223391247611\nProduct: K94 Face Mask-White 10\'s \nQty: 0 \nPrice: 100 \nCategory: Health And Wellness', '2024-06-07 22:37:14'),
+(65, 6, 'Products', 'ADD', 'NEW ITEM: 22231014331\nProduct: Art Paper Assorted Colors \nQty: 0 \nPrice: 28 \nCategory: Art Supplies', '2024-06-07 22:37:50'),
+(66, 4, 'Products', 'ADD', 'NEW ITEM: 2223483946514\nProduct: K94 Face Mask-Beige 10\'s \nQty: 0 \nPrice: 100 \nCategory: Health And Wellness', '2024-06-07 22:37:52'),
+(67, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 22231014331\nCurrent Stock Increased: 0 → 20(+20)', '2024-06-07 22:38:03'),
+(68, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 22231014331\nProduct Name: Art Paper Assorted Colors → Art Paper Assorted (1Pack)', '2024-06-07 22:38:17'),
+(69, 5, 'Products', 'ADD', 'NEW ITEM: 2223890225879\nProduct: Hand Sanitizer \nQty: 0 \nPrice: 250 \nCategory: Personal Care', '2024-06-07 22:39:28'),
+(70, 6, 'Products', 'ADD', 'NEW ITEM: 2223915292235\nProduct: Crayola Crayon (48 Colors) \nQty: 0 \nPrice: 180 \nCategory: Art Supplies', '2024-06-07 22:39:46'),
+(71, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223915292235\nCurrent Stock Increased: 0 → 20(+20)', '2024-06-07 22:40:00'),
+(72, 5, 'Products', 'UPDATE', 'UPDATED ITEM: 2223890225879\nCurrent Stock Increased: 0 → 25(+25)', '2024-06-07 22:40:23'),
+(73, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 222358413372\nCurrent Stock Increased: 0 → 50(+50)', '2024-06-07 22:40:56'),
+(74, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223467683847\nCurrent Stock Increased: 0 → 40(+40)', '2024-06-07 22:41:26'),
+(75, 4, 'Products', 'ADD', 'NEW ITEM: 2223278107346\nProduct: Flex Office Whiteboard Marker-Black \nQty: 0 \nPrice: 32 \nCategory: School Supplies', '2024-06-07 22:41:35'),
+(76, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223532342884\nCurrent Stock Increased: 0 → 60(+60)', '2024-06-07 22:41:46'),
+(77, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223877671221\nCurrent Stock Increased: 0 → 60(+60)', '2024-06-07 22:42:04'),
+(78, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223854954396\nCurrent Stock Increased: 0 → 60(+60)', '2024-06-07 22:42:17'),
+(79, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223779806324\nCurrent Stock Increased: 0 → 30(+30)', '2024-06-07 22:42:49'),
+(80, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223997216704\nCurrent Stock Increased: 0 → 30(+30)', '2024-06-07 22:43:03'),
+(81, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223562280728\nCurrent Stock Increased: 0 → 50(+50)', '2024-06-07 22:43:15'),
+(82, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223483946514\nCurrent Stock Increased: 0 → 50(+50)', '2024-06-07 22:43:35'),
+(83, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223391247611\nCurrent Stock Increased: 0 → 50(+50)', '2024-06-07 22:43:44'),
+(84, 6, 'Products', 'UPDATE', 'UPDATED ITEM: 2223278107346\nCurrent Stock Increased: 0 → 100(+100)', '2024-06-07 22:44:19'),
+(85, 5, 'Products', 'ADD', 'NEW ITEM: 222392454496\nProduct: Badminton Racket \nQty: 0 \nPrice: 449 \nCategory: Sports Equipment', '2024-06-07 22:46:15'),
+(86, 5, 'Products', 'UPDATE', 'UPDATED ITEM: 222392454496\nCurrent Stock Increased: 0 → 10(+10)', '2024-06-07 22:47:04'),
+(87, 4, 'Products', 'ADD', 'NEW ITEM: 2223147140815\nProduct: Superstix Choco Jr 55s 350g \nQty: 0 \nPrice: 80 \nCategory: Snacks', '2024-06-07 22:48:43'),
+(88, 4, 'Products', 'DELETE', 'DELETED ITEM: 2223147140815 \nProduct Name: Superstix Choco Jr 55s 350g \nQty: 0 \nPrice: 80.00\n Category: Snacks', '2024-06-07 22:48:53'),
+(89, 4, 'Products', 'ADD', 'NEW ITEM: 2223249887728\nProduct: Superstix Choco Jr 55s 350g \nQty: 0 \nPrice: 80 \nCategory: Snacks', '2024-06-07 22:50:18'),
+(90, 5, 'Products', 'ADD', 'NEW ITEM: 2223185832550\nProduct: Voltz Micro Charger \nQty: 0 \nPrice: 199 \nCategory: Electronics', '2024-06-07 22:50:52'),
+(91, 5, 'Products', 'UPDATE', 'UPDATED ITEM: 2223185832550\nCurrent Stock Increased: 0 → 25(+25)', '2024-06-07 22:51:07'),
+(92, 4, 'Products', 'ADD', 'NEW ITEM: 2223785686043\nProduct: Mega Prime Dried Mangoes 100g \nQty: 0 \nPrice: 140 \nCategory: Snacks', '2024-06-07 22:52:08'),
+(93, 5, 'Products', 'ADD', 'NEW ITEM: 2223776408243\nProduct: Voltz \nQty: 0 \nPrice: 99 \nCategory: Electronics', '2024-06-07 22:52:22'),
+(94, 5, 'Products', 'UPDATE', 'UPDATED ITEM: 2223776408243\nCurrent Stock Increased: 0 → 10(+10)', '2024-06-07 22:53:04'),
+(95, 4, 'Products', 'ADD', 'NEW ITEM: 2223546152688\nProduct: Coke Zero Sugar Vanilla 320ml \nQty: 0 \nPrice: 38 \nCategory: Beverages', '2024-06-07 22:53:27'),
+(96, 5, 'Products', 'ADD', 'NEW ITEM: 2223145835111\nProduct: Gear Jersey \nQty: 0 \nPrice: 350 \nCategory: School Merch', '2024-06-07 22:58:22'),
+(97, 5, 'Products', 'ADD', 'NEW ITEM: 2223357280018\nProduct: TUP T-Shirt Black \nQty: 0 \nPrice: 199 \nCategory: School Merch', '2024-06-07 22:59:08'),
+(98, 5, 'Products', 'ADD', 'NEW ITEM: 2223496494075\nProduct: TUP T-Shirt White \nQty: 0 \nPrice: 199 \nCategory: Unknown Category', '2024-06-07 22:59:28'),
+(99, 5, 'Products', 'ADD', 'NEW ITEM: 2223177053785\nProduct: TUP T-Shirt White \nQty: 0 \nPrice: 199 \nCategory: School Merch', '2024-06-07 22:59:51'),
+(100, 5, 'Products', 'ADD', 'NEW ITEM: 2223504339695\nProduct: Gear - Track Jacket \nQty: 0 \nPrice: 450 \nCategory: School Merch', '2024-06-07 23:00:40'),
+(101, 5, 'Products', 'ADD', 'NEW ITEM: 2223250828667\nProduct: Pillows \nQty: 0 \nPrice: 15 \nCategory: Snacks', '2024-06-07 23:01:52'),
+(102, 5, 'Products', 'ADD', 'NEW ITEM: 2223978865099\nProduct: Yellow Pad Paper \nQty: 0 \nPrice: 60 \nCategory: School Supplies', '2024-06-07 23:02:38'),
+(103, 4, 'Products', 'ADD', 'NEW ITEM: 2223662440624\nProduct: Potchi Strawberry Cream 50s \nQty: 0 \nPrice: 45 \nCategory: Snacks', '2024-06-07 23:03:21'),
+(104, 4, 'Products', 'ADD', 'NEW ITEM: 222385273909\nProduct: Oil Control Sheet-Charcoal 100s \nQty: 0 \nPrice: 60 \nCategory: Personal Care', '2024-06-07 23:04:22'),
+(105, 4, 'Products', 'ADD', 'NEW ITEM: 2223493349143\nProduct: Pocky Strawberry Mini 19g \nQty: 0 \nPrice: 35 \nCategory: Snacks', '2024-06-07 23:05:35'),
+(106, 5, 'Products', 'ADD', 'NEW ITEM: 222313904187\nProduct: Piattos (Cheese) \nQty: 0 \nPrice: 20 \nCategory: Snacks', '2024-06-07 23:06:04'),
+(107, 5, 'Products', 'DELETE', 'DELETED ITEM: 222313904187 \nProduct Name: Piattos (Cheese) \nQty: 0 \nPrice: 20.00\n Category: Snacks', '2024-06-07 23:06:25'),
+(108, 4, 'Products', 'ADD', 'NEW ITEM: 2223173021619\nProduct: Century Tuna Flakes 155g \nQty: 0 \nPrice: 45 \nCategory: Snacks', '2024-06-07 23:07:24');
 
 -- --------------------------------------------------------
 
@@ -229,11 +168,19 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `description`, `if_deleted`) VALUES
-(1, 'School Merch', 'Apparel, Accessories, Stationery, Drinkware, Tech Accessories, Miscellaneous Items', 0),
-(2, 'Snacks', 'Salty Snacks, Sweet Snacks, Healthy Snacks, Protein-Rich Snacks, Dairy Snacks, Baked Snacks, Specialty Snacks', 0),
-(3, 'Beverage', 'Water, Sports Drink, Juice, Tea, Coffee, Milk, Smoothie, Energy Drinks, Lemonade', 0),
-(4, 'School Supplies', 'Writing Instruments, Paper Products, Organizational Tools, Technology and Accessories, Art Supplies, Classroom Essentials, Backpack and Bags, Study Aids, Health and Hygiene, Miscellaneous Supplies', 0),
-(5, 'xdh', 'gfdh', 1);
+(1, 'Beverages', 'Water, Sports Drink, Juice, Tea, Coffee, Milk, Smoothie, Energy Drinks, Lemonade', 0),
+(2, 'School Merch', 'Apparel, Accessories, Stationery, Drinkware, Tech Accessories, Miscellaneous Items', 0),
+(3, 'School Supplies', 'Writing Instruments, Paper Products, Organizational Tools, Technology and Accessories, Art Supplies, Classroom Essentials, Backpack and Bags, Study Aids, Health and Hygiene, Miscellaneous Supplies', 0),
+(4, 'Snacks', 'Salty Snacks, Sweet Snacks, Healthy Snacks, Protein-Rich Snacks, Dairy Snacks, Baked Snacks, Specialty Snacks', 0),
+(5, 'Personal Care', ' Hand Sanitizers, Tissues, Face Masks, Lip Balm, Sunscreen, Hand Lotion, Hair Ties, Combs, Deodorant.', 0),
+(6, 'Cleaning Supplies', 'Disinfectant Wipes, All-Purpose Cleaners,  Broom and Dustpan, Trash Bags, Sponges, Dish Soap, Mop, Hand Soap.', 0),
+(7, 'Gifts And Souvenirs', 'Keychains, Mugs, T-Shirts, Tote Bags, Postcards, Magnets, Photo Frames, Decorative Items, Memorabilia.', 0),
+(8, 'Health And Wellness', ' Vitamins, Supplements, First Aid Kits, Health Monitors, Fitness Equipment, Essential Oils, Yoga Mats, Exercise Bands.', 0),
+(9, 'Books And Magazines', 'Textbooks, Novels, Reference Books, Magazines, Journals, Educational Guides, Comic Books, Workbooks.', 0),
+(10, 'Sports Equipment', 'Balls (Basketball, Soccer, Volleyball), Sportswear, Water Bottles, Gym Bags, Protective Gear, Fitness Trackers, Sports Shoes.', 0),
+(11, 'Art Supplies', ' Paints, Brushes, Sketchbooks, Colored Pencils, Markers, Clay, Easels, Canvas, Glue, Crafting Kits.', 0),
+(12, 'Electronics', 'Chargers, USB Drives, Headphones, Calculators, Batteries, Power Banks, Laptop Accessories, Screen Protectors, Adapters.', 0),
+(13, 'Toys And Games', 'Board Games, Puzzles, Action Figures, Dolls, Educational Toys, Outdoor Toys, Card Games, Video Games.', 0);
 
 -- --------------------------------------------------------
 
@@ -255,10 +202,8 @@ CREATE TABLE `deleted_items` (
 --
 
 INSERT INTO `deleted_items` (`id`, `deleted_id`, `from_table`, `user_id`, `date_deleted`, `if_restored`) VALUES
-(6, 7, 'Users', 4, '2024-05-24 16:49:11', 1),
-(9, 1, 'Products', 6, '2024-05-25 21:15:10', 0),
-(11, 9, 'Users', 6, '2024-05-31 09:05:39', 1),
-(13, 7, 'Users', 6, '2024-06-05 23:29:23', 1);
+(1, 24, 'Products', 4, '2024-06-07 22:48:53', 0),
+(2, 40, 'Products', 5, '2024-06-07 23:06:25', 0);
 
 -- --------------------------------------------------------
 
@@ -286,32 +231,46 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `barcode`, `description`, `category_id`, `stock`, `amount`, `image`, `user_id`, `date`, `date_modified`, `views`, `if_deleted`) VALUES
-(1, '2223752926390', 'C2 Apple Green Tea', 3, 50, 35.00, 'uploads/products/ee99c0765e47dad751ee1f36a824500b87e93228_1762.png', 4, '2024-05-22 03:51:41', NULL, 1, 1),
-(2, '2223432329015', 'Mogu Mogu', 3, 88, 40.00, 'uploads/products/5176a899e03349d9b21d3ab3aeccc234d5e11411_7468.png', 4, '2024-05-22 03:53:44', NULL, 16, 0),
-(3, '2223913899478', 'Mountain Dew', 3, 80, 50.00, 'uploads/products/bdf5b690f4227caa3a3349af4658df4999a75dfe_8378.png', 4, '2024-05-22 03:54:06', NULL, 19, 0),
-(4, '2223442023546', 'Pocari Sweat', 3, 26, 30.00, 'uploads/products/a1e06012c907a49fab1c46aa8125f54ab0055b73_1657.jpg', 4, '2024-05-22 03:54:46', NULL, 47, 0),
-(5, '2223286700590', 'Red Bull', 3, 30, 75.00, 'uploads/products/47b4ea9d37abe38f6aafea9aa0c599f6a9510182_1304.png', 4, '2024-05-22 03:55:08', NULL, 20, 0),
-(6, '2223330048837', 'Brown Envelope', 4, 65, 15.00, 'uploads/products/c0498136027142a1f643d77e198b1834f2c2a06d_4465.jpg', 4, '2024-05-22 03:57:55', '2024-06-06 23:23:46', 47, 0),
-(7, '2223474402290', 'Long Folder', 4, 20, 16.00, 'uploads/products/c3b666f45d0963af9f1eaaeac0959142812e8ea3_8965.jpg', 4, '2024-05-22 03:58:20', '2024-06-07 13:27:27', 78, 0),
-(8, '2223989316961', 'Index Card (1 pack)', 4, 63, 30.00, 'uploads/products/7bbfdc0f0a92ffefa17b8465772ecebac87c1cda_5399.jpg', 4, '2024-05-22 03:58:51', NULL, 20, 0),
-(9, '2223136144858', 'Scientific Calculator', 4, 42, 250.00, 'uploads/products/b110624b898fdea1e08a4d4e05611f0e0b10f218_6886.jpg', 4, '2024-05-22 03:59:47', NULL, 3, 0),
-(10, '2223562053126', 'Yellow Pad Paper', 4, 93, 25.00, 'uploads/products/624bb0011f9ff7a38b31dacd4102b8d65f114146_8469.jpg', 4, '2024-05-22 04:00:13', NULL, 3, 0),
-(11, '2223804737259', 'Bread Pan', 2, 453, 20.00, 'uploads/products/6e417b0bd74b08668c9c8b97067c85353a89e6a4_4122.png', 4, '2024-05-22 04:00:51', NULL, 9, 0),
-(12, '2223362259212', 'Nova', 2, 100, 17.00, 'uploads/products/3441c55c6bf3a2bb75953cd1667e14c42e84879d_3478.png', 4, '2024-05-22 04:01:09', '2024-05-30 22:17:34', 2, 0),
-(13, '2223795298756', 'Oishi Prawn Crackers', 2, 33, 20.00, 'uploads/products/63bdaee2b95e3eed8c11c22eae23aee66b09f121_6015.png', 4, '2024-05-22 04:01:30', NULL, 4, 0),
-(14, '2223828501872', 'Piattos', 2, 61, 20.00, 'uploads/products/f8cbf31c273bcd1c3e10dc85a5cd28b089069ae4_7580.png', 4, '2024-05-22 04:01:57', '2024-06-06 23:24:00', 3, 0),
-(15, '2223824388896', 'Pillows (Chocolate)', 2, 100, 15.00, 'uploads/products/5746ef55100159ed2f74f20c94466285655dd8e4_1551.png', 4, '2024-05-22 04:02:20', '2024-06-07 13:16:41', 8, 0),
-(16, '2223344887351', 'COS Polo Shirt (Red)', 1, 20, 300.00, 'uploads/products/95f53ed9c1b07bcb452d709fbf1409ef75e17303_9644.jpg', 4, '2024-05-22 04:03:14', NULL, 0, 0),
-(17, '2223344114763', 'Gear Track Jacket', 1, 18, 450.00, 'uploads/products/677021edb5091a5ed17c3d3c95ccf7d57b16089c_2263.jpg', 4, '2024-05-22 04:03:54', NULL, 2, 0),
-(18, '2223731757377', 'Gear Jersey', 1, 17, 375.00, 'uploads/products/62292992bb680000371f7ed44287e6b602c4f6e5_4575.jpg', 4, '2024-05-22 04:04:24', '2024-05-30 23:19:04', 3, 0),
-(19, '2223913899478', 'TUP T-Shirt (White)', 1, 20, 150.00, 'uploads/products/c64fd75924944e3d03c61a67b5f5bc05a6930fed_4590.jpg', 4, '2024-05-22 04:05:16', NULL, 6, 0),
-(20, '2223139224839', 'TUP T-Shirt (Black)', 1, 25, 150.00, 'uploads/products/4cef0742a325f6a9847506f5e5f8f45841292574_3486.jpg', 4, '2024-05-22 04:05:37', '2024-06-07 13:19:19', 4, 0),
-(21, '2223679136953', 'P.E Pants', 1, 100, 250.00, 'uploads/products/1aca206759ffe7635a6c332c2e1663e8f85b396b_1094.png', 4, '2024-05-22 04:07:01', NULL, 2, 0),
-(22, '2223367498386', 'Coca Cola Zero', 3, 80, 45.00, 'uploads/products/687e1a398648d588c5090b99c75dc2e0cf9fb25f_4074.jpg', 4, '2024-05-24 16:31:51', '2024-06-07 13:14:12', 5, 0),
-(23, '2223285141428', 'Wave Soda', 3, 75, 46.00, 'uploads/products/bc63123091aadf73d91fa1fbb04ec8bcf0968cf4_7585.jpg', 6, '2024-05-30 20:08:38', '2024-06-06 23:23:16', 0, 0),
-(24, '2223507586494', 'Limea', 3, 90, 48.00, 'uploads/products/131055b15fa6f04da6dfed0dd16ff6f689b15d29_6152.jpg', 6, '2024-05-30 20:13:28', '2024-06-06 23:22:49', 1, 0),
-(25, '222325575939', 'Adidas Cap', 1, 98, 108.50, 'uploads/products/f1f4dce466fcfb60d6d2230b031b28bd6f78f650_5994.png', 6, '2024-05-30 20:14:59', '2024-06-07 11:05:27', 0, 0),
-(26, '2223947136254', 'So Good Milk', 3, 50, 79.00, 'uploads/products/643cb953aae7877301dee82bb9e460a0f8dd808a_2981.jpg', 6, '2024-06-07 17:54:55', '2024-06-07 17:55:08', 0, 0);
+(1, '2223426366325', 'Coca Cola Zero 325ml', 1, 49, 37.00, 'uploads/products/4f3237887533bb9a2fb7d3eff403f5cca88feb69_1719.jpg', 7, '2024-06-07 21:44:17', '2024-06-07 22:19:12', 1, 0),
+(2, '2223337259246', '7-UP ', 1, 48, 35.00, 'uploads/products/09192d7ecf76988702bf9a0e1b508043661147a3_7317.jpg', 7, '2024-06-07 22:00:18', '2024-06-07 22:26:58', 1, 0),
+(3, '2223225640412', 'Mountain Dew 330ml', 1, 78, 35.00, 'uploads/products/5b49c4bf248611bee0f1f53dbb946dfbcb2da9c8_3476.png', 7, '2024-06-07 22:03:10', '2024-06-07 22:29:36', 1, 0),
+(4, '2223467683847', 'Royal Tru Orange', 1, 39, 36.00, 'uploads/products/fe774f093158cee93866a03c94b375d235976997_6425.png', 7, '2024-06-07 22:06:26', '2024-06-07 22:41:26', 1, 0),
+(5, '2223532342884', 'Boy Bawang Cornick Garlic Flavor 90g', 4, 58, 20.00, 'uploads/products/d867b9463b135d7d80ef828dfb14463e2a6d4818_4239.jpg', 7, '2024-06-07 22:09:23', '2024-06-07 22:41:46', 1, 0),
+(6, '2223877671221', 'Piattos Cheese 85g', 4, 55, 45.00, 'uploads/products/e6ef59a3a3eecb4fcd8eb711aeb95bb96af0540e_5069.jpg', 7, '2024-06-07 22:10:29', '2024-06-07 22:42:04', 2, 0),
+(7, '222358413372', 'Mang Juan Espesyal Suka\'t Sili 90g', 4, 47, 25.00, 'uploads/products/3d5bcff88d569680c736665854304f6fd3867359_6167.jpg', 7, '2024-06-07 22:11:37', '2024-06-07 22:40:56', 1, 0),
+(8, '2223854954396', 'Piattos Roadhouse Barbecue 85g', 4, 58, 45.00, 'uploads/products/f6c615e294dfd39e2d40d31966220b75421c719e_6354.jpg', 7, '2024-06-07 22:12:49', '2024-06-07 22:42:17', 1, 0),
+(9, '2223885790815', 'Brown Envelope Short', 3, 100, 10.00, 'uploads/products/5f59f33850d63c739f980cbc2fb02b197d924ed7_3327.jpg', 7, '2024-06-07 22:15:22', '2024-06-07 22:31:29', 0, 0),
+(10, '2223913989232', 'Brown Envelope Long', 3, 70, 15.00, 'uploads/products/2adefe70c025b7f265bbadf8682589afeeec4a59_3653.jpg', 7, '2024-06-07 22:16:41', '2024-06-07 22:33:32', 1, 0),
+(11, '2223738610543', 'Plastic Ruler 12\"x1\"', 3, 45, 15.00, 'uploads/products/98b52d5582233118c3f54c2399d3ec9ed5739e7d_9409.jpg', 7, '2024-06-07 22:18:21', '2024-06-07 22:31:52', 2, 0),
+(12, '222352056946', 'Toblerone Milk 35g', 4, 45, 60.00, 'uploads/products/d099a10f54262832cd05a69bb6ecb1498b732e74_6685.jpg', 4, '2024-06-07 22:18:25', '2024-06-07 22:27:19', 0, 0),
+(13, '2223562280728', 'Oishi Choco Chug 250 ml', 1, 50, 35.00, 'uploads/products/8ea99d73a54de4fb62a27b691e082541c7981a29_4162.jpg', 4, '2024-06-07 22:25:29', '2024-06-07 22:43:15', 0, 0),
+(14, '2223207025516', 'Pocari Sweat 350mL', 1, 99, 40.00, 'uploads/products/46a3575b11b746000b45c3b88bab367a32bd9757_2278.jpg', 4, '2024-06-07 22:27:09', '2024-06-07 22:31:32', 1, 0),
+(15, '2223779806324', 'Best Buy Clipboard-Long-Pink', 3, 29, 85.00, 'uploads/products/fad6b797148d13be385717ebd14e653e728cae5c_5316.jpg', 4, '2024-06-07 22:35:08', '2024-06-07 22:42:49', 1, 0),
+(16, '2223997216704', 'Best Buy Clipboard-Short-Yellow', 3, 30, 65.00, 'uploads/products/ce67cfe6bab2ae8567a5e04f0bb912a45ff9e521_9638.jpg', 4, '2024-06-07 22:36:12', '2024-06-07 22:43:03', 0, 0),
+(17, '2223391247611', 'K94 Face Mask-White 10\'s', 8, 50, 100.00, 'uploads/products/2655a1f84c7e37a995ee04c98ad4cbe8b250a7a6_9066.jpg', 4, '2024-06-07 22:37:14', '2024-06-07 22:43:44', 0, 0),
+(18, '22231014331', 'Art Paper Assorted (1Pack)', 11, 19, 28.00, 'uploads/products/c6f1f2d80f7c7d76a5fa58dd6024edb3b639ab59_9647.jpg', 6, '2024-06-07 22:37:50', '2024-06-07 22:38:17', 1, 0),
+(19, '2223483946514', 'K94 Face Mask-Beige 10\'s', 8, 50, 100.00, 'uploads/products/d3955d0121b50bc79938eaf6c41d214d18be7cdb_1795.jpg', 4, '2024-06-07 22:37:52', '2024-06-07 22:43:35', 0, 0),
+(20, '2223890225879', 'Hand Sanitizer', 5, 23, 250.00, 'uploads/products/6dae852ada29e3edb9006cc2feab54484c14bdf5_7756.jpg', 5, '2024-06-07 22:39:28', '2024-06-07 22:40:23', 1, 0),
+(21, '2223915292235', 'Crayola Crayon (48 Colors)', 11, 18, 180.00, 'uploads/products/42a45c40b6c73664cae2a0df4ff8b845e95465bd_7328.jpg', 6, '2024-06-07 22:39:46', '2024-06-07 22:40:00', 2, 0),
+(22, '2223278107346', 'Flex Office Whiteboard Marker-Black', 3, 98, 32.00, 'uploads/products/8a984374f0118ccb6a48826b3c8db8c6d62d5225_3720.jpg', 4, '2024-06-07 22:41:35', '2024-06-07 22:44:19', 1, 0),
+(23, '222392454496', 'Badminton Racket', 10, 9, 449.00, 'uploads/products/0f2ea94de896ffb4cdd056cfaf318cdf112de59c_3272.jpg', 5, '2024-06-07 22:46:15', '2024-06-07 22:47:04', 1, 0),
+(24, '2223147140815', 'Superstix Choco Jr 55s 350g', 4, 0, 80.00, 'uploads/products/7b390caf664b5bdb41589f769449453b8429a3c3_1810.png', 4, '2024-06-07 22:48:43', NULL, 0, 1),
+(25, '2223249887728', 'Superstix Choco Jr 55s 350g', 4, 0, 80.00, 'uploads/products/22ce1f1fe8b3179c203a5c538550c83d27d9a2a5_3582.jpg', 4, '2024-06-07 22:50:18', NULL, 0, 0),
+(26, '2223185832550', 'Voltz Micro Charger', 12, 25, 199.00, 'uploads/products/abbf87d5a8989b72f76210bbb12cafab56db730d_3239.jpg', 5, '2024-06-07 22:50:52', '2024-06-07 22:51:07', 0, 0),
+(27, '2223785686043', 'Mega Prime Dried Mangoes 100g', 4, 0, 140.00, 'uploads/products/a23747a87364a1e619c09b53a8622546e7e2265e_3940.jpg', 4, '2024-06-07 22:52:08', NULL, 0, 0),
+(28, '2223776408243', 'Voltz', 12, 10, 99.00, 'uploads/products/614c40f67a9831d48dbcb9ebaeb1c22bbfdba9d1_4836.jpg', 5, '2024-06-07 22:52:22', '2024-06-07 22:53:04', 0, 0),
+(29, '2223546152688', 'Coke Zero Sugar Vanilla 320ml', 1, 0, 38.00, 'uploads/products/b8841ca40b73bdba52d8c9cb2c21f4fa0ae5c6bb_4838.jpg', 4, '2024-06-07 22:53:27', NULL, 0, 0),
+(30, '2223145835111', 'Gear Jersey', 2, 0, 350.00, 'uploads/products/7a0fe41eae4ad56412659142372083b0e20b1182_1669.jpg', 5, '2024-06-07 22:58:22', NULL, 0, 0),
+(31, '2223357280018', 'TUP T-Shirt Black', 2, 0, 199.00, 'uploads/products/429ebe8f9af3c49ad020dd9276d91db2e353a393_2381.jpg', 5, '2024-06-07 22:59:08', NULL, 0, 0),
+(33, '2223177053785', 'TUP T-Shirt White', 2, 0, 199.00, 'uploads/products/7ed9d6637c1564aa674879fc63421035ae5405e0_2542.jpg', 5, '2024-06-07 22:59:51', NULL, 0, 0),
+(34, '2223504339695', 'Gear - Track Jacket', 2, 0, 450.00, 'uploads/products/088fa1f2b7e89b7fff63b059d9221695f53653bb_8634.jpg', 5, '2024-06-07 23:00:40', NULL, 0, 0),
+(35, '2223250828667', 'Pillows', 4, 0, 15.00, 'uploads/products/cc5e421b223d41439835a532e7f60cf66001f724_1836.png', 5, '2024-06-07 23:01:52', NULL, 0, 0),
+(36, '2223978865099', 'Yellow Pad Paper', 3, 0, 60.00, 'uploads/products/406f6ddf917d464224b9e6abf54a6d648f0421ad_2070.jpg', 5, '2024-06-07 23:02:38', NULL, 0, 0),
+(37, '2223662440624', 'Potchi Strawberry Cream 50s', 4, 0, 45.00, 'uploads/products/1dd3e0b6cad054eb2bbc6e09cbce2165f04554ca_2620.jpg', 4, '2024-06-07 23:03:21', NULL, 0, 0),
+(38, '222385273909', 'Oil Control Sheet-Charcoal 100s', 5, 0, 60.00, 'uploads/products/a2bbfecae69b7efbf3942e2eeb711e3e791cc5cf_2387.jpg', 4, '2024-06-07 23:04:22', NULL, 0, 0),
+(39, '2223493349143', 'Pocky Strawberry Mini 19g', 4, 0, 35.00, 'uploads/products/6f515708bdde265447928b563f8be53e351c92e8_6049.jpg', 4, '2024-06-07 23:05:35', NULL, 0, 0),
+(40, '222313904187', 'Piattos (Cheese)', 4, 0, 20.00, 'uploads/products/e91836e4765b3294e896230ee7e4c9450e16f751_5146.png', 5, '2024-06-07 23:06:04', NULL, 0, 1),
+(41, '2223173021619', 'Century Tuna Flakes 155g', 4, 0, 45.00, 'uploads/products/de06377c9e797c57fa74804f0d37ea6f2a51ead7_7080.jpg', 4, '2024-06-07 23:07:24', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -335,27 +294,6 @@ CREATE TABLE `refunded_items` (
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `refunded_items`
---
-
-INSERT INTO `refunded_items` (`id`, `product_id`, `barcode`, `receipt_no`, `description`, `category_id`, `qty`, `amount`, `total`, `user_id`, `status`, `remarks`, `date`) VALUES
-(1, 4, '2223442023546', '2185-115', 'Pocari Sweat', 3, 1, 30.00, 30.00, 6, 'Item error', 'not full water', '2024-05-28 13:28:32'),
-(2, 6, '2223330048837', '2185-115', 'Brown Envelope', 4, 1, 15.00, 15.00, 6, 'Damaged', 'Ripped', '2024-05-28 14:44:17'),
-(3, 2, '2223679136953', '2151-111', 'P.E Pants', 1, 1, 200.00, 200.00, 6, 'Damaged pants', 'There\'s a hole', '2024-05-28 14:45:43'),
-(4, 6, '2223330048837', '2185-116', 'Brown Envelope', 4, 2, 15.00, 30.00, 6, 'Damaged', 'Ripped and wet envelope', '2024-05-28 14:53:16'),
-(5, 11, '2223804737259', '2151-117', 'Bread Pan', 2, 3, 20.00, 60.00, 6, 'Expired', 'expired may 22, 2024', '2024-05-28 14:56:57'),
-(6, 11, '2223804737259', '2151-118', 'Bread Pan', 2, 2, 20.00, 40.00, 6, 'Expired', 'expired at may 23, 2024', '2024-05-28 15:02:43'),
-(7, 22, '2223367498386', '2151-118', 'Coca Cola Zero', 3, 2, 45.00, 90.00, 6, 'Damaged', 'nayupi', '2024-05-28 15:03:04'),
-(8, 13, '2223795298756', '2151-118', 'Oishi Prawn Crackers', 2, 2, 20.00, 40.00, 6, 'Damaged', 'butas', '2024-05-28 15:29:17'),
-(9, 15, '2223824388896', '2151-117', 'Pillows (Chocolate)', 2, 2, 15.00, 30.00, 6, 'damaged', 'with hole', '2024-05-28 15:33:42'),
-(10, 15, '2223824388896', '2151-117', 'Pillows (Chocolate)', 2, 3, 15.00, 45.00, 6, 'Damaged', '1 - expired', '2024-05-28 15:38:33'),
-(11, 15, '2223824388896', '2151-117', 'Pillows (Chocolate)', 2, 3, 15.00, 45.00, 6, 'Damaged', '1 - expired, 2 - with hole', '2024-05-28 15:38:57'),
-(12, 22, '2223367498386', '2151-117', 'Coca Cola Zero', 3, 3, 45.00, 135.00, 6, 'Damaged', 'Yupi', '2024-05-28 15:40:30'),
-(13, 11, '2223804737259', '2151-118', 'Bread Pan', 2, 1, 20.00, 20.00, 6, 'Damaged', 'damaged', '2024-05-28 15:44:55'),
-(14, 22, '2223367498386', '2151-117', 'Coca Cola Zero', 3, 2, 45.00, 90.00, 6, 'Damaged', 'with dents', '2024-05-28 15:49:57'),
-(15, 4, '2223442023546', '1001-119', 'Pocari Sweat', 3, 1, 30.00, 30.00, 6, 'Refund', 'Good Condition, Reason: ()', '2024-05-30 23:17:19');
-
 -- --------------------------------------------------------
 
 --
@@ -377,19 +315,8 @@ CREATE TABLE `removed_stocks` (
 --
 
 INSERT INTO `removed_stocks` (`id`, `product_id`, `removed_qty`, `status`, `remarks`, `user_id`, `date`) VALUES
-(1, 25, 3, 'Damaged', 'ningatngat ng daga', 6, '2024-05-30 20:29:49'),
-(2, 25, 3, 'damaged', 'damaged', 6, '2024-05-30 20:56:17'),
-(3, 25, 50, 'sdaf', 'fas', 6, '2024-05-30 20:58:05'),
-(4, 24, 1, 'ewae', 'daw', 6, '2024-05-30 21:00:29'),
-(5, 24, 2, 'asdas', 'sad', 6, '2024-05-30 21:09:33'),
-(6, 7, 5, 'afsfa', 'fasedfas', 6, '2024-05-30 22:19:52'),
-(7, 25, 1, 'fasfadf', 'fasfasf', 6, '2024-05-30 23:19:40'),
-(8, 24, 1, 'daw', 'sa', 6, '2024-05-30 23:55:52'),
-(9, 25, 1, 'da', 'ads', 6, '2024-06-05 23:41:33'),
-(10, 22, 9, 'Expired', 'Expired Date: March 2024', 6, '2024-06-07 13:14:12'),
-(11, 15, 7, 'Expired', 'Expired', 6, '2024-06-07 13:16:41'),
-(12, 20, 1, 'Damaged', 'rip with holes', 6, '2024-06-07 13:19:19'),
-(13, 7, 1, 'Damaged', 'Damaged', 6, '2024-06-07 13:27:27');
+(1, 14, 50, 'Expired', 'Please throw asap', 5, '2024-06-07 22:31:32'),
+(2, 10, 25, 'Damaged', 'Return to supplier', 5, '2024-06-07 22:33:32');
 
 -- --------------------------------------------------------
 
@@ -404,18 +331,6 @@ CREATE TABLE `restored_items` (
   `user_id` int(11) NOT NULL,
   `date_restored` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `restored_items`
---
-
-INSERT INTO `restored_items` (`id`, `restored_id`, `from_table`, `user_id`, `date_restored`) VALUES
-(7, 1, 'Products', 6, '2024-05-25 17:45:51'),
-(8, 9, 'Users', 6, '2024-05-30 14:16:07'),
-(10, 7, 'Users', 6, '2024-06-05 23:29:15'),
-(11, 7, 'Users', 6, '2024-06-05 23:30:07'),
-(12, 7, 'Users', 6, '2024-06-05 23:30:59'),
-(13, 7, 'Users', 6, '2024-06-05 23:32:24');
 
 -- --------------------------------------------------------
 
@@ -464,272 +379,26 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`id`, `product_id`, `barcode`, `receipt_no`, `description`, `category_id`, `qty`, `amount`, `total`, `date`, `user_id`) VALUES
-(1, 0, '2223752926390', '2185-1', 'C2 ', 3, 5, 35.00, 175.00, '2024-05-23 17:22:46', 6),
-(2, 0, '2223744340436', '2185-1', 'Mogu Mogu', 3, 2, 40.00, 80.00, '2024-05-23 17:22:46', 6),
-(3, 0, '2223744340436', '2185-2', 'Mogu Mogu', 3, 3, 40.00, 120.00, '2024-05-23 17:24:31', 6),
-(4, 0, '2223898209592', '2185-2', 'Mountain Dew', 3, 1, 50.00, 50.00, '2024-05-23 17:24:31', 6),
-(5, 0, '2223130175859', '2185-3', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-23 22:09:04', 6),
-(6, 0, '2223898209592', '2185-3', 'Mountain Dew', 3, 2, 50.00, 100.00, '2024-05-23 22:09:04', 6),
-(7, 0, '2223474402290', '2185-3', 'Long Folder', 4, 2, 16.00, 32.00, '2024-05-23 22:09:04', 6),
-(8, 0, '2223898209592', '2185-4', 'Mountain Dew', 3, 1, 50.00, 50.00, '2024-05-23 22:09:11', 6),
-(9, 0, '2223286700590', '2185-4', 'Red Bull', 3, 1, 75.00, 75.00, '2024-05-23 22:09:11', 6),
-(10, 0, '2223330048837', '2185-4', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-23 22:09:11', 6),
-(11, 0, '2223989316961', '2185-4', 'Index Card (1 pack)', 4, 1, 30.00, 30.00, '2024-05-23 22:09:11', 6),
-(12, 0, '2223898209592', '2151-5', 'Mountain Dew', 3, 6, 50.00, 300.00, '2024-05-23 22:11:05', 5),
-(13, 0, '2223898209592', '2151-6', 'Mountain Dew', 3, 2, 50.00, 100.00, '2024-05-23 22:12:28', 5),
-(14, 0, '2223744340436', '2151-6', 'Mogu Mogu', 3, 2, 40.00, 80.00, '2024-05-23 22:12:28', 5),
-(15, 0, '2223130175859', '2151-6', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-23 22:12:28', 5),
-(16, 0, '2223330048837', '2152-7', 'Brown Envelope', 4, 4, 15.00, 60.00, '2024-05-23 22:12:29', 3),
-(17, 0, '2223474402290', '2152-7', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-23 22:12:29', 3),
-(18, 0, '2223286700590', '2152-7', 'Red Bull', 3, 1, 75.00, 75.00, '2024-05-23 22:12:29', 3),
-(19, 0, '2223744340436', '2151-8', 'Mogu Mogu', 3, 3, 40.00, 120.00, '2024-05-23 22:16:03', 5),
-(20, 0, '2223474402290', '2151-8', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-23 22:16:03', 5),
-(21, 0, '2223898209592', '2185-9', 'Mountain Dew', 3, 2, 50.00, 100.00, '2024-05-23 22:16:03', 6),
-(22, 0, '2223744340436', '2185-10', 'Mogu Mogu', 3, 3, 40.00, 120.00, '2024-05-23 22:19:45', 6),
-(23, 0, '2223744340436', '2185-11', 'Mogu Mogu', 3, 2, 40.00, 80.00, '2024-05-23 22:20:03', 6),
-(24, 0, '2223898209592', '2185-11', 'Mountain Dew', 3, 1, 50.00, 50.00, '2024-05-23 22:20:03', 6),
-(25, 0, '2223898209592', '2185-12', 'Mountain Dew', 3, 3, 50.00, 150.00, '2024-05-23 22:21:38', 6),
-(26, 0, '2223898209592', '2185-13', 'Mountain Dew', 3, 2, 50.00, 100.00, '2024-05-23 22:21:48', 6),
-(27, 0, '2223898209592', '2185-14', 'Mountain Dew', 3, 3, 50.00, 150.00, '2024-05-23 22:22:28', 6),
-(28, 0, '2223130175859', '2151-15', 'Pocari Sweat', 3, 2, 30.00, 60.00, '2024-05-23 22:24:26', 5),
-(29, 0, '2223474402290', '2151-15', 'Long Folder', 4, 2, 16.00, 32.00, '2024-05-23 22:24:26', 5),
-(30, 0, '2223744340436', '2185-15', 'Mogu Mogu', 3, 3, 40.00, 120.00, '2024-05-23 22:24:26', 6),
-(31, 0, '2223898209592', '2185-15', 'Mountain Dew', 3, 2, 50.00, 100.00, '2024-05-23 22:24:26', 6),
-(32, 0, '2223804737259', '2185-15', 'Bread Pan', 2, 3, 20.00, 60.00, '2024-05-23 22:24:26', 6),
-(33, 0, '2223330048837', '2151-16', 'Brown Envelope', 4, 3, 15.00, 45.00, '2024-05-23 22:25:57', 5),
-(34, 0, '2223989316961', '2151-16', 'Index Card (1 pack)', 4, 5, 30.00, 150.00, '2024-05-23 22:25:57', 5),
-(35, 0, '2223130175859', '2151-16', 'Pocari Sweat', 3, 3, 30.00, 90.00, '2024-05-23 22:25:57', 5),
-(36, 0, '2223824388896', '2185-17', 'Pillows (Chocolate)', 2, 3, 15.00, 45.00, '2024-05-23 22:25:57', 6),
-(37, 0, '2223474402290', '2151-16', 'Long Folder', 1, 2, 16.00, 32.00, '2024-05-23 22:25:57', 5),
-(38, 0, '2223344114763', '2185-17', 'Gear Track Jacket', 1, 1, 450.00, 450.00, '2024-05-23 22:25:57', 6),
-(39, 0, '2223539392362', '2185-17', 'Gear Jersey', 1, 1, 350.00, 350.00, '2024-05-23 22:25:57', 6),
-(40, 0, '2223446997863', '2185-17', 'TUP T-Shirt (Black)', 1, 1, 150.00, 150.00, '2024-05-23 22:25:57', 6),
-(41, 0, '2223898209592', '2151-18', 'Mountain Dew', 3, 5, 50.00, 250.00, '2024-05-23 22:27:15', 5),
-(42, 0, '2223286700590', '2151-18', 'Red Bull', 3, 3, 75.00, 225.00, '2024-05-23 22:27:15', 5),
-(43, 0, '2223824388896', '2151-18', 'Pillows (Chocolate)', 2, 1, 15.00, 15.00, '2024-05-23 22:27:15', 5),
-(44, 0, '2223744340436', '2185-19', 'Mogu Mogu', 3, 3, 40.00, 120.00, '2024-05-23 22:27:16', 6),
-(45, 0, '2223130175859', '2185-19', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-23 22:27:16', 6),
-(46, 0, '2223474402290', '2185-19', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-23 22:27:16', 6),
-(47, 0, '2223286700590', '2185-19', 'Red Bull', 3, 1, 75.00, 75.00, '2024-05-23 22:27:16', 6),
-(48, 0, '2223898209592', '2151-20', 'Mountain Dew', 3, 5, 50.00, 250.00, '2024-05-23 22:31:10', 5),
-(49, 0, '2223744340436', '1209-21', 'Mogu Mogu', 3, 3, 40.00, 120.00, '2024-05-23 23:02:19', 2),
-(50, 0, '2223330048837', '2185-22', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-23 23:46:06', 6),
-(51, 0, '2223898209592', '2185-23', 'Mountain Dew', 3, 5, 50.00, 250.00, '2024-05-23 23:47:06', 6),
-(52, 0, '2223898209592', '2185-24', 'Mountain Dew', 3, 10, 50.00, 500.00, '2024-05-23 23:48:04', 6),
-(53, 0, '2223744340436', '2185-25', 'Mogu Mogu', 3, 5, 40.00, 200.00, '2024-05-24 00:37:39', 6),
-(54, 0, '2223744340436', '2185-26', 'Mogu Mogu', 3, 1, 40.00, 40.00, '2024-05-24 00:39:02', 6),
-(55, 0, '2223362259212', '2185-27', 'Nova', 2, 4, 17.00, 68.00, '2024-05-24 00:40:05', 6),
-(56, 0, '2223474402290', '2185-28', 'Long Folder', 4, 3, 16.00, 48.00, '2024-05-24 00:52:02', 6),
-(57, 0, '2223989316961', '2151-29', 'Index Card (1 pack)', 4, 2, 30.00, 60.00, '2024-05-24 01:38:02', 5),
-(58, 0, '2223330048837', '2151-29', 'Brown Envelope', 4, 2, 15.00, 30.00, '2024-05-24 01:38:02', 5),
-(59, 0, '2223130175859', '2151-29', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-24 01:38:02', 5),
-(60, 0, '2223474402290', '2151-29', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-24 01:38:02', 5),
-(61, 0, '2223474402290', '2151-30', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-24 01:38:30', 5),
-(62, 0, '2223130175859', '2151-30', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-24 01:38:30', 5),
-(63, 0, '2223474402290', '2151-31', 'Long Folder', 4, 2, 16.00, 32.00, '2024-05-24 01:39:10', 5),
-(64, 0, '2223130175859', '2151-31', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-24 01:39:10', 5),
-(65, 0, '2223989316961', '2151-31', 'Index Card (1 pack)', 4, 1, 30.00, 30.00, '2024-05-24 01:39:10', 5),
-(66, 0, '2223130175859', '2185-32', 'Pocari Sweat', 3, 3, 30.00, 90.00, '2024-05-24 01:40:40', 6),
-(67, 0, '2223474402290', '2185-32', 'Long Folder', 4, 2, 16.00, 32.00, '2024-05-24 01:40:40', 6),
-(68, 0, '2223330048837', '2185-32', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-24 01:40:40', 6),
-(69, 0, '2223286700590', '2185-32', 'Red Bull', 3, 2, 75.00, 150.00, '2024-05-24 01:40:40', 6),
-(70, 0, '2223474402290', '2151-33', 'Long Folder', 4, 3, 16.00, 48.00, '2024-05-24 01:41:06', 5),
-(71, 0, '2223989316961', '2151-33', 'Index Card (1 pack)', 4, 2, 30.00, 60.00, '2024-05-24 01:41:06', 5),
-(72, 0, '2223286700590', '2151-33', 'Red Bull', 3, 1, 75.00, 75.00, '2024-05-24 01:41:06', 5),
-(73, 0, '2223474402290', '2185-34', 'Long Folder', 4, 2, 16.00, 32.00, '2024-05-24 01:41:06', 6),
-(74, 0, '2223286700590', '2185-34', 'Red Bull', 3, 1, 75.00, 75.00, '2024-05-24 01:41:06', 6),
-(75, 0, '2223474402290', '2151-35', 'Long Folder', 4, 3, 16.00, 48.00, '2024-05-24 01:42:03', 5),
-(76, 0, '2223330048837', '2151-35', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-24 01:42:03', 5),
-(77, 0, '2223989316961', '2151-35', 'Index Card (1 pack)', 4, 1, 30.00, 30.00, '2024-05-24 01:42:03', 5),
-(78, 0, '2223130175859', '2151-35', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-24 01:42:03', 5),
-(79, 0, '2223474402290', '2185-36', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-24 01:42:03', 6),
-(80, 0, '2223130175859', '2185-36', 'Pocari Sweat', 3, 2, 30.00, 60.00, '2024-05-24 01:42:03', 6),
-(81, 0, '2223286700590', '2185-36', 'Red Bull', 3, 1, 75.00, 75.00, '2024-05-24 01:42:03', 6),
-(82, 0, '2223330048837', '2185-36', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-24 01:42:03', 6),
-(83, 0, '2223474402290', '2151-37', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-24 01:42:29', 5),
-(84, 0, '2223130175859', '2151-38', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-24 01:42:37', 5),
-(85, 0, '2223130175859', '2151-39', 'Pocari Sweat', 3, 2, 30.00, 60.00, '2024-05-24 01:45:28', 5),
-(86, 0, '2223989316961', '2151-39', 'Index Card (1 pack)', 4, 1, 30.00, 30.00, '2024-05-24 01:45:28', 5),
-(87, 0, '2223130175859', '2151-40', 'Pocari Sweat', 3, 2, 30.00, 60.00, '2024-05-24 01:45:37', 5),
-(88, 0, '2223989316961', '2151-40', 'Index Card (1 pack)', 4, 1, 30.00, 30.00, '2024-05-24 01:45:37', 5),
-(89, 0, '2223130175859', '2151-41', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-24 01:45:51', 5),
-(90, 0, '2223989316961', '2151-41', 'Index Card (1 pack)', 4, 1, 30.00, 30.00, '2024-05-24 01:45:51', 5),
-(91, 0, '2223824388896', '2151-41', 'Pillows (Chocolate)', 2, 1, 15.00, 15.00, '2024-05-24 01:45:51', 5),
-(92, 0, '2223130175859', '2151-42', 'Pocari Sweat', 3, 2, 30.00, 60.00, '2024-05-24 01:47:17', 5),
-(93, 0, '2223330048837', '2151-42', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-24 01:47:17', 5),
-(94, 0, '2223824388896', '2151-42', 'Pillows (Chocolate)', 2, 1, 15.00, 15.00, '2024-05-24 01:47:17', 5),
-(95, 0, '2223474402290', '2151-43', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-24 01:51:04', 5),
-(96, 0, '2223474402290', '2151-44', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-24 01:51:30', 5),
-(97, 0, '2223130175859', '2151-44', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-24 01:51:30', 5),
-(98, 0, '2223130175859', '2151-45', 'Pocari Sweat', 3, 4, 30.00, 120.00, '2024-05-24 13:01:28', 5),
-(99, 0, '2223824388896', '2151-45', 'Pillows (Chocolate)', 2, 2, 15.00, 30.00, '2024-05-24 13:01:28', 5),
-(100, 0, '2223474402290', '2151-46', 'Long Folder', 4, 3, 16.00, 48.00, '2024-05-24 13:04:02', 5),
-(101, 0, '2223474402290', '2151-47', 'Long Folder', 4, 2, 16.00, 32.00, '2024-05-24 13:05:03', 5),
-(102, 0, '2223286700590', '2151-47', 'Red Bull', 3, 1, 75.00, 75.00, '2024-05-24 13:05:03', 5),
-(103, 0, '2223804737259', '2151-47', 'Bread Pan', 2, 1, 20.00, 20.00, '2024-05-24 13:05:03', 5),
-(104, 0, '2223474402290', '2002-48', 'Long Folder', 4, 2, 16.00, 32.00, '2024-05-24 16:15:00', 9),
-(105, 0, '2223330048837', '2002-48', 'Brown Envelope', 4, 2, 15.00, 30.00, '2024-05-24 16:15:00', 9),
-(106, 0, '2223989316961', '2002-48', 'Index Card (1 pack)', 4, 1, 30.00, 30.00, '2024-05-24 16:15:00', 9),
-(107, 0, '2223474402290', '2002-49', 'Long Folder', 4, 3, 16.00, 48.00, '2024-05-24 16:24:54', 9),
-(108, 0, '2223286700590', '2002-49', 'Red Bull', 3, 1, 75.00, 75.00, '2024-05-24 16:24:54', 9),
-(109, 0, '2223824388896', '2002-49', 'Pillows (Chocolate)', 2, 1, 15.00, 15.00, '2024-05-24 16:24:54', 9),
-(110, 0, '2223442023546', '2185-50', 'Pocari Sweat', 3, 2, 30.00, 60.00, '2024-05-25 18:30:18', 6),
-(111, 0, '2223474402290', '2185-50', 'Long Folder', 4, 2, 16.00, 32.00, '2024-05-25 18:30:18', 6),
-(112, 0, '2223442023546', '2185-51', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-25 18:34:06', 6),
-(113, 0, '2223474402290', '2185-51', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 18:34:06', 6),
-(114, 0, '2223330048837', '2185-51', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-25 18:34:06', 6),
-(115, 0, '2223474402290', '2185-52', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 18:35:22', 6),
-(116, 0, '2223286700590', '2185-52', 'Red Bull', 3, 1, 75.00, 75.00, '2024-05-25 18:35:22', 6),
-(117, 0, '2223442023546', '2185-52', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-25 18:35:22', 6),
-(118, 0, '2223474402290', '2185-53', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 18:35:31', 6),
-(119, 0, '2223286700590', '2185-53', 'Red Bull', 3, 1, 75.00, 75.00, '2024-05-25 18:35:31', 6),
-(120, 0, '2223442023546', '2185-53', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-25 18:35:31', 6),
-(121, 0, '2223474402290', '2185-54', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 18:36:46', 6),
-(122, 0, '2223442023546', '2185-54', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-25 18:36:46', 6),
-(123, 0, '2223330048837', '2185-54', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-25 18:36:46', 6),
-(124, 0, '2223442023546', '2185-55', 'Pocari Sweat', 3, 4, 30.00, 120.00, '2024-05-25 18:37:21', 6),
-(125, 0, '2223286700590', '2185-55', 'Red Bull', 3, 5, 75.00, 375.00, '2024-05-25 18:37:21', 6),
-(126, 0, '2223330048837', '2185-55', 'Brown Envelope', 4, 11, 15.00, 165.00, '2024-05-25 18:37:21', 6),
-(127, 0, '2223989316961', '2185-55', 'Index Card (1 pack)', 4, 4, 30.00, 120.00, '2024-05-25 18:37:21', 6),
-(128, 0, '2223474402290', '2185-56', 'Long Folder', 4, 2, 16.00, 32.00, '2024-05-25 20:10:38', 6),
-(129, 0, '2223330048837', '2185-56', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-25 20:10:38', 6),
-(130, 0, '2223474402290', '2185-57', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 20:10:53', 6),
-(131, 0, '2223286700590', '2185-57', 'Red Bull', 3, 1, 75.00, 75.00, '2024-05-25 20:10:53', 6),
-(132, 0, '2223989316961', '2185-57', 'Index Card (1 pack)', 4, 1, 30.00, 30.00, '2024-05-25 20:10:53', 6),
-(133, 0, '2223474402290', '2185-58', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 20:11:03', 6),
-(134, 0, '2223330048837', '2185-58', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-25 20:11:03', 6),
-(135, 0, '2223474402290', '2185-59', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 21:59:13', 6),
-(136, 0, '2223442023546', '2185-59', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-25 21:59:13', 6),
-(137, 0, '2223474402290', '2185-60', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 21:59:25', 6),
-(138, 0, '2223286700590', '2185-60', 'Red Bull', 3, 1, 75.00, 75.00, '2024-05-25 21:59:25', 6),
-(139, 0, '2223474402290', '2185-61', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 21:59:32', 6),
-(140, 0, '2223474402290', '2185-62', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 22:02:52', 6),
-(141, 0, '2223330048837', '2185-62', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-25 22:02:52', 6),
-(142, 0, '2223442023546', '2185-62', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-25 22:02:52', 6),
-(143, 0, '2223442023546', '2151-63', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-25 22:05:09', 5),
-(144, 0, '2223474402290', '2151-63', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 22:05:09', 5),
-(145, 0, '2223330048837', '2151-63', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-25 22:05:09', 5),
-(146, 0, '2223442023546', '2151-64', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-25 22:09:12', 5),
-(147, 0, '2223474402290', '2151-64', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 22:09:12', 5),
-(148, 0, '2223442023546', '2151-65', 'Pocari Sweat', 3, 2, 30.00, 60.00, '2024-05-25 22:10:25', 5),
-(149, 0, '2223474402290', '2151-66', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 22:12:07', 5),
-(150, 0, '2223442023546', '2151-66', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-25 22:12:07', 5),
-(151, 0, '2223474402290', '2151-67', 'Long Folder', 4, 2, 16.00, 32.00, '2024-05-25 22:14:17', 5),
-(152, 0, '2223474402290', '2151-68', 'Long Folder', 4, 2, 16.00, 32.00, '2024-05-25 22:16:01', 5),
-(153, 0, '2223474402290', '2151-69', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 22:31:56', 5),
-(154, 0, '2223330048837', '2151-69', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-25 22:31:56', 5),
-(155, 0, '2223474402290', '2151-70', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 22:32:23', 5),
-(156, 0, '2223330048837', '2151-70', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-25 22:32:23', 5),
-(157, 0, '2223474402290', '2151-71', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 22:33:43', 5),
-(158, 0, '2223474402290', '2151-72', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 22:34:24', 5),
-(159, 0, '2223474402290', '2151-73', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 22:41:02', 5),
-(160, 0, '2223330048837', '2151-73', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-25 22:41:02', 5),
-(161, 0, '2223442023546', '2151-74', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-25 22:43:27', 5),
-(162, 0, '2223474402290', '2151-74', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 22:43:27', 5),
-(163, 0, '2223474402290', '2151-75', 'Long Folder', 4, 2, 16.00, 32.00, '2024-05-25 22:44:42', 5),
-(164, 0, '2223474402290', '2151-76', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 22:48:30', 5),
-(165, 0, '2223330048837', '2151-76', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-25 22:48:30', 5),
-(166, 0, '2223474402290', '2151-77', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 22:49:11', 5),
-(167, 0, '2223442023546', '2151-77', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-25 22:49:11', 5),
-(168, 0, '2223330048837', '2151-77', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-25 22:49:11', 5),
-(169, 0, '2223474402290', '2151-78', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 22:52:51', 5),
-(170, 0, '2223330048837', '2151-78', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-25 22:52:51', 5),
-(171, 0, '2223442023546', '2151-79', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-25 23:00:38', 5),
-(172, 0, '2223442023546', '2151-80', 'Pocari Sweat', 3, 2, 30.00, 60.00, '2024-05-25 23:02:59', 5),
-(173, 0, '2223474402290', '2151-81', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 23:08:16', 5),
-(174, 0, '2223474402290', '2151-82', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 23:13:44', 5),
-(175, 0, '2223442023546', '2151-82', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-25 23:13:44', 5),
-(176, 0, '2223474402290', '2151-83', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 23:15:13', 5),
-(177, 0, '2223474402290', '2151-84', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 23:15:34', 5),
-(178, 0, '2223330048837', '2151-85', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-25 23:16:02', 5),
-(179, 0, '2223474402290', '2151-86', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 23:21:36', 5),
-(180, 0, '2223330048837', '2151-86', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-25 23:21:36', 5),
-(181, 0, '2223474402290', '2151-87', 'Long Folder', 4, 2, 16.00, 32.00, '2024-05-25 23:22:09', 5),
-(182, 0, '2223330048837', '2151-87', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-25 23:22:09', 5),
-(183, 0, '2223474402290', '2151-88', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 23:23:32', 5),
-(184, 0, '2223330048837', '2151-88', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-25 23:23:32', 5),
-(185, 0, '2223286700590', '2151-89', 'Red Bull', 3, 3, 75.00, 225.00, '2024-05-25 23:25:20', 5),
-(186, 0, '2223804737259', '2151-90', 'Bread Pan', 2, 1, 20.00, 20.00, '2024-05-25 23:25:59', 5),
-(187, 0, '2223474402290', '2151-91', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 23:34:44', 5),
-(188, 0, '2223330048837', '2151-91', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-25 23:34:44', 5),
-(189, 0, '2223474402290', '2151-92', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-25 23:36:47', 5),
-(190, 0, '2223330048837', '2151-92', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-25 23:36:47', 5),
-(191, 0, '2223474402290', '2151-93', 'Long Folder', 4, 2, 16.00, 32.00, '2024-05-25 23:37:29', 5),
-(192, 0, '2223330048837', '2151-93', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-25 23:37:29', 5),
-(193, 0, '2223474402290', '2151-94', 'Long Folder', 4, 2, 16.00, 32.00, '2024-05-25 23:38:07', 5),
-(194, 0, '2223330048837', '2151-94', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-25 23:38:07', 5),
-(195, 0, '2223989316961', '2151-95', 'Index Card (1 pack)', 4, 3, 30.00, 90.00, '2024-05-25 23:39:28', 5),
-(196, 0, '2223330048837', '2151-96', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-25 23:41:30', 5),
-(197, 0, '2223442023546', '2151-96', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-25 23:41:30', 5),
-(198, 0, '2223989316961', '2151-96', 'Index Card (1 pack)', 4, 1, 30.00, 30.00, '2024-05-25 23:41:30', 5),
-(199, 0, '2223442023546', '2151-97', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-25 23:41:42', 5),
-(200, 0, '2223330048837', '2151-97', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-25 23:41:42', 5),
-(201, 0, '2223286700590', '2151-97', 'Red Bull', 3, 1, 75.00, 75.00, '2024-05-25 23:41:42', 5),
-(202, 0, '2223286700590', '2151-98', 'Red Bull', 3, 15, 75.00, 1125.00, '2024-05-26 00:02:04', 5),
-(203, 0, '2223474402290', '2151-98', 'Long Folder', 4, 3, 16.00, 48.00, '2024-05-26 00:02:04', 5),
-(204, 0, '2223136144858', '2151-98', 'Scientific Calculator', 4, 4, 250.00, 1000.00, '2024-05-26 00:02:04', 5),
-(205, 0, '2223804737259', '2151-98', 'Bread Pan', 2, 5, 20.00, 100.00, '2024-05-26 00:02:04', 5),
-(206, 0, '2223362259212', '2151-98', 'Nova', 2, 1, 17.00, 17.00, '2024-05-26 00:02:04', 5),
-(207, 0, '2223474402290', '2151-99', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-26 00:05:51', 5),
-(208, 0, '2223442023546', '2151-99', 'Pocari Sweat', 3, 2, 30.00, 60.00, '2024-05-26 00:05:51', 5),
-(209, 0, '2223474402290', '2151-100', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-26 00:06:34', 5),
-(210, 0, '2223989316961', '2151-100', 'Index Card (1 pack)', 4, 1, 30.00, 30.00, '2024-05-26 00:06:34', 5),
-(211, 0, '2223989316961', '2151-101', 'Index Card (1 pack)', 4, 2, 30.00, 60.00, '2024-05-26 00:07:22', 5),
-(212, 0, '2223136144858', '2151-101', 'Scientific Calculator', 4, 1, 250.00, 250.00, '2024-05-26 00:07:22', 5),
-(213, 0, '2223136144858', '2151-102', 'Scientific Calculator', 4, 3, 250.00, 750.00, '2024-05-26 00:08:10', 5),
-(214, 0, '2223804737259', '2151-102', 'Bread Pan', 2, 4, 20.00, 80.00, '2024-05-26 00:08:10', 5),
-(215, 0, '2223474402290', '2151-103', 'Long Folder', 4, 2, 16.00, 32.00, '2024-05-26 00:08:40', 5),
-(216, 0, '2223442023546', '2151-103', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-26 00:08:40', 5),
-(217, 0, '2223731757377', '2151-103', 'Gear Jersey', 1, 1, 350.00, 350.00, '2024-05-26 00:08:40', 5),
-(218, 0, '2223139224839', '2151-103', 'TUP T-Shirt (Black)', 1, 1, 150.00, 150.00, '2024-05-26 00:08:40', 5),
-(219, 0, '2223562053126', '2151-103', 'Yellow Pad Paper', 4, 1, 25.00, 25.00, '2024-05-26 00:08:40', 5),
-(220, 0, '2223139224839', '2151-104', 'TUP T-Shirt (Black)', 1, 1, 150.00, 150.00, '2024-05-26 00:11:36', 5),
-(221, 0, '2223562053126', '2151-104', 'Yellow Pad Paper', 4, 3, 25.00, 75.00, '2024-05-26 00:11:36', 5),
-(222, 0, '2223731757377', '2151-105', 'Gear Jersey', 1, 1, 350.00, 350.00, '2024-05-26 00:13:06', 5),
-(223, 0, '2223344114763', '2151-105', 'Gear Track Jacket', 1, 1, 450.00, 450.00, '2024-05-26 00:13:06', 5),
-(224, 0, '2223989316961', '2151-106', 'Index Card (1 pack)', 4, 2, 30.00, 60.00, '2024-05-26 00:13:45', 5),
-(225, 0, '2223804737259', '2151-107', 'Bread Pan', 2, 5, 20.00, 100.00, '2024-05-26 00:14:52', 5),
-(226, 0, '2223562053126', '2151-108', 'Yellow Pad Paper', 4, 3, 25.00, 75.00, '2024-05-26 00:15:58', 5),
-(227, 0, '2223913899478', '2151-108', 'TUP T-Shirt (White)', 1, 1, 150.00, 150.00, '2024-05-26 00:15:58', 5),
-(228, 0, '2223679136953', '2151-108', 'P.E Pants', 1, 2, 200.00, 400.00, '2024-05-26 00:15:58', 5),
-(229, 0, '2223367498386', '2151-108', 'Coca Cola Zero', 3, 1, 45.00, 45.00, '2024-05-26 00:15:58', 5),
-(230, 0, '2223828501872', '2151-109', 'Piattos', 2, 2, 20.00, 40.00, '2024-05-26 00:17:05', 5),
-(231, 0, '2223795298756', '2151-109', 'Oishi Prawn Crackers', 2, 1, 20.00, 20.00, '2024-05-26 00:17:05', 5),
-(232, 0, '2223367498386', '2151-109', 'Coca Cola Zero', 3, 2, 45.00, 90.00, '2024-05-26 00:17:05', 5),
-(233, 0, '2223828501872', '2151-110', 'Piattos', 2, 1, 20.00, 20.00, '2024-05-26 00:17:56', 5),
-(234, 0, '2223795298756', '2151-110', 'Oishi Prawn Crackers', 2, 2, 20.00, 40.00, '2024-05-26 00:17:56', 5),
-(235, 0, '2223913899478', '2151-110', 'TUP T-Shirt (White)', 1, 1, 150.00, 150.00, '2024-05-26 00:17:56', 5),
-(236, 0, '2223913899478', '2151-111', 'TUP T-Shirt (White)', 1, 2, 150.00, 300.00, '2024-05-26 00:21:54', 5),
-(237, 0, '2223679136953', '2151-111', 'P.E Pants', 1, 1, 200.00, 200.00, '2024-05-26 00:21:54', 5),
-(238, 0, '2223139224839', '2151-112', 'TUP T-Shirt (Black)', 1, 1, 150.00, 150.00, '2024-05-26 00:22:11', 5),
-(239, 0, '2223913899478', '2151-112', 'TUP T-Shirt (White)', 1, 1, 150.00, 150.00, '2024-05-26 00:22:11', 5),
-(240, 0, '2223367498386', '2151-112', 'Coca Cola Zero', 3, 2, 45.00, 90.00, '2024-05-26 00:22:11', 5),
-(241, 0, '2223795298756', '2151-112', 'Oishi Prawn Crackers', 2, 2, 20.00, 40.00, '2024-05-26 00:22:11', 5),
-(242, 0, '2223474402290', '2185-113', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-28 08:25:33', 6),
-(243, 7, '2223474402290', '2185-114', 'Long Folder', 4, 1, 16.00, 16.00, '2024-05-28 09:55:02', 6),
-(244, 4, '2223442023546', '2185-114', 'Pocari Sweat', 3, 1, 30.00, 30.00, '2024-05-28 09:55:02', 6),
-(245, 6, '2223330048837', '2185-114', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-28 09:55:02', 6),
-(246, 5, '2223286700590', '2185-114', 'Red Bull', 3, 1, 75.00, 75.00, '2024-05-28 09:55:02', 6),
-(247, 4, '2223442023546', '2185-115', 'Pocari Sweat', 3, 3, 30.00, 90.00, '2024-05-28 10:14:10', 6),
-(248, 6, '2223330048837', '2185-115', 'Brown Envelope', 4, 2, 15.00, 30.00, '2024-05-28 10:14:10', 6),
-(249, 6, '2223330048837', '2185-116', 'Brown Envelope', 4, 8, 15.00, 120.00, '2024-05-28 14:52:17', 6),
-(250, 11, '2223804737259', '2151-117', 'Bread Pan', 2, 12, 20.00, 240.00, '2024-05-28 14:55:38', 5),
-(251, 22, '2223367498386', '2151-117', 'Coca Cola Zero', 3, 10, 45.00, 450.00, '2024-05-28 14:55:38', 5),
-(252, 15, '2223824388896', '2151-117', 'Pillows (Chocolate)', 2, 2, 15.00, 30.00, '2024-05-28 14:55:38', 5),
-(253, 11, '2223804737259', '2151-118', 'Bread Pan', 2, 9, 20.00, 180.00, '2024-05-28 15:01:50', 5),
-(254, 22, '2223367498386', '2151-118', 'Coca Cola Zero', 3, 10, 45.00, 450.00, '2024-05-28 15:01:50', 5),
-(255, 13, '2223795298756', '2151-118', 'Oishi Prawn Crackers', 2, 10, 20.00, 200.00, '2024-05-28 15:01:50', 5),
-(256, 6, '2223330048837', '1001-119', 'Brown Envelope', 4, 1, 15.00, 15.00, '2024-05-30 04:16:48', 1),
-(258, 6, '2223330048837', '2185-120', 'Brown Envelope', 4, 2, 15.00, 30.00, '2024-05-30 11:30:17', 6),
-(259, 6, '2223330048837', '1209-121', 'Brown Envelope', 4, 3, 15.00, 45.00, '2024-05-30 11:59:33', 2),
-(260, 15, '2223824388896', '1209-121', 'Pillows (Chocolate)', 2, 2, 15.00, 30.00, '2024-05-30 11:59:33', 2),
-(261, 14, '2223828501872', '1209-121', 'Piattos', 2, 1, 20.00, 20.00, '2024-05-30 11:59:33', 2),
-(262, 8, '2223989316961', '1209-121', 'Index Card (1 pack)', 4, 2, 30.00, 60.00, '2024-05-30 11:59:33', 2),
-(263, 24, '2223507586494', '2185-122', 'Limea', 3, 10, 48.00, 480.00, '2024-06-07 14:30:36', 6),
-(264, 6, '2223330048837', '2185-123', 'Brown Envelope', 4, 3, 15.00, 45.00, '2024-06-07 15:01:21', 6),
-(265, 2, '2223432329015', '2185-123', 'Mogu Mogu', 3, 2, 40.00, 80.00, '2024-06-07 15:01:21', 6),
-(266, 8, '2223989316961', '2185-123', 'Index Card (1 pack)', 4, 1, 30.00, 30.00, '2024-06-07 15:01:21', 6),
-(267, 11, '2223804737259', '2185-123', 'Bread Pan', 2, 1, 20.00, 20.00, '2024-06-07 15:01:21', 6);
+(1, 10, '2223913989232', '2152-1', 'Brown Envelope Long', 3, 5, 15.00, 75.00, '2024-06-07 22:48:23', 3),
+(2, 11, '2223738610543', '2152-1', 'Plastic Ruler 12\"x1\"', 3, 3, 15.00, 45.00, '2024-06-07 22:48:23', 3),
+(3, 22, '2223278107346', '2152-1', 'Flex Office Whiteboard Marker-Black', 3, 2, 32.00, 64.00, '2024-06-07 22:48:23', 3),
+(4, 15, '2223779806324', '2152-2', 'Best Buy Clipboard-Long-Pink', 3, 1, 85.00, 85.00, '2024-06-07 22:48:43', 3),
+(5, 2, '2223337259246', '2152-3', '7-UP ', 1, 2, 35.00, 70.00, '2024-06-07 22:49:11', 3),
+(6, 3, '2223225640412', '2152-3', 'Mountain Dew 330ml', 1, 2, 35.00, 70.00, '2024-06-07 22:49:11', 3),
+(7, 4, '2223467683847', '2152-3', 'Royal Tru Orange', 1, 1, 36.00, 36.00, '2024-06-07 22:49:11', 3),
+(8, 1, '2223426366325', '2152-3', 'Coca Cola Zero 325ml', 1, 1, 37.00, 37.00, '2024-06-07 22:49:11', 3),
+(9, 6, '2223877671221', '2152-4', 'Piattos Cheese 85g', 4, 4, 45.00, 180.00, '2024-06-07 22:49:29', 3),
+(10, 7, '222358413372', '2152-4', 'Mang Juan Espesyal Suka\'t Sili 90g', 4, 3, 25.00, 75.00, '2024-06-07 22:49:29', 3),
+(11, 8, '2223854954396', '2152-4', 'Piattos Roadhouse Barbecue 85g', 4, 2, 45.00, 90.00, '2024-06-07 22:49:29', 3),
+(12, 5, '2223532342884', '2152-4', 'Boy Bawang Cornick Garlic Flavor 90g', 4, 2, 20.00, 40.00, '2024-06-07 22:49:29', 3),
+(13, 14, '2223207025516', '2152-5', 'Pocari Sweat 350mL', 1, 1, 40.00, 40.00, '2024-06-07 22:49:58', 3),
+(14, 6, '2223877671221', '2152-5', 'Piattos Cheese 85g', 4, 1, 45.00, 45.00, '2024-06-07 22:49:58', 3),
+(15, 20, '2223890225879', '2152-6', 'Hand Sanitizer', 5, 2, 250.00, 500.00, '2024-06-07 22:51:55', 3),
+(16, 21, '2223915292235', '2152-6', 'Crayola Crayon (48 Colors)', 11, 1, 180.00, 180.00, '2024-06-07 22:51:55', 3),
+(17, 18, '22231014331', '2152-6', 'Art Paper Assorted (1Pack)', 11, 1, 28.00, 28.00, '2024-06-07 22:51:55', 3),
+(18, 11, '2223738610543', '2152-6', 'Plastic Ruler 12\"x1\"', 3, 2, 15.00, 30.00, '2024-06-07 22:51:55', 3),
+(19, 23, '222392454496', '2152-7', 'Badminton Racket', 10, 1, 449.00, 449.00, '2024-06-07 22:52:40', 3),
+(20, 21, '2223915292235', '2151-8', 'Crayola Crayon (48 Colors)', 11, 1, 180.00, 180.00, '2024-06-07 22:54:03', 5);
 
 -- --------------------------------------------------------
 
@@ -751,17 +420,34 @@ CREATE TABLE `stock_inventory` (
 --
 
 INSERT INTO `stock_inventory` (`id`, `product_id`, `category_id`, `stock_in`, `stock_out`, `date_updated`) VALUES
-(1, 24, 3, 100, 0, '2024-06-06 23:22:49'),
-(2, 23, 3, 75, 0, '2024-06-06 23:23:16'),
-(3, 22, 3, 89, 0, '2024-06-06 23:23:34'),
-(4, 6, 4, 68, 0, '2024-06-06 23:23:46'),
-(5, 14, 2, 61, 0, '2024-06-06 23:24:00'),
-(6, 25, 1, 98, 0, '2024-06-07 11:05:27'),
-(7, 22, 3, 0, 9, '2024-06-07 13:14:12'),
-(8, 15, 2, 0, 7, '2024-06-07 13:16:41'),
-(9, 20, 1, 0, 1, '2024-06-07 13:19:19'),
-(10, 7, 4, 0, 1, '2024-06-07 13:27:27'),
-(11, 26, 3, 50, 0, '2024-06-07 17:55:08');
+(1, 1, 1, 50, 0, '2024-06-07 22:19:12'),
+(2, 2, 1, 50, 0, '2024-06-07 22:26:58'),
+(3, 12, 4, 45, 0, '2024-06-07 22:27:19'),
+(4, 3, 1, 40, 0, '2024-06-07 22:28:00'),
+(5, 3, 1, 40, 0, '2024-06-07 22:29:36'),
+(6, 14, 1, 150, 0, '2024-06-07 22:29:58'),
+(7, 9, 3, 100, 0, '2024-06-07 22:31:29'),
+(8, 14, 1, 0, 50, '2024-06-07 22:31:32'),
+(9, 10, 3, 100, 0, '2024-06-07 22:31:37'),
+(10, 11, 3, 50, 0, '2024-06-07 22:31:52'),
+(11, 10, 3, 0, 25, '2024-06-07 22:33:32'),
+(12, 18, 11, 20, 0, '2024-06-07 22:38:03'),
+(13, 21, 11, 20, 0, '2024-06-07 22:40:00'),
+(14, 20, 5, 25, 0, '2024-06-07 22:40:23'),
+(15, 7, 4, 50, 0, '2024-06-07 22:40:56'),
+(16, 4, 1, 40, 0, '2024-06-07 22:41:26'),
+(17, 5, 4, 60, 0, '2024-06-07 22:41:46'),
+(18, 6, 4, 60, 0, '2024-06-07 22:42:04'),
+(19, 8, 4, 60, 0, '2024-06-07 22:42:17'),
+(20, 15, 3, 30, 0, '2024-06-07 22:42:49'),
+(21, 16, 3, 30, 0, '2024-06-07 22:43:03'),
+(22, 13, 1, 50, 0, '2024-06-07 22:43:15'),
+(23, 19, 8, 50, 0, '2024-06-07 22:43:35'),
+(24, 17, 8, 50, 0, '2024-06-07 22:43:44'),
+(25, 22, 3, 100, 0, '2024-06-07 22:44:19'),
+(26, 23, 10, 10, 0, '2024-06-07 22:47:04'),
+(27, 26, 12, 25, 0, '2024-06-07 22:51:07'),
+(28, 28, 12, 10, 0, '2024-06-07 22:53:04');
 
 -- --------------------------------------------------------
 
@@ -777,7 +463,7 @@ CREATE TABLE `suppliers` (
   `contact_number` varchar(255) NOT NULL,
   `contact_email` varchar(255) NOT NULL,
   `business_type` varchar(255) NOT NULL,
-  `if_deleted` tinyint(1) NOT NULL
+  `if_deleted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -785,8 +471,16 @@ CREATE TABLE `suppliers` (
 --
 
 INSERT INTO `suppliers` (`id`, `company_name`, `company_address`, `contact_person`, `contact_number`, `contact_email`, `business_type`, `if_deleted`) VALUES
-(1, 'National Book Store', '4th Floor, Quad Alpha Centrum Building, 125 Pioneer Street, Mandaluyong City 1550, Philippines', 'Ana Cruz, Sales Manager', '+63 (2) 8888-8627', 'ana.cruz@nationalbookstore.com', 'Distributor', 0),
-(2, 'Expressions Stationery Shop, Inc.', 'Unit 2310, Cityland 10 Tower II, H.V. Dela Costa St., Salcedo Village, Makati City 1227, Philippines', 'Maria Rivera, Operations Manager', '+63 (2) 8886-8888', 'maria.rivera@expressions.com.ph', 'Retails', 0);
+(1, 'Global Supplies Inc.', '1234 Business Park Road Makati City, 1226 Metro Manila, Philippines', 'Maria Santos', '+63 912 345 6789', 'm.santos@globalsupplies.com', 'Wholesale', 0),
+(2, 'Metro Retail Stores Group, Inc.', 'Vicsal Building, Ouano Avenue cor. E.O. Perez Street, Subangdaku, Mandaue City, Cebu 6014, Philippines', ' Frank S. Gaisano', '+63-32-236-8390', 'frank.gaisano@metroretail.com.ph', 'Retails', 0),
+(3, ' Puregold Price Club, Inc.', 'Tabacalera Compound, E. Rodriguez Jr. Avenue, Barangay Ugong, Pasig City 1604, Philippines', 'Leonardo B. Dayao', '+63-2-8650-0731', ' leonardo.dayao@puregold.com.ph', 'Wholesale', 0),
+(4, 'Wilcon Depot, Inc.', 'Wilcon Center, 121 Visayas Avenue, Quezon City 1128, Philippines', 'William T. Belo', '+63-2-8277-9888', 'william.belo@wilcon.com.ph', 'Vendor', 0),
+(5, 'Mercury Drug Corporation', ' 7 Mercury Avenue, Bagumbayan, Quezon City 1110, Philippines', ' Vivian Q. Azcona', '+63-2-8539-2021', 'vivian.azcona@mercurydrug.com', 'Wholesale', 0),
+(6, 'National Book Store', 'Quad Alpha Centrum Building, 125 Pioneer Street, Mandaluyong City 1550, Philippines', 'Adrian Ramos', '+63-2-8888-6272', 'adrian.ramos@nationalbookstore.com', 'Wholesale', 0),
+(7, 'Office Warehouse, Inc.', ' 2316 Chino Roces Avenue Extension, Makati City 1231, Philippines', 'Jennifer Lim', '+63-2-8898-1333', ' jennifer.lim@officewarehouse.com.ph', 'Vendor', 0),
+(8, 'Sterling Paper Products Enterprises, Inc.', '2302 Sterling Place, Pasong Tamo Extension, Makati City 1231, Philippines', 'Henry Lim Bon Liong', ' +63-2-8888-4777', ' henry.lim@sterlingpaper.com', 'Importers', 0),
+(9, 'Pandayan Bookshop, Inc.', '810 Aurora Boulevard, Cubao, Quezon City 1109, Philippines', 'Isagani Hizon', '+63-2-8911-8771', 'isagani.hizon@pandayan.com.ph', 'Importers', 0),
+(10, 'Booksale', ' 341 N. Domingo Street, San Juan City 1500, Philippines', 'Roberto Ramos', '+63-2-8725-6139', ' roberto.ramos@booksale.com.ph', 'Raw Materials', 0);
 
 -- --------------------------------------------------------
 
@@ -820,7 +514,7 @@ INSERT INTO `users` (`id`, `userid`, `username`, `email`, `password`, `date`, `i
 (4, 'TUPM-20-1196', 'Lordirene Llyle Prince Sanchez', 'llyle@tup.edu.ph', '$2y$10$NSY6YLjl/KfGE9k6E6VwReomD9uAgeK/Rr.NP2ZvM41noBFrAEyGC', '2024-05-21 21:29:33', 'uploads/users/23ec3a362d74b513e015582df9f5f9a39b2c4940_9732.png', 'Supervisor', 'Male', 1, '', 0),
 (5, 'TUPM-20-2151', 'Leynald Kobe Fundario', 'kobe@tup.edu.ph', '$2y$10$f4K.ypylbPAOGy7eHDkiz..9Rd7kpNyMAoyQ0CA8soSmpF1iy5Jui', '2024-05-21 21:31:19', 'uploads/user/443adc1abe449b577d19f4d7fd2a12bd5cd2b674_2857.png', 'Manager', 'Male', 1, '', 0),
 (6, 'TUPM-20-2185', 'Jhon Patrick Torres', 'trick@tup.edu.ph', '$2y$10$ciSnJuzRljRuVUxhVCTwxu.nPnwN1O1oq3F2288ryv23dtEHOoRzC', '2024-05-21 21:31:55', 'uploads/user/93926f66b00e835986c093465e0413e9449ee10c_3178.png', 'Admin', 'Male', 0, '', 0),
-(7, 'TUPM-24-1002', 'Power', 'power@tup.edu.ph', '$2y$10$72FErCJc70uOehbU.2/Afe8AHl5Ulek/PLuStQR/rvU0r1yzTlaES', '2024-05-21 21:34:50', 'uploads/user/a6dd6720ffcb97b1116785a90ba4977373f9002e_8520.jpg', 'Admin', 'Female', 1, '', 0),
+(7, 'TUPM-24-1002', 'Power', 'power@tup.edu.ph', '$2y$10$72FErCJc70uOehbU.2/Afe8AHl5Ulek/PLuStQR/rvU0r1yzTlaES', '2024-05-21 21:34:50', 'uploads/user/a6dd6720ffcb97b1116785a90ba4977373f9002e_8520.jpg', 'Manager', 'Female', 1, '12345678', 0),
 (8, 'TUPM-24-1003', 'Klee Dodoco', 'klee@tup.edu.ph', '$2y$10$lomJSziV4bsMMZ7TvbHnQeypFKDXkHHmPElTiEjIqfbhcvX31mS.G', '2024-05-23 23:28:46', 'uploads/users/28c4b2956d298331d24b54860d7257627a3af901_6217.png', 'Supervisor', 'Female', 1, '', 0),
 (9, 'TUPM-20-2003', 'May Garcia', 'maygarcia@tup.edu.ph', '$2y$10$fbaQvsT75HgTLV9LuSSGC.6BZrXS4aqU5ro1TO/Mhq2f/QfUr.O3K', '2024-05-24 15:30:23', NULL, 'Cashier', 'Female', 1, '', 0);
 
@@ -928,9 +622,6 @@ ALTER TABLE `suppliers`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `userid` (`userid`),
-  ADD UNIQUE KEY `email_2` (`email`),
-  ADD KEY `email` (`email`),
-  ADD KEY `date` (`date`),
   ADD KEY `role` (`role`);
 
 --
@@ -941,67 +632,67 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `audit_trail`
 --
 ALTER TABLE `audit_trail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `deleted_items`
 --
 ALTER TABLE `deleted_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `refunded_items`
 --
 ALTER TABLE `refunded_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `removed_stocks`
 --
 ALTER TABLE `removed_stocks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `restored_items`
 --
 ALTER TABLE `restored_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=268;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `stock_inventory`
 --
 ALTER TABLE `stock_inventory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
