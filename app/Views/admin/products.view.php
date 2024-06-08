@@ -122,7 +122,7 @@
     <a href="index.php?pg=product-new">
         <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add new</button>
     </a>
-    <a href="index.php?pg=barcode.view">
+    <a href="index.php?pg=barcode.view" target="_blank" rel="noopener noreferrer">
         <button class="btn btn-secondary btn-sm"><i class="fa fa-barcode"></i> All Barcodes</button>
     </a>
     <input type="text" class="form-control" id="searchInput" placeholder="Search..." style="width: 50%; float: right;">
@@ -329,6 +329,15 @@
                             <td><?= esc(number_format($row['stock'])) ?></td>
                         </tr>
                     <?php endforeach?>
+                    <?php foreach($TotalInventory as $TotalInv) :?>
+						<tr style="border-top:2px solid">
+                            <th colspan="1"></th>
+							<th>TOTAL: </th>
+							<th><?= esc(number_format($TotalInv['total_stock_in'])) ?></th>
+							<th><?= esc(($TotalInv['total_stock_out']))?></th>
+                            <th><?= esc(($TotalCurrentStocks[0]['total_current_stocks']))?></th>
+						</tr>
+					<?php endforeach?>
 					</tbody>
 				</table>
 

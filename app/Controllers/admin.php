@@ -54,6 +54,8 @@ else if($tab == "products")
 													WHERE date(stock_inventory.date_updated) BETWEEN '$from_Date' AND '$to_Date' 
 													GROUP BY products.id 
 													ORDER BY products.description;");
+			$TotalInventory = $inventorydb->query("SELECT SUM(stock_in) AS total_stock_in, SUM(stock_out) AS total_stock_out FROM stock_inventory WHERE date(date_updated) BETWEEN '$from_Date' AND '$to_Date'");
+			$TotalCurrentStocks = $inventorydb->query("SELECT SUM(stock) AS total_current_stocks FROM products");
 		} else { //Today's Sales
 			$TimePeriod = "Date: ".date("M j, Y");
 
