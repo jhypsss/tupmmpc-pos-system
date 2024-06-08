@@ -26,7 +26,15 @@ class Product extends Model
 
  	public function validate($data, $id = null)
 	{
+		$productsdb = new Database();
 		$errors = [];
+		
+			if(!empty($data['barcode'])){
+				$barcode = $data['barcode'];
+				$result = $productsdb->query("SELECT * FROM products WHERE barcode = $barcode");
+				if($result)
+					$errors['barcode'] = "Product barcode: ".$result[0]['barcode']." already exist!";
+			}
 
 			//check description
 			if(empty($data['description']))
