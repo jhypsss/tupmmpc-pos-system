@@ -21,7 +21,7 @@ $pdf->Ln();
 $pdf->Cell(0, 10, 'TUPMMPC Product Barcode List', 0, 1, 'C');
 
 // Fetch data from the products table
-$query = "SELECT barcode, description, amount FROM products WHERE if_deleted = 0";
+$query = "SELECT barcode, description, amount FROM products WHERE if_deleted = 0 ORDER BY description";
 $results = $conn->query($query);
 
 if (!empty($results)) {
@@ -32,7 +32,7 @@ if (!empty($results)) {
     $pdf->Cell(90, 10, 'Barcode', 0, 1, 'L');
 
     // Set font back to regular for the table content
-    $pdf->SetFont('helvetica', '', 12);
+    $pdf->SetFont('helvetica', '', 10);
 
     // Loop through the records
     foreach ($results as $row) {
