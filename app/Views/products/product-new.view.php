@@ -15,7 +15,7 @@
 			<br>
 			<div class="mb-3">
 			  <label for="productControlInput1" class="form-label">Product Description</label>
-			  <input name="description" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="productControlInput1" placeholder="Product Description" autocomplete="off">
+			  <input name="description" value="<?php echo $_POST['description'] ?? ''; ?>" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="productControlInput1" placeholder="Product Description" autocomplete="off">
 			  <?php if(!empty($errors['description'])):?>
 					<small class="text-danger"><?=$errors['description']?></small>
 				<?php endif;?>
@@ -23,7 +23,7 @@
 
 			<div class="mb-3">
 				<label for="category_id" class="form-label">Category</label>
-				<select name="category_id" class="form-select <?= !empty($errors['category_id']) ? 'border-danger' : '' ?>" id="category_id">
+				<select name="category_id" class="form-select <?= !empty($errors['category_id']) ? 'border-danger' : '' ?>" id="category_id" required>
 					<option value="0">Select a Category</option>
 					<?php foreach ($list_categories as $list_category):?>
 						<option value="<?=$list_category['id']?>"> <?=$list_category['name']?> </option>
@@ -47,7 +47,7 @@
 			<div class="input-group mb-3">
 			  <input hidden min="0" name="stock" value="0" type="number" class="form-control <?=!empty($errors['stock']) ? 'border-danger':''?>" placeholder="Quantity" aria-label="Quantity" autocomplete="off">
 			  <span class="input-group-text">Amount:</span>
-			  <input min="0" name="amount" value="" step="any" type="number" class="form-control <?=!empty($errors['amount']) ? 'border-danger':''?>" placeholder="0.00" aria-label="Amount" autocomplete="off">
+			  <input min="0" name="amount" value="<?php echo $_POST['amount'] ?? ''; ?>" step="any" type="number" class="form-control <?=!empty($errors['amount']) ? 'border-danger':''?>" placeholder="0.00" aria-label="Amount" autocomplete="off">
 			</div>
 				<?php if(!empty($errors['stock'])):?>
 					<small class="text-danger"><?=$errors['stock']?></small>

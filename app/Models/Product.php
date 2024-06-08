@@ -32,10 +32,6 @@ class Product extends Model
 			if(empty($data['description']))
 			{
 				$errors['description'] = "Product description is required";
-			}else
-			if(!preg_match('/[a-zA-Z0-9 _\-\&\(\)]+/', $data['description']))
-			{
-				$errors['description'] = "Only letters allowed in description";
 			}
 
 			/*
@@ -79,6 +75,11 @@ class Product extends Model
 				{
 					$errors['image'] = "The image size must be lower than ".$max_size."Mb";
 				}
+			}
+
+			if(empty($data['category_id']))
+			{
+				$errors['category_id'] = "Category is required";
 			}
 
 			
