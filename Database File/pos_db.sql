@@ -2,14 +2,14 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jun 08, 2024 at 05:44 AM
--- Server version: 10.5.20-MariaDB
--- PHP Version: 7.3.33
+-- Host: 127.0.0.1
+-- Generation Time: Jun 08, 2024 at 02:28 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone = "+08:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `id22255985_tupmmpc`
+-- Database: `pos_db`
 --
 
 -- --------------------------------------------------------
@@ -514,7 +514,7 @@ INSERT INTO `users` (`id`, `userid`, `username`, `email`, `password`, `date`, `i
 (4, 'TUPM-20-1196', 'Lordirene Llyle Prince Sanchez', 'llyle@tup.edu.ph', '$2y$10$NSY6YLjl/KfGE9k6E6VwReomD9uAgeK/Rr.NP2ZvM41noBFrAEyGC', '2024-05-21 21:29:33', 'uploads/users/23ec3a362d74b513e015582df9f5f9a39b2c4940_9732.png', 'Supervisor', 'Male', 1, '', 0),
 (5, 'TUPM-20-2151', 'Leynald Kobe Fundario', 'kobe@tup.edu.ph', '$2y$10$f4K.ypylbPAOGy7eHDkiz..9Rd7kpNyMAoyQ0CA8soSmpF1iy5Jui', '2024-05-21 21:31:19', 'uploads/user/443adc1abe449b577d19f4d7fd2a12bd5cd2b674_2857.png', 'Manager', 'Male', 1, '', 0),
 (6, 'TUPM-20-2185', 'Jhon Patrick Torres', 'trick@tup.edu.ph', '$2y$10$ciSnJuzRljRuVUxhVCTwxu.nPnwN1O1oq3F2288ryv23dtEHOoRzC', '2024-05-21 21:31:55', 'uploads/user/93926f66b00e835986c093465e0413e9449ee10c_3178.png', 'Admin', 'Male', 0, '', 0),
-(7, 'TUPM-24-1002', 'Power', 'power@tup.edu.ph', '$2y$10$72FErCJc70uOehbU.2/Afe8AHl5Ulek/PLuStQR/rvU0r1yzTlaES', '2024-05-21 21:34:50', 'uploads/user/a6dd6720ffcb97b1116785a90ba4977373f9002e_8520.jpg', 'Manager', 'Female', 1, '12345678', 0),
+(7, 'TUPM-24-1002', 'Power', 'power@tup.edu.ph', '$2y$10$72FErCJc70uOehbU.2/Afe8AHl5Ulek/PLuStQR/rvU0r1yzTlaES', '2024-05-21 21:34:50', 'uploads/user/a6dd6720ffcb97b1116785a90ba4977373f9002e_8520.jpg', 'Admin', 'Female', 1, '', 0),
 (8, 'TUPM-24-1003', 'Klee Dodoco', 'klee@tup.edu.ph', '$2y$10$lomJSziV4bsMMZ7TvbHnQeypFKDXkHHmPElTiEjIqfbhcvX31mS.G', '2024-05-23 23:28:46', 'uploads/users/28c4b2956d298331d24b54860d7257627a3af901_6217.png', 'Supervisor', 'Female', 1, '', 0),
 (9, 'TUPM-20-2003', 'May Garcia', 'maygarcia@tup.edu.ph', '$2y$10$fbaQvsT75HgTLV9LuSSGC.6BZrXS4aqU5ro1TO/Mhq2f/QfUr.O3K', '2024-05-24 15:30:23', NULL, 'Cashier', 'Female', 1, '', 0);
 
