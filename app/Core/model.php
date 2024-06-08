@@ -141,7 +141,8 @@ class Model extends Database
 		$db = new Database;
 		if ($saleqty >= $refundqty){
 			if($saleqty == $refundqty){ //if all item are refund, remove from sale
-				$db->query("DELETE FROM sales WHERE id = $id");
+				//$db->query("DELETE FROM sales WHERE id = $id");
+				$db->query("UPDATE sales SET if_all_refunded = '1', qty='0', total='0' WHERE id = $id");
 			} else {
 				$newQty = $saleqty - $refundqty;
 				$newTotal = $newQty * $saleamount;

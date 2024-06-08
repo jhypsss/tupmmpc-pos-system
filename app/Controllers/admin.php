@@ -105,7 +105,7 @@ else if($tab == "sales")
 	$pager = new Pager($limit);
 	$offset = $pager->offset;
 
-	$query = "select * from sales order by id desc";
+	$query = "SELECT * from sales WHERE if_all_refunded = 0 order by id desc";
 	$totalSales = $saleClass->query("SELECT COUNT(*) AS total FROM sales");
 
 	//get today's sales total
