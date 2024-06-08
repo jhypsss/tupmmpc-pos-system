@@ -35,7 +35,7 @@ if(!empty($raw_data))
 				//$rows = $productClass->query($query,['find'=>$text,'barcode'=>$barcode]);
 			}else{
 				//get all
-				$query = "SELECT * FROM products WHERE if_deleted = 0 ORDER BY views desc";
+				$query = "SELECT *, CASE WHEN stock = 0 THEN 1 ELSE 0 END as stock_order FROM products WHERE if_deleted = 0 ORDER BY views desc, stock_order";
 				$rows = $productClass->query($query);
 			}
 			
