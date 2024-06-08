@@ -24,12 +24,19 @@ class User extends Model
 
  	public function validate($data, $id = null)
 	{
+		$usersdb = new Database();
+
 		$errors = [];
 
 			//check userid
 			if(empty($data['userid']))
 			{
 				$errors['userid'] = "User ID is required";
+			} else {
+				$input_userid = $data["userid"];
+				$result = $usersdb->query("SELECT userid FROM users WHERE userid='$input_userid'");
+				if($result)
+					$errors['userid'] = $data['userid']." already exist!";
 			}
 
 			//check username
@@ -50,6 +57,11 @@ class User extends Model
 			if(!filter_var($data['email'],FILTER_VALIDATE_EMAIL))
 			{
 				$errors['email'] = "Email is not valid";
+			} else {
+				$input = $data["email"];
+				$result = $usersdb->query("SELECT userid FROM users WHERE email='$input'");
+				if($result)
+					$errors['email'] = $data['email']." already exist!";
 			}
 
 			//check password
