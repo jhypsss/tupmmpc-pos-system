@@ -141,14 +141,13 @@
 		const adminLink = document.getElementById('admin-panel');
 
         // Check if the current URL contains the link's href
-        if (currentUrl.includes("index.php?pg=home")) {
+        if (posLink && currentUrl.includes("index.php?pg=home")) {
             // Disable the link
             posLink.style.pointerEvents = 'none';
             posLink.style.fontWeight = 'bold'; 
 			posLink.style.color = '#C23540';
 			posLink.style.fontSize = '17px';
-		}
-		if (currentUrl.includes("index.php?pg=admin")) {
+		} else if (adminLink && currentUrl.includes("index.php?pg=admin")) {
             // Disable the link
             adminLink.style.pointerEvents = 'none';
             adminLink.style.fontWeight = 'bold';

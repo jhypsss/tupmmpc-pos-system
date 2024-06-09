@@ -26,6 +26,13 @@
 				<?php endif;?>
 			</div>
 
+			<div class="input-group mb-3">
+			  <span class="input-group-text">Current Stock: </span>
+			  <input disabled name="stock" value="<?=set_value('stock',$row['stock'])?>" type="number" class="form-control <?=!empty($errors['stock']) ? 'border-danger':''?>" id="stock" placeholder="Quantity" aria-label="Quantity" autocomplete="off">
+			  <span class="input-group-text">Amount:</span>
+			  <input disabled name="amount" value="<?=set_value('amount',$row['amount'])?>" step="any" type="number" class="form-control <?=!empty($errors['amount']) ? 'border-danger':''?>" placeholder="Amount" aria-label="Amount" autocomplete="off">
+			</div>
+
 			
 			<br>
 			<img class="mx-auto d-block" src="<?=$row['image']?>" style="width:80%;">
