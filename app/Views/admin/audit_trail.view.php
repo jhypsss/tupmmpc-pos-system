@@ -36,9 +36,9 @@
     }
 </style>
 <?php if (!empty($audit_trails)):?>
+    <input type="text" class="form-control" id="searchInput" placeholder="Search..." style="width: 50%; float: right;"><br><br>
 <div class="table-responsive" style="height: 650px;overflow-y: scroll;">
     <!-- Table section -->
-    <input type="text" class="form-control" id="searchInput" placeholder="Search..." style="width: 50%; float: right;"><br><br>
     <table class="table table-striped table-hover">
     <thead class="table-red" style="position: sticky;top: 0; background-color: #C23540;">
         <tr>

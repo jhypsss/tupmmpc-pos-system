@@ -113,11 +113,11 @@
 	</a>
   </li>
 </ul>
+
 <?php if($section == 'table'):?>
 
 
 <?php if (!empty($products)):?>
-<div class="table-responsive" style="height: 600px;overflow-y: scroll;">
 <div class="mt-3">
     <a href="index.php?pg=product-new">
         <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add new</button>
@@ -129,18 +129,20 @@
     <br>
     <br>
 </div>
+<div class="table-responsive" style="height: 600px;overflow-y: scroll;">
+
     <!-- Table section -->
     <table class="list-table table table-responsive table-striped table-hover">
         <thead class="table-light" style="position: sticky;top: 0">
             <tr>
                 <th>Barcode</th>
-                <th>Product Name</th>
-                <th>Category</th>
+                <th style="width:20%">Product Name</th>
+                <th style="width:10%">Category</th>
                 <th>Stock</th>
                 <th>Price</th>
                 <th>Image</th>
                 <th>Date Created</th>
-                <th>Encoder</th>
+                <th style="width:10%">Encoder</th>
                 <th>Action</th>
             </tr>
         </thead>

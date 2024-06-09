@@ -65,14 +65,14 @@ class Model extends Database
 	public function update_product($id, $data){
 		$user_id = auth("id");
 		$db = new Database;
-		$catergory_id = $data['category_id'];
+		$category_id = $data['category_id'];
 		
 		
 		$date = $data['date_modified'];
 		if(!empty($data['add_stock'])){
 			$newStock = $data['newStock'];
 			$addStock = $data['add_stock'];
-			$db->query("INSERT INTO stock_inventory (product_id, category_id, stock_in, date_updated) VALUES ($id, $catergory_id, $addStock, '$date')");
+			$db->query("INSERT INTO stock_inventory (product_id, category_id, stock_in, date_updated) VALUES ($id, $category_id, $addStock, '$date')");
 			$db->query("UPDATE products SET stock=$newStock, date_modified='$date' WHERE id=$id");
 		}
 		if(!empty($data['remove_stock'])){
@@ -89,7 +89,7 @@ class Model extends Database
 			$db->query($query, $params);
 
 			$newStock = $data['newStock'];
-			$db->query("INSERT INTO stock_inventory (product_id, category_id, stock_out, date_updated) VALUES ($id, $catergory_id, $removeStock, '$date')");
+			$db->query("INSERT INTO stock_inventory (product_id, category_id, stock_out, date_updated) VALUES ($id, $category_id, $removeStock, '$date')");
 			$db->query("UPDATE products SET stock=$newStock, date_modified='$date' WHERE id=$id");
 		}
 		if(!empty($data['increase_amount'])){
@@ -520,6 +520,7 @@ class Model extends Database
 				$details = "DELETED SUPPLIER: $companyName";
 			}
 		}
+
 		else if(strcmp($action, "RESTORE") == 0){
 			if (strcmp($source, "Users") == 0){
 				$user = new User();
@@ -574,6 +575,34 @@ class Model extends Database
 				$details = "REFUNDED ITEM: $saleBarcode\nReceipt No: $saleReceipt\nProduct Name: $saleProductName\nProduct Price: $product_price\nProduct Sold: $product_sold (₱$sale_total)\nRefund Qty: $refund_qty\nTotal Amount Refund: ₱$total_amount\nStatus: $status\nRemarks: $remarks";
 			}
 		}
+
+		else if(strcmp($action, "RESTOCK") == 0){
+			if (strcmp($source, "Refunded Items") == 0){
+				$productClass = new Product();
+				$row = $productClass->first(["id"=>$id]);
+
+				$productBarcode = $row['barcode'];
+				$productBarcode = $row['description'];
+				$restock_qty = $data['item_qty'];
+
+				$details = "RESTOCK ITEM: $productBarcode\nProduct Name: $productBarcode\nRestocked Qty: $restock_qty"; 
+			}
+		}
+		else if(strcmp($action, "FOR DISPOSAL") == 0){
+			if (strcmp($source, "Refunded Items") == 0){
+				$productClass = new Product();
+				$row = $productClass->first(["id"=>$id]);
+
+				$productBarcode = $row['barcode'];
+				$productBarcode = $row['description'];
+				$dispose_qty = $data['item_qty'];
+				$status = $data['status'];
+				$remarks = $data['remarks'];
+
+				$details = "DISPOSAL ITEM: $productBarcode\nProduct Name: $productBarcode\nDispose Qty: $dispose_qty\nStatus: $status\nRemarks: $remarks"; 
+			}
+		}
+
 		// Insert to Audit Trail
 		$this->insert_Audit_trail($date, $username, $source, $action, $details);
 	}
