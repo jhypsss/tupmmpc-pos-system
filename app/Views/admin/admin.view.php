@@ -70,6 +70,9 @@
                 <a href="index.php?pg=admin&tab=refunded items">
                     <li class="list-group-item <?=$tab=='refunded items'?'active':''?>"><i class="icon fas fa-undo-alt"></i> Refunded Items</li>
                 </a>
+                <a href="index.php?pg=admin&tab=generate reports">
+                    <li class="list-group-item <?=$tab=='generate reports'?'active':''?>"><i class="icon fas fa-chart-bar"></i> Generate Reports</li>
+                </a>
                 <a href="index.php?pg=admin&tab=audit trail">
                     <li class="list-group-item <?=$tab=='audit trail'?'active':''?>"><i class="icon fas fa-file-alt"></i> Audit Trail</li>
                 </a>
@@ -124,6 +127,11 @@
 						// code...
 						require views_path('admin/suppliers');
 						break;
+
+                    case 'generate reports':
+                        // code...
+                        require views_path('admin/generate_reports');
+                        break;
 
 					case 'audit trail':
 						// code...

@@ -24,64 +24,10 @@ else if($tab == "categories")
 
 else if($tab == "products")
 {
-	$section = $_GET['s'] ?? 'table';
 	$productClass = new Product();
 	$products = $productClass->query("select * from products where if_deleted = 0 order by id desc");
 	$totalProducts = $productClass->query("SELECT COUNT(*) AS total FROM products WHERE if_deleted=0;");
 	$stocks = $productClass->query("SELECT * FROM products WHERE stock <= 10 OR stock = 0");
-
-	if($section == "inventory"){
-		$inventorydb = new Database();
-		$from_Date = $_GET['from_date'] ?? null;
-		$to_Date = $_GET['to_date'] ?? null;
-
-		if($from_Date && $to_Date){ //searched
-			if ($from_Date == $to_Date)
-				$TimePeriod = "Date: ".date('M j, Y', strtotime($from_Date));
-			else 
-				$TimePeriod = "Time Period from: ".date('M j, Y', strtotime($from_Date))." to: ". date("M j, Y", strtotime($to_Date));
-			
-			$StocksPerCategories = $inventorydb->query(
-				"SELECT stock_inventory.category_id, categories.name, SUM(stock_inventory.stock_in) AS stock_in_qty, 
-					SUM(stock_inventory.stock_out) AS stock_out_qty FROM stock_inventory 
-				LEFT JOIN categories ON categories.id = stock_inventory.category_id 
-				WHERE date(stock_inventory.date_updated) BETWEEN '$from_Date' AND '$to_Date' 
-				GROUP BY stock_inventory.category_id 
-				ORDER BY categories.name;");
-			$StocksInventory = $inventorydb->query(
-				"SELECT products.barcode, products.description, SUM(stock_inventory.stock_in) AS stock_in_qty, 
-						SUM(stock_inventory.stock_out) AS stock_out_qty, products.stock, stock_inventory.date_updated 
-				FROM products 
-				LEFT JOIN stock_inventory ON products.id = stock_inventory.product_id 
-				WHERE date(stock_inventory.date_updated) BETWEEN '$from_Date' AND '$to_Date' 
-				GROUP BY products.id 
-				ORDER BY products.description;");
-			$TotalInventory = $inventorydb->query("SELECT SUM(stock_in) AS total_stock_in, SUM(stock_out) AS total_stock_out FROM stock_inventory WHERE date(date_updated) BETWEEN '$from_Date' AND '$to_Date'");
-			$TotalCurrentStocks = $inventorydb->query("SELECT SUM(stock) AS total_current_stocks FROM products");
-		} else { //Today's Sales
-			$TimePeriod = "Date: ".date("M j, Y");
-
-			$StocksPerCategories = $inventorydb->query(
-				"SELECT stock_inventory.category_id, categories.name, SUM(stock_inventory.stock_in) AS stock_in_qty, 
-					SUM(stock_inventory.stock_out) AS stock_out_qty 
-				FROM stock_inventory 
-				LEFT JOIN categories ON categories.id = stock_inventory.category_id 
-				WHERE date(stock_inventory.date_updated) = CURRENT_DATE
-				GROUP BY stock_inventory.category_id 
-				ORDER BY categories.name;");
-			$StocksInventory = $inventorydb->query(
-				"SELECT products.barcode, products.description, SUM(stock_inventory.stock_in) AS stock_in_qty, 
-						SUM(stock_inventory.stock_out) AS stock_out_qty, products.stock, stock_inventory.date_updated 
-				FROM products 
-				LEFT JOIN stock_inventory ON products.id = stock_inventory.product_id 
-				WHERE date(stock_inventory.date_updated) = CURRENT_DATE
-				GROUP BY products.id 
-				ORDER BY products.description;");
-			$TotalInventory = $inventorydb->query("SELECT SUM(stock_in) AS total_stock_in, SUM(stock_out) AS total_stock_out FROM stock_inventory WHERE date(date_updated) = CURRENT_DATE");
-			$TotalCurrentStocks = $inventorydb->query("SELECT SUM(stock) AS total_current_stocks FROM products");
-			
-		}
-	}
 }
 
 else if($tab == "suppliers")
@@ -152,8 +98,81 @@ else if($tab == "sales")
 		$all_records = $db->query($query);
 
 	}
+}
 
-	else if($section == "generate"){
+else if($tab == "removed stocks"){
+	$removed_db = new Database();
+	$lists = $removed_db->query("SELECT * FROM removed_stocks order by id desc");
+}
+
+else if($tab == "refunded items"){
+	$section = $_GET['s'] ?? 'list';
+	$refund_db = new Database();
+	$refunded_items = $refund_db->query("SELECT * FROM refunded_items WHERE action_taken = 'Pending' order by id desc");
+
+	if($section == "completed"){
+		$completed_items = $refund_db->query("SELECT * FROM refunded_items WHERE action_taken != 'Pending' order by id desc");
+	}
+}
+
+else if($tab == "generate reports")
+{
+	$section = $_GET['s'] ?? 'inventory';
+
+	if($section == "inventory"){
+		$inventorydb = new Database();
+		$from_Date = $_GET['from_date'] ?? null;
+		$to_Date = $_GET['to_date'] ?? null;
+
+		if($from_Date && $to_Date){ //searched
+			if ($from_Date == $to_Date)
+				$TimePeriod = "Date: ".date('M j, Y', strtotime($from_Date));
+			else 
+				$TimePeriod = "Time Period from: ".date('M j, Y', strtotime($from_Date))." to: ". date("M j, Y", strtotime($to_Date));
+			
+			$StocksPerCategories = $inventorydb->query(
+				"SELECT stock_inventory.category_id, categories.name, SUM(stock_inventory.stock_in) AS stock_in_qty, 
+					SUM(stock_inventory.stock_out) AS stock_out_qty FROM stock_inventory 
+				LEFT JOIN categories ON categories.id = stock_inventory.category_id 
+				WHERE date(stock_inventory.date_updated) BETWEEN '$from_Date' AND '$to_Date' 
+				GROUP BY stock_inventory.category_id 
+				ORDER BY categories.name;");
+			$StocksInventory = $inventorydb->query(
+				"SELECT products.barcode, products.description, SUM(stock_inventory.stock_in) AS stock_in_qty, 
+						SUM(stock_inventory.stock_out) AS stock_out_qty, products.stock, stock_inventory.date_updated 
+				FROM products 
+				LEFT JOIN stock_inventory ON products.id = stock_inventory.product_id 
+				WHERE date(stock_inventory.date_updated) BETWEEN '$from_Date' AND '$to_Date' 
+				GROUP BY products.id 
+				ORDER BY products.description;");
+			$TotalInventory = $inventorydb->query("SELECT SUM(stock_in) AS total_stock_in, SUM(stock_out) AS total_stock_out FROM stock_inventory WHERE date(date_updated) BETWEEN '$from_Date' AND '$to_Date'");
+			$TotalCurrentStocks = $inventorydb->query("SELECT SUM(stock) AS total_current_stocks FROM products");
+		} else { //Today's Sales
+			$TimePeriod = "Date: ".date("M j, Y");
+
+			$StocksPerCategories = $inventorydb->query(
+				"SELECT stock_inventory.category_id, categories.name, SUM(stock_inventory.stock_in) AS stock_in_qty, 
+					SUM(stock_inventory.stock_out) AS stock_out_qty 
+				FROM stock_inventory 
+				LEFT JOIN categories ON categories.id = stock_inventory.category_id 
+				WHERE date(stock_inventory.date_updated) = CURRENT_DATE
+				GROUP BY stock_inventory.category_id 
+				ORDER BY categories.name;");
+			$StocksInventory = $inventorydb->query(
+				"SELECT products.barcode, products.description, SUM(stock_inventory.stock_in) AS stock_in_qty, 
+						SUM(stock_inventory.stock_out) AS stock_out_qty, products.stock, stock_inventory.date_updated 
+				FROM products 
+				LEFT JOIN stock_inventory ON products.id = stock_inventory.product_id 
+				WHERE date(stock_inventory.date_updated) = CURRENT_DATE
+				GROUP BY products.id 
+				ORDER BY products.description;");
+			$TotalInventory = $inventorydb->query("SELECT SUM(stock_in) AS total_stock_in, SUM(stock_out) AS total_stock_out FROM stock_inventory WHERE date(date_updated) = CURRENT_DATE");
+			$TotalCurrentStocks = $inventorydb->query("SELECT SUM(stock) AS total_current_stocks FROM products");
+			
+		}
+	}
+
+	else if($section == "sales"){
 		$salesClass = new Database();
 		$from_Date = $_GET['from_date'] ?? null;
 		$to_Date = $_GET['to_date'] ?? null;
@@ -179,22 +198,6 @@ else if($tab == "sales")
 			$TotalRefunds = $salesClass->query("SELECT SUM(qty) AS refunded_qty, SUM(total) AS refunded_amount FROM refunded_items WHERE date(date) = CURRENT_DATE");
 		}
 
-	}
-
-}
-
-else if($tab == "removed stocks"){
-	$removed_db = new Database();
-	$lists = $removed_db->query("SELECT * FROM removed_stocks order by id desc");
-}
-
-else if($tab == "refunded items"){
-	$section = $_GET['s'] ?? 'list';
-	$refund_db = new Database();
-	$refunded_items = $refund_db->query("SELECT * FROM refunded_items WHERE action_taken = 'Pending' order by id desc");
-
-	if($section == "completed"){
-		$completed_items = $refund_db->query("SELECT * FROM refunded_items WHERE action_taken != 'Pending' order by id desc");
 	}
 }
 

@@ -43,12 +43,39 @@
         color: #fff;
     }
 </style>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var searchInput = document.getElementById('searchInput');
+        var tableRows = document.querySelectorAll('.table tbody tr');
+
+        // Search functionality
+        searchInput.addEventListener('keyup', function(event) {
+            var query = event.target.value.toLowerCase();
+
+            tableRows.forEach(function(row) {
+                var cells = row.getElementsByTagName('td');
+                var found = false;
+
+                Array.from(cells).forEach(function(cell) {
+                    var cellText = cell.textContent.toLowerCase();
+                    if (cellText.indexOf(query) > -1) {
+                        found = true;
+                    }
+                });
+
+                row.style.display = found ? '' : 'none';
+            });
+        });
+    });
+</script>
 <?php if (!empty($lists)):?>
+    <input type="text" class="form-control" id="searchInput" placeholder="Search..." style="width: 50%; float: right;">
+    <br>
+    <br>
 <div class="table-responsive" style="height: 500px;overflow-y: scroll;">
 	<table class="table table-striped table-hover">
 		<thead class="table-light" style="position: sticky;top: 0">
 		<tr>
-            <th>Date Removed</th>
 			<th>Barcode</th>
 			<th>Product Name</th>
 			<th>Price</th>
@@ -56,12 +83,12 @@
             <th>Initiator</th>
 			<th>Status</th>
 			<th>Remarks</th>
+            <th>Date Removed</th>
 		</tr>
 		</thead>
 		<tbody>
 	 	<tr>
 		<?php foreach ($lists as $list): ?>
-            <td><?=date("M j, Y - h:i a",strtotime($list['date'])) ?></td>
             <?php
                 $productrow = get_productRow($list['product_id']); ?>
 			<td><?= esc($productrow['barcode']); ?></td>
@@ -85,6 +112,7 @@
             </td>
 			<td><?= esc($list['status']); ?></td>
             <td><?= esc($list['remarks']); ?></td>
+            <td><?=date("M j, Y - h:i a",strtotime($list['date'])) ?></td>
             
 		</tr>
 		<?php endforeach;?>
