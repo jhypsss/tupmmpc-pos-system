@@ -27,6 +27,25 @@ if (!empty($results)) {
 			0%{opacity: 0;transform: translateY(-100px);}
 			100%{opacity: 1;transform: translateY(0px);}
 		}
+		#confirmModal, #confirmModal2{
+			animation: appear .5s ease;
+			background-color: #000000bb; 
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			left:0px;
+			top:0px;
+			z-index: 1000;
+		}
+
+		#confirmdiv {
+			width:600px;
+			min-height:200px;
+			background-color:white;
+			padding:20px;
+			margin:auto;
+			margin-top:100px
+		}
 
 	</style>
 
@@ -57,7 +76,7 @@ if (!empty($results)) {
 				<table class="table table-striped table-hover">
 					<tr>
 						<th>Image</th><th>Description</th><th>Stock</th><th>Amount</th>
-						<th><button onclick="void_button()" class="btn btn-btn btn-danger btn-sm">Void</button></th>
+						<th><button onclick="showConfirmModal('void_item')" class="btn btn-btn btn-danger btn-sm">Void</button></th>
 					</tr>
 					
 					<tbody class="js-items">
@@ -70,7 +89,7 @@ if (!empty($results)) {
 			<div class="js-gtotal alert alert-danger" style="font-size:25px; font-weight:bold;">Total: ₱0.00</div>
 			<div class="">
 				<button onclick="show_modal('amount-paid')" class="btn btn-success my-2 w-100 py-3">Checkout</button>
-				<button onclick="clear_all()" class="btn btn-primary my-2 w-100">Clear All</button>
+				<button onclick="showConfirmModal('clear_all')" class="btn btn-primary my-2 w-100">Clear All</button>
 			</div>
 		</div>
 	</div>	
@@ -116,6 +135,30 @@ if (!empty($results)) {
 		</div>
 	</div>
 	<!--end change modal-->
+	<!--clear all void modal-->
+	<div id="confirmModal" class="clear_all" style="display:none">
+		<div id="confirmdiv">
+			<div class="mb-3">
+				<h5 id="confirmMessage">Are you sure you want to clear all items? <br> Please enter a code.</h5>
+				<label class="form-label">Void Code:</label>
+				<input class="form-control" type="password" id="codeInput" placeholder="••••••••••">
+			</div>
+			<button onclick="confirmClearAll(true)" class="btn btn-danger float-end">Confirm</button>
+			<button role="close-button"  onclick="confirmClearAll(false)" class="btn btn-secondary">Cancel</button>
+		</div>
+	</div>
+	<!--clear all void modal-->
+	<div id="confirmModal2" style="display:none">
+		<div id="confirmdiv">
+			<div class="mb-3">
+				<h5 id="confirmMessage">Please enter a code.</h5>
+				<label class="form-label">Void Code:</label>
+				<input class="form-control" type="password" id="codeInput2" placeholder="••••••••••">
+			</div>
+			<button onclick="void_button(true)" class="btn btn-danger float-end">Confirm</button>
+			<button role="close-button" onclick="void_button(false)" class="btn btn-secondary">Cancel</button>
+		</div>
+	</div>
 
 	
 <!--end modals-->
@@ -409,42 +452,104 @@ if (!empty($results)) {
 	}
 
 	var voidCodes = <?php echo json_encode($void_codes); ?>;
+	var reload = false;
 
+	document.addEventListener('keydown', function(event) {
+		if (document.getElementById('confirmModal').style.display === 'block') {
+			if (event.key === 'Enter') {
+				confirmClearAll(true);
+			} else if (event.key === 'Escape') {
+				confirmClearAll(false);
+			}
+		} else if (document.getElementById('confirmModal2').style.display === 'block') {
+			if (event.key === 'Enter') {
+				void_button(true);
+			} else if (event.key === 'Escape') {
+				void_button(false);
+			}
+		}
+	});
+
+	function showConfirmModal(voiding) {
+		if (ITEMS.length == 0)
+			alert("No items in cart!");
+		else{
+			if (voiding == 'void_item'){
+				document.getElementById('confirmModal2').style.display = 'block';
+				document.getElementById('codeInput2').focus();
+			}
+			else if (voiding == 'clear_all'){
+				document.getElementById('confirmModal').style.display = 'block';
+				document.getElementById('codeInput').focus();
+			}
+		}
+	}
+
+	function confirmClearAll(confirm) {
+		const modal = document.getElementById('confirmModal');
+		const code = document.getElementById('codeInput').value.trim();
+
+		if (confirm) {
+			if (code === null || code.trim() === '') {
+				alert("Incorrect code.");
+			} else if (voidCodes.includes(code)) {
+				ITEMS = [];
+				refresh_items_display();
+				document.getElementById('codeInput').value='';
+				modal.style.display = 'none';
+			} else {
+				alert("Incorrect code.");
+			}
+		}else{
+			modal.style.display = 'none';
+		}
+	}
+
+	
+	// Function to Void Button
+	function void_button(confirm){
+		const modal = document.getElementById('confirmModal2');
+		const code = document.getElementById('codeInput2').value.trim();
+		//var code = prompt("Please enter a code.");
+		// Check if the code matches
+		if (confirm) {
+			if (code === null || code.trim() === '') {
+				alert("Incorrect code.");
+				return;
+			} else if (voidCodes.includes(code.trim())) {
+				var x = document.getElementsByClassName("remove_btn");
+				//console.log(x);
+				for (i=0; i<x.length; i++){
+					x[i].style.display = "block";
+				}
+				document.getElementById('codeInput2').value='';
+				modal.style.display = 'none';
+			} else {
+				alert("Incorrect code.");
+			}
+		} else {
+			modal.style.display = 'none';
+		}
+	}
+
+	/* old codes
 	function clear_all()
 	{
 		var code = prompt("Are you sure you want to clear all items in the list?!\nPlease enter a code.");
 	
 		// Check if the code matches
 		if (code === null || code.trim() === '') {
-			return; // User canceled or entered empty code
+			alert("Incorrect code.");
+			return false; // User canceled or entered empty code
 		} else if (voidCodes.includes(code.trim())) {
 			ITEMS = [];
 			refresh_items_display();
-			/*setTimeout(function () {
-				location.reload();
-				},100);
-			*/
+			return true;
 		} else {
 			alert("Incorrect code.");
+			return false;
 		}
-	}
-	// Function to Void Button
-	function void_button(){
-		var code = prompt("Please enter a code.");
-		// Check if the code matches
-		if (code === null || code.trim() === '') {
-			return; // User canceled or entered empty code
-		} else if (voidCodes.includes(code.trim())) {
-			var x = document.getElementsByClassName("remove_btn");
-			//console.log(x);
-			for (i=0; i<x.length; i++){
-				//x.style.display = "block";
-				x[i].style.display = "block";
-			}
-		} else {
-			alert("Incorrect code.");
-		}
-	}
+	}*/
 
 	/* OLD codes Function to clear item
 	function clear_item(index) {
@@ -620,32 +725,6 @@ if (!empty($results)) {
 			data_type:"checkout",
 			text:ITEMS_NEW
 		});
-
-		/*
-		print_receipt({
-			store: '<?= esc(APP_NAME) ?>',
-			address: 'Ayala Blvd., Ermita, Manila, 1000, Philippines',
-			amount: AMOUNT,
-			change: CHANGE,
-			gtotal: GTOTAL,
-			receiptno: RECEIPT_NO,
-			staffid: '<?= auth('userid') ?>',
-			staff: '<?= auth('username') ?>',
-			data: ITEMS,
-		});
-		
-
-		//clear items
-		ITEMS = [];
-		refresh_items_display();
-		
-
-		//reload products
-		send_data({
-			data_type:"search",
-			text:""
-		});
-		*/
 	}
 
 	function print_receipt(obj)
@@ -673,13 +752,10 @@ if (!empty($results)) {
 		// Check for F5 key (key code 116)
 		if (event.key === 'F5' || (event.ctrlKey && event.key === 'r')) {
 			event.preventDefault();
+			if (ITEMS.length != 0){
+				showConfirmModal('clear_all');
+			}
 		}
-	});
-
-	// Remove the default confirmation if you don't need it
-	window.addEventListener('beforeunload', function (data) {
-		if(data)
-			data.preventDefault();
 	});
 
 </script>
