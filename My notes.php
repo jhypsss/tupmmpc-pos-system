@@ -65,3 +65,13 @@ Llyle:
 ✅ UPDATE: Click VOID msg: "Please Enter a Code."
 ✅ Delete Item (Deleted at Products but not deleted at POS)
 ✅ Sales Time ("not accurate")
+
+
+if(Auth::access('Admin') || Auth::access('Supervisor') || Auth::access('Manager')){
+	require views_path('admin/admin');
+}
+else{
+	Auth::setMessage("You don't have access to the admin page");
+	require views_path('auth/denied');
+}
+

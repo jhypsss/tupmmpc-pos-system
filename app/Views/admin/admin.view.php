@@ -49,9 +49,22 @@
                 <a href="index.php?pg=admin&tab=dashboard">
                     <li class="list-group-item <?=!$tab || $tab == 'dashboard'?'active':''?>" ><i class="icon fa fa-th-large"></i> Dashboard</li>
                 </a>
+                <?php if (Auth::access('Admin')):?>
                 <a href="index.php?pg=admin&tab=users">
                     <li class="list-group-item <?=$tab=='users'?'active':''?>"><i class="icon fa fa-users"></i> Users</li>
                 </a>
+                <a href="index.php?pg=admin&tab=audit trail">
+                    <li class="list-group-item <?=$tab=='audit trail'?'active':''?>"><i class="icon fas fa-file-alt"></i> Audit Trail</li>
+                </a>
+                <a href="index.php?pg=admin&tab=deleted items">
+                    <li class="list-group-item <?=$tab=='deleted items'?'active':''?>"><i class="icon fas fa-trash-alt"></i> Deleted Items</li>
+                </a>
+                <a href="index.php?pg=admin&tab=restored items">
+                    <li class="list-group-item <?=$tab=='restored items'?'active':''?>"><i class="icon fas fa-trash-restore-alt"></i> Restored Items</li>
+                </a>
+                
+                
+                <?php elseif (Auth::access('Manager')):?>
                 <a href="index.php?pg=admin&tab=categories">
                     <li class="list-group-item <?=$tab=='categories'?'active':''?>"><i class="icon fa fa-table"></i> Categories</li>
                 </a>
@@ -67,21 +80,15 @@
                 <a href="index.php?pg=admin&tab=sales">
                     <li class="list-group-item <?=$tab=='sales'?'active':''?>"><i class="icon fa fa-money-bill-wave"></i> Sales</li>
                 </a>
-                <a href="index.php?pg=admin&tab=refunded items">
-                    <li class="list-group-item <?=$tab=='refunded items'?'active':''?>"><i class="icon fas fa-undo-alt"></i> Refunded Items</li>
-                </a>
-                <a href="index.php?pg=admin&tab=generate reports">
-                    <li class="list-group-item <?=$tab=='generate reports'?'active':''?>"><i class="icon fas fa-chart-bar"></i> Generate Reports</li>
-                </a>
-                <a href="index.php?pg=admin&tab=audit trail">
-                    <li class="list-group-item <?=$tab=='audit trail'?'active':''?>"><i class="icon fas fa-file-alt"></i> Audit Trail</li>
-                </a>
-                <a href="index.php?pg=admin&tab=deleted items">
-                    <li class="list-group-item <?=$tab=='deleted items'?'active':''?>"><i class="icon fas fa-trash-alt"></i> Deleted Items</li>
-                </a>
-                <a href="index.php?pg=admin&tab=restored items">
-                    <li class="list-group-item <?=$tab=='restored items'?'active':''?>"><i class="icon fas fa-trash-restore-alt"></i> Restored Items</li>
-                </a>
+                    <?php if(Auth::access('Supervisor')):?>
+                    <a href="index.php?pg=admin&tab=refunded items">
+                        <li class="list-group-item <?=$tab=='refunded items'?'active':''?>"><i class="icon fas fa-undo-alt"></i> Refunded Items</li>
+                    </a>
+                    <a href="index.php?pg=admin&tab=generate reports">
+                        <li class="list-group-item <?=$tab=='generate reports'?'active':''?>"><i class="icon fas fa-chart-bar"></i> Generate Reports</li>
+                    </a>
+                    <?php endif; ?>
+                <?php endif; ?>
                 <a href="index.php?pg=logout">
                     <li class="list-group-item"><i class="icon fa fa-sign-out-alt"></i> Log Out</li>
                 </a>
@@ -96,61 +103,121 @@
 				switch ($tab) {
 					case 'users':
 						// code...
-						require views_path('admin/users');
+                        if(Auth::access('Admin')){
+                            require views_path('admin/users');
+                        }
+                        else{
+                            Auth::setMessage("You don't have access to this tab");
+                            require views_path('auth/access-denied');
+                        }
 						break;
 
 					case 'categories':
 						// code...
-						require views_path('admin/categories');
+                        if(Auth::access('Manager')){
+                            require views_path('admin/categories');
+                        }
+                        else{
+                            Auth::setMessage("You don't have access to this tab");
+                            require views_path('auth/access-denied');
+                        }
 						break;
+                    case 'suppliers':
+                        // code...
+                        if(Auth::access('Manager')){
+                            require views_path('admin/suppliers');
+                        }
+                        else{
+                            Auth::setMessage("You don't have access to this tab");
+                            require views_path('auth/access-denied');
+                        }
+                        break;
 
 					case 'products':
 						// code...
-						require views_path('admin/products');
+                        if(Auth::access('Manager')){
+                            require views_path('admin/products');
+                        }
+                        else{
+                            Auth::setMessage("You don't have access to this tab");
+                            require views_path('auth/access-denied');
+                        }
 						break;
+                    case 'removed stocks':
+                        // code...
+                        if(Auth::access('Manager')){
+                            require views_path('admin/removed_stocks');
+                        }
+                        else{
+                            Auth::setMessage("You don't have access to this tab");
+                            require views_path('auth/access-denied');
+                        }
+                        break;
 
 					case 'sales':
 						// code...
-						require views_path('admin/sales');
-						break;
-					case 'removed stocks':
-						// code...
-						require views_path('admin/removed_stocks');
+                        if(Auth::access('Manager')){
+                            require views_path('admin/sales');
+                        }
+                        else{
+                            Auth::setMessage("You don't have access to this tab");
+                            require views_path('auth/access-denied');
+                        }
 						break;
 						
 					case 'refunded items':
 						// code...
-						require views_path('admin/refunded_items');
-						break;
-					
-					case 'suppliers':
-						// code...
-						require views_path('admin/suppliers');
+                        if(Auth::access('Supervisor')){
+                            require views_path('admin/refunded_items');
+                        }
+                        else{
+                            Auth::setMessage("You don't have access to this tab");
+                            require views_path('auth/access-denied');
+                        }
 						break;
 
                     case 'generate reports':
                         // code...
-                        require views_path('admin/generate_reports');
+                        if(Auth::access('Supervisor')){
+                            require views_path('admin/generate_reports');
+                        }
+                        else{
+                            Auth::setMessage("You don't have access to this tab");
+                            require views_path('auth/access-denied');
+                        }
                         break;
 
 					case 'audit trail':
 						// code...
-						require views_path('admin/audit_trail');
+                        if(Auth::access('Admin')){
+                            require views_path('admin/audit_trail');
+                        }
+                        else{
+                            Auth::setMessage("You don't have access to this tab");
+                            require views_path('auth/access-denied');
+                        }
 						break;
 
 					case 'deleted items':
 						// code...
-						require views_path('admin/deleted_items');
+                        if(Auth::access('Admin')){
+                            require views_path('admin/deleted_items');
+                        }
+                        else{
+                            Auth::setMessage("You don't have access to this tab");
+                            require views_path('auth/access-denied');
+                        }
 						break;
 					
 					case 'restored items':
 						// code...
-						require views_path('admin/restored_items');
-						break;
-
-					case 'barcode':
-						// code...
-						require views_path('admin/barcode');
+                        if(Auth::access('Admin')){
+                            require views_path('admin/restored_items');
+                        }
+                        else{
+                            Auth::setMessage("You don't have access to this tab");
+                            require views_path('auth/access-denied');
+                        }
 						break;
 					
 					default:

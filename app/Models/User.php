@@ -32,6 +32,10 @@ class User extends Model
 			if(empty($data['userid']))
 			{
 				$errors['userid'] = "User ID is required";
+			} else 
+			if(!preg_match('/^TUPM-\d{2}-\d{4,5}$/', $data['userid']))
+			{
+				$errors['userid'] = "ID must be TUPM-XX-XXXX";
 			} else {
 				if(!empty($data['userid']) && !$id)
 				{
@@ -67,6 +71,11 @@ class User extends Model
 			{
 				$errors['email'] = "Email is required";
 			}else
+			if(!preg_match('/^[a-zA-Z0-9._%+-]+@tup\.edu\.ph$/', $data['email']))
+			{
+				$errors['email'] = "Email must be @tup.edu.ph";
+			}
+
 			if(!filter_var($data['email'],FILTER_VALIDATE_EMAIL))
 			{
 				$errors['email'] = "Email is not valid";

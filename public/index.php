@@ -14,5 +14,13 @@ if(file_exists("../app/Controllers/".$controller . ".php"))
 {
 	require "../app/Controllers/".$controller . ".php";
 }else{
-	echo "controller not found";
+	echo "
+
+	<br>
+		<center>
+			<h1>Page Not Found</h1>
+		</center>
+	<br>
+	
+";
 }

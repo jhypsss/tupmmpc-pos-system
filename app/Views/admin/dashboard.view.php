@@ -1,9 +1,12 @@
 <div class="table-responsive row justify-content-center p-3">
+    <?php if (Auth::access('Admin')):?>
     <div class="col-md-3 border rounded p-4 my-2 m-2 text-center dashboard-card blue-gradient">
         <i class="fa fa-user icon"></i>
         <h4>Total Users:</h4>
         <h1><?=number_format($total_users)?></h1>
     </div>
+    
+    <?php else:?>
     <div class="col-md-3 border rounded p-4 my-2 m-2 text-center dashboard-card green-gradient">
         <i class="fa fa-table icon"></i>
         <h4>Categories:</h4>
@@ -24,7 +27,7 @@
         <h4>Total Sales:</h4>
         <h1>₱<?=number_format($total_sales)?></h1>
     </div>
-    
+    <?php endif; ?>
 </div>
 
 

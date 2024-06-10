@@ -4,13 +4,7 @@ $tab = $_GET['tab'] ?? 'dashboard';
 
 if($tab == "users")
 {
-
-	//$limit = 5;
-	//$pager = new Pager($limit);
-	//$offset = $pager->offset;
-
 	$userClass = new User();
-	//$users = $userClass->query("select * from users where if_deleted = 0 order by id desc limit $limit offset $offset");
 	$users = $userClass->query("select * from users where if_deleted = 0");
 	$totalUsers = $userClass->query("SELECT COUNT(*) AS total FROM users WHERE if_deleted=0;");
 }
@@ -250,7 +244,8 @@ else if($tab == "dashboard")
 	$query = "SELECT COUNT(id) AS total FROM suppliers WHERE if_deleted=0;";
 	$mysuppliers = $db->query($query);
 	$total_suppliers = $mysuppliers[0]['total'];
-	
+} else {
+	redirect("#");
 }
 
 

@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
  		{
  			authenticate($row[0]);
 
-			if(Auth::access('Admin') || Auth::access('Supervisor')){
+			if(Auth::access('Admin') || Auth::access('Supervisor') || Auth::access('Manager')){
 				redirect('admin');
 			}else{
 				redirect('home');
@@ -29,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 		{
 			authenticate($row[0]);
 
-		   if(Auth::access('Admin') || Auth::access('Supervisor')){
+		   if(Auth::access('Admin') || Auth::access('Supervisor') || Auth::access('Manager')){
 			   redirect('admin');
 		   }else{
 			   redirect('home');

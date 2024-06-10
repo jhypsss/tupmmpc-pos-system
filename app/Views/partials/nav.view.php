@@ -37,31 +37,23 @@
 						<a class="nav-link active" href="index.php?pg=home" id="home-pos">Point-of-Sale</a>
 					</li>
 			<?php endif ?>
-		        
-	        <?php if(Auth::access('Admin')):?>
-		        <li class="nav-item">
-		          <a class="nav-link" href="index.php?pg=signup">Create User</a>
-		        </li>
-		    <?php endif;?>
-
-			
 
 		    <?php if(!Auth::logged_in()):?>
 		        <li class="nav-item">
 		          <a class="nav-link" href="index.php?pg=login">Log In</a>
 		        </li>
 	        <?php else:?>
-			<?php if($role!='User'):?>
-				<li class="nav-item">
-					<?php if (!empty($stocks)):?>
-						<a href="" class="nav-link" data-toggle="modal" data-target="#notifModal" style="color:#cc0000">
-						<b><i class="fas fa-bell"></i>(<?php echo $stocksCount[0]['count'];?>)!</a></b>
-					<?php else:?>
-						<a href="" class="nav-link" data-toggle="modal" data-target="#notifModal">
-						<b><i class="fas fa-bell"></i>(0)</a></b>
-					<?php endif;?>
-		        </li>
-			<?php endif;?>
+				<?php if($role!='User'):?>
+					<li class="nav-item">
+						<?php if (!empty($stocks)):?>
+							<a href="" class="nav-link" data-toggle="modal" data-target="#notifModal" style="color:#cc0000">
+							<b><i class="fas fa-bell"></i>(<?php echo $stocksCount[0]['count'];?>)!</a></b>
+						<?php else:?>
+							<a href="" class="nav-link" data-toggle="modal" data-target="#notifModal">
+							<b><i class="fas fa-bell"></i>(0)</a></b>
+						<?php endif;?>
+					</li>
+				<?php endif;?>
 		        <li class="nav-item dropdown">
 		          <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 		            Hi, <?=auth('username')?> (<?=(Auth::get('role'))?>)
