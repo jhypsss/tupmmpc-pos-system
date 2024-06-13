@@ -29,13 +29,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 		{
 			authenticate($row[0]);
 
-		   if(Auth::access('Admin') || Auth::access('Supervisor') || Auth::access('Manager')){
-			   redirect('admin');
-		   }else{
-			   redirect('home');
-		   }
+			if(Auth::access('Admin') || Auth::access('Supervisor') || Auth::access('Manager')){
+				redirect('admin');
+			}else{
+				redirect('home');
+			}
 		}else
 		{
+			
 			$errors['password'] = "Invalid Credentials";
 		}
 	}
@@ -44,7 +45,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	
 	else
  	{
- 		$errors['user'] = $_POST['user']." does not exist.";
+ 		//$errors['user'] = $_POST['user']." does not exist.";
+		$errors['password'] = "Invalid Credentials";
  	}
 
 

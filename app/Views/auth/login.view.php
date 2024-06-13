@@ -11,7 +11,7 @@
 		
 			<div class="input-group mb-3">
 			  <span class="input-group-text mx-auto" style="width:6rem" id="basic-addon1">User ID:</span>
-			  <input value="<?=set_value('user')?>" name="user" type="user" class="form-control <?=!empty($errors['user']) ? 'border-danger':''?>" placeholder="Enter User ID or Email" aria-label="Username" aria-describedby="basic-addon1">
+			  <input value="<?=set_value('user')?>" name="user" type="user" class="form-control <?=!empty($errors['password']) ? 'border-danger':''?>" placeholder="Enter User ID or Email" aria-label="Username" aria-describedby="basic-addon1">
 				<?php if(!empty($errors['user'])):?>
 					<small class="text-danger col-12"><?=$errors['user']?></small>
 				<?php endif;?>
