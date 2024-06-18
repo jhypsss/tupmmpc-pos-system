@@ -133,7 +133,7 @@
 
                     <td><?=esc($product['amount'])?></td>
                     <td>
-                        <img src="<?=($product['image'])?>" style="width: 100%;max-width:100px;" >
+                        <img src="<?=crop($product['image'])?>" style="width: 100%;max-width:100px;" >
                     </td>
                     <td><?=date("M j, Y",strtotime($product['date']))?></td>
                     
