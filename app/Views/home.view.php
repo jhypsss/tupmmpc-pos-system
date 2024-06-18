@@ -401,6 +401,8 @@ if (!empty($results)) {
 				{
 					if (ITEMS[i].qty < PRODUCTS[index].stock) {
 						ITEMS[i].qty += 1;
+						let updatedItem = ITEMS.splice(i, 1)[0];
+                    	ITEMS.push(updatedItem);
 					}
 					refresh_items_display();
 					return;
@@ -428,9 +430,7 @@ if (!empty($results)) {
 		}
 	}
 
-	function refresh_items_display()
-	{
-
+	function refresh_items_display() {
 		var item_count = document.querySelector(".js-item-count");
 		item_count.innerHTML = ITEMS.length;
 
@@ -438,18 +438,18 @@ if (!empty($results)) {
 		items_div.innerHTML = "";
 		var grand_total = 0;
 
-
 		for (var i = ITEMS.length - 1; i >= 0; i--) {
-
-			items_div.innerHTML += item_html(ITEMS[i],i);
+			items_div.innerHTML += item_html(ITEMS[i], i);
 			grand_total += (ITEMS[i].qty * ITEMS[i].amount);
 		}
 		
 		var gtotal_div = document.querySelector(".js-gtotal");
 		gtotal_div.innerHTML = "Total: ₱" + grand_total.toFixed(2);
 		GTOTAL = grand_total;
+		main_input.value = "";
 		search_item({ target: { value: "" } });
 	}
+
 
 	var voidCodes = <?php echo json_encode($void_codes); ?>;
 	var reload = false;
