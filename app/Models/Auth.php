@@ -38,8 +38,8 @@ class Auth
 	public static function access($role)
 	{
 		$access['Admin'] 		= ['Admin'];
-		$access['Supervisor'] 	= ['Admin','Supervisor'];
-		$access['Manager'] 		= ['Admin','Supervisor','Manager'];
+		$access['Manager'] 		= ['Admin','Manager'];
+		$access['Supervisor'] 	= ['Admin','Manager','Supervisor'];
 		$access['Cashier'] 		= ['Admin','Supervisor','Manager','Cashier'];
 		$access['User'] 		= ['Admin','Supervisor','Manager','Cashier','User'];
 

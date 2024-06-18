@@ -14,7 +14,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 	$_POST['action'] = "DELETE";
 
 	$category->audit_trail($row['id'], $_POST);
-	$category->delete($row['id']);
+	$category->delete_item($row['id']);
   	
 	redirect('admin&tab=categories');
 }

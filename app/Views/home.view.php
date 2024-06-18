@@ -1,34 +1,18 @@
 <?php
-// Database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "pos_db";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
+$conn = new Database();
 // Retrieve void_code values from the database
 $sql = "SELECT void_code FROM users";
-$result = $conn->query($sql);
+$results = $conn->query($sql);
 
 // Initialize an array to store void_code values
 $void_codes = array();
 
-if ($result->num_rows > 0) {
+if (!empty($results)) {
     // Fetch each row and store void_code in the array
-    while($row = $result->fetch_assoc()) {
-        $void_codes[] = $row['void_code'];
+    foreach($results as $result){
+        $void_codes[] = $result['void_code'];
     }
 }
-
-// Close connection
-$conn->close();
 ?>
 
 <?php require views_path('partials/header');?>
@@ -43,6 +27,25 @@ $conn->close();
 			0%{opacity: 0;transform: translateY(-100px);}
 			100%{opacity: 1;transform: translateY(0px);}
 		}
+		#confirmModal, #confirmModal2{
+			animation: appear .5s ease;
+			background-color: #000000bb; 
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			left:0px;
+			top:0px;
+			z-index: 1000;
+		}
+
+		#confirmdiv {
+			width:600px;
+			min-height:200px;
+			background-color:white;
+			padding:20px;
+			margin:auto;
+			margin-top:100px
+		}
 
 	</style>
 
@@ -52,7 +55,7 @@ $conn->close();
 		<div style="max-height:800px;" class="shadow-sm col-7 p-4">
 			
 			<div class="input-group mb-3"><h3> Items </h3>
-			  <input onkeyup="check_for_enter_key(event)" oninput="search_item(event)" type="text" class="ms-4 form-control js-search" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1" id='searchitem' autocomplete="off">
+			  <input onkeyup="check_for_enter_key(event)" oninput="search_item(event)" type="text" class="ms-4 form-control js-search" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1" autocomplete="off">
 			  <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
 			</div>
 
@@ -73,7 +76,7 @@ $conn->close();
 				<table class="table table-striped table-hover">
 					<tr>
 						<th>Image</th><th>Description</th><th>Stock</th><th>Amount</th>
-						<th><button onclick="void_button()" class="btn btn-btn btn-danger btn-sm">Void</button></th>
+						<th><button onclick="showConfirmModal('void_item')" class="btn btn-btn btn-danger btn-sm">Void</button></th>
 					</tr>
 					
 					<tbody class="js-items">
@@ -86,7 +89,7 @@ $conn->close();
 			<div class="js-gtotal alert alert-danger" style="font-size:25px; font-weight:bold;">Total: ₱0.00</div>
 			<div class="">
 				<button onclick="show_modal('amount-paid')" class="btn btn-success my-2 w-100 py-3">Checkout</button>
-				<button onclick="clear_all()" class="btn btn-primary my-2 w-100">Clear All</button>
+				<button onclick="showConfirmModal('clear_all')" class="btn btn-primary my-2 w-100">Clear All</button>
 			</div>
 		</div>
 	</div>	
@@ -99,7 +102,6 @@ $conn->close();
 		<div style="width:500px;min-height:200px;background-color:white;padding:10px;margin:auto;margin-top:100px">
 			<h4>Checkout <button role="close-button" onclick="hide_modal(event,'amount-paid')" class="btn btn-danger float-end p-0 px-2">X</button></h4>
 			<br>
-			<form>
 				<h4>Payment</h4 >
 				<input onkeyup="if(event.keyCode == 13)validate_amount_paid(event)" type="number" class="js-amount-paid-input form-control" placeholder="Enter amount paid">
 				<br>
@@ -117,7 +119,6 @@ $conn->close();
 				<br>-->
 				<button role="close-button" onclick="hide_modal(event,'amount-paid')" class="btn btn-secondary">Cancel</button>
 				<button onclick="validate_amount_paid(event)" class="btn btn-primary float-end">Next</button>
-			</form>
 		</div>
 	</div>
 	<!--end enter amount modal-->
@@ -134,6 +135,30 @@ $conn->close();
 		</div>
 	</div>
 	<!--end change modal-->
+	<!--clear all void modal-->
+	<div id="confirmModal" class="clear_all" style="display:none">
+		<div id="confirmdiv">
+			<div class="mb-3">
+				<h5 id="confirmMessage">Are you sure you want to clear all items? <br> Please enter a code.</h5>
+				<label class="form-label">Void Code:</label>
+				<input class="form-control" type="password" id="codeInput" placeholder="••••••••••">
+			</div>
+			<button onclick="confirmClearAll(true)" class="btn btn-danger float-end">Confirm</button>
+			<button role="close-button"  onclick="confirmClearAll(false)" class="btn btn-secondary">Cancel</button>
+		</div>
+	</div>
+	<!--clear all void modal-->
+	<div id="confirmModal2" style="display:none">
+		<div id="confirmdiv">
+			<div class="mb-3">
+				<h5 id="confirmMessage">Please enter a code.</h5>
+				<label class="form-label">Void Code:</label>
+				<input class="form-control" type="password" id="codeInput2" placeholder="••••••••••">
+			</div>
+			<button onclick="void_button(true)" class="btn btn-danger float-end">Confirm</button>
+			<button role="close-button" onclick="void_button(false)" class="btn btn-secondary">Cancel</button>
+		</div>
+	</div>
 
 	
 <!--end modals-->
@@ -143,12 +168,13 @@ $conn->close();
 	var PRODUCTS 	= [];
 	var ITEMS 		= [];
 	var BARCODE 	= false;
+	var AMOUNT 		= 0;
 	var GTOTAL  	= 0;
 	var CHANGE  	= 0;
 	var RECEIPT_WINDOW = null;
 
 	var main_input = document.querySelector(".js-search");
-	document.getElementById('searchitem').focus();
+	main_input.focus();
 
 	function search_item(e){
 
@@ -233,10 +259,33 @@ $conn->close();
 						add_item_from_index(0);
 					}
 				}
-			}
-			
-		}
+			} else if (obj.data_type == "print_checkout"){
+				
+				var RECEIPT_NO = obj.receipt_no;
+				var DATE = obj.date;
+				print_receipt({
+					store: '<?= esc(APP_NAME) ?>',
+					address: 'Ayala Blvd., Ermita, Manila, 1000, Philippines',
+					date: DATE,
+					amount: AMOUNT,
+					change: CHANGE,
+					gtotal: GTOTAL,
+					receiptno: RECEIPT_NO,
+					staffid: '<?= auth('userid') ?>',
+					staff: '<?= auth('username') ?>',
+					data: ITEMS,
+				});
+				//clear items
+				ITEMS = [];
+				refresh_items_display();
 
+				//reload products
+				send_data({
+					data_type:"search",
+					text:""
+				});
+			}
+		}
 	}
 
 	function product_html(data,index)
@@ -257,7 +306,7 @@ $conn->close();
 			</div>
 			<!--end card-->
 			`;
-		} else if (data.stock > 0 && data.stock <= 20) {
+		} else if (data.stock > 5 && data.stock <= 20) {
 			return `
 			<!--card-->
 			<div class="card m-2 border-0 mx-auto" style="min-width: 190px;max-width: 190px;">
@@ -268,6 +317,22 @@ $conn->close();
 				<div class="text-muted"><b>${data.description}</b></div>
 				<div class="" style="font-size:20px"><b>₱${data.amount}</b></div>
 				<div class="" style="font-size:15px;color:#D68910;">Available: <b>${data.stock}</b></div>
+				</div>
+			</div>
+			<!--end card-->
+			`;
+
+		} else if (data.stock > 0 && data.stock <= 5) {
+			return `
+			<!--card-->
+			<div class="card m-2 border-0 mx-auto" style="min-width: 190px;max-width: 190px;">
+				<a href="#">
+				<img index="${index}" src="${data.image}" style="width: 100%;max-width:175px" class="w-100 rounded border border-2">
+				</a>
+				<div class="p-2">
+				<div class="text-muted"><b>${data.description}</b></div>
+				<div class="" style="font-size:20px"><b>₱${data.amount}</b></div>
+				<div class="" style="font-size:15px;color:red;">Available: <b>${data.stock}</b></div>
 				</div>
 			</div>
 			<!--end card-->
@@ -327,8 +392,8 @@ $conn->close();
 	
 	function add_item_from_index(index)
 	{
-			//check if items exists
-			if(PRODUCTS[index].stock > 0){
+		//check if items exists
+		if(PRODUCTS[index].stock > 0){
 
 			for (var i = ITEMS.length - 1; i >= 0; i--) {
 				
@@ -336,22 +401,23 @@ $conn->close();
 				{
 					if (ITEMS[i].qty < PRODUCTS[index].stock) {
 						ITEMS[i].qty += 1;
+						let updatedItem = ITEMS.splice(i, 1)[0];
+                    	ITEMS.push(updatedItem);
 					}
 					refresh_items_display();
 					return;
 				}
 			}
 
-			var temp = PRODUCTS[index];
-			temp.qty = 1;
+		var temp = PRODUCTS[index];
+		temp.qty = 1;
 
-			ITEMS.push(temp);
-			search_item({ target: { value: "" } });
-			refresh_items_display();
-			} else {
-				alert(PRODUCTS[index].description + " is out of stocks!");
-			}
-
+		ITEMS.push(temp);
+		
+		} else if (PRODUCTS[index].stock == 0){
+			alert(PRODUCTS[index].description + " is out of stocks!");
+		}
+		refresh_items_display();
 	}
 
 	function add_item(e)
@@ -364,9 +430,7 @@ $conn->close();
 		}
 	}
 
-	function refresh_items_display()
-	{
-
+	function refresh_items_display() {
 		var item_count = document.querySelector(".js-item-count");
 		item_count.innerHTML = ITEMS.length;
 
@@ -374,56 +438,118 @@ $conn->close();
 		items_div.innerHTML = "";
 		var grand_total = 0;
 
-
 		for (var i = ITEMS.length - 1; i >= 0; i--) {
-
-			items_div.innerHTML += item_html(ITEMS[i],i);
+			items_div.innerHTML += item_html(ITEMS[i], i);
 			grand_total += (ITEMS[i].qty * ITEMS[i].amount);
 		}
 		
 		var gtotal_div = document.querySelector(".js-gtotal");
 		gtotal_div.innerHTML = "Total: ₱" + grand_total.toFixed(2);
 		GTOTAL = grand_total;
-		//autofocus to search input
-		document.getElementById('searchitem').focus();
+		main_input.value = "";
+		search_item({ target: { value: "" } });
 	}
 
-	var voidCodes = <?php echo json_encode($void_codes); ?>;
 
+	var voidCodes = <?php echo json_encode($void_codes); ?>;
+	var reload = false;
+
+	document.addEventListener('keydown', function(event) {
+		if (document.getElementById('confirmModal').style.display === 'block') {
+			if (event.key === 'Enter') {
+				confirmClearAll(true);
+			} else if (event.key === 'Escape') {
+				confirmClearAll(false);
+			}
+		} else if (document.getElementById('confirmModal2').style.display === 'block') {
+			if (event.key === 'Enter') {
+				void_button(true);
+			} else if (event.key === 'Escape') {
+				void_button(false);
+			}
+		}
+	});
+
+	function showConfirmModal(voiding) {
+		if (ITEMS.length == 0)
+			alert("No items in cart!");
+		else{
+			if (voiding == 'void_item'){
+				document.getElementById('confirmModal2').style.display = 'block';
+				document.getElementById('codeInput2').focus();
+			}
+			else if (voiding == 'clear_all'){
+				document.getElementById('confirmModal').style.display = 'block';
+				document.getElementById('codeInput').focus();
+			}
+		}
+	}
+
+	function confirmClearAll(confirm) {
+		const modal = document.getElementById('confirmModal');
+		const code = document.getElementById('codeInput').value.trim();
+
+		if (confirm) {
+			if (code === null || code.trim() === '') {
+				alert("Incorrect code.");
+			} else if (voidCodes.includes(code)) {
+				ITEMS = [];
+				refresh_items_display();
+				document.getElementById('codeInput').value='';
+				modal.style.display = 'none';
+			} else {
+				alert("Incorrect code.");
+			}
+		}else{
+			modal.style.display = 'none';
+		}
+	}
+
+	
+	// Function to Void Button
+	function void_button(confirm){
+		const modal = document.getElementById('confirmModal2');
+		const code = document.getElementById('codeInput2').value.trim();
+		//var code = prompt("Please enter a code.");
+		// Check if the code matches
+		if (confirm) {
+			if (code === null || code.trim() === '') {
+				alert("Incorrect code.");
+				return;
+			} else if (voidCodes.includes(code.trim())) {
+				var x = document.getElementsByClassName("remove_btn");
+				//console.log(x);
+				for (i=0; i<x.length; i++){
+					x[i].style.display = "block";
+				}
+				document.getElementById('codeInput2').value='';
+				modal.style.display = 'none';
+			} else {
+				alert("Incorrect code.");
+			}
+		} else {
+			modal.style.display = 'none';
+		}
+	}
+
+	/* old codes
 	function clear_all()
 	{
 		var code = prompt("Are you sure you want to clear all items in the list?!\nPlease enter a code.");
 	
 		// Check if the code matches
 		if (code === null || code.trim() === '') {
-			return; // User canceled or entered empty code
+			alert("Incorrect code.");
+			return false; // User canceled or entered empty code
 		} else if (voidCodes.includes(code.trim())) {
 			ITEMS = [];
 			refresh_items_display();
-			setTimeout(function () {
-				location.reload();
-				},100);
+			return true;
 		} else {
 			alert("Incorrect code.");
+			return false;
 		}
-	}
-	// Function to Void Button
-	function void_button(){
-		var code = prompt("Please enter a code.");
-		// Check if the code matches
-		if (code === null || code.trim() === '') {
-			return; // User canceled or entered empty code
-		} else if (voidCodes.includes(code.trim())) {
-			var x = document.getElementsByClassName("remove_btn");
-			//console.log(x);
-			for (i=0; i<x.length; i++){
-				//x.style.display = "block";
-				x[i].style.display = "block";
-			}
-		} else {
-			alert("Incorrect code.");
-		}
-	}
+	}*/
 
 	/* OLD codes Function to clear item
 	function clear_item(index) {
@@ -486,20 +612,23 @@ $conn->close();
 
 		if (quantity > availableStock) {
 			alert('Quantity exceeds available stock!');
-			input.value = ITEMS[index].qty; // Reset the input value to the previous quantity
+			input.value = availableStock; // Reset the input value to the previous quantity
+		} else if (quantity < 1) {
+			input.value = 1 // Reset the input value to the previous quantity
+		} else if (!quantity) {
+			input.value = ITEMS[index].qty;
 		} else {
 			ITEMS[index].qty = quantity;
 			refresh_items_display();
 		}
 	}
 
-	/*
 	function check_enter_key(event, input, index) {
-		if (event.key === "Enter") {
+		if (event.key === "Enter" || event.key === "13" ) {
 			validate_qty(input, index);
 			event.preventDefault(); // Prevent the default Enter key behavior (e.g., form submission)
 		}
-	}*/
+	}
 
 	function check_for_enter_key(e)
 	{
@@ -507,7 +636,7 @@ $conn->close();
 		{
 			BARCODE = true;
 			search_item(e);
-			//search_item({ target: { value: "" } });
+			refresh_items_display();
 		}
 	}
 
@@ -533,8 +662,7 @@ $conn->close();
 
 			mydiv.querySelector(".js-change-input").innerHTML = CHANGE;
 			mydiv.querySelector(".js-btn-close-change").focus();
-			
-		} 
+		}
 	}
 	
 	function hide_modal(e,modal)
@@ -545,12 +673,11 @@ $conn->close();
 			if(modal == "amount-paid"){
 				var mydiv = document.querySelector(".js-amount-paid-modal");
 				mydiv.classList.add("hide");
-				document.getElementById('searchitem').focus();
 			}
 			else if(modal == "change"){
 				var mydiv = document.querySelector(".js-change-modal");
 				mydiv.classList.add("hide");
-				document.getElementById('searchitem').focus();
+				main_input.focus();
 			}
 		}	
 	}
@@ -559,7 +686,7 @@ $conn->close();
 	{
 
 		var amount = e.currentTarget.parentNode.querySelector(".js-amount-paid-input").value.trim();
-		
+		AMOUNT = amount;
 		if(amount == "")
 		{
 			alert("Please enter a valid amount");
@@ -569,12 +696,12 @@ $conn->close();
 
 		amount = parseFloat(amount);
 		if(amount < GTOTAL){
-
-			alert("Amount must be higher or equal to the total amount");
+			let difference = GTOTAL - AMOUNT;
+			alert("Total Amount Required: "+GTOTAL+". You need to add "+difference+" more.");
 			return;
 		}
 
-		CHANGE = amount - GTOTAL ;
+		CHANGE = AMOUNT - GTOTAL ;
 		CHANGE = CHANGE.toFixed(2);
 		
 
@@ -598,35 +725,13 @@ $conn->close();
 			data_type:"checkout",
 			text:ITEMS_NEW
 		});
-
-		print_receipt({
-			store: '<?= esc(APP_NAME) ?>',
-			address: 'Ayala Blvd., Ermita, Manila, 1000, Philippines',
-			amount: amount,
-			change: CHANGE,
-			gtotal: GTOTAL,
-			receiptno: '<?= get_receipt_no() ?>',
-			staff: '<?= auth('username') ?>',
-			data: ITEMS,
-			
-		});
-
-		//clear items
-		ITEMS = [];
-		refresh_items_display();
-
-		//reload products
-		send_data({
-			data_type:"search",
-			text:""
-		});
 	}
 
 	function print_receipt(obj)
 	{
 		var vars = JSON.stringify(obj);
 
-		RECEIPT_WINDOW = window.open('index.php?pg=print&vars='+vars,'printpage',"width=100px;");
+		RECEIPT_WINDOW = window.open('index.php?pg=print&vars='+vars,'printpage',"width=80%;");
 
 		setTimeout(close_receipt_window,2000);
 		
@@ -638,9 +743,19 @@ $conn->close();
  	}
 
 	send_data({
-
 		data_type:"search",
 		text:""
+	});
+
+	//prevents reload
+	document.addEventListener('keydown', function (event) {
+		// Check for F5 key (key code 116)
+		if (event.key === 'F5' || (event.ctrlKey && event.key === 'r')) {
+			event.preventDefault();
+			if (ITEMS.length != 0){
+				showConfirmModal('clear_all');
+			}
+		}
 	});
 
 </script>

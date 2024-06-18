@@ -10,6 +10,7 @@ class User extends Model
 	protected $table = "users";
 	protected $allowed_columns = [
 
+				'userid',
 				'username',
 				'email',
 				'password',
@@ -23,7 +24,37 @@ class User extends Model
 
  	public function validate($data, $id = null)
 	{
+		$usersdb = new Database();
+
 		$errors = [];
+
+			//check userid
+			if(empty($data['userid']))
+			{
+				$errors['userid'] = "User ID is required";
+			} else 
+			if(!preg_match('/^TUPM-\d{2}-\d{4,5}$/', $data['userid']))
+			{
+				$errors['userid'] = "ID must be TUPM-XX-XXXX";
+			} else {
+				if(!empty($data['userid']) && !$id)
+				{
+					$input_userid = $data["userid"];
+					$result = $usersdb->query("SELECT * FROM users WHERE userid='$input_userid'");
+					if($result)
+						$errors['userid'] = $input_userid." already exist!";
+				}
+
+				if(!empty($data['userid']) && !empty($id))
+				{
+					$input_userid = $data["userid"];
+					$result = $usersdb->query("SELECT * FROM users WHERE userid='$input_userid'");
+					if($result[0]['userid'] == $input_userid && $result[0]['id'] != $id)
+						$errors['userid'] = $input_userid." already exist!";
+				}
+			}
+
+			
 
 			//check username
 			if(empty($data['username']))
@@ -40,9 +71,29 @@ class User extends Model
 			{
 				$errors['email'] = "Email is required";
 			}else
+			if(!preg_match('/^[a-zA-Z0-9._%+-]+@tup\.edu\.ph$/', $data['email']))
+			{
+				$errors['email'] = "Email must be @tup.edu.ph";
+			}
+
 			if(!filter_var($data['email'],FILTER_VALIDATE_EMAIL))
 			{
 				$errors['email'] = "Email is not valid";
+			} else {
+				if(!empty($data['email']) && !$id)
+				{
+					$input = $data["email"];
+					$result = $usersdb->query("SELECT * FROM users WHERE email='$input'");
+					if($result)
+						$errors['email'] = $input." already exist!";
+				}
+				if(!empty($data['email']) && !empty($id))
+				{
+					$input = $data["email"];
+					$result = $usersdb->query("SELECT * FROM users WHERE email='$input'");
+					if($result)
+						$errors['email'] = $input." already exist!";
+				}
 			}
 
 			//check password

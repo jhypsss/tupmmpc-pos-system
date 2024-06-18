@@ -23,6 +23,8 @@ issues or bugs found.
 - Pagination
 ✅ receipt no in print receipt. not accurate to the db
 - input tags autocomplete="off"
+- print receipt no (not accurate receipt #)
+- barcode must be unique... when adding/editing product, need check to database if the barcode is already exist
 
 
 System Functions to do
@@ -64,23 +66,12 @@ Llyle:
 ✅ Delete Item (Deleted at Products but not deleted at POS)
 ✅ Sales Time ("not accurate")
 
-Categories
-	<option>School Supplies</option>
-	<option>Clothing</option>
-	<option>Baked Goods</option>
-	<option>Beverages</option>
-	<option>Canned Goods</option>
-	<option>Dairy Products</option>
-	<option>Desserts</option>
-	<option>Detergent</option>
-	<option>Frozen Foods</option>
-	<option>Fruits</option>
-	<option>Grains</option>
-	<option>Meat & Poultry</option>
-	<option>Pasta & Noodles</option>
-	<option>Sauces</option>
-	<option>Seafood</option>
-	<option>Snacks</option>
-	<option>Vegetables</option>
 
-	<!-- Add more options as needed -->
+if(Auth::access('Admin') || Auth::access('Supervisor') || Auth::access('Manager')){
+	require views_path('admin/admin');
+}
+else{
+	Auth::setMessage("You don't have access to the admin page");
+	require views_path('auth/denied');
+}
+

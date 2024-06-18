@@ -14,7 +14,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && $row)
 	$_POST['action'] = "DELETE";
 
 	$supplier->audit_trail($row['id'], $_POST);
-	$supplier->delete($row['id']);
+	$supplier->delete_item($row['id']);
   	
 	redirect('admin&tab=suppliers');
 }

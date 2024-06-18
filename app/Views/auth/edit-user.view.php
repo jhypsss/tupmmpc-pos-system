@@ -15,9 +15,11 @@ if(!empty($_SESSION['referer'])){
 		<?php if(is_array($row)):?>
 		<form method="post" enctype="multipart/form-data">
 			<center>
-				<h3><i class="fa fa-user"></i> Edit User</h3>
+				<h3><i class="fa fa-user"></i> Update User</h3>
 				<div><?=esc(APP_NAME)?></div>
 			</center>
+			<br>
+			<img class="mx-auto d-block" src="<?=$row['image']?>" style="width:40%;">
 			<br>
 		 	<div class="mb-3">
 			  <label for="formFile" class="form-label">User Image</label>
@@ -26,9 +28,14 @@ if(!empty($_SESSION['referer'])){
 					<small class="text-danger"><?=$errors['image']?></small>
 				<?php endif;?>
 			</div>
-			<br>
-			<img class="mx-auto d-block" src="<?=$row['image']?>" style="width:50%;">
-			<br>
+
+			<div class="mb-3">
+			  <label for="exampleFormControlInput1" class="form-label">User ID</label>
+			  <input value="<?=set_value('userid',$row['userid'])?>" name="userid" type="text" class="form-control <?=!empty($errors['userid']) ? 'border-danger':''?>" id="exampleFormControlInput1" placeholder="User ID" autocomplete="off">
+				<?php if(!empty($errors['userid'])):?>
+					<small class="text-danger"><?=$errors['userid']?></small>
+				<?php endif;?>
+			</div>
 
 			<div class="mb-3">
 			  <label for="exampleFormControlInput1" class="form-label">Username</label>
@@ -40,7 +47,7 @@ if(!empty($_SESSION['referer'])){
 			
 			<div class="mb-3">
 			  <label for="exampleFormControlInput1" class="form-label">Email address</label>
-			  <input value="<?=set_value('email',$row['email'])?>" name="email" type="email" class="form-control  <?=!empty($errors['email']) ? 'border-danger':''?>" id="exampleFormControlInput1" placeholder="name@example.com" autocomplete="off">
+			  <input value="<?=set_value('email',$row['email'])?>" name="email" type="email" class="form-control  <?=!empty($errors['email']) ? 'border-danger':''?>" id="exampleFormControlInput1" placeholder="example@email.com" autocomplete="off">
 				<?php if(!empty($errors['email'])):?>
 					<small class="text-danger"><?=$errors['email']?></small>
 				<?php endif;?>
@@ -61,13 +68,8 @@ if(!empty($_SESSION['referer'])){
 			<?php if(Auth::get('role') == "Admin"):?>
 			<div class="mb-3">
 			  <label for="exampleFormControlInput1" class="form-label">Role</label>
- 				<select  name="role" class="form-control  <?=!empty($errors['role']) ? 'border-danger':''?>" >
-					
+ 				<select  name="role" id="roleSelect" class="form-control <?=!empty($errors['role']) ? 'border-danger':''?>" >
 					<option hidden><?=$row['role']?></option>
-					<?php 
-						$allRoles = new Database();
-						$userRoles = $allRoles->query("SELECT * FROM roles");
-					?>
 						<?php foreach ($userRoles as $userRole):?>
 							<option value="<?=$userRole['role_name']?>"> <?=$userRole['role_name']?> </option>
 						<?php endforeach;?>
@@ -79,9 +81,9 @@ if(!empty($_SESSION['referer'])){
 				<?php endif;?>
 			</div>
 
-			<div class="mb-3">
+			<div class="mb-3" id="voidDiv">
 			  <label for="exampleFormControlInput1" class="form-label">Void Code</label>
-			  <input value="<?=set_value('void_code',$row['void_code'])?>" name="void_code" type="password" class="form-control <?=!empty($errors['void_code']) ? 'border-danger':''?>" id="exampleFormControlInput1" placeholder="Void Code">
+			  <input value="<?=set_value('void_code',$row['void_code'])?>" name="void_code" type="text" class="form-control <?=!empty($errors['void_code']) ? 'border-danger':''?>" id="exampleFormControlInput1" placeholder="Void Code">
 				<?php if(!empty($errors['void_code'])):?>
 					<small class="text-danger"><?=$errors['void_code']?></small>
 				<?php endif;?>
@@ -117,7 +119,7 @@ if(!empty($_SESSION['referer'])){
 			<div class="clearfix"></div>
 		</form>
 		<?php else:?>
-			<div class="alert alert-danger text-center">That user was not found!</div>
+			<div class="alert alert-danger text-center">That User was not found!</div>
 
 			<a href="<?=$back_link?>">
 				<button type="button" class="btn btn-danger">Cancel</button>
@@ -127,3 +129,23 @@ if(!empty($_SESSION['referer'])){
 	</div>
 
 <?php require views_path('partials/footer');?>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		var roleSelect = document.getElementById('roleSelect');
+		var voidDiv = document.getElementById('voidDiv');
+
+		roleSelect.addEventListener('change', function() {
+			var selectedRole = this.value;
+			console.log('Selected Role:', selectedRole); // Debugging line
+			if (selectedRole === 'Supervisor' || selectedRole === 'Manager') {
+				voidDiv.style.display = 'block';
+			} else {
+				voidDiv.style.display = 'none';
+			}
+		});
+
+		// Trigger the change event on page load to handle the default selection
+		roleSelect.dispatchEvent(new Event('change'));
+	});
+</script>

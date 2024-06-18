@@ -35,7 +35,7 @@
 			That Category was not found
 			<br><br>
 			<a href="index.php?pg=admin&tab=categories">
-				<button type="button" class="btn btn-primary">Back to products</button>
+				<button type="button" class="btn btn-primary">Back to Categories</button>
 			</a>
 
 		<?php endif;?>

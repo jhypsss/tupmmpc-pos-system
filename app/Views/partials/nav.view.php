@@ -1,21 +1,17 @@
 <?php
 	$productClass = new Product();
-	$stocks = $productClass->query("SELECT * FROM products WHERE if_deleted=0 AND (stock <= 20 OR stock = 0)");
+	$stocks = $productClass->query("SELECT * FROM products WHERE if_deleted=0 AND (stock <= 20 OR stock = 0) ORDER BY views DESC");
 	$stocksCount = $productClass->query("SELECT COUNT(*) AS count FROM products WHERE if_deleted=0 AND (stock <= 20 OR stock = 0)");
 	$role = Auth::get('role');
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-light" style="min-width:350px; background-color: #ffdddd; ">
+<nav class="navbar navbar-expand-lg navbar-light" style="min-width:350px; background-color: #ffc1c1; border-bottom: 5px solid #990000; ">
 	  <div class="container-fluid">
 		
-	  	<?php if ($role=='Supervisor' || $role=='Manager' || $role=='Cashier' || $role=='User'):?>
-				<a class="navbar-brand" href="index.php?pg=home" style="font-family:Verdana; font-weight:bold;">
-		<?php else: ?>
-				<a class="navbar-brand" href="index.php?pg=admin" style="font-family:Verdana; font-weight:bold;">
-		<?php endif ?>
-					<img src="assets/images/logo.png" style="width:100%;max-width:50px;margin:0 10px;" >
-					<?=esc(APP_NAME)?>
-				</a>
+		<div class="my-auto" style="font-family:Verdana; font-weight:bold; margin-right:1.5rem; font-size:20px;">
+			<img src="assets/images/logo.png" style="width:100%;max-width:40px;margin:0 10px;" >
+			<?=esc(APP_NAME)?>
+		</div>
 
 	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
@@ -25,60 +21,51 @@
 		  	<?php if ($role=='Admin'):?>
 
 					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="index.php?pg=admin">Admin Panel</a>
+						<a class="nav-link active" aria-current="page" id="admin-panel" href="index.php?pg=admin">Admin Panel</a>
 					</l>
 
 			<?php elseif (($role=='Supervisor' || $role=='Manager')):?>
 					<li class="nav-item">
-						<a class="nav-link active" href="index.php?pg=home">Point-of-Sale</a>
+						<a class="nav-link active" href="index.php?pg=home" id="home-pos">Point-of-Sale</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="index.php?pg=admin">Admin Panel</a>
+						<a class="nav-link active" aria-current="page" id="admin-panel" href="index.php?pg=admin">Admin Panel</a>
 					</li>
 					
 			<?php elseif ($role=='Cashier'):?>
 					<li class="nav-item">
-						<a class="nav-link active" href="index.php?pg=home">Point-of-Sale</a>
+						<a class="nav-link active" href="index.php?pg=home" id="home-pos">Point-of-Sale</a>
 					</li>
 			<?php endif ?>
-		        
-	        <?php if(Auth::access('Admin')):?>
-		        <li class="nav-item">
-		          <a class="nav-link" href="index.php?pg=signup">Create User</a>
-		        </li>
-		    <?php endif;?>
-
-			
 
 		    <?php if(!Auth::logged_in()):?>
 		        <li class="nav-item">
 		          <a class="nav-link" href="index.php?pg=login">Log In</a>
 		        </li>
 	        <?php else:?>
-			<?php if($role!='User'):?>
-				<li class="nav-item">
-					<?php if (!empty($stocks)):?>
-						<a href="" class="nav-link" data-toggle="modal" data-target="#notifModal" style="color:#cc0000">
-						<b><i class="fas fa-bell"></i>(<?php echo $stocksCount[0]['count'];?>)!</a></b>
-					<?php else:?>
-						<a href="" class="nav-link" data-toggle="modal" data-target="#notifModal">
-						<b><i class="fas fa-bell"></i>(0)</a></b>
-					<?php endif;?>
-		        </li>
-			<?php endif;?>
+				<?php if($role!='User'):?>
+					<li class="nav-item">
+						<?php if (!empty($stocks)):?>
+							<a href="" class="nav-link" data-toggle="modal" data-target="#notifModal" style="color:#cc0000">
+							<b><i class="fas fa-bell"></i>(<?php echo $stocksCount[0]['count'];?>)!</a></b>
+						<?php else:?>
+							<a href="" class="nav-link" data-toggle="modal" data-target="#notifModal">
+							<b><i class="fas fa-bell"></i>(0)</a></b>
+						<?php endif;?>
+					</li>
+				<?php endif;?>
 		        <li class="nav-item dropdown">
 		          <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 		            Hi, <?=auth('username')?> (<?=(Auth::get('role'))?>)
 		          </a>
 		          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-		            <li><a class="dropdown-item" href="index.php?pg=profile">Profile</a></li>
-		            <li><a class="dropdown-item" href="index.php?pg=edit-user&id=<?=Auth::get('id')?>">Profile-Settings</a></li>
+		            <li><a class="dropdown-item" href="index.php?pg=profile"><i class="fas fa-user"></i> Profile</a></li>
+		            <li><a class="dropdown-item" href="index.php?pg=edit-user&id=<?=Auth::get('id')?>"><i class="fa fa-cog"></i> Profile-Settings</a></li>
 		            <li><hr class="dropdown-divider"></li>
-		            <li><a class="dropdown-item" href="index.php?pg=logout">Log Out</a></li>
+		            <li><a class="dropdown-item" href="index.php?pg=logout"><i class="fa fa-sign-out-alt"></i> Log Out</a></li>
 		          </ul>
 		        </li>
 	    	 <?php endif;?>
-
 	      </ul>
 	    </div>
 	  </div>
@@ -136,6 +123,32 @@
 	</div>
 	</div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // Get the current URL
+        const currentUrl = window.location.href;
+
+        // Get the link element by ID
+        const posLink = document.getElementById('home-pos');
+		const adminLink = document.getElementById('admin-panel');
+
+        // Check if the current URL contains the link's href
+        if (posLink && currentUrl.includes("index.php?pg=home")) {
+            // Disable the link
+            posLink.style.pointerEvents = 'none';
+            posLink.style.fontWeight = 'bold'; 
+			posLink.style.color = '#C23540';
+			posLink.style.fontSize = '17px';
+		} else if (adminLink && currentUrl.includes("index.php?pg=admin")) {
+            // Disable the link
+            adminLink.style.pointerEvents = 'none';
+            adminLink.style.fontWeight = 'bold';
+			adminLink.style.color = '#C23540';
+			adminLink.style.fontSize = '17px';
+        }
+    });
+</script>
+
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	

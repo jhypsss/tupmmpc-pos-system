@@ -15,6 +15,7 @@ class Graph
 
 	public function display($data)
 	{
+		if(!empty($data)) {
 			$canvasX = $this->canvasX;
 			$canvasY = $this->canvasY;
 
@@ -150,5 +151,6 @@ class Graph
 		</svg>
 
 		<?php 
+		}
 	}
 }

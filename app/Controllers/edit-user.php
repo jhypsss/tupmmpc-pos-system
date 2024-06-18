@@ -6,6 +6,9 @@ $user = new User();
 $id = $_GET['id'] ?? null;
 $row = $user->first(['id'=>$id]);
 
+$allRoles = new Database();
+$userRoles = $allRoles->query("SELECT * FROM roles");
+
 if(!empty($_SERVER['HTTP_REFERER']) && !strstr($_SERVER['HTTP_REFERER'], "edit-user"))
 {
 	$_SESSION['referer'] = $_SERVER['HTTP_REFERER'];
@@ -33,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 	$errors = $user->validate($_POST, $id);
 	if(empty($errors)){
 		
-		$folder = "uploads/user/";
+		$folder = "uploads/users/";
 		if(!file_exists($folder))
 		{
 			mkdir($folder,0777,true);
@@ -75,7 +78,7 @@ if(Auth::access('Admin') || ($row && $row['id'] == Auth::get('id'))){
 	require views_path('auth/edit-user');
 }else{
 
-	Auth::setMessage("Only admins can create and modify users");
+	Auth::setMessage("Only Admins can create and modify users");
 	require views_path('auth/denied');
 }
 

@@ -18,26 +18,39 @@ class Product extends Model
 				'amount',
 				'image',
 				'date',
+				'date_modified',
 				'views',
-				'category',
+				'category_id',
 			];
 
 
  	public function validate($data, $id = null)
 	{
+		$productsdb = new Database();
 		$errors = [];
+		
+			if(!empty($data['barcode']) && !$id){ //addproduct
+				$barcode = $data['barcode'];
+				$result = $productsdb->query("SELECT * FROM products WHERE barcode = $barcode");
+				if($result)
+					$errors['barcode'] = "Product barcode: ".$barcode." already exist!";
+			} else if(!empty($data['barcode']) && !empty($id)){ //editproduct
+				$barcode = $data['barcode'];
+				$result = $productsdb->query("SELECT * FROM products WHERE barcode = $barcode");
+				if($result[0]['barcode'] == $barcode && $result[0]['id'] != $id)
+					$errors['barcode'] = "Product barcode: ".$barcode." already exist!";
+			}
 
 			//check description
 			if(empty($data['description']))
 			{
 				$errors['description'] = "Product description is required";
-			}else
-			if(!preg_match('/[a-zA-Z0-9 _\-\&\(\)]+/', $data['description']))
-			{
-				$errors['description'] = "Only letters allowed in description";
 			}
 
-			//check stock
+			/*
+			if(empty($data["stock"])){
+				$errors['stock'] = "Stock is required";
+			} else*/
 			if(!preg_match('/^[0-9]+$/', $data['stock']))
 			{
 				$errors['stock'] = "stock must be a number";
@@ -75,6 +88,11 @@ class Product extends Model
 				{
 					$errors['image'] = "The image size must be lower than ".$max_size."Mb";
 				}
+			}
+
+			if(empty($data['category_id']))
+			{
+				$errors['category_id'] = "Category is required";
 			}
 
 			

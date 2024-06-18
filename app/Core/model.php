@@ -5,6 +5,10 @@
  */
 class Model extends Database
 {
+
+	protected $allowed_columns = [];
+	protected $table = [];
+
 	protected function get_allowed_columns($data)
 	{
  
@@ -26,7 +30,7 @@ class Model extends Database
 	public function insert($data)
 	{
 		// Insert into db
-		$clean_array = $this->get_allowed_columns($data, $this->table);
+		$clean_array = $this->get_allowed_columns($data);
 		$keys = array_keys($clean_array);
 		
 		$query = "INSERT INTO $this->table ";
@@ -40,7 +44,7 @@ class Model extends Database
 	//update query
 	public function update($id, $data)
 	{
-		$clean_array = $this->get_allowed_columns($data, $this->table);
+		$clean_array = $this->get_allowed_columns($data);
 		$keys = array_keys($clean_array);
 		
 		$query = "UPDATE $this->table SET ";
@@ -56,32 +60,145 @@ class Model extends Database
 		$db = new Database;
 		$db->query($query, $clean_array);
 	}
+
+	//update product
+	public function update_product($id, $data){
+		$user_id = auth("id");
+		$db = new Database;
+		$category_id = $data['category_id'];
+		
+		
+		$date = $data['date_modified'];
+		if(!empty($data['add_stock'])){
+			$newStock = $data['newStock'];
+			$addStock = $data['add_stock'];
+			$db->query("INSERT INTO stock_inventory (product_id, category_id, stock_in, date_updated) VALUES ($id, $category_id, $addStock, '$date')");
+			$db->query("UPDATE products SET stock=$newStock, date_modified='$date' WHERE id=$id");
+		}
+		if(!empty($data['remove_stock'])){
+		    $removeStock = $data['remove_stock'];
+			$query = "INSERT INTO removed_stocks (product_id, removed_qty, status, remarks, user_id, date) VALUES (:product_id, :removed_qty, :status, :remarks, :user_id, :date)";
+			$params = array(
+				'product_id' => $id,
+				'removed_qty'=> $data['remove_stock'],
+				'status'=> $data['status'],
+				'remarks'=> $data['remarks'],
+				'user_id'=> $user_id,
+				'date'=> $date,
+			);
+			$db->query($query, $params);
+
+			$newStock = $data['newStock'];
+			$db->query("INSERT INTO stock_inventory (product_id, category_id, stock_out, date_updated) VALUES ($id, $category_id, $removeStock, '$date')");
+			$db->query("UPDATE products SET stock=$newStock, date_modified='$date' WHERE id=$id");
+		}
+		if(!empty($data['increase_amount'])){
+			$newAmount = $data['newAmount'];
+			$db->query("UPDATE products SET amount=$newAmount, date_modified='$date' WHERE id=$id");
+		}
+	}
+
+	public function restore($id){
+		$user_id = auth("id");
+		$source = $_POST['source'];
+		$clean_array['id'] = $id;
+		$timezone = 'Asia/Singapore';
+    	date_default_timezone_set($timezone);
+    	$_POST['date_modified'] = date("Y-m-d H:i:s");
+    	$date = date('Y-m-d H:i:s');
+		
+		$db = new Database;
+		//Update deleted to false
+		$query = "UPDATE $this->table SET if_deleted = 0 WHERE id = :id";
+		$db = new Database;
+		$db->query($query, $clean_array);
+
+		//record it in restored_items table
+		$query2 = "INSERT INTO restored_items (restored_id, from_table, user_id, date_restored) VALUES (:deleted_id, :from_table, :user_id, :date)";
+		$params = array(
+			'deleted_id' => $id,
+			'from_table' => $source,
+			'user_id' => $user_id,
+			'date' => $date
+		);
+		$db->query($query2, $params);
+
+		//remove it in deleted_items table
+		//$db->query("DELETE FROM deleted_items WHERE deleted_id = $id");
+		$db->query("UPDATE deleted_items SET if_restored = 1 WHERE deleted_id = $id");
+	}
+
+	public function refund($id, $row, $data){
+		$timezone = 'Asia/Singapore';
+		date_default_timezone_set($timezone);
+		$date = date("Y-m-d H:i:s");
+		$user_id = auth("id");
+		$saleqty = $row['qty']; //item sold qty
+		$saleamount = $row['amount']; //price per item
+		$refundqty = $data['refund_qty'];
+		$total_refundedAmount = $refundqty * $saleamount;
+
+		$db = new Database;
+		if ($saleqty >= $refundqty){
+			if($saleqty == $refundqty){ //if all item are refund, remove from sale
+				//$db->query("DELETE FROM sales WHERE id = $id");
+				$db->query("UPDATE sales SET if_all_refunded = '1', qty='0', total='0' WHERE id = $id");
+			} else {
+				$newQty = $saleqty - $refundqty;
+				$newTotal = $newQty * $saleamount;
+				$db->query("UPDATE sales SET qty='$newQty', total='$newTotal' WHERE id = $id");
+			}
+			$query2 = "INSERT INTO refunded_items (product_id,barcode,receipt_no,description,category_id,qty,amount,total,user_id,status,remarks,date) 
+							VALUES (:product_id,:barcode,:receipt_no,:description,:category_id,:qty,:amount,:total,:user_id,:status,:remarks,:date)";
+				$params = array(
+					'product_id' => $row['product_id'],
+					'barcode' => $row['barcode'],
+					'receipt_no' => $row['receipt_no'],
+					'description'=> $row['description'],
+					'category_id'=> $row['category_id'],
+					'qty'=> $refundqty,
+					'amount'=> $row['amount'],
+					'total'=> $total_refundedAmount,
+					'user_id'=> $user_id,
+					'status'	=> $data['status'],
+					'remarks'=> $data['remarks'],
+					'date'=> $date,
+				);
+			$db->query($query2, $params);
+		}
+	}
 	
 	//delete query
-	public function delete($id)
+	public function delete_item($id)
 	{
 		/*/ Old delete query
 		$query = "DELETE FROM $this->table WHERE id = :id LIMIT 1";
 		$clean_array['id'] = $id;
 		*/
 		//Delete Function
+		$timezone = 'Asia/Singapore';
+		date_default_timezone_set($timezone);
+		$_POST['date_modified'] = date("Y-m-d H:i:s");
+		$date = date('Y-m-d H:i:s');
 		$user_id = auth("id");
 		$source = $_POST['source'];
 		$clean_array['id'] = $id;
 		
-		$query = "UPDATE $this->table SET if_deleted = 1 WHERE id = :id";
-		
 		$db = new Database;
-		$db->query($query, $clean_array);
+		//Soft Delete
+		$query = "UPDATE $this->table SET if_deleted = 1 WHERE id = :id";
 
-		$query2 = "INSERT INTO deleted_items (deleted_id, from_table, user_id) VALUES (:deleted_id, :from_table, :user_id)";
+
+		$db->query($query, $clean_array);
+		//Record it in database
+		$query2 = "INSERT INTO deleted_items (deleted_id, from_table, user_id, date_deleted) VALUES (:deleted_id, :from_table, :user_id, :date)";
 		$params = array(
 			'deleted_id' => $id,
 			'from_table' => $source,
 			'user_id' => $user_id,
+			'date'=> $date,
 		);
-		$db2 = new Database;
-		$db2->query($query2, $params);
+		$db->query($query2, $params);
 		
 	}
 	
@@ -91,7 +208,7 @@ class Model extends Database
 
 		$keys = array_keys($data);
 		
-		$query = "select * from $this->table where ";
+		$query = "select * from $this->table where if_deleted=0 AND ";
 
 		foreach ($keys as $key) {
 			// code...
@@ -107,7 +224,7 @@ class Model extends Database
 	}
 
 	//public function getAll($limit = 10,$offset = 0,$order = "desc",$order_column = "id")
-	public function getAll($order = "desc",$order_column = "id")
+	public function getAll($order = "desc",$order_column)
 	{
 		//$query = "select * from $this->table order by $order_column $order limit $limit offset $offset";
 		$query = "select * from $this->table where if_deleted = 0 order by $order_column $order";
@@ -142,6 +259,10 @@ class Model extends Database
 	//audit trail queries
 	public function audit_trail($id, $data){
 		//initialization
+		$timezone = 'Asia/Singapore';
+		date_default_timezone_set($timezone);
+
+		$date = date('Y-m-d H:i:s');
 		$username = auth("id");
 		$source = $data['source'];
 		$action = $data['action']; 
@@ -150,12 +271,13 @@ class Model extends Database
 		if (strcmp($action, "ADD") == 0){
 			if (strcmp($source, "Users") == 0){
 				// Get the details
-				$newUsername = isset($data['username']) ? $data['username'] : 'Unknown User';
+				$newUserID = isset($data['userid']) ? $data['userid'] : 'Unknown User ID';
+				$newUsername = isset($data['username']) ? $data['username'] : 'Unknown Username';
 				$userEmail = isset($data['email']) ? $data['email'] : 'Unknown Email';
 				$userGender = isset($data['gender']) ? $data['gender'] : 'Unknown Gender';
 				$userRole = isset($data['role']) ? $data['role'] : 'Unknown Role';
 
-				$details = "NEW USER: $newUsername \nEmail: $userEmail \nGender: $userGender \nRole: $userRole";
+				$details = "NEW USER: $newUserID \nName: $newUsername \nEmail: $userEmail \nGender: $userGender \nRole: $userRole";
 			}
 			else if (strcmp($source, "Categories") == 0){
 				// Get the details
@@ -170,9 +292,10 @@ class Model extends Database
 				$productName = isset($data['description']) ? $data['description'] : 'Unknown Product';
 				$productStock = isset($data['stock']) ? $data['stock'] : 'Unknown Stock';
 				$productPrice = isset($data['amount']) ? $data['amount'] : 'Unknown Price';
-				$productCategory = isset($data['category']) ? $data['category'] : 'Unknown Category';
+				$productCategory = isset($data['category_id']) ? $data['category_id'] : 'Unknown Category';
+				$productCategoryName = get_CategoryName($productCategory);
 
-				$details = "NEW ITEM: $productBarcode\nProduct: $productName \nQty: $productStock \nPrice: $productPrice \nCategory: $productCategory";
+				$details = "NEW ITEM: $productBarcode\nProduct: $productName \nQty: $productStock \nPrice: $productPrice \nCategory: $productCategoryName";
 			}
 			else if(strcmp($source, "Suppliers") == 0){
 				// Get the details
@@ -188,6 +311,7 @@ class Model extends Database
 				$user = new User();
 				$row = $user->first(['id'=>$id]);
 				// Get the Old Details
+				$oldUserID = $row['userid'];
 				$oldUsername = $row['username'];
 				$oldEmail = $row['email'];
 				$oldPassword = $row['password'];
@@ -196,15 +320,18 @@ class Model extends Database
 				$oldImage = $row['image'];
 
 				// Get the new details
+				$newUserID = isset($data['userid']) ? $data['userid'] : 'Unknown User ID';
 				$newUsername = isset($data['username']) ? $data['username'] : 'Unknown User';
 				$userEmail = isset($data['email']) ? $data['email'] : 'Unknown Email';
-				$userPassword = isset($data['password']) ? $data['password'] : 'Unknown Password';
+				$userPassword = isset($data['password']) ? $data['password'] : $oldPassword;
 				$userGender = isset($data['gender']) ? $data['gender'] : 'Unknown Gender';
 				$userRole = isset($data['role']) ? $data['role'] : 'Unknown Role';
-				//dd($userRole);
 				$userImage = isset($data['image']) ? $data['image'] : 'Unknown Image';
 
-				$details = "UPDATED USER: $newUsername";
+				$details = "UPDATED USER: $newUserID";
+				if (strcmp($oldUserID, $newUserID) !== 0){
+					$details .= "\nUsername: $oldUserID → $newUserID";
+				}
 				if (strcmp($oldUsername, $newUsername) !== 0){
 					$details .= "\nUsername: $oldUsername → $newUsername";
 				}
@@ -224,7 +351,7 @@ class Model extends Database
 				}
 				if (strcmp($userImage, "Unknown Image") !== 0){
 					if (strcmp($oldImage, $userImage) !== 0){
-						$details .= "\nUser Image: User Image Changed";
+						$details .= "\nUser Image: User Image Updated";
 					}
 				}
 			}
@@ -262,16 +389,24 @@ class Model extends Database
 				$oldstock = $row['stock'];
 				$oldprice = $row['amount'];
 				$oldimage = $row['image'];
-				$oldcategory = $row['category'];
+				$oldcategory = $row['category_id'];
+				$oldcategoryName = get_CategoryName($oldcategory);
 
 				//Get the new details
 				$productBarcode = isset($data['barcode']) ? $data['barcode'] : 'Unknown Barcode';
 				$productName = isset($data['description']) ? $data['description'] : 'Unknown Product';
-				$addStock = isset($data['addStock']) ? $data['addStock'] : 'Unknown Qty';
+
+				$add_stock = isset($data['add_stock']) ? $data['add_stock'] : 'Unknown Qty';
+				$remove_stock = isset($data['remove_stock']) ? $data['remove_stock'] : 'Unknown Qty';
+				$newStock = isset($data['newStock']) ? $data['newStock'] : null;
+				$increase_amount = isset($data['increase_amount']) ? $data['increase_amount'] : 'Unknown Amount';
+				$newAmount = isset($data['newAmount']) ? $data['newAmount'] : null;
+				
 				$productStock = isset($data['stock']) ? $data['stock'] : 'Unknown Stock';
 				$productPrice = isset($data['amount']) ? $data['amount'] : 'Unknown Price';
 				$productImage = isset($data['image']) ? $data['image'] : 'Unknown Image';
-				$productCategory = isset($data['category']) ? $data['category'] : 'Unknown Category';
+				$productCategory = isset($data['category_id']) ? $data['category_id'] : 'Unknown Category';
+				$productCategoryName = get_CategoryName($productCategory);
 				
 				// Insert into audit trail
 				//Compare changes in Details
@@ -282,18 +417,24 @@ class Model extends Database
 				if (strcmp($oldproductName, $productName) !== 0){
 					$details .= "\nProduct Name: $oldproductName → $productName";
 				}
-				if (strcmp($oldstock, $productStock) !== 0){
-					$details .= "\nCurrent Stock: $oldstock + $addStock = $productStock";
+				if ($newStock != null){
+					if($oldstock < $newStock) {
+						$details .= "\nCurrent Stock Increased: $oldstock → $newStock(+$add_stock)";
+					} else if ($oldstock > $newStock) {
+						$details .= "\nCurrent Stock Decreased: $oldstock → $newStock(-$remove_stock)";
+					}
 				}
-				if (strcmp($oldprice, $productPrice) !== 0){
-					$details .= "\nPrice: $oldprice → $productPrice";
+				if ($increase_amount != null){
+					if($oldprice < $newAmount) {
+						$details .= "\nPrice Increased: $oldprice → $newAmount(+$increase_amount)";
+					}
 				}
-				if (strcmp($oldcategory, $productCategory) !== 0){
-					$details .= "\nCategory: $oldcategory → $productCategory";
+				if (strcmp($oldcategoryName, $productCategoryName) !== 0){
+					$details .= "\nCategory: $oldcategoryName → $productCategoryName";
 				}
 				if (strcmp($productImage, "Unknown Image") != 0){
 					if (strcmp($oldimage, $productImage) !== 0){
-						$details .= "\nProduct Image: Modified";
+						$details .= "\nProduct Image: Product Image Updated";
 					}
 				}
 			}
@@ -347,11 +488,12 @@ class Model extends Database
 			if (strcmp($source, "Users") == 0){
 				$user = new User();
 				$row = $user->first(['id'=>$id]);
+				$deletedUserID = $row['userid'];
 				$deletedUser = $row['username'];
 				$userEmail = $row['email'];
 				$userGender = $row['gender'];
 				$userRole = $row['role'];
-				$details = "DELETED USER: $deletedUser \nEmail: $userEmail \nGender: $userGender \nRole: $userRole";
+				$details = "DELETED USER: $deletedUserID\n Name: $deletedUser \nEmail: $userEmail \nGender: $userGender \nRole: $userRole";
 			}
 			else if (strcmp($source, "Categories") == 0){
 				$category = new Category();
@@ -366,30 +508,115 @@ class Model extends Database
 				$productName = $row['description'];
 				$productStock = $row['stock'];
 				$productPrice = $row['amount'];
-				$productCategory = $row['category'];
+				$productCategory = $row['category_id'];
+				$productCategoryName = get_CategoryName($productCategory);
 
-				$details = "DELETED ITEM: $productBarcode \nProduct Name: $productName \nQty: $productStock \nPrice: $productPrice\n Category: $productCategory";
+				$details = "DELETED ITEM: $productBarcode \nProduct Name: $productName \nQty: $productStock \nPrice: $productPrice\n Category: $productCategoryName";
 			}
 			else if (strcmp($source, "Suppliers") == 0){
-				$supllier = new Supplier();
-				$row = $supllier->first(['id'=>$id]);
+				$supplier = new Supplier();
+				$row = $supplier->first(['id'=>$id]);
 				$companyName = $row['company_name'];
 				$details = "DELETED SUPPLIER: $companyName";
 			}
 		}
-		// Insert to Audit Trail
-		$this->insert_Audit_trail($username, $source, $action, $details);
-	}
 
+		else if(strcmp($action, "RESTORE") == 0){
+			if (strcmp($source, "Users") == 0){
+				$user = new User();
+				$row = $user->first(['id'=>$id]);
+				$restoreUserID = $row['userid'];
+				$restoreUsername = $row['username'];
+				$userEmail = $row['email'];
+				$userGender = $row['gender'];
+				$userRole = $row['role'];
+				$details = "RESTORED USER: $restoreUserID \nName: $restoreUsername \nEmail: $userEmail \nGender: $userGender \nRole: $userRole";
+			}
+			else if (strcmp($source, "Categories") == 0){
+				$category = new Category();
+				$row = $category->first(['id'=>$id]);
+				$categoryName = $row['name'];
+				$details = "RESTORED CATEGORY: $categoryName";
+			}
+			else if (strcmp($source, "Products") == 0){
+				$product = new Product();
+				$row = $product->first(['id'=>$id]);
+				$productBarcode = $row['barcode'];
+				$productName = $row['description'];
+				$productStock = $row['stock'];
+				$productPrice = $row['amount'];
+				$productCategory = $row['category_id'];
+				$productCategoryName = get_CategoryName($productCategory);
+
+				$details = "RESTORED ITEM: $productBarcode \nProduct Name: $productName \nQty: $productStock \nPrice: $productPrice\n Category: $productCategoryName";
+			}
+			else if (strcmp($source, "Suppliers") == 0){
+				$supplier = new Supplier();
+				$row = $supplier->first(['id'=>$id]);
+				$companyName = $row['company_name'];
+				$details = "RESTORED SUPPLIER: $companyName";
+			}
+		} else if(strcmp($action, "REFUND") == 0){
+			if (strcmp($source, "Sales") == 0){
+				$saleClass = new Sale();
+				$sale_row = $saleClass->first(["id"=>$id]);
+				
+				$saleReceipt = $sale_row["receipt_no"];
+				$saleBarcode = $sale_row["barcode"];
+				$saleProductName = $sale_row["description"];
+				$product_price = $sale_row["amount"];
+				$product_sold = $sale_row["qty"];
+				$sale_total = $sale_row["total"];
+				$refund_qty = $data["refund_qty"];
+				$total_amount = $refund_qty * $product_price;
+				$status = $data["status"];
+				$remarks = $data["remarks"];
+
+				$details = "REFUNDED ITEM: $saleBarcode\nReceipt No: $saleReceipt\nProduct Name: $saleProductName\nProduct Price: $product_price\nProduct Sold: $product_sold (₱$sale_total)\nRefund Qty: $refund_qty\nTotal Amount Refund: ₱$total_amount\nStatus: $status\nRemarks: $remarks";
+			}
+		}
+
+		else if(strcmp($action, "RESTOCK") == 0){
+			if (strcmp($source, "Refunded Items") == 0){
+				$productClass = new Product();
+				$row = $productClass->first(["id"=>$id]);
+
+				$productBarcode = $row['barcode'];
+				$productBarcode = $row['description'];
+				$restock_qty = $data['item_qty'];
+
+				$details = "RESTOCK ITEM: $productBarcode\nProduct Name: $productBarcode\nRestocked Qty: $restock_qty"; 
+			}
+		}
+		else if(strcmp($action, "FOR DISPOSAL") == 0){
+			if (strcmp($source, "Refunded Items") == 0){
+				$productClass = new Product();
+				$row = $productClass->first(["id"=>$id]);
+
+				$productBarcode = $row['barcode'];
+				$productBarcode = $row['description'];
+				$dispose_qty = $data['item_qty'];
+				$status = $data['status'];
+				$remarks = $data['remarks'];
+
+				$details = "DISPOSAL ITEM: $productBarcode\nProduct Name: $productBarcode\nDispose Qty: $dispose_qty\nStatus: $status\nRemarks: $remarks"; 
+			}
+		}
+
+		// Insert to Audit Trail
+		$this->insert_Audit_trail($date, $username, $source, $action, $details);
+	}
+	
 	//insert audit
-	public function insert_Audit_trail($username, $source, $action, $details)
+	public function insert_Audit_trail($date, $username, $source, $action, $details)
 	{
-		$query = "INSERT INTO audit_trail (user_id, source, action, details) VALUES (:username, :source, :action, :details)";
+		$query = "INSERT INTO audit_trail (user_id, source, action, details, date) VALUES (:username, :source, :action, :details, :date)";
 		$params = array(
 			'username' => $username,
 			'source' => $source,
 			'action' => $action,
-			'details' => $details
+			'details' => $details,
+			'date' => $date,
 		);
 
 		$db = new Database;

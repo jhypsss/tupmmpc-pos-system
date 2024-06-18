@@ -4,11 +4,17 @@
 		
 		<form method="post">
 			<center>
-				<h3><i class="fa fa-user"></i> Create User</h3>
+				<h3><i class="fa fa-user"></i> Create Account</h3>
 				<div><?=esc(APP_NAME)?></div>
 			</center>
 			<br>
-		 
+			<div class="mb-3">
+			  <label for="exampleFormControlInput1" class="form-label">Employee ID</label>
+			  <input value="<?=set_value('userid')?>" name="userid" type="text" class="form-control <?=!empty($errors['userid']) ? 'border-danger':''?>" id="exampleFormControlInput1" placeholder="User ID" autocomplete="off">
+				<?php if(!empty($errors['userid'])):?>
+					<small class="text-danger"><?=$errors['userid']?></small>
+				<?php endif;?>
+			</div>
 			<div class="mb-3">
 			  <label for="exampleFormControlInput1" class="form-label">Username</label>
 			  <input value="<?=set_value('username')?>" name="username" type="text" class="form-control <?=!empty($errors['username']) ? 'border-danger':''?>" id="exampleFormControlInput1" placeholder="Username" autocomplete="off">
@@ -19,7 +25,7 @@
 			
 			<div class="mb-3">
 			  <label for="exampleFormControlInput1" class="form-label">Email address</label>
-			  <input value="<?=set_value('email')?>" name="email" type="email" class="form-control  <?=!empty($errors['email']) ? 'border-danger':''?>" id="exampleFormControlInput1" placeholder="name@example.com" autocomplete="off">
+			  <input value="<?=set_value('email')?>" name="email" type="email" class="form-control  <?=!empty($errors['email']) ? 'border-danger':''?>" id="exampleFormControlInput1" placeholder="example@email.com" autocomplete="off">
 				<?php if(!empty($errors['email'])):?>
 					<small class="text-danger"><?=$errors['email']?></small>
 				<?php endif;?>
@@ -28,6 +34,7 @@
 			<div class="mb-3">
 			  <label for="exampleFormControlInput1" class="form-label">Gender</label>
  				<select  name="gender" class="form-control  <?=!empty($errors['gender']) ? 'border-danger':''?>" >
+					<option value="unset" hidden>Select Gender</option>
 					<option>Male</option>
 					<option>Female</option>
 				</select>

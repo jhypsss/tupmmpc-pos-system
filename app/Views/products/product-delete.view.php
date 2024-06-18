@@ -11,8 +11,8 @@
 			<div class="alert alert-danger text-center">Are you sure you want to delete this product??!!</div>
 
 			<div class="mb-3">
-			  <label for="productControlInput1" class="form-label">Product description</label>
-			  <input disabled value="<?=set_value('description',$row['description'])?>" name="description" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="productControlInput1" placeholder="Product description">
+			  <label for="productControlInput1" class="form-label">Product Description</label>
+			  <input disabled value="<?=set_value('description',$row['description'])?>" name="Description" type="text" class="form-control <?=!empty($errors['description']) ? 'border-danger':''?>" id="productControlInput1" placeholder="Product Description">
 			  <?php if(!empty($errors['description'])):?>
 					<small class="text-danger"><?=$errors['description']?></small>
 				<?php endif;?>
@@ -24,6 +24,13 @@
 			  <?php if(!empty($errors['barcode'])):?>
 					<small class="text-danger"><?=$errors['barcode']?></small>
 				<?php endif;?>
+			</div>
+
+			<div class="input-group mb-3">
+			  <span class="input-group-text">Current Stock: </span>
+			  <input disabled name="stock" value="<?=set_value('stock',$row['stock'])?>" type="number" class="form-control <?=!empty($errors['stock']) ? 'border-danger':''?>" id="stock" placeholder="Quantity" aria-label="Quantity" autocomplete="off">
+			  <span class="input-group-text">Amount:</span>
+			  <input disabled name="amount" value="<?=set_value('amount',$row['amount'])?>" step="any" type="number" class="form-control <?=!empty($errors['amount']) ? 'border-danger':''?>" placeholder="Amount" aria-label="Amount" autocomplete="off">
 			</div>
 
 			
@@ -39,7 +46,7 @@
 			That product was not found
 			<br><br>
 			<a href="index.php?pg=admin&tab=products">
-				<button type="button" class="btn btn-primary">Back to products</button>
+				<button type="button" class="btn btn-primary">Back to Products</button>
 			</a>
 
 		<?php endif;?>

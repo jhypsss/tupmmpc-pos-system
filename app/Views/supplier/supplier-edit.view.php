@@ -4,7 +4,7 @@
 
 		<form method="post" enctype="multipart/form-data">
 
-			<h5 class="text-primary"><i class="fa fa-truck"></i> Edit Supplier</h5>
+			<h5 class="text-primary"><i class="fa fa-truck"></i> Update Supplier</h5>
 						
 			<br>
 			<div class="mb-3">

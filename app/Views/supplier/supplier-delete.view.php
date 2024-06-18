@@ -67,7 +67,7 @@
 			That Supplier was not found
 			<br><br>
 			<a href="index.php?pg=admin&tab=suppliers">
-				<button type="button" class="btn btn-primary">Back to products</button>
+				<button type="button" class="btn btn-primary">Back to Suppliers</button>
 			</a>
 
 		<?php endif;?>

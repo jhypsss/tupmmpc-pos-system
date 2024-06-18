@@ -1,16 +1,6 @@
 <?php
 // Assuming you have a database connection already established
-$host = 'localhost';
-$user = 'root';
-$password = '';
-$database = 'pos_db';
-
-$conn = new mysqli($host, $user, $password, $database);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+$conn = new Database();
 
 // Include TCPDF library
 require_once('tcpdf/tcpdf.php');
@@ -31,10 +21,10 @@ $pdf->Ln();
 $pdf->Cell(0, 10, 'TUPMMPC Product Barcode List', 0, 1, 'C');
 
 // Fetch data from the products table
-$query = "SELECT barcode, description, amount FROM products WHERE if_deleted = 0";
-$result = $conn->query($query);
+$query = "SELECT barcode, description, amount FROM products WHERE if_deleted = 0 ORDER BY description";
+$results = $conn->query($query);
 
-if ($result->num_rows > 0) {
+if (!empty($results)) {
     // Start the table
     $pdf->SetFont('helvetica', 'B', 12);
     $pdf->SetFillColor(200, 220, 255); // Set table header background color
@@ -42,18 +32,17 @@ if ($result->num_rows > 0) {
     $pdf->Cell(90, 10, 'Barcode', 0, 1, 'L');
 
     // Set font back to regular for the table content
-    $pdf->SetFont('helvetica', '', 12);
+    $pdf->SetFont('helvetica', '', 10);
 
     // Loop through the records
-    while ($row = $result->fetch_assoc()) {
+    foreach ($results as $row) {
         // Extract data from the current row
         $barcodeValue = $row['barcode'];
         $description = $row['description'];
         $amount = $row['amount'];
 
         // Add product information to the table
-        //$pdf->Cell(90, 10, "Name: $description \nPrice: $amount", 0, 0, 'L');
-        $pdf->MultiCell(90, 10, "Name: $description \nPrice: $amount", 0, 'L', 0, 0);
+        $pdf->Cell(90, 10, $description . " (P$amount)", 0, 0, 'L');
         
         // Add a 1D barcode (CODE 39)
         $style = array(
@@ -84,7 +73,4 @@ if ($result->num_rows > 0) {
 } else {
     echo "No products found in the database.";
 }
-
-// Close the database connection
-$conn->close();
 ?>
